@@ -14,7 +14,7 @@ class HikeInProgressViewController: UIViewController {
     //MARK: Enums
     
     //MARK: Constants
-    let locationManager = LocationManager.shared
+    private let locationManager = LocationManager.shared
     //MARK: Variables
     
     //MARK: Outlets
@@ -27,13 +27,19 @@ class HikeInProgressViewController: UIViewController {
     //MARK: Weak Vars
     
     //MARK: Public Variables
+    var shouldStartHike = false
     
     //MARK: Private Variables
+    private var seconds = 0
+    private var timer :Timer?
+    private var paused = false
     
     //MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if shouldStartHike {
+            startHike()
+        }
         // Do any additional setup after loading the view.
     }
     
@@ -44,9 +50,35 @@ class HikeInProgressViewController: UIViewController {
     }
     //MARK: IBActions
     @IBAction func pauseHikeButtonPressed(_ sender: UIButton) {
+        paused = !paused
     }
     
     //MARK: Instance Methods
+    private func startHike(){
+        startTimer()
+        
+    }
+    
+    private func startTimer(){
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+            self.eachSecond()
+            
+        }
+    }
+    
+    private func eachSecond(){
+        if !paused {
+            seconds += 1
+            updateDisplay()
+        }
+    }
+    
+    private func updateDisplay(){
+        durationDisplayLabel.text = String(seconds)
+    }
+    
+
+    
     
     
     
