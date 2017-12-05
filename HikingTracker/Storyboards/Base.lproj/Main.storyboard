@@ -24,9 +24,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="satellite" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DRT-ND-MdQ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
-                            </mapView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tqy-9h-whG" customClass="MGLMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="styleURL__" value="mapbox://styles/mapbox/outdoors-v10"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showsUserLocation" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="zoomLevel">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showsHeading" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wjb-Qw-0gp">
                                 <rect key="frame" x="0.0" y="549" width="375" height="69"/>
                                 <color key="backgroundColor" red="0.4403552711" green="0.56544411179999998" blue="0.1598808467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -44,25 +53,25 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="DRT-ND-MdQ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="7zW-DO-4of"/>
-                            <constraint firstItem="DRT-ND-MdQ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="CEn-v2-Idg"/>
+                            <constraint firstItem="Tqy-9h-whG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="PUP-qF-nCb"/>
+                            <constraint firstAttribute="bottom" secondItem="Tqy-9h-whG" secondAttribute="bottom" id="UWZ-co-Qqh"/>
                             <constraint firstItem="wjb-Qw-0gp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ePm-jY-exx"/>
+                            <constraint firstItem="Tqy-9h-whG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fj1-ln-Fj8"/>
                             <constraint firstItem="wjb-Qw-0gp" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ntR-Jc-xxD"/>
-                            <constraint firstItem="DRT-ND-MdQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="nxM-F8-tSW"/>
+                            <constraint firstItem="Tqy-9h-whG" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="scs-g6-va8"/>
                             <constraint firstItem="wjb-Qw-0gp" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="tzR-In-NVm"/>
-                            <constraint firstAttribute="bottom" secondItem="DRT-ND-MdQ" secondAttribute="bottom" id="vpC-mF-p4T"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="1rz-rm-2fu"/>
                     <connections>
-                        <outlet property="mainMapView" destination="DRT-ND-MdQ" id="3nh-wn-nq5"/>
+                        <outlet property="mapBoxMapView" destination="Tqy-9h-whG" id="phs-UZ-qkc"/>
                         <segue destination="M8d-ki-zbr" kind="showDetail" identifier="StartHikeButtonPressed" id="6zf-0T-Ru7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="494" y="-789"/>
+            <point key="canvasLocation" x="493.60000000000002" y="-789.35532233883066"/>
         </scene>
         <!--Hike In Progress View Controller-->
         <scene sceneID="c8Y-7Z-Cn6">
@@ -146,10 +155,11 @@ EENhbG9yaWVzA
                                         <color key="textColor" red="0.97777169939999997" green="0.94418644910000005" blue="0.73899042609999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="esn-NM-ZsN">
-                                        <rect key="frame" x="37" y="295" width="300" height="243"/>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="krz-zV-bta">
+                                        <rect key="frame" x="8" y="314" width="341" height="211"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </mapView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.13564318419999999" green="0.27028429510000002" blue="0.30816033479999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -172,7 +182,7 @@ EENhbG9yaWVzA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8fK-dJ-3xy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1357.5999999999999" y="-793.8530734632684"/>
+            <point key="canvasLocation" x="1357.5" y="-794.5"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="VMg-kW-5Xr">

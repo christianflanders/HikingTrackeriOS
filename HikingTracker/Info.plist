@@ -32,6 +32,8 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>MGLMapboxAccessToken</key>
+	<string>pk.eyJ1Ijoic2hyZWRmbGFuZGVycyIsImEiOiJjamF1M3M5YjU1OGl6MzJvaXlnbnQzdnp3In0.vmvVgNxQMGAhA679uwhGbw</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

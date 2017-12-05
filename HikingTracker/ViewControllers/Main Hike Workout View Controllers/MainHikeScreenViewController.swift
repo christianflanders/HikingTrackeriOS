@@ -7,11 +7,11 @@
 //
 
 import UIKit
-import MapKit
 import CoreLocation
 import HealthKit
+import Mapbox
 
-class MainHikeScreenViewController: UIViewController, MKMapViewDelegate,CLLocationManagerDelegate {
+class MainHikeScreenViewController: UIViewController,CLLocationManagerDelegate {
 
     //MARK: Enums
     
@@ -22,7 +22,7 @@ class MainHikeScreenViewController: UIViewController, MKMapViewDelegate,CLLocati
     //MARK: Variables
     
     //MARK: Outlets
-    @IBOutlet weak var mainMapView: MKMapView!
+    @IBOutlet weak var mapBoxMapView: MGLMapView!
     
     //MARK: Weak Vars
     
@@ -34,10 +34,7 @@ class MainHikeScreenViewController: UIViewController, MKMapViewDelegate,CLLocati
     override func viewDidLoad() {
         super.viewDidLoad()
         //Setup Map View
-        mainMapView.delegate = self
-        mainMapView.showsUserLocation = true
-        mainMapView.mapType = .satellite
-        mainMapView.setUserTrackingMode(.follow ,animated: true)
+        mapBoxMapView.userTrackingMode = MGLUserTrackingMode.follow
         //Setup Location Manager
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
