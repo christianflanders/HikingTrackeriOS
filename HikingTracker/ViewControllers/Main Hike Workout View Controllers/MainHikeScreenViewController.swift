@@ -33,8 +33,7 @@ class MainHikeScreenViewController: UIViewController,CLLocationManagerDelegate {
     //MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        //Setup Map View
-        mapBoxMapView.userTrackingMode = MGLUserTrackingMode.follow
+
         //Setup Location Manager
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
@@ -53,6 +52,11 @@ class MainHikeScreenViewController: UIViewController,CLLocationManagerDelegate {
             
             print("HealthKit successfully authorized")
             
+        }
+        //Setup Map View
+        mapBoxMapView.userTrackingMode = MGLUserTrackingMode.follow
+        if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse {
+            mapBoxMapView.showsUserLocation = true
         }
         
         
