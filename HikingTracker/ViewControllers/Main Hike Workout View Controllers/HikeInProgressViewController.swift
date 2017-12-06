@@ -25,6 +25,11 @@ class HikeInProgressViewController: UIViewController {
     @IBOutlet weak var durationDisplayLabel: UILabel!
     @IBOutlet weak var caloriesDisplayLabel: UILabel!
     
+    @IBOutlet weak var resumeButtonOutlet: UIButton!
+    @IBOutlet weak var holdToEndButtonOutlet: UIButton!
+    @IBOutlet weak var pauseHikeButtonOutlet: UIButton!
+    
+    
     
     //MARK: Weak Vars
     
@@ -36,6 +41,7 @@ class HikeInProgressViewController: UIViewController {
     private var timer : Timer?
     private var paused = false
     private var currentAltitude: NSNumber?
+    private var storedAltitudes: [NSNumber]?
     
     
     //MARK: View Life Cycle
@@ -43,6 +49,9 @@ class HikeInProgressViewController: UIViewController {
         super.viewDidLoad()
         if shouldStartHike {
             startHike()
+            pauseHikeButtonOutlet.isHidden = false
+            resumeButtonOutlet.isHidden = true
+            holdToEndButtonOutlet.isHidden = true
         }
         // Do any additional setup after loading the view.
     }
@@ -55,7 +64,22 @@ class HikeInProgressViewController: UIViewController {
     //MARK: IBActions
     @IBAction func pauseHikeButtonPressed(_ sender: UIButton) {
         paused = !paused
+        pauseHikeButtonOutlet.isHidden = true
+        resumeButtonOutlet.isHidden = false
+        holdToEndButtonOutlet.isHidden = false
     }
+    
+    @IBAction func holdToEndButtonPressed(_ sender: UIButton) {
+    }
+    
+    @IBAction func resumeButtonPressed(_ sender: UIButton) {
+        paused = !paused
+        pauseHikeButtonOutlet.isHidden = false
+        resumeButtonOutlet.isHidden = true
+        holdToEndButtonOutlet.isHidden = true
+    }
+    
+    
     
     //MARK: Instance Methods
     private func startHike(){
@@ -88,8 +112,9 @@ class HikeInProgressViewController: UIViewController {
     private func startAltimeter(){
         if CMAltimeter.isRelativeAltitudeAvailable() {
             altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main) { data, error in
-                if error == nil {
-                    self.currentAltitude = data?.relativeAltitude
+                if error == nil && data != nil {
+                    self.currentAltitude = data!.relativeAltitude
+                    self.storedAltitudes?.append(data!.relativeAltitude)
                 } else {
                     print("Error with altimeter!")
                     return
