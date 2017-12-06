@@ -8,6 +8,7 @@
 
 import UIKit
 import HealthKit
+import CoreMotion
 
 class HikeInProgressViewController: UIViewController {
     
@@ -15,6 +16,7 @@ class HikeInProgressViewController: UIViewController {
     
     //MARK: Constants
     private let locationManager = LocationManager.shared
+    private let altimeter = Altimeter.shared
     //MARK: Variables
     
     //MARK: Outlets
@@ -31,8 +33,10 @@ class HikeInProgressViewController: UIViewController {
     
     //MARK: Private Variables
     private var seconds = 0
-    private var timer :Timer?
+    private var timer : Timer?
     private var paused = false
+    private var currentAltitude: NSNumber?
+    
     
     //MARK: View Life Cycle
     override func viewDidLoad() {
@@ -56,7 +60,7 @@ class HikeInProgressViewController: UIViewController {
     //MARK: Instance Methods
     private func startHike(){
         startTimer()
-        
+        startAltimeter()
     }
     
     private func startTimer(){
@@ -75,9 +79,28 @@ class HikeInProgressViewController: UIViewController {
     
     private func updateDisplay(){
         durationDisplayLabel.text = String(seconds)
+        if currentAltitude != nil {
+            let stringAltitude = String(describing: currentAltitude!.doubleValue)
+            elevationDisplayLabel.text = stringAltitude
+        }
     }
     
-
+    private func startAltimeter(){
+        if CMAltimeter.isRelativeAltitudeAvailable() {
+            altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main) { data, error in
+                if error == nil {
+                    self.currentAltitude = data?.relativeAltitude
+                } else {
+                    print("Error with altimeter!")
+                    return
+                }
+                
+            }
+        } else {
+            print("Altimeter not avalible")
+        }
+    }
+    
     
     
     

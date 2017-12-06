@@ -37,6 +37,7 @@
 		6BC1DE831FD6553C00CB20D5 /* HikeTrackerWatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 6BC1DE641FD6553B00CB20D5 /* HikeTrackerWatchApp.app */; };
 		6BC1DE8D1FD7368D00CB20D5 /* LocationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1DE8C1FD7368D00CB20D5 /* LocationServices.swift */; };
 		6BCC75E11FD621A4005F2F19 /* HikeWorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCC75E01FD621A4005F2F19 /* HikeWorkoutModel.swift */; };
+		6BDDA10E1FD7610B0069970C /* Altimeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDDA10D1FD7610B0069970C /* Altimeter.swift */; };
 		7AC42571F36F80108A4C3949 /* Pods_HikingTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31C907DBAE9A71343833582E /* Pods_HikingTracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -138,6 +139,7 @@
 		6BC1DE801FD6553C00CB20D5 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		6BC1DE8C1FD7368D00CB20D5 /* LocationServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServices.swift; sourceTree = "<group>"; };
 		6BCC75E01FD621A4005F2F19 /* HikeWorkoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeWorkoutModel.swift; sourceTree = "<group>"; };
+		6BDDA10D1FD7610B0069970C /* Altimeter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Altimeter.swift; sourceTree = "<group>"; };
 		72E941687429CA2ACA31744B /* Pods-HikingTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HikingTrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HikingTrackerTests/Pods-HikingTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 		80AE14E10AD06687F619AD17 /* Pods-HikeTrackerWatchApp Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HikeTrackerWatchApp Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HikeTrackerWatchApp Extension/Pods-HikeTrackerWatchApp Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		83152D5FF92631A91309EA53 /* Pods_HikeTrackerWatchApp_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HikeTrackerWatchApp_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -306,6 +308,7 @@
 			children = (
 				6BCC75E01FD621A4005F2F19 /* HikeWorkoutModel.swift */,
 				6BC1DE8C1FD7368D00CB20D5 /* LocationServices.swift */,
+				6BDDA10D1FD7610B0069970C /* Altimeter.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -835,6 +838,7 @@
 				6BB63A4B1FD5EA5500E9F4A1 /* ChecklistViewController.swift in Sources */,
 				6BB63A491FD5EA4C00E9F4A1 /* UserInfoViewController.swift in Sources */,
 				6BB63A471FD5EA4000E9F4A1 /* HikeHistoryViewController.swift in Sources */,
+				6BDDA10E1FD7610B0069970C /* Altimeter.swift in Sources */,
 				6BB63A121FD5CCE600E9F4A1 /* HikingTracker.xcdatamodeld in Sources */,
 				6BB63A451FD5EA2F00E9F4A1 /* MainHikeScreenViewController.swift in Sources */,
 				6BCC75E11FD621A4005F2F19 /* HikeWorkoutModel.swift in Sources */,
@@ -1177,6 +1181,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8K7R4W5UEW;
 				INFOPLIST_FILE = "HikeTrackerWatchApp Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.christianflanders.HikingTracker.watchkitapp.watchkitextension;
@@ -1195,6 +1200,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8K7R4W5UEW;
 				INFOPLIST_FILE = "HikeTrackerWatchApp Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.christianflanders.HikingTracker.watchkitapp.watchkitextension;
