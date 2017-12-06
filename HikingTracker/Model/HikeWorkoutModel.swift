@@ -8,15 +8,17 @@
 
 import Foundation
 
-struct HikeWorkout {
+class HikeWorkout {
     
-    var start: Date
-    var end: Date
+    var startDate: Date
+    var endDate: Date?
     
-    var distance: Double
-    var totalCalories: Double
+    var distance: Double = 0
+    var totalCalories: Double = 0
     
-    
+    init(start:Date) {
+        self.startDate = start
+    }
     
     
 }

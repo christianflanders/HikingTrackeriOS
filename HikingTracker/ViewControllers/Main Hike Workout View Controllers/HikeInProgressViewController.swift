@@ -85,6 +85,8 @@ class HikeInProgressViewController: UIViewController {
     private func startHike(){
         startTimer()
         startAltimeter()
+        let startDate = Date()
+        let currentHike = HikeWorkout(start: startDate)
     }
     
     private func startTimer(){
