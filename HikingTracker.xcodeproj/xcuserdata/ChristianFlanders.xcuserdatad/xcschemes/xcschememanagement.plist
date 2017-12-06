@@ -17,12 +17,35 @@
 		<key>HikeTrackerWatchApp.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>5</integer>
 		</dict>
 		<key>HikingTracker.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>6</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>6BB63A051FD5CCE600E9F4A1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6BB63A1C1FD5CCE600E9F4A1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6BB63A271FD5CCE600E9F4A1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6BC1DE631FD6553B00CB20D5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

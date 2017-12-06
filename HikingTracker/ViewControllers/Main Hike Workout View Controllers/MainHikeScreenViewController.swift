@@ -22,7 +22,7 @@ class MainHikeScreenViewController: UIViewController,CLLocationManagerDelegate {
     //MARK: Variables
     
     //MARK: Outlets
-    @IBOutlet weak var mapBoxMapView: MGLMapView!
+//    @IBOutlet weak var mapBoxMapView: MGLMapView!
     
     //MARK: Weak Vars
     
@@ -54,9 +54,14 @@ class MainHikeScreenViewController: UIViewController,CLLocationManagerDelegate {
             
         }
         //Setup Map View
-        mapBoxMapView.userTrackingMode = MGLUserTrackingMode.follow
+        let url = URL(string: "mapbox://styles/mapbox/outdoors-v10")
+        let mapView = MGLMapView(frame: view.bounds, styleURL: url)
+        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        mapView.showsUserLocation = true
+
+        view.addSubview(mapView)
+        view.sendSubview(toBack: mapView)
         if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse {
-            mapBoxMapView.showsUserLocation = true
         }
         
         
