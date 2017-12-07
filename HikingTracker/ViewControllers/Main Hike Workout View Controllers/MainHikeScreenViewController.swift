@@ -58,20 +58,25 @@ class MainHikeScreenViewController: UIViewController,CLLocationManagerDelegate {
         let mapView = MGLMapView(frame: view.bounds, styleURL: url)
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.showsUserLocation = true
-
+        mapView.userTrackingMode = .follow
         view.addSubview(mapView)
         view.sendSubview(toBack: mapView)
         if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse {
         }
-        
-        
-        
-        
+
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        //TODO: Add in notification that if location services are turned off how to turn them back on.
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        locationManager.stopUpdatingLocation()
     }
     
     //MARK: IBActions
