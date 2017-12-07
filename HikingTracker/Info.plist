@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSMotionUsageDescription</key>
+	<string>Allow hike tracker to access your motion data to track your workouts</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>

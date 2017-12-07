@@ -9,14 +9,16 @@
 import UIKit
 import HealthKit
 import CoreMotion
+import CoreLocation
 
-class HikeInProgressViewController: UIViewController {
+class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate{
     
     //MARK: Enums
     
     //MARK: Constants
     private let locationManager = LocationManager.shared
     private let altimeter = Altimeter.shared
+    private let pedometer = CMPedometer()
     //MARK: Variables
     
     //MARK: Outlets
@@ -40,9 +42,11 @@ class HikeInProgressViewController: UIViewController {
     private var seconds = 0
     private var timer : Timer?
     private var paused = false
-    private var currentAltitude: NSNumber?
-    private var storedAltitudes: [NSNumber]?
-    
+    private var startDate: Date?
+    private var distanceTraveled: NSNumber?
+//    private var currentAltitude: NSNumber?
+//    private var storedAltitudes: [NSNumber]?
+    private var storedLocations = [CLLocation]()
     
     //MARK: View Life Cycle
     override func viewDidLoad() {
@@ -52,6 +56,10 @@ class HikeInProgressViewController: UIViewController {
             pauseHikeButtonOutlet.isHidden = false
             resumeButtonOutlet.isHidden = true
             holdToEndButtonOutlet.isHidden = true
+            locationManager.activityType = .fitness
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+            
         }
         // Do any additional setup after loading the view.
     }
@@ -84,9 +92,9 @@ class HikeInProgressViewController: UIViewController {
     //MARK: Instance Methods
     private func startHike(){
         startTimer()
-        startAltimeter()
-        let startDate = Date()
-        let currentHike = HikeWorkout(start: startDate)
+//        startAltimeter()
+        startDate = Date()
+//        let currentHike = HikeWorkout(start: startDate)
     }
     
     private func startTimer(){
@@ -99,48 +107,59 @@ class HikeInProgressViewController: UIViewController {
     private func eachSecond(){
         if !paused {
             seconds += 1
+
+            grabAndStoreLocation()
+            retrievePedometerData()
+            
+            
+            
             updateDisplay()
         }
     }
     
     private func updateDisplay(){
         durationDisplayLabel.text = String(seconds)
-        if currentAltitude != nil {
-            let stringAltitude = String(describing: currentAltitude!.doubleValue)
-            elevationDisplayLabel.text = stringAltitude
-        }
-    }
-    
-    private func startAltimeter(){
-        if CMAltimeter.isRelativeAltitudeAvailable() {
-            altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main) { data, error in
-                if error == nil && data != nil {
-                    self.currentAltitude = data!.relativeAltitude
-                    self.storedAltitudes?.append(data!.relativeAltitude)
-                } else {
-                    print("Error with altimeter!")
-                    return
-                }
+        if let currentLocation = locationManager.location{
+            print("Location found")
+            let currentLocationAltitudeShortened = Int(currentLocation.altitude)
+            elevationDisplayLabel.text = "\(currentLocationAltitudeShortened) ft"
+            guard let distanceTraveled = distanceTraveled?.intValue else {
+                print("problem getting distance traveled")
+                return
                 
             }
-        } else {
-            print("Altimeter not avalible")
+            distanceDisplayLabel.text = String(describing: distanceTraveled)
+        }
+
+    }
+    
+    private func retrievePedometerData(){
+        guard let startDate = startDate else {return}
+        pedometer.startUpdates(from: startDate) { data, error in
+            if error == nil {
+                guard let data = data else {return}
+                print(data.distance)
+                self.distanceTraveled = data.distance
+            }
+            
+            
+        }
+    }
+    
+    
+    
+    private func grabAndStoreLocation(){
+        if let currentLocation = locationManager.location {
+            storedLocations.append(currentLocation)
         }
     }
     
     
     
     
+    //MARK: Location Manager Delegate
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    
     
     
     

@@ -107,7 +107,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IzA-wj-Bu4">
-                                        <rect key="frame" x="43" y="170" width="86" height="26"/>
+                                        <rect key="frame" x="42.999999999999993" y="170" width="78.333333333333314" height="26"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
                                         <color key="textColor" red="0.97777169939999997" green="0.94418644910000005" blue="0.73899042609999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -121,18 +121,17 @@ EENhbG9yaWVzA
                                         <color key="textColor" red="0.97777169939999997" green="0.94418644910000005" blue="0.73899042609999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1800 ft" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c14-0e-lKP">
-                                        <rect key="frame" x="37" y="75" width="98" height="26"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1800 ft" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="c14-0e-lKP">
+                                        <rect key="frame" x="37" y="75" width="163" height="26"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="26" id="GrQ-9K-poa"/>
-                                            <constraint firstAttribute="width" constant="98" id="Qh7-wm-O8T"/>
+                                            <constraint firstAttribute="height" constant="26" id="mL5-mw-ARr"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="25"/>
                                         <color key="textColor" red="0.97777169939999997" green="0.94418644910000005" blue="0.73899042609999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=".86 Miles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vJg-tW-sjL">
-                                        <rect key="frame" x="246.66666666666663" y="75" width="122" height="33"/>
+                                        <rect key="frame" x="247" y="75" width="122" height="33"/>
                                         <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="25"/>
                                         <color key="textColor" red="0.97777169939999997" green="0.94418644910000005" blue="0.73899042609999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -144,7 +143,7 @@ EENhbG9yaWVzA
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:40" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jj9-Zo-bjd">
-                                        <rect key="frame" x="37" y="204" width="98" height="33"/>
+                                        <rect key="frame" x="36.999999999999993" y="204" width="90.333333333333314" height="33"/>
                                         <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="25"/>
                                         <color key="textColor" red="0.97777169939999997" green="0.94418644910000005" blue="0.73899042609999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -167,11 +166,9 @@ EENhbG9yaWVzA
                                 </subviews>
                                 <color key="backgroundColor" red="0.13564318419999999" green="0.27028429510000002" blue="0.30816033479999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="c14-0e-lKP" firstAttribute="leading" secondItem="tiz-uL-hXU" secondAttribute="leading" constant="37" id="1JV-Jc-Iew"/>
                                     <constraint firstItem="q4T-nJ-Yhg" firstAttribute="baseline" secondItem="IzA-wj-Bu4" secondAttribute="baseline" id="2Bf-jX-yiu"/>
                                     <constraint firstItem="Jj9-Zo-bjd" firstAttribute="centerX" secondItem="IzA-wj-Bu4" secondAttribute="centerX" id="2Ui-kt-SWG"/>
                                     <constraint firstItem="q4T-nJ-Yhg" firstAttribute="trailing" secondItem="mZs-Ho-pYY" secondAttribute="trailing" id="3Pj-9d-hfs"/>
-                                    <constraint firstItem="Jj9-Zo-bjd" firstAttribute="leading" secondItem="c14-0e-lKP" secondAttribute="leading" id="EDu-f2-ZWm"/>
                                     <constraint firstItem="mZs-Ho-pYY" firstAttribute="top" secondItem="xCM-Pj-643" secondAttribute="top" id="H7t-Q2-jW5"/>
                                     <constraint firstItem="q4T-nJ-Yhg" firstAttribute="trailing" secondItem="FcN-tX-FoN" secondAttribute="trailing" id="IEr-4l-bum"/>
                                     <constraint firstItem="FcN-tX-FoN" firstAttribute="baseline" secondItem="EGu-sg-prP" secondAttribute="baseline" id="N3i-HG-J2U"/>
@@ -182,14 +179,15 @@ EENhbG9yaWVzA
                                     <constraint firstItem="yDb-uf-CAX" firstAttribute="baseline" secondItem="Jj9-Zo-bjd" secondAttribute="baseline" id="TQ6-lQ-LrX"/>
                                     <constraint firstItem="vJg-tW-sjL" firstAttribute="centerX" secondItem="FcN-tX-FoN" secondAttribute="centerX" id="Tzy-d7-guZ"/>
                                     <constraint firstItem="EGu-sg-prP" firstAttribute="top" secondItem="tiz-uL-hXU" secondAttribute="top" constant="44" id="VXD-KI-sZ5"/>
-                                    <constraint firstItem="Jj9-Zo-bjd" firstAttribute="trailing" secondItem="c14-0e-lKP" secondAttribute="trailing" id="Y1g-Yk-CZy"/>
+                                    <constraint firstItem="c14-0e-lKP" firstAttribute="firstBaseline" secondItem="vJg-tW-sjL" secondAttribute="firstBaseline" id="W3a-2h-w1p"/>
                                     <constraint firstItem="mZs-Ho-pYY" firstAttribute="leading" secondItem="xCM-Pj-643" secondAttribute="leading" id="aEc-Ru-ZSa"/>
                                     <constraint firstItem="mZs-Ho-pYY" firstAttribute="top" secondItem="vKM-WY-bal" secondAttribute="top" id="at0-Fi-Wnh"/>
-                                    <constraint firstItem="vJg-tW-sjL" firstAttribute="firstBaseline" secondItem="c14-0e-lKP" secondAttribute="firstBaseline" id="cXz-OX-yjn"/>
+                                    <constraint firstItem="vJg-tW-sjL" firstAttribute="leading" secondItem="c14-0e-lKP" secondAttribute="trailing" constant="47" id="bCp-GK-tcn"/>
                                     <constraint firstAttribute="bottom" secondItem="xCM-Pj-643" secondAttribute="bottom" constant="50" id="cpZ-hr-z66"/>
                                     <constraint firstItem="q4T-nJ-Yhg" firstAttribute="leading" secondItem="FcN-tX-FoN" secondAttribute="leading" id="dL9-VQ-gdo"/>
                                     <constraint firstAttribute="trailing" secondItem="vKM-WY-bal" secondAttribute="trailing" constant="44" id="dcO-LO-BGo"/>
                                     <constraint firstItem="vKM-WY-bal" firstAttribute="leading" secondItem="xCM-Pj-643" secondAttribute="trailing" id="fhC-3b-fiL"/>
+                                    <constraint firstItem="c14-0e-lKP" firstAttribute="leading" secondItem="Jj9-Zo-bjd" secondAttribute="leading" id="h1s-Bn-xgG"/>
                                     <constraint firstItem="xCM-Pj-643" firstAttribute="leading" secondItem="tiz-uL-hXU" secondAttribute="leading" constant="43" id="jsK-cf-Pmy"/>
                                     <constraint firstItem="IzA-wj-Bu4" firstAttribute="leading" secondItem="EGu-sg-prP" secondAttribute="leading" id="l1r-8U-twm"/>
                                     <constraint firstItem="yDb-uf-CAX" firstAttribute="centerX" secondItem="q4T-nJ-Yhg" secondAttribute="centerX" id="mRw-bu-qFS"/>
@@ -198,6 +196,7 @@ EENhbG9yaWVzA
                                     <constraint firstItem="FcN-tX-FoN" firstAttribute="leading" secondItem="EGu-sg-prP" secondAttribute="trailing" constant="26" id="uUe-EG-mdZ"/>
                                     <constraint firstItem="q4T-nJ-Yhg" firstAttribute="top" secondItem="vJg-tW-sjL" secondAttribute="bottom" constant="62" id="vvn-Tk-fTG"/>
                                     <constraint firstItem="yDb-uf-CAX" firstAttribute="top" secondItem="q4T-nJ-Yhg" secondAttribute="bottom" constant="8" symbolic="YES" id="wP2-r1-8LG"/>
+                                    <constraint firstItem="c14-0e-lKP" firstAttribute="leading" secondItem="tiz-uL-hXU" secondAttribute="leading" constant="37" id="ztf-VL-lyR"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -318,7 +317,7 @@ EENhbG9yaWVzA
                                             <outlet property="cellTextField" destination="sGv-Vm-uxM" id="6qR-VC-gEY"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="r1c-R1-kV8">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="r1c-R1-kV8">
                                         <rect key="frame" x="0.0" y="72" width="374" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="r1c-R1-kV8" id="ST8-bW-gTC">
@@ -326,7 +325,7 @@ EENhbG9yaWVzA
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="cfM-jI-ZFu">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="cfM-jI-ZFu">
                                         <rect key="frame" x="0.0" y="116" width="374" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cfM-jI-ZFu" id="lea-Qu-Tvf">
@@ -342,7 +341,7 @@ EENhbG9yaWVzA
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="8wo-X3-TiC">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="8wo-X3-TiC">
                                         <rect key="frame" x="0.0" y="204" width="374" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8wo-X3-TiC" id="qiJ-VA-1pL">

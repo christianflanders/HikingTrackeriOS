@@ -61,8 +61,7 @@ class MainHikeScreenViewController: UIViewController,CLLocationManagerDelegate {
         mapView.userTrackingMode = .follow
         view.addSubview(mapView)
         view.sendSubview(toBack: mapView)
-        if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse {
-        }
+
 
     }
     
