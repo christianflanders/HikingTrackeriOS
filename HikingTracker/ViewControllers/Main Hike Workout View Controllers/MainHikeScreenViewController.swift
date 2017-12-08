@@ -68,6 +68,9 @@ class MainHikeScreenViewController: UIViewController,CLLocationManagerDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         //TODO: Add in notification that if location services are turned off how to turn them back on.
+        if !CLLocationManager.locationServicesEnabled() {
+            presentAlert(title: "Location can't be found!", message: "Turn on location services in settings", view: self)
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -39,6 +39,7 @@
 		6BC1DE8D1FD7368D00CB20D5 /* LocationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1DE8C1FD7368D00CB20D5 /* LocationServices.swift */; };
 		6BCC75E11FD621A4005F2F19 /* HikeWorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCC75E01FD621A4005F2F19 /* HikeWorkoutModel.swift */; };
 		6BCD37A41FD8878F00FE8C03 /* UserInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCD37A31FD8878F00FE8C03 /* UserInfoTableViewCell.swift */; };
+		6BD8C5CE1FD9EA3D00F8D97F /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD8C5CD1FD9EA3C00F8D97F /* Alerts.swift */; };
 		6BDDA10E1FD7610B0069970C /* Altimeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDDA10D1FD7610B0069970C /* Altimeter.swift */; };
 		7AC42571F36F80108A4C3949 /* Pods_HikingTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31C907DBAE9A71343833582E /* Pods_HikingTracker.framework */; };
 /* End PBXBuildFile section */
@@ -144,6 +145,7 @@
 		6BCC75E01FD621A4005F2F19 /* HikeWorkoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeWorkoutModel.swift; sourceTree = "<group>"; };
 		6BCD37A31FD8878F00FE8C03 /* UserInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoTableViewCell.swift; sourceTree = "<group>"; };
 		6BCD37A51FD88F7A00FE8C03 /* HikeTest.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = HikeTest.gpx; path = HikingTracker/HikeTest.gpx; sourceTree = SOURCE_ROOT; };
+		6BD8C5CD1FD9EA3C00F8D97F /* Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		6BDDA10D1FD7610B0069970C /* Altimeter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Altimeter.swift; sourceTree = "<group>"; };
 		72E941687429CA2ACA31744B /* Pods-HikingTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HikingTrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HikingTrackerTests/Pods-HikingTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 		80AE14E10AD06687F619AD17 /* Pods-HikeTrackerWatchApp Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HikeTrackerWatchApp Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HikeTrackerWatchApp Extension/Pods-HikeTrackerWatchApp Extension.debug.xcconfig"; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 		6B7801751FD6189E006F29BD /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				6BD8C5CD1FD9EA3C00F8D97F /* Alerts.swift */,
 				6B7801761FD618BE006F29BD /* HealthKitAuthorization.swift */,
 			);
 			path = Utilities;
@@ -842,6 +845,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BC1DE8D1FD7368D00CB20D5 /* LocationServices.swift in Sources */,
+				6BD8C5CE1FD9EA3D00F8D97F /* Alerts.swift in Sources */,
 				6B7801771FD618BE006F29BD /* HealthKitAuthorization.swift in Sources */,
 				6BCD37A41FD8878F00FE8C03 /* UserInfoTableViewCell.swift in Sources */,
 				6BB63A4B1FD5EA5500E9F4A1 /* ChecklistViewController.swift in Sources */,
