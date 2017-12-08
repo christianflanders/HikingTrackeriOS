@@ -21,6 +21,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate{
     private let altimeter = Altimeter.shared
     private let pedometer = CMPedometer()
     
+    
     //MARK: Variables
     
     //MARK: Outlets
@@ -45,12 +46,11 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate{
     private var seconds = 0
     private var timer : Timer?
     private var paused = false
-    private var startDate: Date?
-    private var distanceTraveled: NSNumber?
     private var pedometerData:  CMPedometerData?
-    private var distance = 0.0
-    private var pace: NSNumber?
-    private var storedLocations = [CLLocation]()
+    private var coordinatesForLine = [CLLocationCoordinate2D]()
+    private var mapView : MGLMapView!
+    private var hikeWorkout = HikeWorkout()
+
     
     //MARK: View Life Cycle
 
@@ -59,13 +59,14 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate{
         super.viewDidLoad()
         if shouldStartHike {
             startHike()
-            startHikeUISettings()
             locationManager.activityType = .fitness
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
         }
+        
+        //Setup map view here becuase it murders interface builder
         let url = URL(string: "mapbox://styles/mapbox/outdoors-v10")
-        let mapView = MGLMapView(frame: mapContainerView.bounds, styleURL: url)
+        mapView = MGLMapView(frame: mapContainerView.bounds, styleURL: url)
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .follow
@@ -106,46 +107,41 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate{
     
     private func startHike(){
         startTimer()
-//        startAltimeter()
-        startDate = Date()
-//        let currentHike = HikeWorkout(start: startDate)
+        print("The start date for the hike objedt is \(hikeWorkout.startDate)")
+        startHikeUISettings()
     }
     
     private func startTimer(){
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
             self.eachSecond()
-            
         }
     }
     
     private func eachSecond(){
         if !paused {
             seconds += 1
-
             grabAndStoreLocation()
             retrievePedometerData()
-            if startDate != nil {
-                calculateDuration(from: startDate!)
-            }
-            
+            calculateDuration(from: hikeWorkout.startDate)
             updateDisplay()
+            drawLine(on: mapView)
         }
     }
     
     private func updateDisplay(){
-//        durationDisplayLabel.text = String(seconds)
         if let currentLocation = locationManager.location{
             print("Location found")
             let currentLocationAltitudeShortened = Int(currentLocation.altitude)
             elevationDisplayLabel.text = "\(currentLocationAltitudeShortened) ft"
-            guard let distanceTraveled = distanceTraveled?.intValue else {
+            
+            
+            guard let distanceTraveled = hikeWorkout.distanceTraveled?.intValue else {
                 print("problem getting distance traveled")
                 return
-                
             }
             distanceDisplayLabel.text = String(describing: distanceTraveled)
         }
-        if let currentPace = pace {
+        if let currentPace = hikeWorkout.pace {
             
         }
     }
@@ -164,14 +160,12 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate{
     }
     
     private func retrievePedometerData(){
-        guard let startDate = startDate else {return}
         if CMPedometer.isStepCountingAvailable() {
-            pedometer.startUpdates(from: startDate) { data, error in
+            pedometer.startUpdates(from: hikeWorkout.startDate) { data, error in
                 if error == nil {
                     guard let data = data else {return}
-                    print(data.distance)
-                    self.distanceTraveled = data.distance
-                    self.pace = data.averageActivePace
+                    self.hikeWorkout.distanceTraveled = data.distance
+                    self.hikeWorkout.pace = data.averageActivePace
                 }
             }
         }
@@ -180,13 +174,24 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate{
     }
     private func grabAndStoreLocation(){
         if let currentLocation = locationManager.location {
-            storedLocations.append(currentLocation)
+            hikeWorkout.storedLocations.append(currentLocation)
+            let simplifiedCoordinate = currentLocation.coordinate
+            coordinatesForLine.append(simplifiedCoordinate)
         }
     }
     
     
     
 
+    
+    
+    //MARK: MapBox show line stuff
+    
+    private func drawLine(on mapView:MGLMapView){
+        let line = MGLPolyline(coordinates: coordinatesForLine, count: UInt(coordinatesForLine.count))
+        mapView.addAnnotation(line)
+    }
+    
     
     
     

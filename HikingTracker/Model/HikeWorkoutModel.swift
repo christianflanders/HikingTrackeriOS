@@ -7,18 +7,33 @@
 //
 
 import Foundation
+import CoreLocation
+import CoreMotion
 
 class HikeWorkout {
     
-    var startDate: Date
+    var startDate = Date()
     var endDate: Date?
     
     var distance: Double = 0
     var totalCalories: Double = 0
     
-    init(start:Date) {
-        self.startDate = start
+    init() {
+        
     }
     
+    var seconds = 0
+    var distanceTraveled: NSNumber?
+    var pedometerData: CMPedometerData?
+    var pace:NSNumber?
+    var storedLocations = [CLLocation]()
     
+}
+
+
+enum hikeState {
+    case notStarted
+    case paused
+    case started
+    case finished
 }
