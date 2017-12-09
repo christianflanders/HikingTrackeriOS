@@ -9,6 +9,7 @@
 import Foundation
 
 class User {
+
     
     var weightInKilos = 0.0
     var heightInMeters = 0.0

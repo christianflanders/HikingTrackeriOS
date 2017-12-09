@@ -12,7 +12,7 @@ import CoreMotion
 import CoreLocation
 import Mapbox
 
-class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate{
+class HikeInProgressViewController: UIViewController{
     
     //MARK: Enums
     
@@ -120,11 +120,13 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate{
     private func eachSecond(){
         if !paused {
             seconds += 1
-            grabAndStoreLocation()
             retrievePedometerData()
             calculateDuration(from: hikeWorkout.startDate)
             updateDisplay()
-            drawLine(on: mapView)
+//            storeTimeBasedOnGoingUpOrDownHill()
+            if seconds % 10 == 0 && hikeWorkout.storedLocations.count != 0 {
+                drawLine(on: mapView)
+            }
         }
     }
     
@@ -137,6 +139,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate{
             
             guard let distanceTraveled = hikeWorkout.distanceTraveled?.intValue else {
                 print("problem getting distance traveled")
+                distanceDisplayLabel.text = " "
                 return
             }
             distanceDisplayLabel.text = String(describing: distanceTraveled)
@@ -172,13 +175,13 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate{
         
 
     }
-    private func grabAndStoreLocation(){
-        if let currentLocation = locationManager.location {
-            hikeWorkout.storedLocations.append(currentLocation)
-            let simplifiedCoordinate = currentLocation.coordinate
-            coordinatesForLine.append(simplifiedCoordinate)
-        }
-    }
+//    private func grabAndStoreLocation(){
+//        if let currentLocation = locationManager.location {
+//            hikeWorkout.storedLocations.append(currentLocation)
+//            let simplifiedCoordinate = currentLocation.coordinate
+//            coordinatesForLine.append(simplifiedCoordinate)
+//        }
+//    }
     
     
     
@@ -191,9 +194,30 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate{
         let line = MGLPolyline(coordinates: coordinatesForLine, count: UInt(coordinatesForLine.count))
         mapView.addAnnotation(line)
     }
+}
+
+
+
+
+
+
+//MARK: CLLocationManagerDelegate
+
+extension HikeInProgressViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        for newLocation in locations {
+            let howRecent = newLocation.timestamp.timeIntervalSinceNow
+            if newLocation.horizontalAccuracy > 20 && abs(howRecent) > 10 {
+                hikeWorkout.storedLocations.append(newLocation)
+                
+            }
+            
+    }
     
     
     
     
     
+}
 }

@@ -7,23 +7,33 @@
 //
 
 import UIKit
+import HealthKit
 
-class UserInfoViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
+class UserInfoViewController: UIViewController, UITextFieldDelegate{
 
     
     //MARK: Enums
     
     //MARK: Constants
-    let tableViewOptions = ["Name", "Weight", "Height", "Sex"]
+    
+    
     //MARK: Variables
     
     //MARK: Outlets
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var weightTextField: UITextField!
+    @IBOutlet weak var heightTextField: UITextField!
     
     //MARK: Weak Vars
+    
     
     //MARK: Public Variables
     
     //MARK: Private Variables
+    private var name = ""
+    private var weight: Double?
+    private var height: Double?
     
     //MARK: View Life Cycle
     
@@ -33,11 +43,25 @@ class UserInfoViewController: UIViewController, UITableViewDataSource, UITableVi
         // Do any additional setup after loading the view.
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     //MARK: IBActions
+    
+    @IBAction func importFromHealthKitButtonPressed(_ sender: UIButton) {
+   
+        
+    }
+    
+    
+    @IBAction func saveButtonPressed(_ sender: UIButton) {
+        //TODO: If all fields are not entered, display an error
+        let defaults = UserDefaults.standard
+        defaults.setValue(name, forKey: "name")
+        defaults.setValue(weight, forKey: "weight")
+        defaults.setValue(height, forKey: "height")
+    }
+    
+    
+    
     
     //MARK: Instance Methods
     
@@ -54,23 +78,34 @@ class UserInfoViewController: UIViewController, UITableViewDataSource, UITableVi
      */
     
     
-    //MARK: TableView Data Source
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableViewOptions.count
+
+    //MARK: Text Field Delegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UserInfoCell") as! UserInfoTableViewCell
-        cell.cellDescriptionLabel.text = tableViewOptions[indexPath.row]
+    @IBAction func nameTextFieldEditingDidEnd(_ sender: UITextField) {
+        if sender.text != nil || sender.text != "" {
+            name = sender.text!
+        }
         
+    }
+    @IBAction func weightTextFieldEditingDidEnd(_ sender: UITextField) {
+        if sender.text != nil || sender.text != "" {
+            
+            weight = Double(sender.text!)
+        }
         
-        
-        
-        return cell
     }
     
+    @IBAction func heightTextFieldEditingDidEnd(_ sender: UITextField) {
+        if sender.text != nil || sender.text != "" {
+            height = Double(sender.text!)
+        }
+    }
     
-    //MARK: Table View Delegate
     
     
     

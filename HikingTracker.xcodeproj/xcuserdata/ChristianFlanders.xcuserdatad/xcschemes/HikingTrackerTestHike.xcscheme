@@ -29,26 +29,6 @@
       language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6BB63A1C1FD5CCE600E9F4A1"
-               BuildableName = "HikingTrackerTests.xctest"
-               BlueprintName = "HikingTrackerTests"
-               ReferencedContainer = "container:HikingTracker.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6BB63A271FD5CCE600E9F4A1"
-               BuildableName = "HikingTrackerUITests.xctest"
-               BlueprintName = "HikingTrackerUITests"
-               ReferencedContainer = "container:HikingTracker.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
@@ -72,7 +52,7 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "NO">
+      allowLocationSimulation = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
