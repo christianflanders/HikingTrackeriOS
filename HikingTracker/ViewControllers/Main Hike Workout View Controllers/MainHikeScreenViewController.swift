@@ -11,7 +11,7 @@ import CoreLocation
 import HealthKit
 import Mapbox
 
-class MainHikeScreenViewController: UIViewController,CLLocationManagerDelegate {
+class MainHikeScreenViewController: UIViewController{
 
     //MARK: Enums
     
@@ -22,6 +22,7 @@ class MainHikeScreenViewController: UIViewController,CLLocationManagerDelegate {
     //MARK: Variables
     
     //MARK: Outlets
+    
 //    @IBOutlet weak var mapBoxMapView: MGLMapView!
     
     //MARK: Weak Vars
@@ -38,9 +39,9 @@ class MainHikeScreenViewController: UIViewController,CLLocationManagerDelegate {
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.startUpdatingLocation()
+//            locationManager.delegate = self
+//            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+//            locationManager.startUpdatingLocation()
         }
         //HealthKitSetup
         HealthKitAuthroizationSetup.authorizeHealthKit { (authorized, error) in
@@ -78,7 +79,7 @@ class MainHikeScreenViewController: UIViewController,CLLocationManagerDelegate {
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        locationManager.stopUpdatingLocation()
+//        locationManager.stopUpdatingLocation()
     }
     
     //MARK: IBActions
@@ -101,7 +102,6 @@ class MainHikeScreenViewController: UIViewController,CLLocationManagerDelegate {
             }
         }
      }
-    
     
     
     // MARK: Health Kit Authorization

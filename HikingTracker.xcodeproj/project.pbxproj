@@ -14,6 +14,7 @@
 		6B5904E21FDC791D00BF96CD /* HikeFinishedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5904E11FDC791D00BF96CD /* HikeFinishedViewController.swift */; };
 		6B7801741FD5F2AE006F29BD /* HikeInProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7801731FD5F2AE006F29BD /* HikeInProgressViewController.swift */; };
 		6B7801771FD618BE006F29BD /* HealthKitAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7801761FD618BE006F29BD /* HealthKitAuthorization.swift */; };
+		6B9B19171FDF133100E6A193 /* MapBox Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9B19161FDF133100E6A193 /* MapBox Extension.swift */; };
 		6BB48A8B1FD87B0500D5A9C5 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB48A8A1FD87B0500D5A9C5 /* UserModel.swift */; };
 		6BB63A0A1FD5CCE600E9F4A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB63A091FD5CCE600E9F4A1 /* AppDelegate.swift */; };
 		6BB63A0F1FD5CCE600E9F4A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BB63A0D1FD5CCE600E9F4A1 /* Main.storyboard */; };
@@ -110,6 +111,7 @@
 		6B5904E11FDC791D00BF96CD /* HikeFinishedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeFinishedViewController.swift; sourceTree = "<group>"; };
 		6B7801731FD5F2AE006F29BD /* HikeInProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeInProgressViewController.swift; sourceTree = "<group>"; };
 		6B7801761FD618BE006F29BD /* HealthKitAuthorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitAuthorization.swift; sourceTree = "<group>"; };
+		6B9B19161FDF133100E6A193 /* MapBox Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapBox Extension.swift"; sourceTree = "<group>"; };
 		6BB48A8A1FD87B0500D5A9C5 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		6BB63A061FD5CCE600E9F4A1 /* HikingTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HikingTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BB63A091FD5CCE600E9F4A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 				6BC1DE8C1FD7368D00CB20D5 /* LocationServices.swift */,
 				6BDDA10D1FD7610B0069970C /* Altimeter.swift */,
 				6BB48A8A1FD87B0500D5A9C5 /* UserModel.swift */,
+				6B9B19161FDF133100E6A193 /* MapBox Extension.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -859,6 +862,7 @@
 				6BB63A121FD5CCE600E9F4A1 /* HikingTracker.xcdatamodeld in Sources */,
 				6B5904E21FDC791D00BF96CD /* HikeFinishedViewController.swift in Sources */,
 				6BB63A451FD5EA2F00E9F4A1 /* MainHikeScreenViewController.swift in Sources */,
+				6B9B19171FDF133100E6A193 /* MapBox Extension.swift in Sources */,
 				6BCC75E11FD621A4005F2F19 /* HikeWorkoutModel.swift in Sources */,
 				6B7801741FD5F2AE006F29BD /* HikeInProgressViewController.swift in Sources */,
 				6BB63A0A1FD5CCE600E9F4A1 /* AppDelegate.swift in Sources */,

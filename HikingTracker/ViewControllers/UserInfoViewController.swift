@@ -16,8 +16,8 @@ class UserInfoViewController: UIViewController, UITextFieldDelegate{
     //MARK: Enums
     
     //MARK: Constants
-    
-    
+    let user = User()
+
     //MARK: Variables
     
     //MARK: Outlets
@@ -39,7 +39,21 @@ class UserInfoViewController: UIViewController, UITextFieldDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if let userWeight = user.weightInKilos {
+            weightTextField.text = String(userWeight)
+        } else {
+            weightTextField.text = "Please enter your weight"
+        }
+        if let userHeight = user.heightInMeters {
+            heightTextField.text = String(userHeight)
+        } else {
+            heightTextField.text = "Please enter your height"
+        }
+        if let userName = user.name {
+            nameTextField.text = userName
+        } else {
+            nameTextField.text = "Please enter your name"
+        }
         // Do any additional setup after loading the view.
     }
     
@@ -58,6 +72,7 @@ class UserInfoViewController: UIViewController, UITextFieldDelegate{
         defaults.setValue(name, forKey: "name")
         defaults.setValue(weight, forKey: "weight")
         defaults.setValue(height, forKey: "height")
+        presentAlert(title: "Saved!", message: "Success1", view: self)
     }
     
     

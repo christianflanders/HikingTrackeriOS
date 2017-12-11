@@ -20,17 +20,17 @@ class HikingTrackerTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+
+    func testDurationCalculationg() {
+                let testWorkout = HikeWorkout()
+        let secondsToTest = [60, 120, 5400,9213]
+        let expectedOutputs = ["00:01:00", "00:02:00", "01:30:00", "02:33:33"]
+        for i in 0..<secondsToTest.count{
+            testWorkout.seconds = secondsToTest[i]
+            let duration = testWorkout.duration
+            XCTAssertEqual(duration, expectedOutputs[i])
         }
     }
+    
     
 }

@@ -12,48 +12,75 @@ import CoreMotion
 
 class HikeWorkout {
     
+    
+    
+    let user = User()
+    
+    
     var startDate = Date()
     var endDate: Date?
     
     var distance: Double = 0
     var totalCaloriesBurned: Double {
         var totalCaloriesBurned: Double = 0.0
-        if let timeTraveledUphill = timeTraveldUpHill {
-            let caloriesBurnedPerHour = weightInKG * hikeUphillMETValue
-            let multiplier = timeTraveledUphill / 60.0
-            totalCaloriesBurned += caloriesBurnedPerHour * multiplier
-        }
-        if let timeTraveledDownhill = timeTraveledDownHill {
-            let caloriesBurnedPerHour = weightInKG * hikeDownhillMETValue
-            let multiplier = timeTraveledDownhill / 60.0
-            totalCaloriesBurned += caloriesBurnedPerHour * multiplier
-        }
+        guard let userWeight = user.weightInKilos else {return 0}
+        let caloriesBurnedPerHourUphill = userWeight * hikeUphillMETValue
+        let multiplierUphill = Double(timeTraveldUpHill) / 60.0
+        totalCaloriesBurned += caloriesBurnedPerHourUphill * multiplierUphill
+        
+        let caloriesBurnedPerHourDownhill = userWeight * hikeDownhillMETValue
+        let multiplierDownhill = Double(timeTraveledDownHill) / 60.0
+        totalCaloriesBurned += caloriesBurnedPerHourDownhill * multiplierDownhill
         return totalCaloriesBurned
     }
     
     init() {
         
     }
+    var duration: String {
+        var stringMinutes = ""
+        var stringSeconds = ""
+        var stringHours = ""
+        let calculatedSeconds = seconds % 60
+        if calculatedSeconds < 10 {
+            stringSeconds = String("0\(calculatedSeconds)")
+        } else {
+            stringSeconds = String(calculatedSeconds)
+        }
+        let calculatedMinutes = seconds / 60
+        if calculatedMinutes < 10 {
+            stringMinutes = String("0\(calculatedMinutes % 60)")
+        } else {
+            stringMinutes = String(calculatedMinutes % 60)
+        }
+        let calculatedHours = calculatedMinutes / 60
+        if calculatedHours < 10 {
+            stringHours = String("0\(calculatedHours)")
+        } else {
+            stringHours = String(calculatedHours)
+        }
+        let calculatedDurationString = "\(stringHours):\(stringMinutes):\(stringSeconds)"
+        return calculatedDurationString
+    }
     
     var seconds = 0
     var distanceTraveled: NSNumber?
-    var timeTraveldUpHill: Double?
-    var timeTraveledDownHill:Double?
+    var timeTraveldUpHill = 0
+    var timeTraveledDownHill = 0
     var pedometerData: CMPedometerData?
     var pace:NSNumber?
     var storedLocations = [CLLocation]()
     
+    var lowestElevation = 0.0
+    var highestElevation = 0.0
+    let hikeUphillMETValue = 6.00
+    let hikeDownhillMETValue = 2.8
     
-    var hikeUphillMETValue = 6.00
-    var hikeDownhillMETValue = 2.8
-    var testWeightInKG = 163.293
-    
-    var weightInKG: Double {
-        let defaults = UserDefaults.standard
-        let weight = defaults.double(forKey: "weight")
-        print("Weight is", weight)
-        return weight
+    var coordinates: [CLLocationCoordinate2D] {
+        return storedLocations.map { return $0.coordinate }
     }
+    
+
     
 }
 
