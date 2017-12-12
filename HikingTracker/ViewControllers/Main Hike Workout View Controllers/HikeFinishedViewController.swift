@@ -49,9 +49,11 @@ class HikeFinishedViewController: UIViewController {
         let url = URL(string: "mapbox://styles/mapbox/outdoors-v10")
         mapBoxView = MGLMapView(frame: mapContainerView.bounds, styleURL: url)
         mapBoxView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        mapBoxView.showsUserLocation = true
+//        mapBoxView.showsUserLocation = true
         mapContainerView.addSubview(mapBoxView)
         mapBoxView.drawLineOf(finishedHikeWorkout.coordinates)
+        let bounds = MGLCoordinateBounds(sw: finishedHikeWorkout.coordinates.first!, ne: finishedHikeWorkout.coordinates.last!)
+        mapBoxView.setVisibleCoordinateBounds(bounds, animated: true)
         
     }
     
@@ -75,21 +77,21 @@ class HikeFinishedViewController: UIViewController {
     //MARK: Instance Methods
     
     func updateDisplayWithHikeInformation(_ hikeWorkout: HikeWorkout) {
-        let duration = hikeWorkout.duration
-        durationLabel.text = duration
-        let elevationGain = Int(hikeWorkout.highestElevation - hikeWorkout.lowestElevation)
-        elevationGainLabel.text = String(elevationGain)
-        let caloriesBurned = hikeWorkout.totalCaloriesBurned
-        caloriesBurnedLabel.text = String(caloriesBurned)
-        let distanceTraveled = hikeWorkout.distanceTraveled?.intValue
-        totalDistanceLabel.text = String(describing: distanceTraveled)
-        let timeTraveledUphill = hikeWorkout.timeTraveldUpHill
-        timeUphillLabel.text = String(timeTraveledUphill)
-        let timeTraveledDownhill = hikeWorkout.timeTraveledDownHill
-        timeDownhillLabel.text = String(timeTraveledDownhill)
-        let pace = hikeWorkout.pace?.intValue
-        averagePace.text = String(describing: pace)
-        
+//        let duration = hikeWorkout.duration
+//        durationLabel.text = duration
+//        let elevationGain = Int(hikeWorkout.highestElevation - hikeWorkout.lowestElevation)
+//        elevationGainLabel.text = String(elevationGain)
+//        let caloriesBurned = hikeWorkout.totalCaloriesBurned
+//        caloriesBurnedLabel.text = String(caloriesBurned)
+//        let distanceTraveled = hikeWorkout.distanceTraveled?.intValue
+//        totalDistanceLabel.text = String(describing: distanceTraveled)
+//        let timeTraveledUphill = hikeWorkout.timeTraveldUpHill
+//        timeUphillLabel.text = String(timeTraveledUphill)
+//        let timeTraveledDownhill = hikeWorkout.timeTraveledDownHill
+//        timeDownhillLabel.text = String(timeTraveledDownhill)
+//        let pace = hikeWorkout.pace?.intValue
+//        averagePace.text = String(describing: pace)
+//        
         
         
         

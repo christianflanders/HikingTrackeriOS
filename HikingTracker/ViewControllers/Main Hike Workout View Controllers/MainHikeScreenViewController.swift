@@ -19,6 +19,8 @@ class MainHikeScreenViewController: UIViewController{
     
     //MARK: Constants
     let locationManager = LocationManager.shared
+    
+    
     //MARK: Variables
     
     //MARK: Outlets

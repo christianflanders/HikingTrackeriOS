@@ -56,6 +56,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate{
     private var elevationDirection: ElevationDirection?
     
     
+    
     //MARK: View Life Cycle
     
     
@@ -135,9 +136,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate{
                 coordinatesForLine.append(coordinate)
             }
             retrievePedometerData()
-            //            calculateDuration(from: hikeWorkout.startDate)
             updateDisplay()
-            //            storeTimeBasedOnGoingUpOrDownHill()
             if let elevationDirection = elevationDirection {
                 switch elevationDirection {
                 case .uphill :
@@ -147,37 +146,29 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate{
                 }
             }
             if  coordinatesForLine.count != 0 {
-                drawLine(on: mapView)
+                mapView.drawLineOf(coordinatesForLine)
             }
         }
     }
     
     private func updateDisplay(){
         durationDisplayLabel.text = hikeWorkout.duration
+        if let totalDistanceTraveled = hikeWorkout.totalDistanceTraveled {
+            distanceDisplayLabel.text = String(Int(totalDistanceTraveled))
+        }
         
         
         if let currentLocation = hikeWorkout.storedLocations.last?.altitude{
             let currentLocationAltitudeShortened = Int(currentLocation)
             elevationDisplayLabel.text = "\(currentLocationAltitudeShortened) ft"
             
-            
-            guard let distanceTraveled = hikeWorkout.distanceTraveled?.intValue else {
-//                print("problem getting distance traveled")
-                distanceDisplayLabel.text = " "
-                return
-            }
-            distanceDisplayLabel.text = String(describing: distanceTraveled)
+
         }
-        if let currentPace = hikeWorkout.pace {
-            
-        }
+
         
     }
     
-    //    private func calculateDuration(from startDate: Date){
-    //        let currentDuration = startDate.timeIntervalSinceNow
-    //        print(currentDuration)
-    //    }
+
     
     
     
@@ -192,8 +183,8 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate{
             pedometer.startUpdates(from: hikeWorkout.startDate) { data, error in
                 if error == nil {
                     guard let data = data else {return}
-                    self.hikeWorkout.distanceTraveled = data.distance
-                    self.hikeWorkout.pace = data.averageActivePace
+//                    self.hikeWorkout.distanceTraveled = data.distance
+//                    self.hikeWorkout.pace = data.averageActivePace
                 }
             }
         }
@@ -216,10 +207,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate{
     
     //MARK: MapBox show line stuff
     
-    private func drawLine(on mapView:MGLMapView){
-        let line = MGLPolyline(coordinates: coordinatesForLine, count: UInt(coordinatesForLine.count))
-        mapView.addAnnotation(line)
-    }
+
     
     
     //MARK: CLLocationManagerDelegate
@@ -227,23 +215,10 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("This is getting called")
         for newLocation in locations {
-            let howRecent = newLocation.timestamp.timeIntervalSinceNow
-            //&& abs(howRecent) > 5
             print(newLocation.horizontalAccuracy)
-            if newLocation.horizontalAccuracy > 10 {
+            if newLocation.horizontalAccuracy > 2 {
                 print("New Location found to store")
-                hikeWorkout.storedLocations.append(newLocation)
-                guard let lastLocationAltitude = hikeWorkout.storedLocations.last?.altitude else {
-                    print("No last altitudes found!")
-                    return
-                }
-                if lastLocationAltitude > newLocation.altitude {
-                    print("Changing direction to uphill")
-                    elevationDirection = .uphill
-                } else if lastLocationAltitude < newLocation.altitude {
-                    print("Changing direction to downhill")
-                    elevationDirection = .downhill
-                }
+                hikeWorkout.lastLocation = newLocation
             }
         }
     }
