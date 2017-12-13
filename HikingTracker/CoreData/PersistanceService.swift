@@ -72,7 +72,7 @@ final class PersistanceService {
     private func convertSavedHikesToRegularClass(_ fetched:[SavedHikeWorkout]) ->[HikeWorkout] {
         var convertedHikes = [HikeWorkout]()
         for hike in fetched {
-            let convertedHike = HikeWorkout()
+            var convertedHike = HikeWorkout()
             if let startDate = hike.startDate {
                 convertedHike.startDate = startDate
             } else {

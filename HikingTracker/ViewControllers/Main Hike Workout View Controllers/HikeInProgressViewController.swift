@@ -52,7 +52,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate{
     private var pedometerData:  CMPedometerData?
     private var coordinatesForLine = [CLLocationCoordinate2D]()
     private var mapView : MGLMapView!
-    private var hikeWorkout = HikeWorkout()
+    private  var hikeWorkout = HikeWorkout()
     private var elevationDirection: ElevationDirection?
     
     
@@ -68,7 +68,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate{
         locationManager.startUpdatingLocation()
         if shouldStartHike {
             startHike()
-
+            
         }
         
         

@@ -18,7 +18,7 @@ class HikeFinishedViewController: UIViewController, UITextFieldDelegate {
     //MARK: Constants
     private let saveSegueIdentifier = "SaveHikeSegue"
     //MARK: Variables
-    var hikeWorkout: HikeWorkout?
+    weak var hikeWorkout: HikeWorkout?
     var mapBoxView: MGLMapView!
     
     //MARK: Outlets
@@ -85,8 +85,8 @@ class HikeFinishedViewController: UIViewController, UITextFieldDelegate {
         
         healthKit.storeHikeToHealthKit(finishedHikeWorkout, name: hikeWorkoutName)
         
-        
-        performSegue(withIdentifier: saveSegueIdentifier, sender: self)
+        presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+//        performSegue(withIdentifier: saveSegueIdentifier, sender: self)
         
         
     }
@@ -95,6 +95,10 @@ class HikeFinishedViewController: UIViewController, UITextFieldDelegate {
         //Display alert saying are you sure?
         
         //
+        
+        
+        presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+
     }
     
     

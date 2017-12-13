@@ -13,7 +13,11 @@ import CoreMotion
 class HikeWorkout {
     
     init() {
-        
+        print("Hike Workout is being created")
+    }
+    
+    deinit {
+        print("Hike workout is being de-created..destroyed...something")
     }
     
     let user = User()
@@ -26,7 +30,7 @@ class HikeWorkout {
     var startDate : Date?
     var endDate: Date?
     
-    var durationAsString: String {
+     var durationAsString: String {
         if seconds == 0 {
             let startTime = storedLocations.first?.timestamp
             let finishTime = storedLocations.last?.timestamp
