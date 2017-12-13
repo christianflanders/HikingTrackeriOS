@@ -15,7 +15,7 @@ class HealthKitStore {
 
     init() {}
     
-    func storeHikeToHealthKit(_ hikeWorkout: HikeWorkout, name: String) throws{
+    func storeHikeToHealthKit(_ hikeWorkout: HikeWorkout, name: String) {
         
         let healthStore = HKHealthStore()
         
@@ -43,6 +43,8 @@ class HealthKitStore {
         healthStore.save(workout) { (success, error) in
             if error == nil {
                 print("Success saving workout to health kit store!")
+            } else {
+                
             }
             
         }

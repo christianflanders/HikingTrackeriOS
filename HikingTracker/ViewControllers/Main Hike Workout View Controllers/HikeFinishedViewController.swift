@@ -55,9 +55,13 @@ class HikeFinishedViewController: UIViewController, UITextFieldDelegate {
         mapBoxView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 //        mapBoxView.showsUserLocation = true
         mapContainerView.addSubview(mapBoxView)
-        mapBoxView.drawLineOf(finishedHikeWorkout.coordinates)
-        let bounds = MGLCoordinateBounds(sw: finishedHikeWorkout.coordinates.first!, ne: finishedHikeWorkout.coordinates.last!)
-        mapBoxView.setVisibleCoordinateBounds(bounds, animated: true)
+        
+        if (hikeWorkout?.coordinates.count)! > 1 {
+            mapBoxView.drawLineOf(finishedHikeWorkout.coordinates)
+            let bounds = MGLCoordinateBounds(sw: finishedHikeWorkout.coordinates.first!, ne: finishedHikeWorkout.coordinates.last!)
+            mapBoxView.setVisibleCoordinateBounds(bounds, animated: true)
+        }
+
         
     }
     
