@@ -8,13 +8,15 @@
 
 import UIKit
 import Mapbox
+import CoreData
+import HealthKit
 
-class HikeFinishedViewController: UIViewController {
+class HikeFinishedViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: Enums
     
     //MARK: Constants
-    
+    private let saveSegueIdentifier = "SaveHikeSegue"
     //MARK: Variables
     var hikeWorkout: HikeWorkout?
     var mapBoxView: MGLMapView!
@@ -31,12 +33,14 @@ class HikeFinishedViewController: UIViewController {
     @IBOutlet weak var averagePace: UILabel!
     @IBOutlet weak var mapContainerView: UIView!
     
+    @IBOutlet weak var nameHikeTextField: UITextField!
     
     //MARK: Weak Vars
     
     //MARK: Public Variables
     
     //MARK: Private Variables
+    private var hikeWorkoutName: String?
     
     //MARK: View Life Cycle
     override func viewDidLoad() {
@@ -62,6 +66,25 @@ class HikeFinishedViewController: UIViewController {
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         //Store data from hike
+        guard let finishedHikeWorkout = hikeWorkout else {fatalError("HikeWorkout not passed properly")}
+        let persistanceService = PersistanceService.store
+        guard let hikeWorkoutName = hikeWorkoutName else {
+            presentAlert(title: "Please name your workout!", message: "Got it", view: self)
+            return
+        }
+        persistanceService.storeHikeWorkout(hikeWorkout: finishedHikeWorkout, name: hikeWorkoutName)
+        
+        let saved = persistanceService.fetchedWorkouts
+        print("the number of workouts saved is \(saved.count)")
+        
+        let healthKit = HealthKitStore()
+        
+        healthKit.storeHikeToHealthKit(finishedHikeWorkout, name: hikeWorkoutName)
+        
+        
+        performSegue(withIdentifier: saveSegueIdentifier, sender: self)
+        
+        
     }
     
     @IBAction func discardButtonPressed(_ sender: UIButton) {
@@ -77,35 +100,35 @@ class HikeFinishedViewController: UIViewController {
     //MARK: Instance Methods
     
     func updateDisplayWithHikeInformation(_ hikeWorkout: HikeWorkout) {
-//        let duration = hikeWorkout.duration
-//        durationLabel.text = duration
-//        let elevationGain = Int(hikeWorkout.highestElevation - hikeWorkout.lowestElevation)
-//        elevationGainLabel.text = String(elevationGain)
-//        let caloriesBurned = hikeWorkout.totalCaloriesBurned
-//        caloriesBurnedLabel.text = String(caloriesBurned)
-//        let distanceTraveled = hikeWorkout.distanceTraveled?.intValue
-//        totalDistanceLabel.text = String(describing: distanceTraveled)
-//        let timeTraveledUphill = hikeWorkout.timeTraveldUpHill
-//        timeUphillLabel.text = String(timeTraveledUphill)
-//        let timeTraveledDownhill = hikeWorkout.timeTraveledDownHill
-//        timeDownhillLabel.text = String(timeTraveledDownhill)
+        let duration = hikeWorkout.durationAsString
+        durationLabel.text = duration
+        let elevationGain = Int(hikeWorkout.highestElevation - hikeWorkout.lowestElevation)
+        elevationGainLabel.text = String(elevationGain)
+        let caloriesBurned = hikeWorkout.totalCaloriesBurned
+        caloriesBurnedLabel.text = String(caloriesBurned)
+        let distanceTraveled = hikeWorkout.totalDistanceTraveled
+        totalDistanceLabel.text = String(describing: distanceTraveled)
+        let timeTraveledUphill = hikeWorkout.timeTraveldUpHill
+        timeUphillLabel.text = String(timeTraveledUphill)
+        let timeTraveledDownhill = hikeWorkout.timeTraveledDownHill
+        timeDownhillLabel.text = String(timeTraveledDownhill)
 //        let pace = hikeWorkout.pace?.intValue
 //        averagePace.text = String(describing: pace)
-//        
-        
-        
+
         
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+
     
+    //MARK: Text Field Delegate
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let textFieldsText = textField.text
+        if textFieldsText != "" {
+            hikeWorkoutName = textFieldsText
+        }
+        textField.resignFirstResponder()
+        return true
+    }
     
 }

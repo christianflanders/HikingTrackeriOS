@@ -18,16 +18,23 @@ class HikeWorkout {
     
     let user = User()
     
-    
+    var hikeName = ""
 
-    
     
     //Time Information
     var seconds = 0
-    var startDate = Date()
+    var startDate : Date?
     var endDate: Date?
     
-    var duration: String {
+    var durationAsString: String {
+        if seconds == 0 {
+            let startTime = storedLocations.first?.timestamp
+            let finishTime = storedLocations.last?.timestamp
+            let totalTime = finishTime?.timeIntervalSince(startTime!)
+            if let totalTime = totalTime {
+                seconds = Int(totalTime)
+            }
+        }
         var stringMinutes = ""
         var stringSeconds = ""
         var stringHours = ""

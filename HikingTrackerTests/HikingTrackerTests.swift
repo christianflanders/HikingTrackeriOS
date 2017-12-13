@@ -8,6 +8,8 @@
 
 import XCTest
 import CoreLocation
+import CoreData
+import HealthKit
 @testable import HikingTracker
 
 class HikingTrackerTests: XCTestCase {
@@ -36,7 +38,7 @@ class HikingTrackerTests: XCTestCase {
         let expectedOutputs = ["00:01:00", "00:02:00", "01:30:00", "02:33:33"]
         for i in 0..<secondsToTest.count{
             testWorkout.seconds = secondsToTest[i]
-            let duration = testWorkout.duration
+            let duration = testWorkout.durationAsString
             XCTAssertEqual(duration, expectedOutputs[i])
         }
     }
@@ -72,6 +74,36 @@ class HikingTrackerTests: XCTestCase {
         }
     }
     
+    
+    
+    func testAddingInFakeDataFromGPXToCoreData(){
+        let store = PersistanceService.store
+
+        guard let fakeData = createFakeData(from: fileOne) else {return}
+        let hikeWorkoutToTest = HikeWorkout()
+        for i in fakeData {
+            hikeWorkoutToTest.lastLocation = i
+        }
+        let startDate = fakeData.first?.timestamp
+        hikeWorkoutToTest.startDate = startDate
+        let endDate = fakeData.last?.timestamp
+        let caloriesBurned = hikeWorkoutToTest.totalCaloriesBurned
+        let calorieUnit = HKUnit(from: .kilocalorie)
+        let hkCalories = HKQuantity(unit: calorieUnit, doubleValue: caloriesBurned)
+        let distance = hikeWorkoutToTest.totalDistanceTraveled
+        let distanceUnit = HKUnit(from: .meter)
+        let hkDistance = HKQuantity(unit: distanceUnit, doubleValue: Double(distance!))
+
+        store.storeHikeWorkout(hikeWorkout: hikeWorkoutToTest, name: fileOne)
+        let workout = HKWorkout(activityType: .hiking, start: startDate!, end: endDate!, duration: (endDate?.timeIntervalSince(startDate!))!, totalEnergyBurned: hkCalories, totalDistance: hkDistance, device: HKDevice.local(), metadata: nil)
+        let healthStore = HKHealthStore()
+        healthStore.save(workout) { (success, error) in
+            if error == nil {
+                print("success saving to health kit store!")
+            }
+            
+        }
+    }
     
     
     

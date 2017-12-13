@@ -2,20 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSMotionUsageDescription</key>
-	<string>Allow hike tracker to access your motion data to track your workouts</string>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>location</string>
-	</array>
-	<key>NSHealthUpdateUsageDescription</key>
-	<string>Allow HikeTracker To View Your Health Data</string>
-	<key>NSHealthShareUsageDescription</key>
-	<string>Allow HikeTracker To Write To Your Health Data</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Allow HikeTracker To Use Your Location</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Allow HikeTracker to use your location</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -34,12 +20,26 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>MGLMapboxAccessToken</key>
+	<string>pk.eyJ1Ijoic2hyZWRmbGFuZGVycyIsImEiOiJjamF1M3M5YjU1OGl6MzJvaXlnbnQzdnp3In0.vmvVgNxQMGAhA679uwhGbw</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>Allow HikeTracker To Write To Your Health Data</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>Allow HikeTracker To View Your Health Data</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Allow HikeTracker to use your location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Allow HikeTracker To Use Your Location</string>
+	<key>NSMotionUsageDescription</key>
+	<string>Allow hike tracker to access your motion data to track your workouts</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
-	<key>MGLMapboxAccessToken</key>
-	<string>pk.eyJ1Ijoic2hyZWRmbGFuZGVycyIsImEiOiJjamF1M3M5YjU1OGl6MzJvaXlnbnQzdnp3In0.vmvVgNxQMGAhA679uwhGbw</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

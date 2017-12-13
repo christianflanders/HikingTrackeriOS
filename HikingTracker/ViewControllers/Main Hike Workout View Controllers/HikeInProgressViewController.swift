@@ -119,6 +119,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate{
     
     private func startHike(){
         startTimer()
+        hikeWorkout.startDate = Date()
         startHikeUISettings()
     }
     
@@ -135,7 +136,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate{
             if let coordinate = locationManager.location?.coordinate {
                 coordinatesForLine.append(coordinate)
             }
-            retrievePedometerData()
+//            retrievePedometerData()
             updateDisplay()
             if let elevationDirection = elevationDirection {
                 switch elevationDirection {
@@ -152,7 +153,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate{
     }
     
     private func updateDisplay(){
-        durationDisplayLabel.text = hikeWorkout.duration
+        durationDisplayLabel.text = hikeWorkout.durationAsString
         if let totalDistanceTraveled = hikeWorkout.totalDistanceTraveled {
             distanceDisplayLabel.text = String(Int(totalDistanceTraveled))
         }
@@ -178,19 +179,19 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate{
         holdToEndButtonOutlet.isHidden = false
     }
     
-    private func retrievePedometerData(){
-        if CMPedometer.isStepCountingAvailable() {
-            pedometer.startUpdates(from: hikeWorkout.startDate) { data, error in
-                if error == nil {
-                    guard let data = data else {return}
-//                    self.hikeWorkout.distanceTraveled = data.distance
-//                    self.hikeWorkout.pace = data.averageActivePace
-                }
-            }
-        }
-        
-        
-    }
+//    private func retrievePedometerData(){
+//        if CMPedometer.isStepCountingAvailable() {
+//            pedometer.startUpdates(from: hikeWorkout.startDate!) { data, error in
+//                if error == nil {
+//                    guard let data = data else {return}
+////                    self.hikeWorkout.distanceTraveled = data.distance
+////                    self.hikeWorkout.pace = data.averageActivePace
+//                }
+//            }
+//        }
+//
+//
+//    }
     
     //MARK: Segue Navigation
     
