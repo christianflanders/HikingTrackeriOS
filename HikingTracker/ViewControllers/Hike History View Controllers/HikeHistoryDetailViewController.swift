@@ -37,7 +37,7 @@ class HikeHistoryDetailViewController: UIViewController {
         caloriesBurnedLabel.text = String(hikeWorkout.totalCaloriesBurned)
         timeUphillLabel.text = String(hikeWorkout.timeTraveldUpHill)
         timeDownhillLabel.text = String(hikeWorkout.timeTraveledDownHill)
-        averagePaceLabel.text = String(hikeWorkout.totalDistanceTraveled! / Double(hikeWorkout.seconds))
+//        averagePaceLabel.text = String(hikeWorkout.totalDistanceTraveled! / Double(hikeWorkout.seconds))
         // Do any additional setup after loading the view.
         
         

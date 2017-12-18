@@ -100,6 +100,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate{
     @IBAction func holdToEndButtonPressed(_ sender: UIButton) {
         timer?.invalidate()
         locationManager.stopUpdatingLocation()
+        hikeWorkout.endDate = Date()
         performSegue(withIdentifier: "HikeFinishedSegue", sender: self)
     }
     
@@ -132,7 +133,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate{
     private func eachSecond(){
         if !paused {
             seconds += 1
-            hikeWorkout.seconds = seconds
+
             if let coordinate = locationManager.location?.coordinate {
                 coordinatesForLine.append(coordinate)
             }

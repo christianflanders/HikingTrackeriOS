@@ -26,19 +26,22 @@ class HikeWorkout {
 
     
     //Time Information
-    var seconds = 0
+//    var seconds = 0
     var startDate : Date?
     var endDate: Date?
     
-     var durationAsString: String {
-        if seconds == 0 {
-            let startTime = storedLocations.first?.timestamp
-            let finishTime = storedLocations.last?.timestamp
-            let totalTime = finishTime?.timeIntervalSince(startTime!)
-            if let totalTime = totalTime {
-                seconds = Int(totalTime)
-            }
+    var duration: Double {
+        let currentDate = Date()
+        guard let startDate = startDate else {
+            return 0
         }
+        let difference = currentDate.timeIntervalSince(startDate)
+        return difference
+    }
+    
+     var durationAsString: String {
+
+        let seconds = Int(duration)
         var stringMinutes = ""
         var stringSeconds = ""
         var stringHours = ""

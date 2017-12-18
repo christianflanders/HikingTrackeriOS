@@ -44,6 +44,7 @@ class HikeFinishedViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: View Life Cycle
     override func viewDidLoad() {
+        nameHikeTextField.delegate = self
         super.viewDidLoad()
         guard let finishedHikeWorkout = hikeWorkout else {fatalError("HikeWorkout not passed properly")}
         updateDisplayWithHikeInformation(finishedHikeWorkout)
