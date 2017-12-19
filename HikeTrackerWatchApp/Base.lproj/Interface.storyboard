@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13771" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13771" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fSW-65-zjl">
     <device id="watch38" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -15,47 +15,65 @@
     </customFonts>
     <scenes>
         <!--Interface Controller-->
-        <scene sceneID="aou-V4-d1y">
-            <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="HikeTrackerWatchApp" customModuleProvider="target">
-                    <items>
-                        <button width="1" alignment="left" verticalAlignment="bottom" title="Start Hike" id="cmh-Il-9mC">
-                            <connections>
-                                <segue destination="fSW-65-zjl" kind="push" id="p1O-KD-Uzu"/>
-                            </connections>
-                        </button>
-                    </items>
-                </controller>
-            </objects>
-            <point key="canvasLocation" x="220" y="345"/>
-        </scene>
-        <!--Interface Controller-->
         <scene sceneID="vTI-qf-ezg">
             <objects>
-                <controller id="fSW-65-zjl">
+                <controller id="fSW-65-zjl" customClass="InterfaceController" customModule="HikeTrackerWatchApp_Extension">
                     <items>
-                        <label alignment="left" text="Label" id="bMz-ga-C44">
-                            <fontDescription key="font" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
-                        </label>
-                        <label alignment="left" text="Label" id="3Wq-0W-dsI">
-                            <fontDescription key="font" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
-                        </label>
-                        <label alignment="left" text="Label" id="dOb-sB-uB0">
-                            <fontDescription key="font" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
-                        </label>
-                        <label alignment="left" text="Label" id="M0y-Cg-fAI">
-                            <fontDescription key="font" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
-                        </label>
-                        <label alignment="left" text="Label" id="uDz-5q-aV3">
-                            <fontDescription key="font" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
-                        </label>
-                        <label alignment="left" text="Label" id="cml-2E-trQ">
-                            <fontDescription key="font" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
-                        </label>
+                        <group width="1" alignment="left" id="cIN-of-oKW">
+                            <items>
+                                <label alignment="left" text="Duration" id="bMz-ga-C44">
+                                    <fontDescription key="font" name="Avenir-Heavy" family="Avenir" pointSize="9"/>
+                                </label>
+                                <label alignment="right" text="Label" id="CoG-gB-aec"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="fD9-8t-ghY">
+                            <items>
+                                <label alignment="left" text="Calories Burned" id="3Wq-0W-dsI">
+                                    <fontDescription key="font" name="Avenir-Heavy" family="Avenir" pointSize="8"/>
+                                </label>
+                                <label alignment="right" text="Label" id="dOb-sB-uB0">
+                                    <fontDescription key="font" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
+                                </label>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="xk1-CZ-2Tl">
+                            <items>
+                                <label alignment="left" text="Distance" id="M0y-Cg-fAI">
+                                    <fontDescription key="font" name="Avenir-Heavy" family="Avenir" pointSize="8"/>
+                                </label>
+                                <label alignment="right" text="Label" id="uDz-5q-aV3">
+                                    <fontDescription key="font" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
+                                </label>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="Cmt-Hm-Bj5">
+                            <items>
+                                <label alignment="left" text="Label" id="cml-2E-trQ">
+                                    <fontDescription key="font" name="Avenir-Heavy" family="Avenir" pointSize="8"/>
+                                </label>
+                                <label alignment="right" text="Label" id="vMG-0C-TlL"/>
+                            </items>
+                        </group>
+                        <button width="1" alignment="left" title="Pause" id="ThK-Tr-vKS">
+                            <color key="backgroundColor" red="0.4403552711" green="0.56544411179999998" blue="0.1598808467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </button>
                     </items>
+                    <connections>
+                        <outlet property="caloriesBurnedLabel" destination="dOb-sB-uB0" id="g67-NY-spf"/>
+                        <outlet property="distanceLabel" destination="uDz-5q-aV3" id="qLf-AU-N76"/>
+                        <outlet property="durationLabel" destination="CoG-gB-aec" id="B1S-lQ-NRL"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="478" y="328"/>
+        </scene>
+        <!--Interface Controller-->
+        <scene sceneID="LJ0-IL-cFe">
+            <objects>
+                <controller id="5S5-8i-ih6"/>
+            </objects>
+            <point key="canvasLocation" x="705" y="328"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">

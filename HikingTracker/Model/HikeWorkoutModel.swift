@@ -24,7 +24,7 @@ class HikeWorkout {
     
     var hikeName = ""
 
-    
+    private let dateHelper = DateHelper()
     //Time Information
 //    var seconds = 0
     var startDate : Date?
@@ -40,31 +40,8 @@ class HikeWorkout {
     }
     
      var durationAsString: String {
+        return dateHelper.convertDurationToStringDate(duration)
 
-        let seconds = Int(duration)
-        var stringMinutes = ""
-        var stringSeconds = ""
-        var stringHours = ""
-        let calculatedSeconds = seconds % 60
-        if calculatedSeconds < 10 {
-            stringSeconds = String("0\(calculatedSeconds)")
-        } else {
-            stringSeconds = String(calculatedSeconds)
-        }
-        let calculatedMinutes = seconds / 60
-        if calculatedMinutes < 10 {
-            stringMinutes = String("0\(calculatedMinutes % 60)")
-        } else {
-            stringMinutes = String(calculatedMinutes % 60)
-        }
-        let calculatedHours = calculatedMinutes / 60
-        if calculatedHours < 10 {
-            stringHours = String("0\(calculatedHours)")
-        } else {
-            stringHours = String(calculatedHours)
-        }
-        let calculatedDurationString = "\(stringHours):\(stringMinutes):\(stringSeconds)"
-        return calculatedDurationString
     }
     
     var timeTraveldUpHill = 0.0

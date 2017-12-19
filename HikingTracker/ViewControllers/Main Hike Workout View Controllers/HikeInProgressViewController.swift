@@ -11,8 +11,11 @@ import HealthKit
 import CoreMotion
 import CoreLocation
 import Mapbox
+import WatchConnectivity
 
-class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate{
+
+class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate, WCSessionDelegate{
+
     
     //MARK: Enums
     enum ElevationDirection {
@@ -23,6 +26,8 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate{
     private let locationManager = LocationManager.shared
     private let altimeter = Altimeter.shared
     private let pedometer = CMPedometer()
+    
+    private let watchConnection = WCSession.default
     
     
     //MARK: Variables
@@ -68,8 +73,10 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate{
         locationManager.startUpdatingLocation()
         if shouldStartHike {
             startHike()
-            
         }
+        
+
+        
         
         
         
@@ -119,9 +126,44 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate{
     }
     
     private func startHike(){
-        startTimer()
         hikeWorkout.startDate = Date()
+        startTimer()
+
+        checkForWatchConnection()
         startHikeUISettings()
+        convertDateAndSendToWatch(date: hikeWorkout.startDate!)
+
+    }
+    
+    private func checkForWatchConnection() {
+        if WCSession.isSupported() {
+            watchConnection.delegate = self
+            watchConnection.activate()
+            if watchConnection.activationState != .activated {
+                watchConnection.activate()
+            }
+//            let configuration = HKWorkoutConfiguration()
+//            configuration.activityType = .hiking
+//            configuration.locationType = .outdoor
+//            let healthStore = HKHealthStore()
+//            healthStore.startWatchApp(with: configuration) { (success, error) in
+//                if success {
+//                    print("should be opening watch app with workout configuration")
+//                }
+//            }
+        }
+    }
+    
+    private func convertDateAndSendToWatch(date: Date){
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .full
+        
+        let stringDateToSendToWatch = dateFormatter.string(from: date)
+        watchConnection.sendMessage(["startDate" : stringDateToSendToWatch], replyHandler: nil) { error in
+                print(error)
+        }
     }
     
     private func startTimer(){
@@ -131,6 +173,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate{
     }
     
     private func eachSecond(){
+        convertDateAndSendToWatch(date: hikeWorkout.startDate!)
         if !paused {
             seconds += 1
 
@@ -150,7 +193,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate{
             if  coordinatesForLine.count != 0 {
                 mapView.drawLineOf(coordinatesForLine)
             }
-        }
+            }
     }
     
     private func updateDisplay(){
@@ -180,19 +223,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate{
         holdToEndButtonOutlet.isHidden = false
     }
     
-//    private func retrievePedometerData(){
-//        if CMPedometer.isStepCountingAvailable() {
-//            pedometer.startUpdates(from: hikeWorkout.startDate!) { data, error in
-//                if error == nil {
-//                    guard let data = data else {return}
-////                    self.hikeWorkout.distanceTraveled = data.distance
-////                    self.hikeWorkout.pace = data.averageActivePace
-//                }
-//            }
-//        }
-//
-//
-//    }
+
     
     //MARK: Segue Navigation
     
@@ -224,4 +255,27 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate{
             }
         }
     }
+    
+    
+    
+    
+    
+    //MARK: Watch Connectivity Delegate
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        print("Watch session became inactive")
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        print("Watch session deactivated")
+    }
+    
+    //MARK: Watch Connection Functions
+    
+    
+    
+    
 }
