@@ -99,9 +99,13 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     //MARK: IBActions
     
     
-    @IBAction func pauseHikeButtonPressed(_ sender: UIButton) {
+    fileprivate func pauseHike() {
         paused = !paused
         pauseOrStopHikeUISettings()
+    }
+    
+    @IBAction func pauseHikeButtonPressed(_ sender: UIButton) {
+        pauseHike()
     }
     
     @IBAction func holdToEndButtonPressed(_ sender: UIButton) {
@@ -111,9 +115,13 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         performSegue(withIdentifier: "HikeFinishedSegue", sender: self)
     }
     
-    @IBAction func resumeButtonPressed(_ sender: UIButton) {
+    fileprivate func resumeHike() {
         paused = !paused
         startHikeUISettings()
+    }
+    
+    @IBAction func resumeButtonPressed(_ sender: UIButton) {
+        resumeHike()
     }
     
     
@@ -142,15 +150,15 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
             if watchConnection.activationState != .activated {
                 watchConnection.activate()
             }
-//            let configuration = HKWorkoutConfiguration()
-//            configuration.activityType = .hiking
-//            configuration.locationType = .outdoor
-//            let healthStore = HKHealthStore()
-//            healthStore.startWatchApp(with: configuration) { (success, error) in
-//                if success {
-//                    print("should be opening watch app with workout configuration")
-//                }
-//            }
+            let configuration = HKWorkoutConfiguration()
+            configuration.activityType = .hiking
+            configuration.locationType = .outdoor
+            let healthStore = HKHealthStore()
+            healthStore.startWatchApp(with: configuration) { (success, error) in
+                if success {
+                    print("should be opening watch app with workout configuration")
+                }
+            }
         }
     }
     
@@ -274,8 +282,23 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     }
     
     //MARK: Watch Connection Functions
+
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
+    }
     
-    
-    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        print("Message recieved from watch!")
+        
+        let pauseMessage = message["pause Hike"] as! Bool
+        if pauseMessage {
+            DispatchQueue.main.async {
+                self.pauseHike()
+            }
+        } else if !pauseMessage{
+            DispatchQueue.main.async {
+                self.resumeHike()
+            }
+        }
+    }
     
 }

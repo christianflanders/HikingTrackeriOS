@@ -57,12 +57,16 @@
                         </group>
                         <button width="1" alignment="left" title="Pause" id="ThK-Tr-vKS">
                             <color key="backgroundColor" red="0.4403552711" green="0.56544411179999998" blue="0.1598808467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="pauseButtonPressed" destination="fSW-65-zjl" id="gZ2-el-wGc"/>
+                            </connections>
                         </button>
                     </items>
                     <connections>
                         <outlet property="caloriesBurnedLabel" destination="dOb-sB-uB0" id="g67-NY-spf"/>
                         <outlet property="distanceLabel" destination="uDz-5q-aV3" id="qLf-AU-N76"/>
                         <outlet property="durationLabel" destination="CoG-gB-aec" id="B1S-lQ-NRL"/>
+                        <outlet property="pauseButtonOutlet" destination="ThK-Tr-vKS" id="yQr-bi-EIh"/>
                     </connections>
                 </controller>
             </objects>

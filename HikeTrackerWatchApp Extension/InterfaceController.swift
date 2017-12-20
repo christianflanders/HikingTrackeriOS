@@ -13,7 +13,8 @@ import HealthKit
 
 class InterfaceController: WKInterfaceController, WCSessionDelegate, HKWorkoutSessionDelegate, WKExtensionDelegate {
 
-    
+    let pauseButtonPauseColor = #colorLiteral(red: 0.4403552711, green: 0.5654441118, blue: 0.1598808467, alpha: 1)
+    let pauseButtonResumeColor = #colorLiteral(red: 0.836998105, green: 0.01030125283, blue: 0.1089753732, alpha: 1)
     private var timer: Timer?
     private var duration = ""
     private var startDateFromPhone: Date?
@@ -23,6 +24,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, HKWorkoutSe
     @IBOutlet var durationLabel: WKInterfaceLabel!
     @IBOutlet var caloriesBurnedLabel: WKInterfaceLabel!
     
+    @IBOutlet var pauseButtonOutlet: WKInterfaceButton!
     @IBOutlet var distanceLabel: WKInterfaceLabel!
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
@@ -145,7 +147,21 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, HKWorkoutSe
     }
     
     
+    //MARK: Pause button
     
+    @IBAction func pauseButtonPressed() {
+        if paused {
+            watchConnection.sendMessage(["pause Hike": false], replyHandler: nil, errorHandler: nil)
+            pauseButtonOutlet.setTitle("Pause")
+            pauseButtonOutlet.setBackgroundColor(pauseButtonPauseColor)
+            paused = false
+        } else {
+            watchConnection.sendMessage(["pause Hike": true], replyHandler: nil, errorHandler: nil)
+            pauseButtonOutlet.setTitle("Resume")
+            pauseButtonOutlet.setBackgroundColor(pauseButtonResumeColor)
+            paused = true
+        }
+    }
     
     
 }
