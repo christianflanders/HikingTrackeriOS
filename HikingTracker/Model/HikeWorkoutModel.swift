@@ -25,19 +25,17 @@ class HikeWorkout {
     var hikeName = ""
 
     private let dateHelper = DateHelper()
+    
+    
+    var paused = false
     //Time Information
 //    var seconds = 0
     var startDate : Date?
     var endDate: Date?
     
-    var duration: Double {
-        let currentDate = Date()
-        guard let startDate = startDate else {
-            return 0
-        }
-        let difference = currentDate.timeIntervalSince(startDate)
-        return difference
-    }
+    var duration: Double = 0
+
+
     
      var durationAsString: String {
         return dateHelper.convertDurationToStringDate(duration)
@@ -82,7 +80,7 @@ class HikeWorkout {
         var totalDistanceTraveleDownhill = 0.0
         guard var lastLocation = storedLocations.first else {return 0.0}
         for i in storedLocations {
-            if i.altitude < lastLocation.altitude  {
+            if (i.altitude < lastLocation.altitude) && !paused  {
                 totalDistanceTraveleDownhill += i.distance(from: lastLocation)
                 
             }
@@ -95,7 +93,7 @@ class HikeWorkout {
         var totalDistanceTraveledUphill = 0.0
         guard var lastLocation = storedLocations.first else {return 0.0}
         for i in storedLocations {
-            if lastLocation.altitude < i.altitude || lastLocation.altitude == i.altitude {
+            if (lastLocation.altitude < i.altitude || lastLocation.altitude == i.altitude ) && !paused {
                 totalDistanceTraveledUphill += i.distance(from: lastLocation)
             }
             lastLocation = i
@@ -113,7 +111,6 @@ class HikeWorkout {
     var totalCaloriesBurned: Double {
         var totalCaloriesBurned: Double = 0.0
         guard let userWeight = user.weightInKilos else {return 0}
-        print(userWeight)
         
         let caloriesBurnedPerHourUphill = userWeight * hikeUphillMETValue
         let percentageOfHourUphill = Double(timeTraveldUpHill) * 0.0002
@@ -135,11 +132,15 @@ class HikeWorkout {
             guard let newLocationToSet = newLocation else {return}
             //Check if we're going up or down hill and add that to our time traveled in either direction
             let lastLocationTime = lastLocationSet.timestamp
-            if lastLocationSet.altitude < newLocationToSet.altitude {
-                timeTraveldUpHill += Double(newLocationToSet.timestamp.timeIntervalSince(lastLocationTime))
-            } else if lastLocationSet.altitude > newLocationToSet.altitude {
-                timeTraveledDownHill += Double(newLocationToSet.timestamp.timeIntervalSince(lastLocationTime))
+            if !paused {
+                if lastLocationSet.altitude < newLocationToSet.altitude {
+                    timeTraveldUpHill += Double(newLocationToSet.timestamp.timeIntervalSince(lastLocationTime))
+                } else if lastLocationSet.altitude > newLocationToSet.altitude {
+                    timeTraveledDownHill += Double(newLocationToSet.timestamp.timeIntervalSince(lastLocationTime))
+                }
             }
+
+            
             //Add the previous location to our stored Locations
             storedLocations.append(lastLocationSet)
         }

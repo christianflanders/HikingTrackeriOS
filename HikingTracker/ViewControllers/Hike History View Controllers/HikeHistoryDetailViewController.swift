@@ -8,6 +8,11 @@
 
 import UIKit
 import Mapbox
+import Charts
+
+
+
+
 
 class HikeHistoryDetailViewController: UIViewController {
 
@@ -26,6 +31,8 @@ class HikeHistoryDetailViewController: UIViewController {
     
     @IBOutlet weak var mapContainerView: UIView!
     
+    @IBOutlet weak var graphView: LineChartView!
+    
     var mapBoxView: MGLMapView!
     
     
@@ -41,6 +48,7 @@ class HikeHistoryDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         
+        
         let url = URL(string: "mapbox://styles/mapbox/outdoors-v10")
         mapBoxView = MGLMapView(frame: mapContainerView.bounds, styleURL: url)
         mapBoxView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -51,7 +59,7 @@ class HikeHistoryDetailViewController: UIViewController {
             mapBoxView.setVisibleCoordinateBounds(bounds, animated: true)
         }
 
-        
+        setChart()
     }
 
     override func didReceiveMemoryWarning() {
@@ -75,7 +83,32 @@ class HikeHistoryDetailViewController: UIViewController {
     }
     
     
+    //1
+ 
+//    var dataEntries: [BarChartDataEntry] = []
+//
+//    for i in 0..<dataPoints.count {
+//    let dataEntry = BarChartDataEntry(value: values[i], xIndex: i)
+//    dataEntries.append(dataEntry)
+//    }
+//
+//    let chartDataSet = BarChartDataSet(yVals: dataEntries, label: "Units Sold")
+//    let chartData = BarChartData(xVals: months, dataSet: chartDataSet)
+//    barChartView.data = chartData
     
+    func setChart(){
+        var data = [ChartDataEntry]()
+        var number = 0.0
+        for location in hikeWorkout.storedLocations {
+            let altitude = location.altitude
+            let point = ChartDataEntry(x: number, y: altitude)
+            data.append(point)
+            number += 1
+        }
+        let lineDataSet = LineChartDataSet(values: data, label: "Elevation")
+        let lineData = LineChartData(dataSet: lineDataSet)
+        graphView.data = lineData
+    }
     
 
 }

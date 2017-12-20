@@ -15,7 +15,7 @@ import WatchConnectivity
 
 
 class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate, WCSessionDelegate{
-
+    
     
     //MARK: Enums
     enum ElevationDirection {
@@ -53,7 +53,6 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     //MARK: Private Variables
     private var seconds = 0
     private var timer : Timer?
-    private var paused = false
     private var pedometerData:  CMPedometerData?
     private var coordinatesForLine = [CLLocationCoordinate2D]()
     private var mapView : MGLMapView!
@@ -75,7 +74,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
             startHike()
         }
         
-
+        
         
         
         
@@ -100,8 +99,8 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     
     
     fileprivate func pauseHike() {
-        paused = !paused
         pauseOrStopHikeUISettings()
+        hikeWorkout.paused = true
     }
     
     @IBAction func pauseHikeButtonPressed(_ sender: UIButton) {
@@ -116,8 +115,8 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     }
     
     fileprivate func resumeHike() {
-        paused = !paused
         startHikeUISettings()
+        hikeWorkout.paused = false
     }
     
     @IBAction func resumeButtonPressed(_ sender: UIButton) {
@@ -136,11 +135,11 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     private func startHike(){
         hikeWorkout.startDate = Date()
         startTimer()
-
+        
         checkForWatchConnection()
         startHikeUISettings()
         convertDateAndSendToWatch(date: hikeWorkout.startDate!)
-
+        
     }
     
     private func checkForWatchConnection() {
@@ -170,7 +169,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         
         let stringDateToSendToWatch = dateFormatter.string(from: date)
         watchConnection.sendMessage(["startDate" : stringDateToSendToWatch], replyHandler: nil) { error in
-                print(error)
+            print(error)
         }
     }
     
@@ -182,13 +181,13 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     
     private func eachSecond(){
         convertDateAndSendToWatch(date: hikeWorkout.startDate!)
-        if !paused {
-            seconds += 1
-
+        if !hikeWorkout.paused {
+            hikeWorkout.duration += 1
+            
             if let coordinate = locationManager.location?.coordinate {
                 coordinatesForLine.append(coordinate)
             }
-//            retrievePedometerData()
+            //            retrievePedometerData()
             updateDisplay()
             if let elevationDirection = elevationDirection {
                 switch elevationDirection {
@@ -201,7 +200,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
             if  coordinatesForLine.count != 0 {
                 mapView.drawLineOf(coordinatesForLine)
             }
-            }
+        }
     }
     
     private func updateDisplay(){
@@ -215,13 +214,15 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
             let currentLocationAltitudeShortened = Int(currentLocation)
             elevationDisplayLabel.text = "\(currentLocationAltitudeShortened) ft"
             
-
         }
-
+        let caloriesBurned = String(hikeWorkout.totalCaloriesBurned)
+        caloriesDisplayLabel.text = caloriesBurned
+        
+        
         
     }
     
-
+    
     
     
     
@@ -231,7 +232,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         holdToEndButtonOutlet.isHidden = false
     }
     
-
+    
     
     //MARK: Segue Navigation
     
@@ -242,23 +243,12 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         }
     }
     
-    
-    
-    
-    
-    //MARK: MapBox show line stuff
-    
 
-    
-    
     //MARK: CLLocationManagerDelegate
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("This is getting called")
         for newLocation in locations {
-            print(newLocation.horizontalAccuracy)
             if newLocation.horizontalAccuracy > 2 {
-                print("New Location found to store")
                 hikeWorkout.lastLocation = newLocation
             }
         }
@@ -270,7 +260,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     
     //MARK: Watch Connectivity Delegate
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-
+        
     }
     
     func sessionDidBecomeInactive(_ session: WCSession) {
@@ -282,10 +272,8 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     }
     
     //MARK: Watch Connection Functions
-
-    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
-    }
     
+
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         print("Message recieved from watch!")
         

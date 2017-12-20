@@ -143,6 +143,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, HKWorkoutSe
     private func eachSecond(){
         if !paused {
             updateDisplay()
+            
         }
     }
     
