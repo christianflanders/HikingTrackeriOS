@@ -30,7 +30,8 @@ class HealthKitAuthroizationSetup {
             let bodyMassIndex = HKObjectType.quantityType(forIdentifier: .bodyMassIndex),
             let height = HKObjectType.quantityType(forIdentifier: .height),
             let bodyMass = HKObjectType.quantityType(forIdentifier: .bodyMass),
-            let activeEnergy = HKObjectType.quantityType(forIdentifier: .activeEnergyBurned) else {
+            let heartRate = HKObjectType.quantityType(forIdentifier: .heartRate),
+            let activeEnergy = HKObjectType.quantityType(forIdentifier: .activeEnergyBurned)else {
                 
                 completion(false, HealthkitSetupError.dataTypeNotAvailable)
                 return

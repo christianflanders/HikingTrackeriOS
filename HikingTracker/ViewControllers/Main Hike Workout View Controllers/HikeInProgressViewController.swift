@@ -248,6 +248,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         for newLocation in locations {
+            print("New Location horiziontal Accuracy is (newLocation.horizontalAccuracy) and the vertical accuracy is \(newLocation.verticalAccuracy)")
             if newLocation.horizontalAccuracy > 2 {
                 hikeWorkout.lastLocation = newLocation
             }

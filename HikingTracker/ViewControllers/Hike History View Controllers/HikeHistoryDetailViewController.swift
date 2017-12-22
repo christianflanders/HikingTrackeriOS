@@ -31,7 +31,7 @@ class HikeHistoryDetailViewController: UIViewController {
     
     @IBOutlet weak var mapContainerView: UIView!
     
-    @IBOutlet weak var graphView: LineChartView!
+    @IBOutlet weak var lineChartView: LineChartView!
     
     var mapBoxView: MGLMapView!
     
@@ -58,8 +58,10 @@ class HikeHistoryDetailViewController: UIViewController {
             let bounds = MGLCoordinateBounds(sw: hikeWorkout.coordinates.first!, ne: hikeWorkout.coordinates.last!)
             mapBoxView.setVisibleCoordinateBounds(bounds, animated: true)
         }
+        
+        
+        drawGraph()
 
-        setChart()
     }
 
     override func didReceiveMemoryWarning() {
@@ -96,19 +98,26 @@ class HikeHistoryDetailViewController: UIViewController {
 //    let chartData = BarChartData(xVals: months, dataSet: chartDataSet)
 //    barChartView.data = chartData
     
-    func setChart(){
-        var data = [ChartDataEntry]()
-        var number = 0.0
-        for location in hikeWorkout.storedLocations {
-            let altitude = location.altitude
-            let point = ChartDataEntry(x: number, y: altitude)
-            data.append(point)
-            number += 1
+
+    func drawGraph(){
+        var dataEntries = [ChartDataEntry]()
+        for i in 0..<hikeWorkout.storedLocations.count {
+            let altitude = hikeWorkout.storedLocations[i].altitude
+        
+            let dataEntry = ChartDataEntry(x: Double(i), y: altitude)
+            dataEntries.append(dataEntry)
         }
-        let lineDataSet = LineChartDataSet(values: data, label: "Elevation")
-        let lineData = LineChartData(dataSet: lineDataSet)
-        graphView.data = lineData
+        let sortedAltitudes = hikeWorkout.storedLocations.sorted {
+            $0.altitude < $1.altitude
+        }
+        let chartDataSet = LineChartDataSet(values: dataEntries, label: "Elevation in Meters")
+        
+        chartDataSet.drawCirclesEnabled = false
+        chartDataSet.mode = .linear
+        
+        let lineData = LineChartData(dataSet: chartDataSet)
+        lineChartView.data = lineData
+
     }
-    
 
 }

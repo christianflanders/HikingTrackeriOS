@@ -23,6 +23,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, HKWorkoutSe
     
     @IBOutlet var durationLabel: WKInterfaceLabel!
     @IBOutlet var caloriesBurnedLabel: WKInterfaceLabel!
+    @IBOutlet var heartRateLabel: WKInterfaceLabel!
     
     @IBOutlet var pauseButtonOutlet: WKInterfaceButton!
     @IBOutlet var distanceLabel: WKInterfaceLabel!
@@ -80,6 +81,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, HKWorkoutSe
         let duration = currentDate.timeIntervalSince(startDate)
         let stringDuration = dateHelper.convertDurationToStringDate(duration)
         durationLabel.setText(stringDuration)
+        
 
     }
     
