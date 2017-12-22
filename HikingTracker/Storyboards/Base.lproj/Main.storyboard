@@ -473,7 +473,7 @@ VGltZSBEb3duSBBpbGw
         <!--Tab Bar Controller-->
         <scene sceneID="VMg-kW-5Xr">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="WEb-Ck-q30" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabBar" automaticallyAdjustsScrollViewInsets="NO" id="WEb-Ck-q30" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fqS-Ke-XDE">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -800,7 +800,7 @@ VGltZSBEb3duSBBpbGw
         <!--User Info-->
         <scene sceneID="XQu-2k-IW1">
             <objects>
-                <viewController title="User Info" id="0Sy-9y-ABJ" customClass="UserInfoViewController" customModule="HikingTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="User Info" title="User Info" id="0Sy-9y-ABJ" customClass="UserInfoViewController" customModule="HikingTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kDy-YV-QFJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

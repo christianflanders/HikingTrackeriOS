@@ -17,6 +17,7 @@ class UserInfoViewController: UIViewController, UITextFieldDelegate{
     
     //MARK: Constants
     let user = User()
+    let saveButtonPressedDestination = "MainTabBar"
 
     //MARK: Variables
     
@@ -72,7 +73,20 @@ class UserInfoViewController: UIViewController, UITextFieldDelegate{
         defaults.setValue(name, forKey: "name")
         defaults.setValue(weight, forKey: "weight")
         defaults.setValue(height, forKey: "height")
-        presentAlert(title: "Saved!", message: "Success1", view: self)
+        //If coming from the tab bar, dismiss alert and continue. If coming from app delegate, open the main VC
+        let alert = UIAlertController(title: "Saved", message: nil, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Let's Go Hiking!", style: .default) { (buttonAction) in
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.window = UIWindow(frame: UIScreen.main.bounds)
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil) // this assumes your storyboard is titled "Main.storyboard"
+            let yourVC = mainStoryboard.instantiateViewController(withIdentifier: self.saveButtonPressedDestination) as! UITabBarController
+            appDelegate.window?.rootViewController = yourVC
+            appDelegate.window?.makeKeyAndVisible()
+        }
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+        
+        
     }
     
     
