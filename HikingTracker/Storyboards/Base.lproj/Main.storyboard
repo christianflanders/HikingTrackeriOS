@@ -55,7 +55,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="493.60000000000002" y="-789.35532233883066"/>
+            <point key="canvasLocation" x="502" y="-838"/>
         </scene>
         <!--Hike In Progress View Controller-->
         <scene sceneID="c8Y-7Z-Cn6">
@@ -560,7 +560,7 @@ VGltZSBEb3duSBBpbGw
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Q6H-vg-R80"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="JK9-Fa-nmi"/>
+                    <tabBarItem key="tabBarItem" title="History" image="text-list-7" selectedImage="text-list-7" id="JK9-Fa-nmi"/>
                     <connections>
                         <outlet property="hikeHistoryTableView" destination="2fI-SV-0dV" id="yBx-Aa-XEZ"/>
                         <segue destination="oJe-bH-a9K" kind="showDetail" identifier="HikeFromHistorySelected" id="Khv-wX-78X"/>
@@ -918,7 +918,7 @@ VGltZSBEb3duSBBpbGw
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Hp7-ua-WfT"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="gw5-1w-eIJ"/>
+                    <tabBarItem key="tabBarItem" title="You" image="circle-user-7" selectedImage="circle-user-7" id="gw5-1w-eIJ"/>
                     <connections>
                         <outlet property="heightTextField" destination="9J9-PY-f2O" id="yXw-vE-5J1"/>
                         <outlet property="nameTextField" destination="PsV-Qh-ikA" id="oN6-PU-Wxp"/>
@@ -939,7 +939,7 @@ VGltZSBEb3duSBBpbGw
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Am3-b4-Bmc"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="TGP-JB-HRu"/>
+                    <tabBarItem key="tabBarItem" title="Checklist" image="note-write-7" selectedImage="note-write-7" id="TGP-JB-HRu"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hbq-KC-aE1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -955,17 +955,17 @@ VGltZSBEb3duSBBpbGw
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="vVx-Jc-0Gp"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="gAV-1t-kxB"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gear-7" id="gAV-1t-kxB"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jTN-xk-3Qz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="494" y="2145"/>
         </scene>
-        <!--Item-->
+        <!--Hike-->
         <scene sceneID="0kk-3h-D4y">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XhI-ye-5To" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Vkq-Nc-nHS"/>
+                    <tabBarItem key="tabBarItem" title="Hike" image="pin-map-7" selectedImage="pin-map-7" id="Vkq-Nc-nHS"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BAK-WE-yOj">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -981,4 +981,14 @@ VGltZSBEb3duSBBpbGw
             <point key="canvasLocation" x="-246" y="-789"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="circle-user-7" width="30" height="30"/>
+        <image name="gear-7" width="30" height="30"/>
+        <image name="note-write-7" width="30" height="30"/>
+        <image name="pin-map-7" width="30" height="30"/>
+        <image name="text-list-7" width="30" height="30"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Euq-FV-7Cw"/>
+    </inferredMetricsTieBreakers>
 </document>
