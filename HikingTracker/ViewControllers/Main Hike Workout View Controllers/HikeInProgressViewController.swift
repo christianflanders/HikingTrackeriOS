@@ -18,11 +18,19 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     
     
     //MARK: Enums
+    
     enum ElevationDirection {
         case uphill
         case downhill
     }
+    
+    enum unitsToDisplay {
+        case metric
+        case freedomUnits
+        
+    }
     //MARK: Constants
+    
     private let locationManager = LocationManager.shared
     private let altimeter = Altimeter.shared
     private let pedometer = CMPedometer()
@@ -30,15 +38,20 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     private let watchConnection = WCSession.default
     
     
+    
     //MARK: Variables
     
+    
     //MARK: Outlets
-    @IBOutlet weak var elevationDisplayLabel: UILabel!
-    @IBOutlet weak var distanceDisplayLabel: UILabel!
+    @IBOutlet weak var altitudeDisplayLabel: UILabel!
     @IBOutlet weak var durationDisplayLabel: UILabel!
-    @IBOutlet weak var caloriesDisplayLabel: UILabel!
+    @IBOutlet weak var paceDisplayLabel: UILabel!
+    @IBOutlet weak var distanceDisplayLabel: UILabel!
+    @IBOutlet weak var caloriesBurnedDisplayLabel: UILabel!
+    @IBOutlet weak var sunsetDisplayLabel: UILabel!
     
     @IBOutlet weak var mapContainerView: UIView!
+    
     @IBOutlet weak var resumeButtonOutlet: UIButton!
     @IBOutlet weak var holdToEndButtonOutlet: UIButton!
     @IBOutlet weak var pauseHikeButtonOutlet: UIButton!
@@ -73,12 +86,6 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         if shouldStartHike {
             startHike()
         }
-        
-        
-        
-        
-        
-        
         //Setup map view here becuase it murders interface builder
         let url = URL(string: "mapbox://styles/mapbox/outdoors-v10")
         mapView = MGLMapView(frame: mapContainerView.bounds, styleURL: url)
@@ -86,23 +93,17 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .follow
         mapContainerView.addSubview(mapView)
-        
-        // Do any additional setup after loading the view.
     }
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         locationManager.stopUpdatingLocation()
-        
     }
+    
+    
     //MARK: IBActions
-    
-    
-    fileprivate func pauseHike() {
-        pauseOrStopHikeUISettings()
-        hikeWorkout.paused = true
-    }
-    
+
     @IBAction func pauseHikeButtonPressed(_ sender: UIButton) {
         pauseHike()
     }
@@ -114,64 +115,25 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         performSegue(withIdentifier: "HikeFinishedSegue", sender: self)
     }
     
-    fileprivate func resumeHike() {
-        startHikeUISettings()
-        hikeWorkout.paused = false
-    }
+
     
     @IBAction func resumeButtonPressed(_ sender: UIButton) {
         resumeHike()
     }
     
+
     
-    
-    //MARK: Instance Methods
-    fileprivate func startHikeUISettings() {
-        pauseHikeButtonOutlet.isHidden = false
-        resumeButtonOutlet.isHidden = true
-        holdToEndButtonOutlet.isHidden = true
-    }
+    //MARK: Hike Lifecycle
     
     private func startHike(){
         hikeWorkout.startDate = Date()
         startTimer()
-        
         checkForWatchConnection()
         startHikeUISettings()
         convertDateAndSendToWatch(date: hikeWorkout.startDate!)
-        
     }
-    
-    private func checkForWatchConnection() {
-        if WCSession.isSupported() {
-            watchConnection.delegate = self
-            watchConnection.activate()
-            if watchConnection.activationState != .activated {
-                watchConnection.activate()
-            }
-            let configuration = HKWorkoutConfiguration()
-            configuration.activityType = .hiking
-            configuration.locationType = .outdoor
-            let healthStore = HKHealthStore()
-            healthStore.startWatchApp(with: configuration) { (success, error) in
-                if success {
-                    print("should be opening watch app with workout configuration")
-                }
-            }
-        }
-    }
-    
-    private func convertDateAndSendToWatch(date: Date){
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US")
-        dateFormatter.dateStyle = .long
-        dateFormatter.timeStyle = .full
-        
-        let stringDateToSendToWatch = dateFormatter.string(from: date)
-        watchConnection.sendMessage(["startDate" : stringDateToSendToWatch], replyHandler: nil) { error in
-            print(error)
-        }
-    }
+
+    //MARK: Timer Functions
     
     private func startTimer(){
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
@@ -181,14 +143,13 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     
     private func eachSecond(){
         convertDateAndSendToWatch(date: hikeWorkout.startDate!)
+        updateDisplay()
         if !hikeWorkout.paused {
             hikeWorkout.duration += 1
-            
             if let coordinate = locationManager.location?.coordinate {
                 coordinatesForLine.append(coordinate)
             }
-            //            retrievePedometerData()
-            updateDisplay()
+
             if let elevationDirection = elevationDirection {
                 switch elevationDirection {
                 case .uphill :
@@ -197,34 +158,60 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
                     hikeWorkout.timeTraveledDownHill += 1
                 }
             }
+            
             if  coordinatesForLine.count != 0 {
                 mapView.drawLineOf(coordinatesForLine)
             }
         }
     }
     
+    
+    
+    
+    //MARK: UI Functions
+    
     private func updateDisplay(){
-        durationDisplayLabel.text = hikeWorkout.durationAsString
-        if let totalDistanceTraveled = hikeWorkout.totalDistanceTraveled {
-            distanceDisplayLabel.text = String(Int(totalDistanceTraveled))
+        let duration = hikeWorkout.durationAsString
+        durationDisplayLabel.text = duration
+        
+        if let altitude = hikeWorkout.lastLocation?.altitude {
+            let shortenedAltitude = Int(altitude)
+            let stringToDisplay = "\(shortenedAltitude) meters"
+            altitudeDisplayLabel.text = stringToDisplay
         }
         
-        
-        if let currentLocation = hikeWorkout.storedLocations.last?.altitude{
-            let currentLocationAltitudeShortened = Int(currentLocation)
-            elevationDisplayLabel.text = "\(currentLocationAltitudeShortened) ft"
-            
+        if let distance = hikeWorkout.totalDistanceTraveled {
+            let shortenedDistance = Int(distance)
+            let stringToDisplay = "\(shortenedDistance) meters"
+            distanceDisplayLabel.text = stringToDisplay
         }
-        let caloriesBurned = String(hikeWorkout.totalCaloriesBurned)
-        caloriesDisplayLabel.text = caloriesBurned
+        
+        let caloriesBurned = hikeWorkout.totalCaloriesBurned
+        let stringCalories = "\(caloriesBurned) kcl"
+        caloriesBurnedDisplayLabel.text = stringCalories
+        
+        //TODO: Pace Label
         
         
+        //TODO: Sunset Label
         
     }
     
+    fileprivate func startHikeUISettings() {
+        pauseHikeButtonOutlet.isHidden = false
+        resumeButtonOutlet.isHidden = true
+        holdToEndButtonOutlet.isHidden = true
+    }
     
+    fileprivate func resumeHike() {
+        startHikeUISettings()
+        hikeWorkout.paused = false
+    }
     
-    
+    fileprivate func pauseHike() {
+        pauseOrStopHikeUISettings()
+        hikeWorkout.paused = true
+    }
     
     fileprivate func pauseOrStopHikeUISettings() {
         pauseHikeButtonOutlet.isHidden = true
@@ -287,6 +274,37 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
             DispatchQueue.main.async {
                 self.resumeHike()
             }
+        }
+    }
+    
+    private func checkForWatchConnection() {
+        if WCSession.isSupported() {
+            watchConnection.delegate = self
+            watchConnection.activate()
+            if watchConnection.activationState != .activated {
+                watchConnection.activate()
+            }
+            let configuration = HKWorkoutConfiguration()
+            configuration.activityType = .hiking
+            configuration.locationType = .outdoor
+            let healthStore = HKHealthStore()
+            healthStore.startWatchApp(with: configuration) { (success, error) in
+                if success {
+                    print("should be opening watch app with workout configuration")
+                }
+            }
+        }
+    }
+    
+    private func convertDateAndSendToWatch(date: Date){
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .full
+        
+        let stringDateToSendToWatch = dateFormatter.string(from: date)
+        watchConnection.sendMessage(["startDate" : stringDateToSendToWatch], replyHandler: nil) { error in
+            print(error)
         }
     }
     

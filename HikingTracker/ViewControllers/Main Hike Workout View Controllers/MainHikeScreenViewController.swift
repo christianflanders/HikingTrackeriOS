@@ -14,7 +14,7 @@ import Mapbox
 class MainHikeScreenViewController: UIViewController{
 
     //MARK: Enums
-    Ø
+    
     //MARK: Constants
     let locationManager = LocationManager.shared
 

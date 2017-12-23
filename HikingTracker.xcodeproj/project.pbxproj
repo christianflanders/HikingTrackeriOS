@@ -15,6 +15,8 @@
 		6B1B12441FE9ABD900FFFDB4 /* DateConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1B12421FE9AB6300FFFDB4 /* DateConversion.swift */; };
 		6B4F6E621FE09A6600545DE3 /* PersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4F6E611FE09A6600545DE3 /* PersistanceService.swift */; };
 		6B5904E21FDC791D00BF96CD /* HikeFinishedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5904E11FDC791D00BF96CD /* HikeFinishedViewController.swift */; };
+		6B6E19D81FEDE7EE00B5605A /* Ailerons-Typeface.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6E19D71FEDE7ED00B5605A /* Ailerons-Typeface.otf */; };
+		6B6E19D91FEDE7EE00B5605A /* Ailerons-Typeface.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6E19D71FEDE7ED00B5605A /* Ailerons-Typeface.otf */; };
 		6B7801741FD5F2AE006F29BD /* HikeInProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7801731FD5F2AE006F29BD /* HikeInProgressViewController.swift */; };
 		6B7801771FD618BE006F29BD /* HealthKitAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7801761FD618BE006F29BD /* HealthKitAuthorization.swift */; };
 		6B81261B1FDF73D7009054A3 /* RK_gpx _2015-01-16_0544.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 6B81261A1FDF73D7009054A3 /* RK_gpx _2015-01-16_0544.gpx */; };
@@ -165,6 +167,7 @@
 		6B249CA91FEA20370092B518 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B4F6E611FE09A6600545DE3 /* PersistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceService.swift; sourceTree = "<group>"; };
 		6B5904E11FDC791D00BF96CD /* HikeFinishedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeFinishedViewController.swift; sourceTree = "<group>"; };
+		6B6E19D71FEDE7ED00B5605A /* Ailerons-Typeface.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ailerons-Typeface.otf"; sourceTree = "<group>"; };
 		6B7801731FD5F2AE006F29BD /* HikeInProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeInProgressViewController.swift; sourceTree = "<group>"; };
 		6B7801761FD618BE006F29BD /* HealthKitAuthorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitAuthorization.swift; sourceTree = "<group>"; };
 		6B81261A1FDF73D7009054A3 /* RK_gpx _2015-01-16_0544.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "RK_gpx _2015-01-16_0544.gpx"; sourceTree = "<group>"; };
@@ -279,6 +282,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6B6E19D61FEDE7B200B5605A /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				6B6E19D71FEDE7ED00B5605A /* Ailerons-Typeface.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		6B7801721FD5F276006F29BD /* Main Hike Workout View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -412,6 +423,7 @@
 		6BB63A3E1FD5CD7F00E9F4A1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6B6E19D61FEDE7B200B5605A /* Fonts */,
 				6BAF5B9F1FDF416A00480E6A /* RK_gpx _2017-12-08_0830.gpx */,
 				6B81261A1FDF73D7009054A3 /* RK_gpx _2015-01-16_0544.gpx */,
 				6BCD37A51FD88F7A00FE8C03 /* HikeTest.gpx */,
@@ -709,6 +721,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BB63A171FD5CCE600E9F4A1 /* LaunchScreen.storyboard in Resources */,
+				6B6E19D81FEDE7EE00B5605A /* Ailerons-Typeface.otf in Resources */,
 				6BB63A141FD5CCE600E9F4A1 /* Assets.xcassets in Resources */,
 				6B81261B1FDF73D7009054A3 /* RK_gpx _2015-01-16_0544.gpx in Resources */,
 				6BB63A0F1FD5CCE600E9F4A1 /* Main.storyboard in Resources */,
@@ -735,6 +748,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BC1DE6A1FD6553C00CB20D5 /* Assets.xcassets in Resources */,
+				6B6E19D91FEDE7EE00B5605A /* Ailerons-Typeface.otf in Resources */,
 				6BC1DE681FD6553C00CB20D5 /* Interface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
