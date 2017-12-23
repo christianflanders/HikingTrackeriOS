@@ -15,15 +15,13 @@ class MainHikeScreenViewController: UIViewController{
 
     //MARK: Enums
     
-
-    
     //MARK: Constants
     let locationManager = LocationManager.shared
-    
-    
+
     //MARK: Variables
     
     //MARK: Outlets
+    @IBOutlet weak var latLongLabel: UILabel!
     
 //    @IBOutlet weak var mapBoxMapView: MGLMapView!
     
@@ -40,49 +38,26 @@ class MainHikeScreenViewController: UIViewController{
         //Setup Location Manager
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
-        if CLLocationManager.locationServicesEnabled() {
-//            locationManager.delegate = self
-//            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-//            locationManager.startUpdatingLocation()
-        }
         //HealthKitSetup
         HealthKitAuthroizationSetup.authorizeHealthKit { (authorized, error) in
-            
             guard authorized else {
                 print("Health Kit Authorization failed!")
                 return
             }
-            
             print("HealthKit successfully authorized")
-            
         }
-        //Setup Map View
-        let url = URL(string: "mapbox://styles/mapbox/outdoors-v10")
-        let mapView = MGLMapView(frame: view.bounds, styleURL: url)
-        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        mapView.showsUserLocation = true
-        mapView.userTrackingMode = .follow
-        view.addSubview(mapView)
-        view.sendSubview(toBack: mapView)
-
-
+        createMapBoxView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        //TODO: Add in notification that if location services are turned off how to turn them back on.
-        if !CLLocationManager.locationServicesEnabled() {
+        //If location services are turned off, display a notification to turn them back on in the settings
+        //TODO: Fix alert. Mabye don't allow to dismiss alert unless notification services are turned on?
+        if CLLocationManager.authorizationStatus() == .notDetermined || CLLocationManager.authorizationStatus() == .denied {
             presentAlert(title: "Location can't be found!", message: "Turn on location services in settings", view: self)
         }
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-//        locationManager.stopUpdatingLocation()
-    }
+
     
     //MARK: IBActions
     @IBAction func startHikeButtonPressed(_ sender: UIButton) {
@@ -91,11 +66,28 @@ class MainHikeScreenViewController: UIViewController{
     
     //MARK: Instance Methods
     
+    private func updateLatLongLabel(location:CLLocation?){
+        guard let location = location else {return}
+        let latitude = location.coordinate.latitude
+        let longitude = location.coordinate.longitude
+        let combinedString = "Lat:\(String(describing: latitude)) Long:\(String(describing: longitude))"
+        latLongLabel.text = combinedString
+    }
     
+    fileprivate func createMapBoxView() {
+        //Setup Map View
+        let url = URL(string: "mapbox://styles/mapbox/outdoors-v10")
+        let mapView = MGLMapView(frame: view.bounds, styleURL: url)
+        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        mapView.showsUserLocation = true
+        mapView.userTrackingMode = .follow
+        let userLocation = mapView.userLocation?.location
+        updateLatLongLabel(location: userLocation)
+        view.addSubview(mapView)
+        view.sendSubview(toBack: mapView)
+    }
     
      // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "StartHikeButtonPressed" {
             let destination = segue.destination as! HikeInProgressViewController
@@ -104,10 +96,6 @@ class MainHikeScreenViewController: UIViewController{
             }
         }
      }
-    
-    
-    // MARK: Health Kit Authorization
-
 
 }
 
