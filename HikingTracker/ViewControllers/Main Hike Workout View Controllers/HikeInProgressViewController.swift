@@ -74,6 +74,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     private  var hikeWorkout = HikeWorkout()
     private var elevationDirection: ElevationDirection?
     
+    private var statsHidden = false
     
     
     //MARK: View Life Cycle
@@ -126,9 +127,21 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     
     
     @IBAction func tappedOnMapView(_ sender: UITapGestureRecognizer) {
-        duringHikeStatsContainerView.isHidden = !duringHikeStatsContainerView.isHidden
-        gradImageView.isHidden = !gradImageView.isHidden
-    }
+        let animationDuration = 0.5
+        if !statsHidden {
+            UIView.animate(withDuration: animationDuration) {
+                self.duringHikeStatsContainerView.alpha = 0
+                self.gradImageView.alpha = 0
+                self.statsHidden = true
+            }
+            } else {
+                UIView.animate(withDuration: animationDuration) {
+                    self.duringHikeStatsContainerView.alpha = 1
+                    self.gradImageView.alpha = 1
+                    self.statsHidden = false
+                }
+            }
+        }
     
 
     
@@ -153,12 +166,12 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     private func eachSecond(){
         convertDateAndSendToWatch(date: hikeWorkout.startDate!)
         updateDisplay()
+        sendCaloriesToWatch()
         if !hikeWorkout.paused {
             hikeWorkout.duration += 1
             if let coordinate = locationManager.location?.coordinate {
                 coordinatesForLine.append(coordinate)
             }
-
             if let elevationDirection = elevationDirection {
                 switch elevationDirection {
                 case .uphill :
@@ -167,8 +180,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
                     hikeWorkout.timeTraveledDownHill += 1
                 }
             }
-            
-            if  coordinatesForLine.count != 0 {
+            if coordinatesForLine.count != 0 {
                 mapView.drawLineOf(coordinatesForLine)
             }
         }
@@ -247,6 +259,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
             print("New Location horiziontal Accuracy is (newLocation.horizontalAccuracy) and the vertical accuracy is \(newLocation.verticalAccuracy)")
             if newLocation.horizontalAccuracy > 2 {
                 hikeWorkout.lastLocation = newLocation
+                sendDistanceToWatch()
             }
         }
     }
@@ -305,7 +318,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         }
     }
     
-    private func convertDateAndSendToWatch(date: Date){
+    private func convertDateAndSendToWatch(date: Date) {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.dateStyle = .long
@@ -313,6 +326,23 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         
         let stringDateToSendToWatch = dateFormatter.string(from: date)
         watchConnection.sendMessage(["startDate" : stringDateToSendToWatch], replyHandler: nil) { error in
+            print(error)
+        }
+    }
+    
+    private func sendDistanceToWatch() {
+        guard let distance = hikeWorkout.totalDistanceTraveled else {return}
+        let stringDistance =  String(Int(distance))
+        let stringToSend = "\(stringDistance) meters"
+        watchConnection.sendMessage(["distance" : stringToSend], replyHandler: nil) { error in
+        print(error)
+        }
+    }
+    
+    private func sendCaloriesToWatch() {
+        let caloriesBurned = Int(hikeWorkout.totalCaloriesBurned)
+        let stringCalories = String(caloriesBurned)
+        watchConnection.sendMessage(["calories" : stringCalories], replyHandler: nil) { error in
             print(error)
         }
     }

@@ -20,6 +20,8 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, HKWorkoutSe
     private var startDateFromPhone: Date?
     private var paused = true
     private var dateRecieved = false
+    private var distanceRecieved = ""
+    private var caloriesRecieved = ""
     
     @IBOutlet var durationLabel: WKInterfaceLabel!
     @IBOutlet var caloriesBurnedLabel: WKInterfaceLabel!
@@ -81,7 +83,8 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, HKWorkoutSe
         let duration = currentDate.timeIntervalSince(startDate)
         let stringDuration = dateHelper.convertDurationToStringDate(duration)
         durationLabel.setText(stringDuration)
-        
+        distanceLabel.setText(distanceRecieved)
+        caloriesBurnedLabel.setText(caloriesRecieved)
 
     }
     
@@ -89,6 +92,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, HKWorkoutSe
         print("message from phone recieved")
         if dateRecieved == false {
             let dateStringFromPhone = message["startDate"] as! String
+
             let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale(identifier: "en_US")
             dateFormatter.dateStyle = .long
@@ -99,7 +103,10 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, HKWorkoutSe
             startDateFromPhone = startDateFromPhoneRecieved
             dateRecieved = true
         }
-
+        guard let calories = message["calories"] as? String else {return}
+        caloriesRecieved = calories
+        guard let distanceFromPhone = message["distance"] as? String else {return}
+        distanceRecieved = distanceFromPhone
     }
     
     

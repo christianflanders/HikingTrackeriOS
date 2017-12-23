@@ -12,6 +12,7 @@ class HikeHistoryTableViewCell: UITableViewCell {
 
     @IBOutlet weak var hikeNameLabel: UILabel!
     
+    @IBOutlet weak var hikeDurationLabel: UILabel!
     @IBOutlet weak var hikeDateLabel: UILabel!
     @IBOutlet weak var hikeDistanceLabel: UILabel!
     
