@@ -26,7 +26,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wjb-Qw-0gp">
-                                <rect key="frame" x="16" y="528" width="343" height="60"/>
+                                <rect key="frame" x="0.0" y="528" width="375" height="60"/>
                                 <color key="backgroundColor" red="0.4403552711" green="0.56544411179999998" blue="0.1598808467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="4CC-2l-idh"/>
@@ -35,11 +35,6 @@
                                 <state key="normal" title="Start Hike">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="30"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="startHikeButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NgG-Z0-6MC"/>
                                 </connections>
@@ -72,9 +67,9 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wjb-Qw-0gp" secondAttribute="bottom" constant="30" id="25K-Ef-Cz2"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wjb-Qw-0gp" secondAttribute="trailing" constant="16" id="7Ec-iQ-M8H"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wjb-Qw-0gp" secondAttribute="trailing" id="7Ec-iQ-M8H"/>
                             <constraint firstItem="wjb-Qw-0gp" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="90V-Yf-5w0"/>
-                            <constraint firstItem="wjb-Qw-0gp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="BBp-K3-Lh0"/>
+                            <constraint firstItem="wjb-Qw-0gp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BBp-K3-Lh0"/>
                             <constraint firstItem="LbN-uv-i7u" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="17" id="d83-Wg-OHJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LbN-uv-i7u" secondAttribute="trailing" constant="40" id="lZj-UW-U2b"/>
                             <constraint firstItem="LbN-uv-i7u" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="mYV-YJ-GOR"/>
