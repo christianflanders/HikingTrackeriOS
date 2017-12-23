@@ -14,7 +14,7 @@ import Mapbox
 import WatchConnectivity
 
 
-class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate, WCSessionDelegate{
+class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate, WCSessionDelegate, MGLMapViewDelegate{
     
     
     //MARK: Enums
@@ -56,6 +56,8 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     @IBOutlet weak var holdToEndButtonOutlet: UIButton!
     @IBOutlet weak var pauseHikeButtonOutlet: UIButton!
     
+    @IBOutlet weak var duringHikeStatsContainerView: UIView!
+    @IBOutlet weak var gradImageView: UIImageView!
     
     
     //MARK: Weak Vars
@@ -91,6 +93,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         mapView = MGLMapView(frame: mapContainerView.bounds, styleURL: url)
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.showsUserLocation = true
+        mapView.userLocationVerticalAlignment = .top
         mapView.userTrackingMode = .follow
         mapContainerView.addSubview(mapView)
     }
@@ -119,6 +122,12 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     
     @IBAction func resumeButtonPressed(_ sender: UIButton) {
         resumeHike()
+    }
+    
+    
+    @IBAction func tappedOnMapView(_ sender: UITapGestureRecognizer) {
+        duringHikeStatsContainerView.isHidden = !duringHikeStatsContainerView.isHidden
+        gradImageView.isHidden = !gradImageView.isHidden
     }
     
 
@@ -186,7 +195,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
             distanceDisplayLabel.text = stringToDisplay
         }
         
-        let caloriesBurned = hikeWorkout.totalCaloriesBurned
+        let caloriesBurned = Int(hikeWorkout.totalCaloriesBurned)
         let stringCalories = "\(caloriesBurned) kcl"
         caloriesBurnedDisplayLabel.text = stringCalories
         
