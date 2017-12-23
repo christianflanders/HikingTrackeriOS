@@ -29,7 +29,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wjb-Qw-0gp">
-                                <rect key="frame" x="0.0" y="597" width="414" height="60"/>
+                                <rect key="frame" x="20" y="597" width="374" height="60"/>
                                 <color key="backgroundColor" red="0.4403552711" green="0.56544411179999998" blue="0.1598808467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="4CC-2l-idh"/>
@@ -38,6 +38,11 @@
                                 <state key="normal" title="Start Hike">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="startHikeButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NgG-Z0-6MC"/>
                                 </connections>
@@ -70,9 +75,9 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wjb-Qw-0gp" secondAttribute="bottom" constant="30" id="25K-Ef-Cz2"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wjb-Qw-0gp" secondAttribute="trailing" id="7Ec-iQ-M8H"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wjb-Qw-0gp" secondAttribute="trailing" constant="20" id="7Ec-iQ-M8H"/>
                             <constraint firstItem="wjb-Qw-0gp" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="90V-Yf-5w0"/>
-                            <constraint firstItem="wjb-Qw-0gp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BBp-K3-Lh0"/>
+                            <constraint firstItem="wjb-Qw-0gp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="BBp-K3-Lh0"/>
                             <constraint firstItem="LbN-uv-i7u" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="17" id="d83-Wg-OHJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LbN-uv-i7u" secondAttribute="trailing" constant="40" id="lZj-UW-U2b"/>
                             <constraint firstItem="LbN-uv-i7u" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="mYV-YJ-GOR"/>
@@ -88,7 +93,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="500" y="-838.83058470764627"/>
+            <point key="canvasLocation" x="500.00000000000006" y="-838.85869565217399"/>
         </scene>
         <!--Hike Finished View Cotnroller-->
         <scene sceneID="c0c-pO-ePr">
@@ -371,39 +376,54 @@ VGltZSBEb3duSBBpbGw
                                         <state key="normal" title="Pause">
                                             <color key="titleColor" red="0.13564318419999999" green="0.27028429510000002" blue="0.30816033479999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="30"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="pauseHikeButtonPressed:" destination="YQq-Y4-Q1O" eventType="touchUpInside" id="dGW-l4-4Xj"/>
                                         </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lvb-JF-cCx">
-                                        <rect key="frame" x="0.0" y="0.0" width="187" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="168.33333333333334" height="60"/>
                                         <color key="backgroundColor" red="0.83699810500000005" green="0.01030125283" blue="0.1089753732" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="24"/>
                                         <state key="normal" title="End">
                                             <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="30"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="holdToEndButtonPressed:" destination="YQq-Y4-Q1O" eventType="touchUpInside" id="InB-Su-FDI"/>
                                         </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4V-Cl-q5a">
-                                        <rect key="frame" x="187" y="0.0" width="187" height="60"/>
+                                        <rect key="frame" x="205.66666666666663" y="0.0" width="168.33333333333337" height="60"/>
                                         <color key="backgroundColor" red="0.4403552711" green="0.56544411179999998" blue="0.1598808467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="24"/>
                                         <state key="normal" title="Resume">
                                             <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="30"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="resumeButtonPressed:" destination="YQq-Y4-Q1O" eventType="touchUpInside" id="hKi-Ty-vy0"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="lvb-JF-cCx" firstAttribute="top" secondItem="x8L-d5-F7C" secondAttribute="top" id="A7U-8f-gqz"/>
                                     <constraint firstAttribute="bottom" secondItem="CxP-3W-N2M" secondAttribute="bottom" id="KiD-aI-yhq"/>
                                     <constraint firstAttribute="bottom" secondItem="lvb-JF-cCx" secondAttribute="bottom" id="Q5q-3d-std"/>
-                                    <constraint firstItem="M4V-Cl-q5a" firstAttribute="width" secondItem="x8L-d5-F7C" secondAttribute="width" multiplier="0.5" id="Xm5-zQ-XZd"/>
+                                    <constraint firstItem="M4V-Cl-q5a" firstAttribute="width" secondItem="x8L-d5-F7C" secondAttribute="width" multiplier="0.45" id="Xm5-zQ-XZd"/>
                                     <constraint firstItem="CxP-3W-N2M" firstAttribute="top" secondItem="x8L-d5-F7C" secondAttribute="top" id="doF-ku-s2E"/>
                                     <constraint firstAttribute="bottom" secondItem="M4V-Cl-q5a" secondAttribute="bottom" id="e7w-Ns-X5H"/>
                                     <constraint firstItem="lvb-JF-cCx" firstAttribute="leading" secondItem="x8L-d5-F7C" secondAttribute="leading" id="j6h-Zz-2Ss"/>
@@ -411,7 +431,7 @@ VGltZSBEb3duSBBpbGw
                                     <constraint firstItem="M4V-Cl-q5a" firstAttribute="top" secondItem="x8L-d5-F7C" secondAttribute="top" id="sSx-9Z-gOV"/>
                                     <constraint firstAttribute="height" constant="60" id="tjM-Tp-RtJ"/>
                                     <constraint firstItem="CxP-3W-N2M" firstAttribute="leading" secondItem="x8L-d5-F7C" secondAttribute="leading" id="tul-F2-8Sb"/>
-                                    <constraint firstItem="lvb-JF-cCx" firstAttribute="width" secondItem="x8L-d5-F7C" secondAttribute="width" multiplier="0.5" id="wCm-xy-g5X"/>
+                                    <constraint firstItem="lvb-JF-cCx" firstAttribute="width" secondItem="x8L-d5-F7C" secondAttribute="width" multiplier="0.45" id="wCm-xy-g5X"/>
                                     <constraint firstAttribute="trailing" secondItem="M4V-Cl-q5a" secondAttribute="trailing" id="xxr-ae-2m8"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -468,7 +488,7 @@ VGltZSBEb3duSBBpbGw
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="-20" translatesAutoresizingMaskIntoConstraints="NO" id="Wkg-wr-rzk">
                                                         <rect key="frame" x="0.0" y="146.66666666666663" width="162" height="73.333333333333314"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calories Burned" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="faj-20-3E5">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calories Burned" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="faj-20-3E5">
                                                                 <rect key="frame" x="0.0" y="0.0" width="162" height="46.666666666666664"/>
                                                                 <fontDescription key="fontDescription" name="Ailerons-Regular" family="Ailerons" pointSize="14"/>
                                                                 <nil key="textColor"/>
