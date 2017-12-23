@@ -361,9 +361,9 @@ VGltZSBEb3duSBBpbGw
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rectangle" translatesAutoresizingMaskIntoConstraints="NO" id="K7I-3i-1Ec">
-                                <rect key="frame" x="0.0" y="280" width="414" height="456"/>
+                                <rect key="frame" x="0.0" y="89" width="414" height="647"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="456" id="e5b-hZ-Maz"/>
+                                    <constraint firstAttribute="height" constant="647" id="e5b-hZ-Maz"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x8L-d5-F7C" userLabel="Button Holder View">
@@ -386,7 +386,7 @@ VGltZSBEb3duSBBpbGw
                                         </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lvb-JF-cCx">
-                                        <rect key="frame" x="0.0" y="0.0" width="168.33333333333334" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="168.66666666666666" height="60"/>
                                         <color key="backgroundColor" red="0.83699810500000005" green="0.01030125283" blue="0.1089753732" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="24"/>
                                         <state key="normal" title="End">
@@ -402,7 +402,7 @@ VGltZSBEb3duSBBpbGw
                                         </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4V-Cl-q5a">
-                                        <rect key="frame" x="205.66666666666663" y="0.0" width="168.33333333333337" height="60"/>
+                                        <rect key="frame" x="206" y="0.0" width="168" height="60"/>
                                         <color key="backgroundColor" red="0.4403552711" green="0.56544411179999998" blue="0.1598808467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="24"/>
                                         <state key="normal" title="Resume">
@@ -441,26 +441,26 @@ VGltZSBEb3duSBBpbGw
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TCK-tJ-GGV" customClass="DuringHikeStatsView" customModule="HikingTracker" customModuleProvider="target">
-                                <rect key="frame" x="20" y="406" width="374" height="220"/>
+                                <rect key="frame" x="20" y="313" width="374" height="313"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="VHF-Ya-m8t" userLabel="Stats Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="220"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="301"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="DxS-eF-gdq" userLabel="Left Stats Stack">
-                                                <rect key="frame" x="0.0" y="0.0" width="162" height="220"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="162" height="301"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="-20" translatesAutoresizingMaskIntoConstraints="NO" id="zUe-Pf-DJn" userLabel="Altitude Stack">
-                                                        <rect key="frame" x="0.0" y="0.0" width="162" height="73.333333333333329"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="162" height="100.33333333333333"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Altitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LCy-2S-o4B">
-                                                                <rect key="frame" x="0.0" y="0.0" width="162" height="46.666666666666664"/>
-                                                                <fontDescription key="fontDescription" name="Ailerons-Regular" family="Ailerons" pointSize="14"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="162" height="60.333333333333336"/>
+                                                                <fontDescription key="fontDescription" name="Ailerons-Regular" family="Ailerons" pointSize="19"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1200 ft" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="26h-w9-qDh">
-                                                                <rect key="frame" x="0.0" y="26.666666666666682" width="162" height="46.666666666666657"/>
-                                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
+                                                                <rect key="frame" x="0.0" y="40.333333333333314" width="162" height="60"/>
+                                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -468,17 +468,17 @@ VGltZSBEb3duSBBpbGw
                                                         <viewLayoutGuide key="safeArea" id="om8-lT-tfh"/>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="-20" translatesAutoresizingMaskIntoConstraints="NO" id="gmf-nx-4QB" userLabel="Pace">
-                                                        <rect key="frame" x="0.0" y="73.333333333333314" width="162" height="73.333333333333314"/>
+                                                        <rect key="frame" x="0.0" y="100.33333333333331" width="162" height="100.33333333333331"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pace" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y32-Go-zHq">
-                                                                <rect key="frame" x="0.0" y="0.0" width="162" height="46.666666666666664"/>
-                                                                <fontDescription key="fontDescription" name="Ailerons-Regular" family="Ailerons" pointSize="14"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="162" height="60.333333333333336"/>
+                                                                <fontDescription key="fontDescription" name="Ailerons-Regular" family="Ailerons" pointSize="19"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1200 ft" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="alu-Bn-kGo">
-                                                                <rect key="frame" x="0.0" y="26.666666666666682" width="162" height="46.666666666666657"/>
-                                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
+                                                                <rect key="frame" x="0.0" y="40.333333333333371" width="162" height="60"/>
+                                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -486,17 +486,17 @@ VGltZSBEb3duSBBpbGw
                                                         <viewLayoutGuide key="safeArea" id="Y4b-kI-PmU"/>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="-20" translatesAutoresizingMaskIntoConstraints="NO" id="Wkg-wr-rzk">
-                                                        <rect key="frame" x="0.0" y="146.66666666666663" width="162" height="73.333333333333314"/>
+                                                        <rect key="frame" x="0.0" y="200.66666666666663" width="162" height="100.33333333333331"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calories Burned" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="faj-20-3E5">
-                                                                <rect key="frame" x="0.0" y="0.0" width="162" height="46.666666666666664"/>
-                                                                <fontDescription key="fontDescription" name="Ailerons-Regular" family="Ailerons" pointSize="14"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="162" height="60.333333333333336"/>
+                                                                <fontDescription key="fontDescription" name="Ailerons-Regular" family="Ailerons" pointSize="19"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1200 ft" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Njx-k0-oFR">
-                                                                <rect key="frame" x="0.0" y="26.666666666666739" width="162" height="46.666666666666657"/>
-                                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
+                                                                <rect key="frame" x="0.0" y="40.333333333333371" width="162" height="60"/>
+                                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -505,20 +505,20 @@ VGltZSBEb3duSBBpbGw
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="RlQ-tH-lru">
-                                                <rect key="frame" x="212" y="0.0" width="162" height="220"/>
+                                                <rect key="frame" x="212" y="0.0" width="162" height="301"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="-20" translatesAutoresizingMaskIntoConstraints="NO" id="jGt-bY-Iks">
-                                                        <rect key="frame" x="0.0" y="0.0" width="162" height="73.333333333333329"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="162" height="100.33333333333333"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qOF-hR-aMB">
-                                                                <rect key="frame" x="0.0" y="0.0" width="162" height="46.666666666666664"/>
-                                                                <fontDescription key="fontDescription" name="Ailerons-Regular" family="Ailerons" pointSize="14"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="162" height="60.333333333333336"/>
+                                                                <fontDescription key="fontDescription" name="Ailerons-Regular" family="Ailerons" pointSize="19"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1200 ft" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PW9-9O-yy7">
-                                                                <rect key="frame" x="0.0" y="26.666666666666682" width="162" height="46.666666666666657"/>
-                                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
+                                                                <rect key="frame" x="0.0" y="40.333333333333314" width="162" height="60"/>
+                                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -526,17 +526,17 @@ VGltZSBEb3duSBBpbGw
                                                         <viewLayoutGuide key="safeArea" id="uVF-I0-BOy"/>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="-20" translatesAutoresizingMaskIntoConstraints="NO" id="Vo0-WG-2Ha">
-                                                        <rect key="frame" x="0.0" y="73.333333333333314" width="162" height="73.333333333333314"/>
+                                                        <rect key="frame" x="0.0" y="100.33333333333331" width="162" height="100.33333333333331"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mjq-F4-jh2">
-                                                                <rect key="frame" x="0.0" y="0.0" width="162" height="46.666666666666664"/>
-                                                                <fontDescription key="fontDescription" name="Ailerons-Regular" family="Ailerons" pointSize="14"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="162" height="60.333333333333336"/>
+                                                                <fontDescription key="fontDescription" name="Ailerons-Regular" family="Ailerons" pointSize="19"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1200 ft" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lue-6A-GKL">
-                                                                <rect key="frame" x="0.0" y="26.666666666666682" width="162" height="46.666666666666657"/>
-                                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
+                                                                <rect key="frame" x="0.0" y="40.333333333333371" width="162" height="60"/>
+                                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -544,17 +544,17 @@ VGltZSBEb3duSBBpbGw
                                                         <viewLayoutGuide key="safeArea" id="o7m-fy-RJe"/>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="-20" translatesAutoresizingMaskIntoConstraints="NO" id="dOK-wE-GGE">
-                                                        <rect key="frame" x="0.0" y="146.66666666666663" width="162" height="73.333333333333314"/>
+                                                        <rect key="frame" x="0.0" y="200.66666666666663" width="162" height="100.33333333333331"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunset" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hh-x7-LYj">
-                                                                <rect key="frame" x="0.0" y="0.0" width="162" height="46.666666666666664"/>
-                                                                <fontDescription key="fontDescription" name="Ailerons-Regular" family="Ailerons" pointSize="14"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="162" height="60.333333333333336"/>
+                                                                <fontDescription key="fontDescription" name="Ailerons-Regular" family="Ailerons" pointSize="19"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1200 ft" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOr-tr-29F">
-                                                                <rect key="frame" x="0.0" y="26.666666666666739" width="162" height="46.666666666666657"/>
-                                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
+                                                                <rect key="frame" x="0.0" y="40.333333333333371" width="162" height="60"/>
+                                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -571,8 +571,8 @@ VGltZSBEb3duSBBpbGw
                                     <constraint firstAttribute="trailing" secondItem="VHF-Ya-m8t" secondAttribute="trailing" id="Ce0-GV-acV"/>
                                     <constraint firstItem="VHF-Ya-m8t" firstAttribute="leading" secondItem="TCK-tJ-GGV" secondAttribute="leading" id="IWn-uc-BBm"/>
                                     <constraint firstItem="VHF-Ya-m8t" firstAttribute="top" secondItem="TCK-tJ-GGV" secondAttribute="top" id="fgR-Ni-kD0"/>
-                                    <constraint firstAttribute="height" constant="220" id="tWE-uK-qiK"/>
-                                    <constraint firstAttribute="bottom" secondItem="VHF-Ya-m8t" secondAttribute="bottom" id="u36-Cv-kMa"/>
+                                    <constraint firstAttribute="height" constant="313" id="tWE-uK-qiK"/>
+                                    <constraint firstAttribute="bottom" secondItem="VHF-Ya-m8t" secondAttribute="bottom" constant="12" id="u36-Cv-kMa"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -610,7 +610,7 @@ VGltZSBEb3duSBBpbGw
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LbU-5s-LNg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1414.4927536231885" y="-819.29347826086962"/>
+            <point key="canvasLocation" x="1413.0434782608697" y="-820.10869565217399"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="VMg-kW-5Xr">
@@ -646,7 +646,7 @@ VGltZSBEb3duSBBpbGw
                                 <rect key="frame" x="14" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HikeHistoryCell" rowHeight="87" id="LJt-yb-mhX" customClass="HikeHistoryTableViewCell" customModule="HikingTracker" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HikeHistoryCell" rowHeight="87" id="LJt-yb-mhX" customClass="HikeHistoryTableViewCell" customModule="HikingTracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="87"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LJt-yb-mhX" id="KgM-Oh-XL1">
@@ -654,22 +654,22 @@ VGltZSBEb3duSBBpbGw
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="dx1-7B-NbA">
-                                                    <rect key="frame" x="15" y="11" width="384" height="65"/>
+                                                    <rect key="frame" x="15" y="11" width="423" height="65"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hike Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="TUU-1R-ubp">
-                                                            <rect key="frame" x="0.0" y="0.0" width="171" height="65"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="188.33333333333334" height="65"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="WCJ-Vw-Haw">
-                                                            <rect key="frame" x="171" y="0.0" width="74.333333333333314" height="65"/>
+                                                            <rect key="frame" x="188.33333333333334" y="0.0" width="82.000000000000028" height="65"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="DeI-N2-s2J">
-                                                            <rect key="frame" x="245.33333333333331" y="0.0" width="138.66666666666669" height="65"/>
+                                                            <rect key="frame" x="270.33333333333331" y="0.0" width="152.66666666666669" height="65"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
