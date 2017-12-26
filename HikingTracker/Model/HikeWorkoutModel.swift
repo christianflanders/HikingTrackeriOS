@@ -13,11 +13,9 @@ import CoreMotion
 class HikeWorkout {
     
     init() {
-        print("Hike Workout is being created")
     }
     
     deinit {
-        print("Hike workout is being de-created..destroyed...something")
     }
     
     let user = User()
@@ -33,7 +31,10 @@ class HikeWorkout {
     var startDate : Date?
     var endDate: Date?
     
-    var duration: Double = 0
+    var duration: Double {
+        
+    
+    }
 
 
     
@@ -160,3 +161,6 @@ enum hikeState {
     case started
     case finished
 }
+
+
+

@@ -35,6 +35,9 @@ class HikeHistoryDetailViewController: UIViewController {
     
     var mapBoxView: MGLMapView!
     
+    private let navigationBarBackgroundImage = DefaultUI().navBarBackgroundImage
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +50,13 @@ class HikeHistoryDetailViewController: UIViewController {
 //        averagePaceLabel.text = String(hikeWorkout.totalDistanceTraveled! / Double(hikeWorkout.seconds))
         // Do any additional setup after loading the view.
         
+        self.navigationController?.navigationBar.setBackgroundImage(navigationBarBackgroundImage,
+                                                                    for: .default)
+        
+        if let workoutStartDateString = hikeWorkout.startDate?.displayStringWithoutTime {
+            self.title = workoutStartDateString
+        }
+
         
         
         let url = URL(string: "mapbox://styles/mapbox/outdoors-v10")

@@ -85,6 +85,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         locationManager.delegate = self
         locationManager.activityType = .fitness
         locationManager.distanceFilter = 10
+        locationManager.allowsBackgroundLocationUpdates = true
         locationManager.startUpdatingLocation()
         if shouldStartHike {
             startHike()

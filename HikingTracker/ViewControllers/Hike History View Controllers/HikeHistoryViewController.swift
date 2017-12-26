@@ -19,28 +19,27 @@ class HikeHistoryViewController: UIViewController, UITableViewDataSource, UITabl
     
     private var pastWorkouts = [HikeWorkout]()
     
-    let dateFormatter = DateFormatter()
     
     var selectedHikeWorkout = HikeWorkout()
+    
+    private let navigationBarBackgroundImage = DefaultUI().navBarBackgroundImage
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        persistantContainer.fetchWorkouts()
-        pastWorkouts = persistantContainer.fetchedWorkouts
-        hikeHistoryTableView.delegate = self
-        hikeHistoryTableView.dataSource = self
-        hikeHistoryTableView.reloadData()
+
+
+//        self.navigationController?.navigationBar.prefersLargeTitles = true
         
-        
-        dateFormatter.dateStyle = .long
-        dateFormatter.timeStyle = .short
-        // Do any additional setup after loading the view.
+
+        self.navigationController?.navigationBar.setBackgroundImage(navigationBarBackgroundImage,
+                                                                    for: .default)
+        self.navigationController?.navigationBar.tintColor = DefaultUI().defaultBlack
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewDidAppear(_ animated: Bool) {
+        getWorkoutsFromMemoryAndUpdateTable()
     }
     
 
@@ -49,10 +48,8 @@ class HikeHistoryViewController: UIViewController, UITableViewDataSource, UITabl
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == hikeSelectedSegue {
-            if let destinatioNav = segue.destination as? UINavigationController {
-                let destinationVC = destinatioNav.topViewController   as! HikeHistoryDetailViewController
-                destinationVC.hikeWorkout = selectedHikeWorkout
-            }
+            let destinationVC = segue.destination  as! HikeHistoryDetailViewController
+            destinationVC.hikeWorkout = selectedHikeWorkout
         }
     }
     
@@ -67,20 +64,12 @@ class HikeHistoryViewController: UIViewController, UITableViewDataSource, UITabl
         let workout = pastWorkouts[index]
         
         cell.hikeNameLabel.text = workout.hikeName
-        let startDate = workout.startDate
-        let convertedStartDate = dateFormatter.string(from: startDate!)
     
-        cell.hikeDateLabel.text = convertedStartDate
+        cell.hikeDateLabel.text = workout.startDate?.displayString
         cell.hikeDistanceLabel.text = "\(Int(workout.totalDistanceTraveled!)) meters"
-        
-        
-        
-        
+
         return cell
     }
-    
-    
-    
     
     //MARK: TableView Delegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -88,5 +77,14 @@ class HikeHistoryViewController: UIViewController, UITableViewDataSource, UITabl
         selectedHikeWorkout = pastWorkouts[index]
         performSegue(withIdentifier: hikeSelectedSegue, sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    
+    fileprivate func getWorkoutsFromMemoryAndUpdateTable() {
+        persistantContainer.fetchWorkouts()
+        pastWorkouts = persistantContainer.fetchedWorkouts
+        hikeHistoryTableView.delegate = self
+        hikeHistoryTableView.dataSource = self
+        hikeHistoryTableView.reloadData()
     }
 }

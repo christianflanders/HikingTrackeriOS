@@ -14,13 +14,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     var window: UIWindow?
+    
+    let navigationBarDefaultFont = UIFont(name: "Futura-Medium", size: 24)
+    let barButtonDefaultFont = UIFont(name: "Futura-Medium", size: 14)
+    let defaultBlack = DefaultUI().defaultBlack
+    
 
 
+
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        setNavigationBarTitleAttributes()
+        
         checkForUserInfoAndPresentCorrectScreen()
-
+        
+        
         return true
     }
 
@@ -62,6 +72,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    //Appearance Functions
+    fileprivate func setNavigationBarTitleAttributes() {
+    
+        let navigationTitleAttributes = [
+            NSAttributedStringKey.foregroundColor : defaultBlack,
+            NSAttributedStringKey.font: navigationBarDefaultFont!
+        ]
+        UINavigationBar.appearance().titleTextAttributes = navigationTitleAttributes
+        
+        let barButtonAttributes = [
+            NSAttributedStringKey.foregroundColor : defaultBlack,
+            NSAttributedStringKey.font: barButtonDefaultFont!
+        ]
+        UIBarButtonItem.appearance().setTitleTextAttributes(barButtonAttributes, for: UIControlState.normal)
+    }
+    
+
+    
+    
+
 
 }
 

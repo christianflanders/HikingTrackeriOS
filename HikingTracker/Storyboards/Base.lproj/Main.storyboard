@@ -87,7 +87,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Let's Go Hiking" id="1rz-rm-2fu"/>
+                    <navigationItem key="navigationItem" id="1rz-rm-2fu"/>
                     <connections>
                         <outlet property="latLongLabel" destination="gzk-n1-TEb" id="O8L-66-du7"/>
                         <segue destination="YQq-Y4-Q1O" kind="showDetail" identifier="StartHikeButtonPressed" id="NnQ-vf-NpL"/>
@@ -745,7 +745,9 @@ VGltZSBEb3duSBBpbGw
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Q6H-vg-R80"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ggD-T8-mpD"/>
+                    <navigationItem key="navigationItem" title="History" largeTitleDisplayMode="never" id="ggD-T8-mpD">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="AeG-AT-8wS"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="hikeHistoryTableView" destination="2fI-SV-0dV" id="yBx-Aa-XEZ"/>
                         <segue destination="oJe-bH-a9K" kind="show" identifier="HikeFromHistorySelected" id="cP0-qB-hhf"/>
