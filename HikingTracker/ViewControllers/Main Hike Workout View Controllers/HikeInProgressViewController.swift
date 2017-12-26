@@ -79,30 +79,19 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     
     //MARK: View Life Cycle
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationManager.delegate = self
-        locationManager.activityType = .fitness
-        locationManager.distanceFilter = 10
-        locationManager.allowsBackgroundLocationUpdates = true
-        locationManager.startUpdatingLocation()
+        setupAndStartLocationManager()
         if shouldStartHike {
             startHike()
         }
-        //Setup map view here becuase it murders interface builder
-        let url = URL(string: "mapbox://styles/mapbox/outdoors-v10")
-        mapView = MGLMapView(frame: mapContainerView.bounds, styleURL: url)
-        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        mapView.showsUserLocation = true
-        mapView.userLocationVerticalAlignment = .top
-        mapView.userTrackingMode = .follow
-        mapContainerView.addSubview(mapView)
+        createAndAddMapBoxView()
     }
     
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
+        timer?.invalidate()
         locationManager.stopUpdatingLocation()
     }
     
@@ -164,26 +153,14 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         }
     }
     
+    
     private func eachSecond(){
         convertDateAndSendToWatch(date: hikeWorkout.startDate!)
         updateDisplay()
         sendCaloriesToWatch()
-        if !hikeWorkout.paused {
-            hikeWorkout.duration += 1
-            if let coordinate = locationManager.location?.coordinate {
-                coordinatesForLine.append(coordinate)
-            }
-            if let elevationDirection = elevationDirection {
-                switch elevationDirection {
-                case .uphill :
-                    hikeWorkout.timeTraveldUpHill += 1
-                case .downhill :
-                    hikeWorkout.timeTraveledDownHill += 1
-                }
-            }
-            if coordinatesForLine.count != 0 {
-                mapView.drawLineOf(coordinatesForLine)
-            }
+        let coordinatesForLine = hikeWorkout.coordinates
+        if coordinatesForLine.count != 0 {
+            mapView.drawLineOf(coordinatesForLine)
         }
     }
     
@@ -264,6 +241,14 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
                 sendDistanceToWatch()
             }
         }
+    }
+    
+    fileprivate func setupAndStartLocationManager() {
+        locationManager.delegate = self
+        locationManager.activityType = .fitness
+        locationManager.distanceFilter = 10
+        locationManager.allowsBackgroundLocationUpdates = true
+        locationManager.startUpdatingLocation()
     }
     
     
@@ -347,6 +332,21 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         watchConnection.sendMessage(["calories" : stringCalories], replyHandler: nil) { error in
             print(error)
         }
+    }
+    
+    
+    
+    
+    //MARK: MapboxView
+    fileprivate func createAndAddMapBoxView() {
+        //Setup map view here becuase it murders interface builder
+        let url = URL(string: "mapbox://styles/mapbox/outdoors-v10")
+        mapView = MGLMapView(frame: mapContainerView.bounds, styleURL: url)
+        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        mapView.showsUserLocation = true
+        mapView.userLocationVerticalAlignment = .top
+        mapView.userTrackingMode = .follow
+        mapContainerView.addSubview(mapView)
     }
     
 }
