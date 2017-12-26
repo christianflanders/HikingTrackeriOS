@@ -9,6 +9,8 @@
 import Foundation
 import CoreLocation
 import CoreMotion
+import Solar
+
 
 class HikeWorkout {
     
@@ -50,6 +52,17 @@ class HikeWorkout {
     var timeTraveldUpHill = 0.0
     var timeTraveledDownHill = 0.0
 
+    
+    
+    var sunsetTime: String? {
+        guard let currentLocation = self.storedLocations.first else { return " " }
+        guard let startDate = startDate else {return " "}
+        let solar = Solar(for: startDate, coordinate: currentLocation.coordinate)
+        guard let sunset = solar?.sunset else { return "" }
+        let string = sunset.displayTimeOnly
+        
+        return string
+    }
     
     
     //Elevation & Distance Information

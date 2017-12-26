@@ -24,4 +24,11 @@ extension Date {
         let stringFormatted = dateFormatter.string(from: self)
         return stringFormatted
     }
+    var displayTimeOnly: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .none
+        dateFormatter.timeStyle = .short
+        let stringFormatted = dateFormatter.string(from: self)
+        return stringFormatted
+    }
 }

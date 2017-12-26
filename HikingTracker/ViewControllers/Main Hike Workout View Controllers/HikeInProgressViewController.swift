@@ -194,6 +194,9 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         
         
         //TODO: Sunset Label
+        if let sunsetTime = hikeWorkout.sunsetTime {
+            sunsetDisplayLabel.text = sunsetTime
+        }
         
     }
     
@@ -347,6 +350,12 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         mapView.userLocationVerticalAlignment = .top
         mapView.userTrackingMode = .follow
         mapContainerView.addSubview(mapView)
+    }
+    
+    
+    //MARK: Solar
+    private func calculateSunsetTime(){
+
     }
     
 }
