@@ -31,15 +31,19 @@ class HikeWorkout {
     var startDate : Date?
     var endDate: Date?
     
-    var duration: Double {
-        
+    var duration: Double = 0
     
+    private var calculatedDuration: Double {
+        guard let startDate = startDate else { return 0 }
+        guard let endDate = storedLocations.last?.timestamp else { return 0 }
+        let duration = endDate.timeIntervalSince(startDate)
+        return duration
     }
 
 
     
      var durationAsString: String {
-        return dateHelper.convertDurationToStringDate(duration)
+        return dateHelper.convertDurationToStringDate(calculatedDuration)
 
     }
     

@@ -193,6 +193,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     //MARK: UI Functions
     
     private func updateDisplay(){
+        
         let duration = hikeWorkout.durationAsString
         durationDisplayLabel.text = duration
         
