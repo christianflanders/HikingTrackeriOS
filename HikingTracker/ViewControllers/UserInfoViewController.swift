@@ -10,7 +10,7 @@ import UIKit
 import HealthKit
 
 
-class UserInfoViewController: UIViewController, UITextFieldDelegate{
+class UserInfoViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
     
     //MARK: Enums
@@ -18,13 +18,18 @@ class UserInfoViewController: UIViewController, UITextFieldDelegate{
     //MARK: Constants
     let user = User()
     let saveButtonPressedDestination = "MainTabBar"
+    let weightOptions = 0...600
+    
+    let lbsOrKilos = ["Pounds", "Kilograms"]
 
     //MARK: Variables
     
     //MARK: Outlets
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var weightTextField: UITextField!
+ 
     @IBOutlet weak var heightTextField: UITextField!
+    
+    @IBOutlet weak var pickerView: UIPickerView!
     
     //MARK: Weak Vars
     
@@ -40,11 +45,16 @@ class UserInfoViewController: UIViewController, UITextFieldDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let userWeight = user.weightInKilos {
-            weightTextField.text = String(userWeight)
-        } else {
-            weightTextField.text = "Please enter your weight"
-        }
+        
+        pickerView.dataSource = self
+        pickerView.delegate = self
+        
+        
+//        if let userWeight = user.weightInKilos {
+//            weightTextField.text = String(userWeight)
+//        } else {
+//            weightTextField.text = "Please enter your weight"
+//        }
         if let userHeight = user.heightInMeters {
             heightTextField.text = String(userHeight)
         } else {
@@ -55,17 +65,18 @@ class UserInfoViewController: UIViewController, UITextFieldDelegate{
         } else {
             nameTextField.text = "Please enter your name"
         }
-        // Do any additional setup after loading the view.
     }
     
 
     //MARK: IBActions
     
     @IBAction func importFromHealthKitButtonPressed(_ sender: UIButton) {
-   
-        
     }
     
+
+    @IBAction func setWeightButtonPressed(_ sender: UIButton) {
+        pickerView.isHidden = !pickerView.isHidden
+    }
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         //TODO: If all fields are not entered, display an error
@@ -85,7 +96,6 @@ class UserInfoViewController: UIViewController, UITextFieldDelegate{
         }
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
-        
         
     }
     
@@ -121,13 +131,7 @@ class UserInfoViewController: UIViewController, UITextFieldDelegate{
         }
         
     }
-    @IBAction func weightTextFieldEditingDidEnd(_ sender: UITextField) {
-        if sender.text != nil || sender.text != "" {
-            
-            weight = Double(sender.text!)
-        }
-        
-    }
+
     
     @IBAction func heightTextFieldEditingDidEnd(_ sender: UITextField) {
         if sender.text != nil || sender.text != "" {
@@ -136,6 +140,28 @@ class UserInfoViewController: UIViewController, UITextFieldDelegate{
     }
     
     
+    //Mark: UIPickerView Data Source
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 2
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if component == 0 {
+            return weightOptions.count
+        } else {
+            return lbsOrKilos.count
+        }
+
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if component == 0 {
+            return String(row)
+        } else {
+            return lbsOrKilos[row]
+        }
+    }
     
     
 }
