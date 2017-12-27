@@ -26,3 +26,22 @@ extension Meters {
     }
     
 }
+
+extension Meters {
+    
+    var getDisplayString: String {
+        let feetConversion = 3.2808
+        let user = User()
+        let userPreference = user.userDisplayUnits
+        if userPreference == .freedomUnits {
+            let convertedToFeet = Int(self * feetConversion)
+            let feet = String(convertedToFeet)
+            return "\(feet) ft"
+        } else {
+            let meters = String(Int(self))
+            return "\(meters) mtrs"
+        }
+        
+        
+    }
+}

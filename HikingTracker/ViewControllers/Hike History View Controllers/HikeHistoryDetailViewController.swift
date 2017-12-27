@@ -40,7 +40,12 @@ class HikeHistoryDetailViewController: UIViewController {
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        
+        self.tabBarController?.tabBar.isHidden = true
+
         elevationGainLabel.text = String((hikeWorkout.highestElevation - hikeWorkout.lowestElevation).asFeet)
         totalDistanceLabel.text = String(describing: hikeWorkout.totalDistanceTraveled?.asMiles)
         durationLabel.text = hikeWorkout.durationAsString

@@ -28,12 +28,12 @@ class User {
         }
         
     }
+    
+    var userDisplayUnits: DisplayUnits = .freedomUnits
 
-    
-    
-    
-    
-    
-    
- 
+}
+
+enum DisplayUnits {
+    case metric
+    case freedomUnits
 }

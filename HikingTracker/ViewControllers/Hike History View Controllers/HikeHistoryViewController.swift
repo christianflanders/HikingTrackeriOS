@@ -48,7 +48,7 @@ class HikeHistoryViewController: UIViewController, UITableViewDataSource, UITabl
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == hikeSelectedSegue {
-            let destinationVC = segue.destination  as! HikeHistoryDetailViewController
+            let destinationVC = segue.destination  as! HikeHistoryDetailTableViewController
             destinationVC.hikeWorkout = selectedHikeWorkout
         }
     }
