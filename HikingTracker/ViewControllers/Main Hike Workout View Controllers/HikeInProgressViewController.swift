@@ -175,14 +175,13 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         durationDisplayLabel.text = duration
         
         if let altitude = hikeWorkout.lastLocation?.altitude {
-            let shortenedAltitude = Int(altitude)
-            let stringToDisplay = "\(shortenedAltitude) meters"
+            let stringToDisplay = altitude.getDisplayString
             altitudeDisplayLabel.text = stringToDisplay
         }
         
         if let distance = hikeWorkout.totalDistanceTraveled {
-            let shortenedDistance = Int(distance)
-            let stringToDisplay = "\(shortenedDistance) meters"
+            
+            let stringToDisplay = distance.getDisplayString
             distanceDisplayLabel.text = stringToDisplay
         }
         
@@ -193,7 +192,6 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         //TODO: Pace Label
         
         
-        //TODO: Sunset Label
         if let sunsetTime = hikeWorkout.sunsetTime {
             sunsetDisplayLabel.text = sunsetTime
         }
