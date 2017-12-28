@@ -13,8 +13,10 @@ import HealthKit
 
 class InterfaceController: WKInterfaceController, WCSessionDelegate, HKWorkoutSessionDelegate, WKExtensionDelegate {
 
-    let pauseButtonPauseColor = #colorLiteral(red: 0.4403552711, green: 0.5654441118, blue: 0.1598808467, alpha: 1)
-    let pauseButtonResumeColor = #colorLiteral(red: 0.836998105, green: 0.01030125283, blue: 0.1089753732, alpha: 1)
+    private let watchMessages = WatchConnectionMessages()
+    
+    
+    
     private var timer: Timer?
     private var duration = ""
     private var startDateFromPhone: Date?
@@ -22,6 +24,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, HKWorkoutSe
     private var dateRecieved = false
     private var distanceRecieved = ""
     private var caloriesRecieved = ""
+    private var session: HKWorkoutSession?
     
     @IBOutlet var durationLabel: WKInterfaceLabel!
     @IBOutlet var caloriesBurnedLabel: WKInterfaceLabel!
@@ -29,6 +32,8 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, HKWorkoutSe
     
     @IBOutlet var pauseButtonOutlet: WKInterfaceButton!
     @IBOutlet var distanceLabel: WKInterfaceLabel!
+    @IBOutlet var endButtonOutlet: WKInterfaceButton!
+    @IBOutlet var resumeButtonOutlet: WKInterfaceButton!
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         print("WCSession activated on watch")
@@ -53,9 +58,12 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, HKWorkoutSe
             configuration.locationType = .outdoor
             wkExtension.delegate = self
             do {
-                let session = try HKWorkoutSession(configuration: configuration)
-                session.delegate = self
-                healthStore.start(session)
+                session = try HKWorkoutSession(configuration: configuration)
+                if let workoutSession = session {
+                    workoutSession.delegate = self
+                    healthStore.start(workoutSession)
+                }
+
             } catch {
                 fatalError("Problem starting workout session")
             }
@@ -69,6 +77,9 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, HKWorkoutSe
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        pauseButtonOutlet.setHidden(false)
+        endButtonOutlet.setHidden(true)
+        resumeButtonOutlet.setHidden(true)
         
     }
     
@@ -89,24 +100,43 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, HKWorkoutSe
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        print("message from phone recieved")
         if dateRecieved == false {
-            let dateStringFromPhone = message["startDate"] as! String
-
-            let dateFormatter = DateFormatter()
-            dateFormatter.locale = Locale(identifier: "en_US")
-            dateFormatter.dateStyle = .long
-            dateFormatter.timeStyle = .full
-            let returnDate = dateFormatter.date(from: dateStringFromPhone)
-            paused = false
-            guard let startDateFromPhoneRecieved = returnDate else {fatalError("problem converting date from phone")}
-            startDateFromPhone = startDateFromPhoneRecieved
-            dateRecieved = true
+            if let  dateStringFromPhone = message[watchMessages.startDate] as? String {
+                let dateFormatter = DateFormatter()
+                dateFormatter.locale = Locale(identifier: "en_US")
+                dateFormatter.dateStyle = .long
+                dateFormatter.timeStyle = .full
+                let returnDate = dateFormatter.date(from: dateStringFromPhone)
+                paused = false
+                guard let startDateFromPhoneRecieved = returnDate else {fatalError("problem converting date from phone")}
+                startDateFromPhone = startDateFromPhoneRecieved
+                dateRecieved = true
+            }
         }
-        guard let calories = message["calories"] as? String else {return}
-        caloriesRecieved = calories
-        guard let distanceFromPhone = message["distance"] as? String else {return}
-        distanceRecieved = distanceFromPhone
+        if let calories = message[watchMessages.calories] as? String {
+            caloriesRecieved = calories
+        }
+        
+        if let distanceFromPhone = message[watchMessages.distance] as? String {
+            distanceRecieved = distanceFromPhone
+        }
+        
+        if let pauseHikeMessage = message[watchMessages.pauseHike] as? Bool {
+            if pauseHikeMessage {
+                pauseHike()
+            }
+        }
+        
+        if let resumeHikeMessage = message[watchMessages.resumeHike] as? Bool {
+            if resumeHikeMessage {
+                resumeHike()
+            }
+        }
+        if let endHikeMessage = message[watchMessages.endHike] as? Bool {
+            if endHikeMessage {
+                endHike()
+            }
+        }
     }
     
     
@@ -152,26 +182,51 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, HKWorkoutSe
     private func eachSecond(){
         if !paused {
             updateDisplay()
-            
         }
     }
     
     
     //MARK: Pause button
     
-    @IBAction func pauseButtonPressed() {
-        if paused {
-            watchConnection.sendMessage(["pause Hike": false], replyHandler: nil, errorHandler: nil)
-            pauseButtonOutlet.setTitle("Pause")
-            pauseButtonOutlet.setBackgroundColor(pauseButtonPauseColor)
-            paused = false
-        } else {
-            watchConnection.sendMessage(["pause Hike": true], replyHandler: nil, errorHandler: nil)
-            pauseButtonOutlet.setTitle("Resume")
-            pauseButtonOutlet.setBackgroundColor(pauseButtonResumeColor)
-            paused = true
-        }
+    fileprivate func pauseHike() {
+        watchConnection.sendMessage([watchMessages.pauseHike: true], replyHandler: nil, errorHandler: nil)
+        pauseButtonOutlet.setTitle("Pause")
+        pauseButtonOutlet.setHidden(true)
+        endButtonOutlet.setHidden(false)
+        resumeButtonOutlet.setHidden(false)
+        paused = true
     }
+    
+    fileprivate func resumeHike() {
+        watchConnection.sendMessage([watchMessages.resumeHike: true], replyHandler: nil, errorHandler: nil)
+        paused = false
+        pauseButtonOutlet.setHidden(false)
+        endButtonOutlet.setHidden(true)
+        resumeButtonOutlet.setHidden(true)
+    }
+    
+    @IBAction func pauseButtonPressed() {
+        pauseHike()
+    }
+    @IBAction func endButtonPressed() {
+        endHike()
+    }
+    
+    @IBAction func resumeButtonPressed() {
+        resumeHike()
+    }
+    
+    private func endHike(){
+        watchConnection.sendMessage([watchMessages.endHike: true], replyHandler: nil, errorHandler: nil)
+        pauseButtonOutlet.setHidden(false)
+        endButtonOutlet.setHidden(true)
+        resumeButtonOutlet.setHidden(true)
+        if let workOutSession = session {
+            healthStore.end(workOutSession)
+        }
+
+    }
+    
     
     
 }

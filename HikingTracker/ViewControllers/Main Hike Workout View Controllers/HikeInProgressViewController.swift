@@ -28,6 +28,8 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     
     private let watchConnection = WCSession.default
     
+    private let watchMessages = WatchConnectionMessages()
+    
     
     
     //MARK: Variables
@@ -91,16 +93,20 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     //MARK: IBActions
 
     @IBAction func pauseHikeButtonPressed(_ sender: UIButton) {
+        watchConnection.sendMessage([watchMessages.pauseHike : true], replyHandler: nil, errorHandler: nil)
         pauseHike()
     }
     
     @IBAction func holdToEndButtonPressed(_ sender: UIButton) {
+        watchConnection.sendMessage([watchMessages.endHike : true], replyHandler: nil, errorHandler: nil)
         endHike()
+        
     }
     
 
     
     @IBAction func resumeButtonPressed(_ sender: UIButton) {
+        watchConnection.sendMessage([watchMessages.resumeHike : true], replyHandler: nil, errorHandler: nil)
         resumeHike()
     }
     
@@ -133,6 +139,20 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         startHikeUISettings()
         convertDateAndSendToWatch(date: hikeWorkout.startDate!)
     }
+    
+    fileprivate func resumeHike() {
+        startHikeUISettings()
+        paused = false
+        hikeWorkout.paused = false
+
+    }
+    
+    fileprivate func pauseHike() {
+        pauseOrStopHikeUISettings()
+        paused = true
+        hikeWorkout.paused = true
+    }
+    
     private func endHike(){
         timer?.invalidate()
         locationManager.stopUpdatingLocation()
@@ -205,17 +225,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         holdToEndButtonOutlet.isHidden = true
     }
     
-    fileprivate func resumeHike() {
-        startHikeUISettings()
-        paused = false
-        hikeWorkout.paused = false
-    }
-    
-    fileprivate func pauseHike() {
-        pauseOrStopHikeUISettings()
-        paused = true
-        hikeWorkout.paused = true
-    }
+
     
     fileprivate func pauseOrStopHikeUISettings() {
         pauseHikeButtonOutlet.isHidden = true
@@ -277,22 +287,23 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
 
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         print("Message recieved from watch!")
+
         
-        if let pauseMessage = message["Pause Hike"] as? Bool {
+        if let pauseMessage = message[watchMessages.pauseHike] as? Bool {
             if pauseMessage {
                 DispatchQueue.main.async {
                     self.pauseHike()
                 }
             }
         }
-            if let resumeMessage = message["Resume Hike"] as? Bool {
+            if let resumeMessage = message[watchMessages.resumeHike] as? Bool {
                 if resumeMessage {
                     DispatchQueue.main.async {
                         self.resumeHike()
                     }
                 }
             }
-        if let endMessage = message["End Hike"] as? Bool {
+        if let endMessage = message[watchMessages.endHike] as? Bool {
             if endMessage {
                 DispatchQueue.main.async {
                     self.endHike()
@@ -328,7 +339,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         dateFormatter.timeStyle = .full
         
         let stringDateToSendToWatch = dateFormatter.string(from: date)
-        watchConnection.sendMessage(["startDate" : stringDateToSendToWatch], replyHandler: nil) { error in
+        watchConnection.sendMessage([watchMessages.startDate : stringDateToSendToWatch], replyHandler: nil) { error in
             print(error)
         }
     }
@@ -337,7 +348,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         guard let distance = hikeWorkout.totalDistanceTraveled else {return}
         let stringDistance =  String(Int(distance))
         let stringToSend = "\(stringDistance) meters"
-        watchConnection.sendMessage(["distance" : stringToSend], replyHandler: nil) { error in
+        watchConnection.sendMessage([watchMessages.distance : stringToSend], replyHandler: nil) { error in
         print(error)
         }
     }
@@ -345,7 +356,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     private func sendCaloriesToWatch() {
         let caloriesBurned = Int(hikeWorkout.totalCaloriesBurned)
         let stringCalories = String(caloriesBurned)
-        watchConnection.sendMessage(["calories" : stringCalories], replyHandler: nil) { error in
+        watchConnection.sendMessage([watchMessages.calories : stringCalories], replyHandler: nil) { error in
             print(error)
         }
     }

@@ -31,6 +31,7 @@ class UserInfoViewController: UIViewController, UITextFieldDelegate, UIPickerVie
     
     @IBOutlet weak var pickerView: UIPickerView!
     
+    @IBOutlet weak var setWeightButton: UIButton!
     //MARK: Weak Vars
     
     
@@ -40,6 +41,9 @@ class UserInfoViewController: UIViewController, UITextFieldDelegate, UIPickerVie
     private var name = ""
     private var weight: Double?
     private var height: Double?
+    
+    private var pickerWeight: Int?
+    private var pickerWeightUnit = ""
     
     //MARK: View Life Cycle
     
@@ -141,7 +145,7 @@ class UserInfoViewController: UIViewController, UITextFieldDelegate, UIPickerVie
     
     
     //Mark: UIPickerView Data Source
-    
+
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
     }
@@ -161,6 +165,20 @@ class UserInfoViewController: UIViewController, UITextFieldDelegate, UIPickerVie
         } else {
             return lbsOrKilos[row]
         }
+    }
+    
+    
+    
+    //MARK: Picker View Delegate
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if component == 0 {
+            pickerWeight = row
+        } else {
+            pickerWeightUnit = lbsOrKilos[row]
+        }
+        
+        setWeightButton.titleLabel?.text = "\(pickerWeight!) \(pickerWeightUnit)"
+
     }
     
     

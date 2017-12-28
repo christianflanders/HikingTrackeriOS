@@ -1350,6 +1350,7 @@ VGltZSBEb3duSBBpbGw
                         <outlet property="heightTextField" destination="9J9-PY-f2O" id="yXw-vE-5J1"/>
                         <outlet property="nameTextField" destination="PsV-Qh-ikA" id="oN6-PU-Wxp"/>
                         <outlet property="pickerView" destination="eiv-6j-ACs" id="Paf-7k-7XY"/>
+                        <outlet property="setWeightButton" destination="N4J-ev-vJK" id="Uab-jN-a35"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6cJ-a5-wUC" userLabel="First Responder" sceneMemberID="firstResponder"/>

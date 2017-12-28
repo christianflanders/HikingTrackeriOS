@@ -35,6 +35,7 @@ class HikeWorkout {
     
     var duration: Double = 0
     
+    
     private var calculatedDuration: Double {
         guard let startDate = startDate else { return 0 }
         let currentDate = Date()

@@ -23,6 +23,8 @@
 		6B7801741FD5F2AE006F29BD /* HikeInProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7801731FD5F2AE006F29BD /* HikeInProgressViewController.swift */; };
 		6B7801771FD618BE006F29BD /* HealthKitAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7801761FD618BE006F29BD /* HealthKitAuthorization.swift */; };
 		6B81261D1FDF7981009054A3 /* Meters Alias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B81261C1FDF7981009054A3 /* Meters Alias.swift */; };
+		6B8744D91FF493D2008A0FB5 /* Watch Connection Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8744D81FF493D2008A0FB5 /* Watch Connection Messages.swift */; };
+		6B8744DA1FF493D2008A0FB5 /* Watch Connection Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8744D81FF493D2008A0FB5 /* Watch Connection Messages.swift */; };
 		6B8CA65D1FEA2C1500F22CAF /* Graph View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8CA65C1FEA2C1500F22CAF /* Graph View.swift */; };
 		6B8FF3011FF2FD6F00536C42 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6A1D431FEF11A800C4AD3A /* DateExtension.swift */; };
 		6B8FF3061FF30ADC00536C42 /* StatHistoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8FF3051FF30ADC00536C42 /* StatHistoryCollectionViewCell.swift */; };
@@ -179,6 +181,7 @@
 		6B7801731FD5F2AE006F29BD /* HikeInProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeInProgressViewController.swift; sourceTree = "<group>"; };
 		6B7801761FD618BE006F29BD /* HealthKitAuthorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitAuthorization.swift; sourceTree = "<group>"; };
 		6B81261C1FDF7981009054A3 /* Meters Alias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meters Alias.swift"; sourceTree = "<group>"; };
+		6B8744D81FF493D2008A0FB5 /* Watch Connection Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Watch Connection Messages.swift"; path = "HikingTracker/Utilities/Watch Connection Messages.swift"; sourceTree = SOURCE_ROOT; };
 		6B8CA65C1FEA2C1500F22CAF /* Graph View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Graph View.swift"; sourceTree = "<group>"; };
 		6B8FF3051FF30ADC00536C42 /* StatHistoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatHistoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		6B8FF3071FF30B4600536C42 /* StatOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatOptions.swift; sourceTree = "<group>"; };
@@ -320,6 +323,7 @@
 		6B7801751FD6189E006F29BD /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				6B8744D81FF493D2008A0FB5 /* Watch Connection Messages.swift */,
 				6BD8C5CD1FD9EA3C00F8D97F /* Alerts.swift */,
 				6B81261C1FDF7981009054A3 /* Meters Alias.swift */,
 				6B7801761FD618BE006F29BD /* HealthKitAuthorization.swift */,
@@ -1051,6 +1055,7 @@
 				6B9B19171FDF133100E6A193 /* MapBox Extension.swift in Sources */,
 				6BCC75E11FD621A4005F2F19 /* HikeWorkoutModel.swift in Sources */,
 				6BE204261FE0C072004F0C3E /* HikeHistoryDetailViewController.swift in Sources */,
+				6B8744D91FF493D2008A0FB5 /* Watch Connection Messages.swift in Sources */,
 				6BAF5B9E1FDF410800480E6A /* GPXParser.swift in Sources */,
 				6B7801741FD5F2AE006F29BD /* HikeInProgressViewController.swift in Sources */,
 				6B8FF3061FF30ADC00536C42 /* StatHistoryCollectionViewCell.swift in Sources */,
@@ -1081,6 +1086,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BC0BE611FE99A2200C2498E /* HealthKitAuthorization.swift in Sources */,
+				6B8744DA1FF493D2008A0FB5 /* Watch Connection Messages.swift in Sources */,
 				6BC1DE7A1FD6553C00CB20D5 /* NotificationController.swift in Sources */,
 				6BC1DE7C1FD6553C00CB20D5 /* ComplicationController.swift in Sources */,
 				6BC0BE601FE8DCD700C2498E /* UserModel.swift in Sources */,
