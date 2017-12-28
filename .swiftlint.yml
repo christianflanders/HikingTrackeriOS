@@ -1,0 +1,12 @@
+disabled_rules:
+    - trailing_whitespace
+excluded:
+    - Carthage
+    - Pods
+    - Source/Charts-master
+    - Source/Pods
+    - Charts-master
+
+
+line_length: 200
+    
