@@ -9,10 +9,8 @@
 import Foundation
 import HealthKit
 
-
 class HealthKitStore {
     
-
     init() {}
     
     func storeHikeToHealthKit(_ hikeWorkout: HikeWorkout, name: String) {
@@ -38,9 +36,10 @@ class HealthKitStore {
         
         let duration = endDate.timeIntervalSince(startDate)
         
-        let workout = HKWorkout(activityType: .hiking, start: startDate, end: endDate, duration: duration, totalEnergyBurned: hkCalories, totalDistance: hkDistance, device: HKDevice.local(), metadata: nil)
+        let workout = HKWorkout(activityType: .hiking, start: startDate, end: endDate, duration: duration,
+                                totalEnergyBurned: hkCalories, totalDistance: hkDistance, device: HKDevice.local(), metadata: nil)
         
-        healthStore.save(workout) { (success, error) in
+        healthStore.save(workout) { (_, error) in
             if error == nil {
                 print("Success saving workout to health kit store!")
             } else {
@@ -51,5 +50,4 @@ class HealthKitStore {
         
     }
 
-    
 }
