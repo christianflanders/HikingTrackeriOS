@@ -86,7 +86,7 @@ class HikeFinishedViewController: UIViewController, UITextFieldDelegate {
         
         healthKit.storeHikeToHealthKit(finishedHikeWorkout, name: hikeWorkoutName)
         
-        presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+        presentingViewController?.presentingViewController?.dismiss(animated: false, completion: nil)
 //        performSegue(withIdentifier: saveSegueIdentifier, sender: self)
         
         
@@ -98,7 +98,7 @@ class HikeFinishedViewController: UIViewController, UITextFieldDelegate {
         //
         
         
-        presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+        presentingViewController?.presentingViewController?.dismiss(animated: false, completion: nil)
 
     }
     
