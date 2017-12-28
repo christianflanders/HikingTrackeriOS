@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/ChristianFlanders/Developer/App Projects/HikingWorkoutTracker/HikingTracker/HikingTracker/Views/UserInfoTableViewCell.swift">
+   </FileRef>
+   <FileRef
       location = "group:HikingTracker.xcodeproj">
    </FileRef>
    <FileRef
