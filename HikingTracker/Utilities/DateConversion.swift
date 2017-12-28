@@ -8,10 +8,9 @@
 
 import Foundation
 
-
 class DateHelper {
     
-    func convertDurationToStringDate(_ duration:Double) -> String {
+    func convertDurationToStringDate(_ duration: Double) -> String {
         let seconds = Int(duration)
         
         var stringMinutes = ""
