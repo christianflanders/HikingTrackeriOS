@@ -10,7 +10,6 @@ import Foundation
 
 typealias Calorie = Double
 
-
 extension Calorie {
     var getCalorieDisplayString: String {
         let shortened = Int(self)
