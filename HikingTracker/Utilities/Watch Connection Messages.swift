@@ -14,7 +14,6 @@ class WatchConnectionMessages {
     let resumeHike = "Resume Hike"
     let endHike = "End Hike"
 
-    
     let startDate = "Start Date"
     let calories = "Calories"
     let distance = "Distance"

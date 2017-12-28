@@ -6,6 +6,9 @@ excluded:
     - Source/Charts-master
     - Source/Pods
     - Charts-master
+    - HikingTracker/Utilities/GPXParser.swift
+    - Source/Utilites/GPXParser.swift
+
 
 
 line_length: 200

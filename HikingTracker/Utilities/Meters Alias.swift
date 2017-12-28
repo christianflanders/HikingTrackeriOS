@@ -14,12 +14,12 @@ typealias Feet = Double
 
 
 extension Meters {
-    var asMiles : Miles{
+    var asMiles: Miles {
         let mileConversion = 0.00062137
         return self * mileConversion
     }
     
-    var asFeet : Feet {
+    var asFeet: Feet {
         let feetConversion = 3.2808
         return self * feetConversion
         
@@ -41,7 +41,6 @@ extension Meters {
             let meters = String(Int(self))
             return "\(meters) mtrs"
         }
-        
         
     }
 }
