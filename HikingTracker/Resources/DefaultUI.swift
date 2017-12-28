@@ -8,11 +8,10 @@
 
 import UIKit
 
-class DefaultUI{
+class DefaultUI {
 
     public let defaultBlack = UIColor.init(red: 10/255, green: 42/255, blue: 53/255, alpha: 1)
 
-    
     public let navBarBackgroundImage = #imageLiteral(resourceName: "Topo map")
 
 }

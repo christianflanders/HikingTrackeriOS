@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 enum Stats {
     case duration
     case distance 

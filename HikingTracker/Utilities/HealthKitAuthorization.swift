@@ -25,7 +25,6 @@ class HealthKitAuthroizationSetup {
         }
         //Check that we can access data from healthkit
         guard   let dateOfBirth = HKObjectType.characteristicType(forIdentifier: .dateOfBirth),
-            let bloodType = HKObjectType.characteristicType(forIdentifier: .bloodType),
             let biologicalSex = HKObjectType.characteristicType(forIdentifier: .biologicalSex),
             let bodyMassIndex = HKObjectType.quantityType(forIdentifier: .bodyMassIndex),
             let height = HKObjectType.quantityType(forIdentifier: .height),
@@ -39,7 +38,7 @@ class HealthKitAuthroizationSetup {
         
         let healthKitTypesToWrite: Set<HKSampleType> = [activeEnergy, HKObjectType.workoutType()]
         
-        let healthKitTypesToRead: Set<HKObjectType> = [dateOfBirth, biologicalSex,bodyMassIndex,height,bodyMass,HKObjectType.workoutType()]
+        let healthKitTypesToRead: Set<HKObjectType> = [dateOfBirth, heartRate, biologicalSex, bodyMassIndex, height, bodyMass, HKObjectType.workoutType()]
         
         HKHealthStore().requestAuthorization(toShare: healthKitTypesToWrite, read: healthKitTypesToRead) { (sucess,error) in
             completion(sucess,error)

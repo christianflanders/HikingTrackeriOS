@@ -15,8 +15,5 @@ extension MGLMapView {
         let line = MGLPolyline(coordinates: coordinates, count: UInt(coordinates.count))
         self.addAnnotation(line)
     }
-    
-    
-    
-    
+
 }
