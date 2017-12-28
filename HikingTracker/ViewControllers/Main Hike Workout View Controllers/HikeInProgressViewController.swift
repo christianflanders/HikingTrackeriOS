@@ -156,6 +156,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     
     private func eachSecond(){
         convertDateAndSendToWatch(date: hikeWorkout.startDate!)
+        hikeWorkout.duration += 1
         updateDisplay()
         sendCaloriesToWatch()
         let coordinatesForLine = hikeWorkout.coordinates
@@ -352,8 +353,6 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     
     
     //MARK: Solar
-    private func calculateSunsetTime(){
 
-    }
     
 }
