@@ -39,7 +39,7 @@ final class PersistanceService {
         }
         do {
             try context.save()
-        } catch  {
+        } catch {
             print("Problem saving to coreData")
         }
         fetchWorkouts()
@@ -48,31 +48,25 @@ final class PersistanceService {
     
     //TODO: Delete Saved Hike
     
-    
-    
     //TODO: Edit Saved Hike
     
-    
-    
-    
-    
-    func fetchWorkouts(){
+    func fetchWorkouts() {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "SavedHikeWorkout")
         let dateSort = NSSortDescriptor(key: "startDate", ascending: false)
         fetchRequest.sortDescriptors = [dateSort]
         var fetchedHikeWorkouts = [SavedHikeWorkout]()
         do {
             try fetchedHikeWorkouts = context.fetch(fetchRequest) as! [SavedHikeWorkout]
-        } catch  {
+        } catch {
             print("problem retriving workouts from coreData")
         }
         fetchedWorkouts = convertSavedHikesToRegularClass(fetchedHikeWorkouts)
     }
     
-    private func convertSavedHikesToRegularClass(_ fetched:[SavedHikeWorkout]) ->[HikeWorkout] {
+    private func convertSavedHikesToRegularClass(_ fetched: [SavedHikeWorkout]) -> [HikeWorkout] {
         var convertedHikes = [HikeWorkout]()
         for hike in fetched {
-            var convertedHike = HikeWorkout()
+            let convertedHike = HikeWorkout()
             if let startDate = hike.startDate {
                 convertedHike.startDate = startDate
             } else {
@@ -82,10 +76,15 @@ final class PersistanceService {
             }
             convertedHike.hikeName = hike.name!
             for coordinate in hike.locations! {
-                let savedLocation = coordinate as! Locations
-                let coordinate = CLLocationCoordinate2DMake(savedLocation.latitude, savedLocation.longitude)
-                let newLocation = CLLocation(coordinate: coordinate, altitude: savedLocation.altitude, horizontalAccuracy: savedLocation.horizontalAccuracy, verticalAccuracy: savedLocation.verticalAccuracy, timestamp: savedLocation.timestamp!)
-                convertedHike.lastLocation = newLocation
+                if let savedLocation = coordinate as? Locations {
+                    let coordinate = CLLocationCoordinate2DMake(savedLocation.latitude, savedLocation.longitude)
+                    let newLocation = CLLocation(coordinate: coordinate,
+                                                 altitude: savedLocation.altitude,
+                                                 horizontalAccuracy: savedLocation.horizontalAccuracy,
+                                                 verticalAccuracy: savedLocation.verticalAccuracy,
+                                                 timestamp: savedLocation.timestamp!)
+                    convertedHike.lastLocation = newLocation
+                }
             }
             convertedHikes.append(convertedHike)
         }
@@ -101,7 +100,7 @@ final class PersistanceService {
          error conditions that could cause the creation of the store to fail.
          */
         let container = NSPersistentContainer(name: "HikingTracker")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
@@ -135,6 +134,5 @@ final class PersistanceService {
             }
         }
     }
-    
     
 }
