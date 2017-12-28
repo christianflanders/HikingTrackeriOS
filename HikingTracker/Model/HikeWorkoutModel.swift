@@ -26,7 +26,7 @@ class HikeWorkout {
 
     private let dateHelper = DateHelper()
     
-    
+    var pausedTime = 0.0
     var paused = false
     //Time Information
 //    var seconds = 0
@@ -38,7 +38,9 @@ class HikeWorkout {
     private var calculatedDuration: Double {
         guard let startDate = startDate else { return 0 }
         let currentDate = Date()
-        return currentDate.timeIntervalSince(startDate)
+        let calculatedDuration = currentDate.timeIntervalSince(startDate)
+        let calculatedDurationWithoutPausedTime = calculatedDuration - pausedTime
+        return calculatedDurationWithoutPausedTime
     }
 
 
@@ -97,7 +99,7 @@ class HikeWorkout {
         var totalDistanceTraveleDownhill = 0.0
         guard var lastLocation = storedLocations.first else {return 0.0}
         for i in storedLocations {
-            if (i.altitude < lastLocation.altitude) && !paused  {
+            if (i.altitude < lastLocation.altitude) {
                 totalDistanceTraveleDownhill += i.distance(from: lastLocation)
                 
             }
@@ -110,7 +112,7 @@ class HikeWorkout {
         var totalDistanceTraveledUphill = 0.0
         guard var lastLocation = storedLocations.first else {return 0.0}
         for i in storedLocations {
-            if (lastLocation.altitude < i.altitude || lastLocation.altitude == i.altitude ) && !paused {
+            if (lastLocation.altitude < i.altitude || lastLocation.altitude == i.altitude ){
                 totalDistanceTraveledUphill += i.distance(from: lastLocation)
             }
             lastLocation = i

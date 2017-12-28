@@ -19,16 +19,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     
     //MARK: Enums
     
-    enum ElevationDirection {
-        case uphill
-        case downhill
-    }
-    
-    enum unitsToDisplay {
-        case metric
-        case freedomUnits
-        
-    }
+
     //MARK: Constants
     
     private let locationManager = LocationManager.shared
@@ -72,9 +63,10 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     private var coordinatesForLine = [CLLocationCoordinate2D]()
     private var mapView : MGLMapView!
     private  var hikeWorkout = HikeWorkout()
-    private var elevationDirection: ElevationDirection?
     
     private var statsHidden = false
+    
+    private var paused = false
     
     
     //MARK: View Life Cycle
@@ -103,10 +95,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     }
     
     @IBAction func holdToEndButtonPressed(_ sender: UIButton) {
-        timer?.invalidate()
-        locationManager.stopUpdatingLocation()
-        hikeWorkout.endDate = Date()
-        performSegue(withIdentifier: "HikeFinishedSegue", sender: self)
+        endHike()
     }
     
 
@@ -144,7 +133,12 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         startHikeUISettings()
         convertDateAndSendToWatch(date: hikeWorkout.startDate!)
     }
-
+    private func endHike(){
+        timer?.invalidate()
+        locationManager.stopUpdatingLocation()
+        hikeWorkout.endDate = Date()
+        performSegue(withIdentifier: "HikeFinishedSegue", sender: self)
+    }
     //MARK: Timer Functions
     
     private func startTimer(){
@@ -163,6 +157,9 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         if coordinatesForLine.count != 0 {
             mapView.drawLineOf(coordinatesForLine)
         }
+        if paused {
+            hikeWorkout.pausedTime += 1
+        }
     }
     
     
@@ -171,9 +168,12 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     //MARK: UI Functions
     
     private func updateDisplay(){
-        
-        let duration = hikeWorkout.durationAsString
-        durationDisplayLabel.text = duration
+        //This is kind of hiding the problem where if paused it jumps back and forth between 2 different seconds...🙃
+        if !paused {
+            let duration = hikeWorkout.durationAsString
+            durationDisplayLabel.text = duration
+        }
+
         
         if let altitude = hikeWorkout.lastLocation?.altitude {
             let stringToDisplay = altitude.getDisplayString
@@ -207,11 +207,13 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     
     fileprivate func resumeHike() {
         startHikeUISettings()
+        paused = false
         hikeWorkout.paused = false
     }
     
     fileprivate func pauseHike() {
         pauseOrStopHikeUISettings()
+        paused = true
         hikeWorkout.paused = true
     }
     
@@ -276,16 +278,28 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         print("Message recieved from watch!")
         
-        let pauseMessage = message["pause Hike"] as! Bool
-        if pauseMessage {
-            DispatchQueue.main.async {
-                self.pauseHike()
-            }
-        } else if !pauseMessage{
-            DispatchQueue.main.async {
-                self.resumeHike()
+        if let pauseMessage = message["Pause Hike"] as? Bool {
+            if pauseMessage {
+                DispatchQueue.main.async {
+                    self.pauseHike()
+                }
             }
         }
+            if let resumeMessage = message["Resume Hike"] as? Bool {
+                if resumeMessage {
+                    DispatchQueue.main.async {
+                        self.resumeHike()
+                    }
+                }
+            }
+        if let endMessage = message["End Hike"] as? Bool {
+            if endMessage {
+                DispatchQueue.main.async {
+                    self.endHike()
+                }
+            }
+        }
+
     }
     
     private func checkForWatchConnection() {
