@@ -114,12 +114,15 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     @IBAction func tappedOnMapView(_ sender: UITapGestureRecognizer) {
         let animationDuration = 0.5
         if !statsHidden {
+            mapView.userLocationVerticalAlignment = MGLAnnotationVerticalAlignment.center
             UIView.animate(withDuration: animationDuration) {
+
                 self.duringHikeStatsContainerView.alpha = 0
                 self.gradImageView.alpha = 0
                 self.statsHidden = true
             }
             } else {
+                mapView.userLocationVerticalAlignment = MGLAnnotationVerticalAlignment.top
                 UIView.animate(withDuration: animationDuration) {
                     self.duringHikeStatsContainerView.alpha = 1
                     self.gradImageView.alpha = 1
