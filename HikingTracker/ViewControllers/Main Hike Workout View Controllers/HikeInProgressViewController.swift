@@ -206,9 +206,8 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
             distanceDisplayLabel.text = stringToDisplay
         }
         
-        let caloriesBurned = Int(hikeWorkout.totalCaloriesBurned)
-        let stringCalories = "\(caloriesBurned) kcl"
-        caloriesBurnedDisplayLabel.text = stringCalories
+        let caloriesBurned = hikeWorkout.totalCaloriesBurned.getCalorieDisplayString
+        caloriesBurnedDisplayLabel.text = caloriesBurned
         
         //TODO: Pace Label
         

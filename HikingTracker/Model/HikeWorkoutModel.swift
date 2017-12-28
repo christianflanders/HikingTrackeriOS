@@ -128,7 +128,7 @@ class HikeWorkout {
     private let hikeUphillMETValue = 6.00
     private let hikeDownhillMETValue = 2.8
     
-    var totalCaloriesBurned: Double {
+    var totalCaloriesBurned: Calorie {
         var totalCaloriesBurned: Double = 0.0
         guard let userWeight = user.weightInKilos else {return 0}
         
@@ -174,12 +174,7 @@ class HikeWorkout {
 }
 
 
-enum hikeState {
-    case notStarted
-    case paused
-    case started
-    case finished
-}
+
 
 
 
