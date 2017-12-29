@@ -19,17 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let barButtonDefaultFont = UIFont(name: "Futura-Medium", size: 14)
     let defaultBlack = DefaultUI().defaultBlack
     
-
-
-
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         setNavigationBarTitleAttributes()
         
         checkForUserInfoAndPresentCorrectScreen()
-        
         
         return true
     }
@@ -58,15 +53,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PersistanceService.store.saveContext()
     }
 
-    func checkForUserInfoAndPresentCorrectScreen(){
+    func checkForUserInfoAndPresentCorrectScreen() {
         let myUser = User()
-        print(myUser.weightInKilos)
         let userWeight = myUser.weightInKilos
         if userWeight == nil  || userWeight == 0 {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.window = UIWindow(frame: UIScreen.main.bounds)
             let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil) // this assumes your storyboard is titled "Main.storyboard"
-            let yourVC = mainStoryboard.instantiateViewController(withIdentifier: "User Info") as! UserInfoViewController
+            let yourVC = mainStoryboard.instantiateViewController(withIdentifier: "User Info") as! UserViewController
             appDelegate.window?.rootViewController = yourVC
             appDelegate.window?.makeKeyAndVisible()
         }
@@ -76,22 +70,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     fileprivate func setNavigationBarTitleAttributes() {
     
         let navigationTitleAttributes = [
-            NSAttributedStringKey.foregroundColor : defaultBlack,
+            NSAttributedStringKey.foregroundColor: defaultBlack,
             NSAttributedStringKey.font: navigationBarDefaultFont!
         ]
         UINavigationBar.appearance().titleTextAttributes = navigationTitleAttributes
         
         let barButtonAttributes = [
-            NSAttributedStringKey.foregroundColor : defaultBlack,
+            NSAttributedStringKey.foregroundColor: defaultBlack,
             NSAttributedStringKey.font: barButtonDefaultFont!
         ]
         UIBarButtonItem.appearance().setTitleTextAttributes(barButtonAttributes, for: UIControlState.normal)
     }
-    
-
-    
-    
-
 
 }
-
