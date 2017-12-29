@@ -63,6 +63,8 @@ UIPickerViewDataSource, UIPickerViewDelegate {
     private var weightUnit = ""
     
     private var heightValue = ""
+    private var heightInchValue = ""
+    private var setHeightString = ""
     
     
     private var selectedStat: UserInputs?
@@ -213,8 +215,18 @@ UIPickerViewDataSource, UIPickerViewDelegate {
             weightButtonOutlet.setTitle(combinedString, for: .normal)
         case .height:
             if component == 0 {
-                
+                heightValue = String(row)
+            } else if component == 1 {
+                heightInchValue = String(row)
             }
+            if displayUnits == .freedomUnits {
+                setHeightString = "\(heightValue)\"\(heightInchValue) ft"
+            } else {
+                setHeightString = "\(heightValue) cm"
+            }
+            heightButtonOutlet.setTitle(setHeightString, for: .normal)
+            
+            
             //put shit here
         default:
             print("should not have hit default")
