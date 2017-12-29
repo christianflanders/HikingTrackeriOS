@@ -24,7 +24,6 @@
 		6B7801741FD5F2AE006F29BD /* HikeInProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7801731FD5F2AE006F29BD /* HikeInProgressViewController.swift */; };
 		6B7801771FD618BE006F29BD /* HealthKitAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7801761FD618BE006F29BD /* HealthKitAuthorization.swift */; };
 		6B81261D1FDF7981009054A3 /* Meters Alias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B81261C1FDF7981009054A3 /* Meters Alias.swift */; };
-		6B8414CA1FF5F30200C59C58 /* HikeHistoryStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B8414C81FF5F30200C59C58 /* HikeHistoryStoryboard.storyboard */; };
 		6B8744D91FF493D2008A0FB5 /* Watch Connection Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8744D81FF493D2008A0FB5 /* Watch Connection Messages.swift */; };
 		6B8744DA1FF493D2008A0FB5 /* Watch Connection Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8744D81FF493D2008A0FB5 /* Watch Connection Messages.swift */; };
 		6B8744DD1FF498B5008A0FB5 /* Calories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8744DC1FF498B5008A0FB5 /* Calories.swift */; };
@@ -182,8 +181,6 @@
 		6B7801731FD5F2AE006F29BD /* HikeInProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeInProgressViewController.swift; sourceTree = "<group>"; };
 		6B7801761FD618BE006F29BD /* HealthKitAuthorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitAuthorization.swift; sourceTree = "<group>"; };
 		6B81261C1FDF7981009054A3 /* Meters Alias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meters Alias.swift"; sourceTree = "<group>"; };
-		6B8414C81FF5F30200C59C58 /* HikeHistoryStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HikeHistoryStoryboard.storyboard; sourceTree = "<group>"; };
-		6B8414CB1FF5F32C00C59C58 /* MainHikeScreens.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = MainHikeScreens.storyboard; path = "/Users/ChristianFlanders/Developer/App Projects/HikingWorkoutTracker/HikingTracker/HikingTracker/Storyboards/MainHikeScreens.storyboard"; sourceTree = "<absolute>"; };
 		6B8744D81FF493D2008A0FB5 /* Watch Connection Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Watch Connection Messages.swift"; path = "HikingTracker/Utilities/Watch Connection Messages.swift"; sourceTree = SOURCE_ROOT; };
 		6B8744DC1FF498B5008A0FB5 /* Calories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calories.swift; sourceTree = "<group>"; };
 		6B8FF3051FF30ADC00536C42 /* StatHistoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatHistoryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -411,8 +408,6 @@
 		6BB63A3B1FD5CD3200E9F4A1 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				6B8414CB1FF5F32C00C59C58 /* MainHikeScreens.storyboard */,
-				6B8414C81FF5F30200C59C58 /* HikeHistoryStoryboard.storyboard */,
 				6BB63A0D1FD5CCE600E9F4A1 /* Main.storyboard */,
 				6BB63A151FD5CCE600E9F4A1 /* LaunchScreen.storyboard */,
 			);
@@ -746,7 +741,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B8414CA1FF5F30200C59C58 /* HikeHistoryStoryboard.storyboard in Resources */,
 				6BB63A171FD5CCE600E9F4A1 /* LaunchScreen.storyboard in Resources */,
 				6B6E19D81FEDE7EE00B5605A /* Ailerons-Typeface.otf in Resources */,
 				6B6A1D4F1FF2EF3800C4AD3A /* RK_gpx _2017-12-20_1333-xc.gpx in Resources */,

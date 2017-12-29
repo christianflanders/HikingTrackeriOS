@@ -2,12 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/ChristianFlanders/Developer/App Projects/HikingWorkoutTracker/HikingTracker/HikingTracker/Storyboards/MainHikeScreens.storyboard">
-   </FileRef>
-   <FileRef
-      location = "group:HikingTracker/Storyboards/Base.lproj/HikeHistoryStoryboard.storyboard">
-   </FileRef>
-   <FileRef
       location = "group:/Users/ChristianFlanders/Developer/App Projects/HikingWorkoutTracker/HikingTracker/HikingTracker/Views/UserInfoTableViewCell.swift">
    </FileRef>
    <FileRef
