@@ -66,6 +66,8 @@ UIPickerViewDataSource, UIPickerViewDelegate {
     private var heightInchValue = ""
     private var setHeightString = ""
     
+    private var genderVaule = ""
+    
     
     private var selectedStat: UserInputs?
     
@@ -116,19 +118,27 @@ UIPickerViewDataSource, UIPickerViewDelegate {
     
     @IBAction func weightButttonPressed(_ sender: UIButton) {
         showPickerViewFor(.weight)
+        pickerView.reloadAllComponents()
+
     }
     
     @IBAction func heightButtonPressed(_ sender: UIButton) {
         showPickerViewFor(.height)
+        pickerView.reloadAllComponents()
+
     }
     
     @IBAction func sexButtonPressed(_ sender: UIButton) {
         showPickerViewFor(.gender)
+        pickerView.reloadAllComponents()
+
         
     }
     
     @IBAction func birthdayButtonPressed(_ sender: UIButton) {
         showPickerViewFor(.birthdate)
+        pickerView.reloadAllComponents()
+
     }
     
     func showPickerViewFor(_ input: UserInputs) {
@@ -183,6 +193,8 @@ UIPickerViewDataSource, UIPickerViewDelegate {
             } else {
                 return 275
             }
+        case .gender:
+            return genderOptions.count
         default:
             return 2
         }
@@ -200,6 +212,8 @@ UIPickerViewDataSource, UIPickerViewDelegate {
             }
         case .height:
             return String(row)
+        case .gender:
+            return genderOptions[row]
         default:
             return " "
         }
@@ -213,6 +227,7 @@ UIPickerViewDataSource, UIPickerViewDelegate {
             weightVaule = row
             let combinedString = "\(weightVaule) \(weightDisplayUnit)"
             weightButtonOutlet.setTitle(combinedString, for: .normal)
+            
         case .height:
             if component == 0 {
                 heightValue = String(row)
@@ -226,6 +241,9 @@ UIPickerViewDataSource, UIPickerViewDelegate {
             }
             heightButtonOutlet.setTitle(setHeightString, for: .normal)
             
+        case .gender :
+            genderVaule = genderOptions[row]
+            sexButtonOutlet.setTitle(genderVaule, for: .normal)
             
             //put shit here
         default:
@@ -284,6 +302,10 @@ UIPickerViewDataSource, UIPickerViewDelegate {
         switch whichSet {
         case .weight:
             weightSet = true
+        case .height:
+            heightSet  = true
+        case .gender:
+            genderSet = true
         default:
             print("Probably shouldnt have hit default here")
         }
