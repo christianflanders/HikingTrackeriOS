@@ -1381,19 +1381,18 @@ VGltZSBEb3duSBBpbGw
                                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sWa-qv-bIM">
                                                                 <rect key="frame" x="0.0" y="0.0" width="394" height="44.666666666666664"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="naY-5R-3Dc">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="44.666666666666664"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="naY-5R-3Dc">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="331" height="44.666666666666664"/>
                                                                         <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Set" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gq8-7N-vxx">
-                                                                        <rect key="frame" x="335" y="0.0" width="59" height="44.666666666666664"/>
-                                                                        <gestureRecognizers/>
-                                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="Not Set" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YZ2-wC-2cr">
+                                                                        <rect key="frame" x="331" y="0.0" width="63" height="44.666666666666664"/>
                                                                         <nil key="textColor"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
+                                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="name"/>
+                                                                    </textField>
                                                                 </subviews>
                                                                 <viewLayoutGuide key="safeArea" id="soN-Bx-2vE"/>
                                                             </stackView>
@@ -1598,6 +1597,7 @@ VGltZSBEb3duSBBpbGw
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9nl-Oe-wUf">
                                                         <rect key="frame" x="0.0" y="0.0" width="334" height="63.666666666666664"/>
                                                         <color key="backgroundColor" red="0.7166367173" green="0.91973358390000004" blue="0.5048458576" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
                                                         <state key="normal" title="Save">
                                                             <color key="titleColor" red="0.39296454190000002" green="0.52612155679999995" blue="0.10508745160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
@@ -1610,6 +1610,7 @@ VGltZSBEb3duSBBpbGw
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MpF-BP-Db3">
                                                         <rect key="frame" x="0.0" y="85.666666666666629" width="334" height="63.333333333333343"/>
                                                         <color key="backgroundColor" red="0.3891063333" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
                                                         <state key="normal" title="Import From HealthKit">
                                                             <color key="titleColor" red="1" green="0.3469023705" blue="0.33474233749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
@@ -1655,7 +1656,7 @@ VGltZSBEb3duSBBpbGw
                         <outlet property="datePicker" destination="Ed2-nh-TVf" id="lJM-M1-Rgc"/>
                         <outlet property="doneButtonOutlet" destination="GGa-jU-0Wl" id="YeU-Ub-j14"/>
                         <outlet property="heightButtonOutlet" destination="LYA-oW-8Y1" id="5Ov-jG-R9e"/>
-                        <outlet property="nameButtonOutlet" destination="Gq8-7N-vxx" id="gxv-4p-HRV"/>
+                        <outlet property="nameTextField" destination="YZ2-wC-2cr" id="JO1-ad-Rqb"/>
                         <outlet property="pickerContainerView" destination="qV8-Mw-ocS" id="R5m-SW-BWB"/>
                         <outlet property="pickerView" destination="OBN-l8-bSM" id="7qe-Gg-LUe"/>
                         <outlet property="saveImportButtonStack" destination="hFl-5o-NmP" id="maw-g9-Zsg"/>

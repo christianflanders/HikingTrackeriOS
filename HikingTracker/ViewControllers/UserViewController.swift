@@ -9,7 +9,8 @@
 import UIKit
 
 class UserViewController: UIViewController,
-UIPickerViewDataSource, UIPickerViewDelegate {
+UIPickerViewDataSource, UIPickerViewDelegate,
+UITextFieldDelegate{
     
     // MARK: Enums
     enum UserInputs {
@@ -43,9 +44,9 @@ UIPickerViewDataSource, UIPickerViewDelegate {
     @IBOutlet weak var pickerContainerView: UIView!
     
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var nameTextField: UITextField!
     
     @IBOutlet weak var doneButtonOutlet: UIButton!
-    @IBOutlet weak var nameButtonOutlet: UILabel!
     @IBOutlet weak var weightButtonOutlet: UIButton!
     @IBOutlet weak var heightButtonOutlet: UIButton!
     @IBOutlet weak var sexButtonOutlet: UIButton!
@@ -62,8 +63,8 @@ UIPickerViewDataSource, UIPickerViewDelegate {
     private var weightVaule = 0
     private var weightUnit = ""
     
-    private var heightValue = ""
-    private var heightInchValue = ""
+    private var heightValue = "0"
+    private var heightInchValue = "0"
     private var setHeightString = ""
     
     private var genderVaule = ""
@@ -93,6 +94,8 @@ UIPickerViewDataSource, UIPickerViewDelegate {
         pickerContainerView.isHidden = true
         pickerView.dataSource = self
         pickerView.delegate = self
+        
+        nameTextField.delegate = self
         
         datePicker.maximumDate = Date()
         hideDatePicker()
@@ -142,7 +145,7 @@ UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func showPickerViewFor(_ input: UserInputs) {
-        
+        textFieldWillEndEditing()
         selectedStat = input
         if input == .birthdate {
             hideButtons()
@@ -312,7 +315,6 @@ UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     
-    
     // MARK: Local Units
     
     func setUnitsToFreedom() {
@@ -325,5 +327,26 @@ UIPickerViewDataSource, UIPickerViewDelegate {
         user.userDisplayUnits = .metric
         weightDisplayUnit = "grams"
         heightDisplayUnit = "cm"
+    }
+    
+    // MARK: Saving Data
+    
+    func getAndSaveData() {
+        if weightSet && heightSet && genderSet && nameSet {
+            
+        }
+    }
+    
+    // MARK: Name Text Field
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textFieldWillEndEditing()
+        return true
+    }
+    
+    func textFieldWillEndEditing() {
+        nameTextField.resignFirstResponder()
+        nameTextField.placeholder = nameTextField.text
+        nameSet = true
     }
 }
