@@ -1579,8 +1579,10 @@ VGltZSBEb3duSBBpbGw
                                                             </datePicker>
                                                             <pickerView contentMode="scaleToFill" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="OBN-l8-bSM">
                                                                 <rect key="frame" x="0.0" y="38" width="413.66666666666669" height="191"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </pickerView>
                                                         </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </stackView>
                                                 </subviews>
                                                 <constraints>

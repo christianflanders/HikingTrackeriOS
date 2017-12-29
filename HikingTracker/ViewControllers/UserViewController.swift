@@ -9,11 +9,12 @@
 import UIKit
 
 class UserViewController: UIViewController,
-    UIPickerViewDataSource, UIPickerViewDelegate {
-
+UIPickerViewDataSource, UIPickerViewDelegate {
+    
     // MARK: Enums
     enum UserInputs {
         case name
+        case height
         case gender
         case birthdate
         case weight
@@ -26,10 +27,16 @@ class UserViewController: UIViewController,
     private let genderOptions = ["Male", "Female"]
     private let heightOptions = ["ft", "meters"]
     private let weightOptions = ["lbs", "kg"]
+    
+    
+    private let usaLocale = "es_US"
+    
+    private let user = User()
+    
     // MARK: Variables
     
     // MARK: Outlets
-
+    
     
     @IBOutlet weak var pickerView: UIPickerView!
     
@@ -50,12 +57,30 @@ class UserViewController: UIViewController,
     // MARK: Weak Vars
     
     // MARK: Public Variables
-
+    
     // MARK: Private Variables
+    private var weightVaule = 0
+    private var weightUnit = ""
+    
+    private var heightValue = ""
+    
     
     private var selectedStat: UserInputs?
     
-
+    private var nameSet = false
+    private var weightSet = false
+    private var heightSet = false
+    private var birthdaySet = false
+    private var genderSet = false
+    
+    private var defaultLocale: Locale!
+    private var displayUnits: DisplayUnits {
+        return user.userDisplayUnits
+    }
+    private var weightDisplayUnit = ""
+    private var heightDisplayUnit = ""
+    
+    
     // MARK: View Life Cycle
     
     override func viewDidLoad() {
@@ -69,32 +94,39 @@ class UserViewController: UIViewController,
         hideDatePicker()
         hidePicker()
         showButtons()
-        
-    }
+        defaultLocale = Locale.current
+        if defaultLocale.usesMetricSystem {
+            setUnitsToCommunist()
+        } else {
+            setUnitsToFreedom()
+        }
 
+    }
+    
     // MARK: IBActions
     
     @IBAction func pickerDoneButtonPressed(_ sender: UIButton) {
+        checkWhichStatAndMarkAsSet()
         hidePicker()
         hideDatePicker()
         showButtons()
     }
     
     @IBAction func weightButttonPressed(_ sender: UIButton) {
-
+        showPickerViewFor(.weight)
     }
     
     @IBAction func heightButtonPressed(_ sender: UIButton) {
-        showPickerViewFor(.weight)
+        showPickerViewFor(.height)
     }
     
     @IBAction func sexButtonPressed(_ sender: UIButton) {
         showPickerViewFor(.gender)
-
+        
     }
     
     @IBAction func birthdayButtonPressed(_ sender: UIButton) {
-                showPickerViewFor(.birthdate)
+        showPickerViewFor(.birthdate)
     }
     
     func showPickerViewFor(_ input: UserInputs) {
@@ -111,15 +143,21 @@ class UserViewController: UIViewController,
         }
     }
     
-    
     // MARK: UIPickerViewDelegate
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        guard let rowSelected = selectedStat else {return 0}
+        guard let rowSelected = selectedStat else {return 5}
         switch rowSelected {
         case .gender:
             return 1
-        
+        case .weight:
+            return 1
+        case .height:
+            if displayUnits == .freedomUnits {
+                return 2
+            } else {
+                return 1
+            }
         default:
             return 10
         }
@@ -129,22 +167,65 @@ class UserViewController: UIViewController,
     // MARK: UIPickerViewDataSource
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 2
+        guard let rowSelected = selectedStat else {return 5}
+        switch rowSelected {
+        case .weight:
+            return 600
+        case .height:
+            if displayUnits == .freedomUnits {
+                if component == 0 {
+                    return 9
+                } else {
+                    return 11
+                }
+            } else {
+                return 275
+            }
+        default:
+            return 2
+        }
         
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "Boobies"
+        guard let rowSelected = selectedStat else {return " "}
+        switch rowSelected {
+        case .weight:
+            if component == 0 {
+                return String(row)
+            } else {
+                return weightOptions[row]
+            }
+        case .height:
+            return String(row)
+        default:
+            return " "
+        }
+        
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-
+        guard let rowSelected = selectedStat else {return}
+        switch rowSelected {
+        case .weight:
+            weightVaule = row
+            let combinedString = "\(weightVaule) \(weightDisplayUnit)"
+            weightButtonOutlet.setTitle(combinedString, for: .normal)
+        case .height:
+            if component == 0 {
+                
+            }
+            //put shit here
+        default:
+            print("should not have hit default")
+        }
     }
     
     // MARK: UIDatePickerView
     
     @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
-
+        birthdayButtonOutlet.setTitle(sender.date.displayStringWithoutTime, for: .normal)
+        
     }
     
     // MARK: Showing/Hiding Functions
@@ -184,6 +265,31 @@ class UserViewController: UIViewController,
         doneButtonOutlet.isHidden = true
         pickerView.isHidden = true
     }
-
-
+    
+    
+    func checkWhichStatAndMarkAsSet() {
+        guard let whichSet = selectedStat else {return}
+        switch whichSet {
+        case .weight:
+            weightSet = true
+        default:
+            print("Probably shouldnt have hit default here")
+        }
+    }
+    
+    
+    
+    // MARK: Local Units
+    
+    func setUnitsToFreedom() {
+        user.userDisplayUnits = .freedomUnits
+        weightDisplayUnit = "lbs"
+        heightDisplayUnit = "ft"
+    }
+    
+    func setUnitsToCommunist() {
+        user.userDisplayUnits = .metric
+        weightDisplayUnit = "grams"
+        heightDisplayUnit = "cm"
+    }
 }
