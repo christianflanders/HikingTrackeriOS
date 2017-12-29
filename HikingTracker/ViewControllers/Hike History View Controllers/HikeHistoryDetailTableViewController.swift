@@ -42,7 +42,7 @@ class HikeHistoryDetailTableViewController: UITableViewController, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StatCell", for: indexPath) as! StatHistoryCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StatCell", for: indexPath) as? StatHistoryCollectionViewCell else {fatalError("Error creating collection view cell")}
         cell.hikeWorkout = hikeWorkout
         cell.setCellForStat(statsToDisplay[indexPath.row])
         return cell

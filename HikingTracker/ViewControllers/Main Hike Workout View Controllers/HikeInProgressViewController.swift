@@ -100,7 +100,6 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     @IBAction func holdToEndButtonPressed(_ sender: UIButton) {
         watchConnection.sendMessage([watchMessages.endHike : true], replyHandler: nil, errorHandler: nil)
         endHike()
-        
     }
     
 
@@ -241,7 +240,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "HikeFinishedSegue" {
-            let destinationVC = segue.destination as! HikeFinishedViewController
+            guard let destinationVC = segue.destination as? HikeFinishedViewController else {fatalError("Problem with HikeFinishedSegue")}
             destinationVC.hikeWorkout = hikeWorkout
         }
     }
@@ -290,7 +289,6 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         print("Message recieved from watch!")
 
-        
         if let pauseMessage = message[watchMessages.pauseHike] as? Bool {
             if pauseMessage {
                 DispatchQueue.main.async {

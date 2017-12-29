@@ -11,13 +11,9 @@ import Mapbox
 import Charts
 
 
-
-
-
 class HikeHistoryDetailViewController: UIViewController {
 
     var hikeWorkout = HikeWorkout()
-    
     
     @IBOutlet weak var elevationGainLabel: UILabel!
     @IBOutlet weak var totalDistanceLabel: UILabel!

@@ -54,7 +54,7 @@ class MainHikeScreenViewController: UIViewController{
         //If location services are turned off, display a notification to turn them back on in the settings
         //TODO: Fix alert. Mabye don't allow to dismiss alert unless notification services are turned on?
         if CLLocationManager.authorizationStatus() == .notDetermined || CLLocationManager.authorizationStatus() == .denied {
-            presentAlert(title: "Location can't be found!", message: "Turn on location services in settings", view: self)
+//            presentAlert(title: "Location can't be found!", message: "Turn on location services in settings", view: self)
         }
     }
 

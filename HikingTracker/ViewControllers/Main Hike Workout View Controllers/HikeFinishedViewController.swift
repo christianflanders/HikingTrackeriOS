@@ -74,7 +74,7 @@ class HikeFinishedViewController: UIViewController, UITextFieldDelegate {
         guard let finishedHikeWorkout = hikeWorkout else {fatalError("HikeWorkout not passed properly")}
         let persistanceService = PersistanceService.store
         guard let hikeWorkoutName = hikeWorkoutName else {
-            presentAlert(title: "Please name your workout!", message: "Got it", view: self)
+//            presentAlert(title: "Please name your workout!", message: "Got it", view: self)
             return
         }
         persistanceService.storeHikeWorkout(hikeWorkout: finishedHikeWorkout, name: hikeWorkoutName)

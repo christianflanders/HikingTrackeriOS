@@ -30,11 +30,10 @@ class HikeWorkout {
     var paused = false
     //Time Information
 //    var seconds = 0
-    var startDate : Date?
+    var startDate: Date?
     var endDate: Date?
     
     var duration: Double = 0
-    
     
     private var calculatedDuration: Double {
         guard let startDate = startDate else { return 0 }
@@ -44,8 +43,6 @@ class HikeWorkout {
         return calculatedDurationWithoutPausedTime
     }
 
-
-    
      var durationAsString: String {
         return dateHelper.convertDurationToStringDate(calculatedDuration)
 
@@ -54,8 +51,6 @@ class HikeWorkout {
     var timeTraveldUpHill = 0.0
     var timeTraveledDownHill = 0.0
 
-    
-    
     var sunsetTime: String? {
         guard let currentLocation = self.storedLocations.first else { return " " }
         guard let startDate = startDate else {return " "}
@@ -100,7 +95,7 @@ class HikeWorkout {
         var totalDistanceTraveleDownhill = 0.0
         guard var lastLocation = storedLocations.first else {return 0.0}
         for i in storedLocations {
-            if (i.altitude < lastLocation.altitude) {
+            if i.altitude < lastLocation.altitude {
                 totalDistanceTraveleDownhill += i.distance(from: lastLocation)
                 
             }
@@ -113,7 +108,7 @@ class HikeWorkout {
         var totalDistanceTraveledUphill = 0.0
         guard var lastLocation = storedLocations.first else {return 0.0}
         for i in storedLocations {
-            if (lastLocation.altitude < i.altitude || lastLocation.altitude == i.altitude ){
+            if lastLocation.altitude < i.altitude || lastLocation.altitude == i.altitude {
                 totalDistanceTraveledUphill += i.distance(from: lastLocation)
             }
             lastLocation = i
@@ -122,8 +117,7 @@ class HikeWorkout {
     }
     
     
-    
-    //Calorie Information
+        //Calorie Information
     
     private let hikeUphillMETValue = 6.00
     private let hikeDownhillMETValue = 2.8
@@ -159,22 +153,14 @@ class HikeWorkout {
                     timeTraveledDownHill += Double(newLocationToSet.timestamp.timeIntervalSince(lastLocationTime))
                 }
             }
-
-            
             //Add the previous location to our stored Locations
             storedLocations.append(lastLocationSet)
         }
     }
     
-
     var coordinates: [CLLocationCoordinate2D] {
         return storedLocations.map { return $0.coordinate }
     }
 
 }
-
-
-
-
-
 
