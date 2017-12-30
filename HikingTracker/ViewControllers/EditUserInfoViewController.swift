@@ -8,9 +8,9 @@
 
 import UIKit
 
-class UserViewController: UIViewController,
-UIPickerViewDataSource, UIPickerViewDelegate,
-UITextFieldDelegate{
+class EditUserInfoViewController: UIViewController,
+    UIPickerViewDataSource, UIPickerViewDelegate,
+UITextFieldDelegate {
     
     // MARK: Enums
     enum UserInputs {
@@ -29,7 +29,6 @@ UITextFieldDelegate{
     private let heightOptions = ["ft", "meters"]
     private let weightOptions = ["lbs", "kg"]
     
-    
     private let usaLocale = "es_US"
     
     private let user = User()
@@ -37,7 +36,6 @@ UITextFieldDelegate{
     // MARK: Variables
     
     // MARK: Outlets
-    
     
     @IBOutlet weak var pickerView: UIPickerView!
     
@@ -54,22 +52,40 @@ UITextFieldDelegate{
     
     @IBOutlet weak var saveImportButtonStack: UIStackView!
     
-    
     // MARK: Weak Vars
     
     // MARK: Public Variables
     
     // MARK: Private Variables
-    private var weightVaule = 0
+    private var setName = "" {
+        willSet {
+            nameSet = true
+        }
+    }
+    
+    private var weightVaule = 0 {
+        willSet {
+            weightSet = true
+        }
+    }
+    
     private var weightUnit = ""
     
-    private var heightValue = "0"
+    private var heightValue = "0" {
+        willSet {
+            heightSet = true
+        }
+    }
     private var heightInchValue = "0"
     private var setHeightString = ""
     
-    private var genderVaule = ""
+    private var genderVaule = "" {
+        willSet {
+            genderSet = true
+        }
+    }
     
-    
+
     private var selectedStat: UserInputs?
     
     private var nameSet = false
@@ -85,6 +101,11 @@ UITextFieldDelegate{
     private var weightDisplayUnit = ""
     private var heightDisplayUnit = ""
     
+    private var setBirthdate = Date() {
+        willSet {
+            birthdaySet = true
+        }
+    }
     
     // MARK: View Life Cycle
     
@@ -107,7 +128,7 @@ UITextFieldDelegate{
         } else {
             setUnitsToFreedom()
         }
-
+        
     }
     
     // MARK: IBActions
@@ -122,26 +143,29 @@ UITextFieldDelegate{
     @IBAction func weightButttonPressed(_ sender: UIButton) {
         showPickerViewFor(.weight)
         pickerView.reloadAllComponents()
-
+        
     }
     
     @IBAction func heightButtonPressed(_ sender: UIButton) {
         showPickerViewFor(.height)
         pickerView.reloadAllComponents()
-
+        
     }
     
     @IBAction func sexButtonPressed(_ sender: UIButton) {
         showPickerViewFor(.gender)
         pickerView.reloadAllComponents()
-
         
     }
     
     @IBAction func birthdayButtonPressed(_ sender: UIButton) {
         showPickerViewFor(.birthdate)
         pickerView.reloadAllComponents()
-
+        
+    }
+    
+    @IBAction func saveButtonPressed(_ sender: UIButton) {
+        getAndSaveData()
     }
     
     func showPickerViewFor(_ input: UserInputs) {
@@ -176,7 +200,6 @@ UITextFieldDelegate{
         default:
             return 10
         }
-        return 10
     }
     
     // MARK: UIPickerViewDataSource
@@ -248,7 +271,7 @@ UITextFieldDelegate{
             genderVaule = genderOptions[row]
             sexButtonOutlet.setTitle(genderVaule, for: .normal)
             
-            //put shit here
+        //put shit here
         default:
             print("should not have hit default")
         }
@@ -258,7 +281,8 @@ UITextFieldDelegate{
     
     @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
         birthdayButtonOutlet.setTitle(sender.date.displayStringWithoutTime, for: .normal)
-        
+        setBirthdate = sender.date
+        birthdaySet = true
     }
     
     // MARK: Showing/Hiding Functions
@@ -299,7 +323,6 @@ UITextFieldDelegate{
         pickerView.isHidden = true
     }
     
-    
     func checkWhichStatAndMarkAsSet() {
         guard let whichSet = selectedStat else {return}
         switch whichSet {
@@ -313,7 +336,6 @@ UITextFieldDelegate{
             print("Probably shouldnt have hit default here")
         }
     }
-    
     
     // MARK: Local Units
     
@@ -332,7 +354,63 @@ UITextFieldDelegate{
     // MARK: Saving Data
     
     func getAndSaveData() {
+        let conversionator = UnitConversions()
         if weightSet && heightSet && genderSet && nameSet {
+            if user.userDisplayUnits == .freedomUnits {
+                //Convert weight to grams to store
+                let weightInPounds = Double(weightVaule)
+                let weightInGrams = conversionator.convertPoundsToGrams(pounds: weightInPounds)
+                user.weightInKilos = weightInGrams
+                
+                //Convert height to cm to store
+                guard let heightFeet = Double(heightValue) else {return}
+                guard let heightInches = Double(heightInchValue) else {return}
+                let feetToInches = heightFeet * 12
+                let totalInches = feetToInches + heightInches
+                let inchesToCM = conversionator.convertInchesToCM(inches: totalInches)
+                user.heightInMeters = inchesToCM
+                
+                //Convert date to string and save
+                user.birthdate = setBirthdate
+                
+                //Save Name
+                user.name = setName
+                
+                //Save gender
+                user.gender = genderVaule
+                
+                print("Freedom units saved correctly!")
+            } else {
+                let weight = Double(weightVaule)
+                user.weightInKilos = weight
+                
+                if let height = Double(heightValue) {
+                    user.heightInMeters = height
+                }
+                
+                user.birthdate = setBirthdate
+                
+                user.name = setName
+                
+                user.gender = genderVaule
+                
+                print("Saved metric units!")
+            }
+            let alert = UIAlertController(title: "Saved", message: nil, preferredStyle: .alert)
+            let action = UIAlertAction(title: "Let's Go Hiking!", style: .default) { (buttonAction) in
+                let saveButtonPressedDestination = "MainTabBar"
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.window = UIWindow(frame: UIScreen.main.bounds)
+                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil) // this assumes your storyboard is titled "Main.storyboard"
+                let yourVC = mainStoryboard.instantiateViewController(withIdentifier: saveButtonPressedDestination) as! UITabBarController
+                appDelegate.window?.rootViewController = yourVC
+                appDelegate.window?.makeKeyAndVisible()
+            }
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+        } else {
+            print(nameSet, birthdaySet, weightSet, heightSet, genderSet)
+            //Present an alert saying which stat still needs to be set
             
         }
     }

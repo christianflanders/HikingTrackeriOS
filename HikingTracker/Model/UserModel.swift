@@ -34,10 +34,10 @@ class User {
     
     var birthdate: Date? {
         get {
-            return defaults.object(forKey: keys.birthdate) as! Date
+            return defaults.object(forKey: keys.birthdate) as? Date
         }
         set {
-            defaults.set(newValue, forKey: keys.birthdate)
+            defaults.set(newValue, forKey: keys.birthdate) 
         }
     }
     
@@ -85,6 +85,23 @@ class User {
             }
         }
     }
+    
+    func convertBirthdateToString(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .full
+        dateFormatter.timeStyle = .none
+        let stringToSave = dateFormatter.string(from: date)
+        return stringToSave
+    }
+    
+//    func convertBirthdateToString(_ string: String) -> Date {
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateStyle = .full
+//        dateFormatter.timeStyle = .none
+//        let dateToReturn = dateFormatter.date(from: string)
+//        return dateToReturn!
+//    }
+
 }
 
 enum DisplayUnits {

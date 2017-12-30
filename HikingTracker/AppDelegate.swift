@@ -60,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.window = UIWindow(frame: UIScreen.main.bounds)
             let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil) // this assumes your storyboard is titled "Main.storyboard"
-            let yourVC = mainStoryboard.instantiateViewController(withIdentifier: "User Info") as! UserViewController
+            let yourVC = mainStoryboard.instantiateViewController(withIdentifier: "User Info") as! EditUserInfoViewController
             appDelegate.window?.rootViewController = yourVC
             appDelegate.window?.makeKeyAndVisible()
         }

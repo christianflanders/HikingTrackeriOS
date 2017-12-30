@@ -13,9 +13,10 @@
 		3CF02C4715ECB45732E170F5 /* Pods_HikingTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C74058E951B1FDD231DA296F /* Pods_HikingTrackerUITests.framework */; };
 		6B1B12431FE9AB6300FFFDB4 /* DateConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1B12421FE9AB6300FFFDB4 /* DateConversion.swift */; };
 		6B1B12441FE9ABD900FFFDB4 /* DateConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1B12421FE9AB6300FFFDB4 /* DateConversion.swift */; };
+		6B31A6BD1FF6FD08002069B2 /* UnitConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B31A6BC1FF6FD08002069B2 /* UnitConversions.swift */; };
 		6B4F6E621FE09A6600545DE3 /* PersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4F6E611FE09A6600545DE3 /* PersistanceService.swift */; };
 		6B5904E21FDC791D00BF96CD /* HikeFinishedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5904E11FDC791D00BF96CD /* HikeFinishedViewController.swift */; };
-		6B5FA3921FF58BD4008C4771 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5FA3911FF58BD4008C4771 /* UserViewController.swift */; };
+		6B5FA3921FF58BD4008C4771 /* EditUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5FA3911FF58BD4008C4771 /* EditUserInfoViewController.swift */; };
 		6B6A1D421FEF09CC00C4AD3A /* DefaultUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6A1D411FEF09CC00C4AD3A /* DefaultUI.swift */; };
 		6B6A1D441FEF11A800C4AD3A /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6A1D431FEF11A800C4AD3A /* DateExtension.swift */; };
 		6B6A1D4F1FF2EF3800C4AD3A /* RK_gpx _2017-12-20_1333-xc.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 6B6A1D4E1FF2EF3800C4AD3A /* RK_gpx _2017-12-20_1333-xc.gpx */; };
@@ -171,9 +172,10 @@
 		6B1589501FEA3D6300AFB8C2 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B1B12421FE9AB6300FFFDB4 /* DateConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConversion.swift; sourceTree = "<group>"; };
 		6B249CA91FEA20370092B518 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B31A6BC1FF6FD08002069B2 /* UnitConversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitConversions.swift; sourceTree = "<group>"; };
 		6B4F6E611FE09A6600545DE3 /* PersistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceService.swift; sourceTree = "<group>"; };
 		6B5904E11FDC791D00BF96CD /* HikeFinishedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeFinishedViewController.swift; sourceTree = "<group>"; };
-		6B5FA3911FF58BD4008C4771 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		6B5FA3911FF58BD4008C4771 /* EditUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserInfoViewController.swift; sourceTree = "<group>"; };
 		6B6A1D411FEF09CC00C4AD3A /* DefaultUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUI.swift; sourceTree = "<group>"; };
 		6B6A1D431FEF11A800C4AD3A /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		6B6A1D4E1FF2EF3800C4AD3A /* RK_gpx _2017-12-20_1333-xc.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "RK_gpx _2017-12-20_1333-xc.gpx"; path = "../../../../Gpx Files/RK_gpx _2017-12-20_1333-xc.gpx"; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 		6B7801751FD6189E006F29BD /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				6B31A6BC1FF6FD08002069B2 /* UnitConversions.swift */,
 				6B8744D81FF493D2008A0FB5 /* Watch Connection Messages.swift */,
 				6B81261C1FDF7981009054A3 /* Meters Alias.swift */,
 				6B7801761FD618BE006F29BD /* HealthKitAuthorization.swift */,
@@ -421,7 +424,7 @@
 				6BE204271FE0C079004F0C3E /* Hike History View Controllers */,
 				6BB63A4A1FD5EA5500E9F4A1 /* ChecklistViewController.swift */,
 				6BB63A4C1FD5EA5E00E9F4A1 /* SettingsViewController.swift */,
-				6B5FA3911FF58BD4008C4771 /* UserViewController.swift */,
+				6B5FA3911FF58BD4008C4771 /* EditUserInfoViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1044,7 +1047,7 @@
 				6B81261D1FDF7981009054A3 /* Meters Alias.swift in Sources */,
 				6BA663B81FF58FFD00DAF05E /* UserStatTableViewCell.swift in Sources */,
 				6BE204291FE1CBDF004F0C3E /* Health Kit Utility.swift in Sources */,
-				6B5FA3921FF58BD4008C4771 /* UserViewController.swift in Sources */,
+				6B5FA3921FF58BD4008C4771 /* EditUserInfoViewController.swift in Sources */,
 				6B7801771FD618BE006F29BD /* HealthKitAuthorization.swift in Sources */,
 				6B8744DD1FF498B5008A0FB5 /* Calories.swift in Sources */,
 				6BB63A4B1FD5EA5500E9F4A1 /* ChecklistViewController.swift in Sources */,
@@ -1062,6 +1065,7 @@
 				6BB63A451FD5EA2F00E9F4A1 /* MainHikeScreenViewController.swift in Sources */,
 				6B9B19171FDF133100E6A193 /* MapBox Extension.swift in Sources */,
 				6BCC75E11FD621A4005F2F19 /* HikeWorkoutModel.swift in Sources */,
+				6B31A6BD1FF6FD08002069B2 /* UnitConversions.swift in Sources */,
 				6BE204261FE0C072004F0C3E /* HikeHistoryDetailViewController.swift in Sources */,
 				6B8744D91FF493D2008A0FB5 /* Watch Connection Messages.swift in Sources */,
 				6BAF5B9E1FDF410800480E6A /* GPXParser.swift in Sources */,
