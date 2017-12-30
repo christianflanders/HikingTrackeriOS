@@ -86,6 +86,39 @@ class User {
         }
     }
     
+    func getWeightForDisplay() -> String {
+        let unitConversion = UnitConversions()
+        let displayUnit = self.userDisplayUnits
+        guard let weight = self.weightInKilos else  {return "N/A"}
+        switch displayUnit {
+        case .freedomUnits:
+            let weightInPounds = unitConversion.convertGramsToPounds(grams: weight)
+            let weightString = "\(weightInPounds) lbs"
+            return weightString
+        case .metric:
+            let weightString = "\(weight) grams"
+            return weightString
+
+        }
+    }
+    
+    func getHeightForDisplay() -> String {
+        guard let height = self.heightInMeters else {return "N/A"}
+        let displayUnit = self.userDisplayUnits
+        let unitConversion = UnitConversions()
+        switch displayUnit {
+        case .freedomUnits:
+            let heightInInches = unitConversion.convertCMToInches(cm: height)
+            let feet = Int(heightInInches) / 12
+            let inches = Int(heightInInches) % 12
+            let heightString = "\(feet)\"\(inches) ft"
+            return heightString
+        case .metric:
+            let heightString = "\(height) cm"
+            return heightString
+        }
+    }
+    
     func convertBirthdateToString(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .full

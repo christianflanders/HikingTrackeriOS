@@ -424,6 +424,7 @@ UITextFieldDelegate {
     
     func textFieldWillEndEditing() {
         nameTextField.resignFirstResponder()
+        setName = nameTextField.text!
         nameTextField.placeholder = nameTextField.text
         nameSet = true
     }

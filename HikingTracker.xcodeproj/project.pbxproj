@@ -11,6 +11,8 @@
 		18C0A99936CE28A5A62079AF /* Pods_HikeTrackerWatchApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEA46A5559E2C9A796D07337 /* Pods_HikeTrackerWatchApp.framework */; };
 		2C86ABD516B26EF86A2CFEAF /* Pods_HikingTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B18794E2405C1C0D7DD3BA55 /* Pods_HikingTrackerTests.framework */; };
 		3CF02C4715ECB45732E170F5 /* Pods_HikingTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C74058E951B1FDD231DA296F /* Pods_HikingTrackerUITests.framework */; };
+		6B051ABF1FF726CB00173A20 /* ShowUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B051ABE1FF726CB00173A20 /* ShowUserInfoViewController.swift */; };
+		6B051AC01FF738CC00173A20 /* UnitConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B31A6BC1FF6FD08002069B2 /* UnitConversions.swift */; };
 		6B1B12431FE9AB6300FFFDB4 /* DateConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1B12421FE9AB6300FFFDB4 /* DateConversion.swift */; };
 		6B1B12441FE9ABD900FFFDB4 /* DateConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1B12421FE9AB6300FFFDB4 /* DateConversion.swift */; };
 		6B31A6BD1FF6FD08002069B2 /* UnitConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B31A6BC1FF6FD08002069B2 /* UnitConversions.swift */; };
@@ -169,6 +171,7 @@
 		336161138B3ADEFF3EA7F311 /* Pods-HikingTrackerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HikingTrackerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HikingTrackerUITests/Pods-HikingTrackerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		570756063862EB89E516FE97 /* Pods-HikingTrackerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HikingTrackerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HikingTrackerUITests/Pods-HikingTrackerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		60DF5A0650837DDD0E9B8F6C /* Pods-HikingTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HikingTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HikingTracker/Pods-HikingTracker.debug.xcconfig"; sourceTree = "<group>"; };
+		6B051ABE1FF726CB00173A20 /* ShowUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowUserInfoViewController.swift; sourceTree = "<group>"; };
 		6B1589501FEA3D6300AFB8C2 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B1B12421FE9AB6300FFFDB4 /* DateConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConversion.swift; sourceTree = "<group>"; };
 		6B249CA91FEA20370092B518 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -425,6 +428,7 @@
 				6BB63A4A1FD5EA5500E9F4A1 /* ChecklistViewController.swift */,
 				6BB63A4C1FD5EA5E00E9F4A1 /* SettingsViewController.swift */,
 				6B5FA3911FF58BD4008C4771 /* EditUserInfoViewController.swift */,
+				6B051ABE1FF726CB00173A20 /* ShowUserInfoViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1054,6 +1058,7 @@
 				6BB63A471FD5EA4000E9F4A1 /* HikeHistoryViewController.swift in Sources */,
 				6BB48A8B1FD87B0500D5A9C5 /* UserModel.swift in Sources */,
 				6B8FF3081FF30B4600536C42 /* StatOptions.swift in Sources */,
+				6B051ABF1FF726CB00173A20 /* ShowUserInfoViewController.swift in Sources */,
 				6B4F6E621FE09A6600545DE3 /* PersistanceService.swift in Sources */,
 				6BDDA10E1FD7610B0069970C /* Altimeter.swift in Sources */,
 				6BB63A121FD5CCE600E9F4A1 /* HikingTracker.xcdatamodeld in Sources */,
@@ -1097,6 +1102,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B8744DE1FF498B5008A0FB5 /* Calories.swift in Sources */,
+				6B051AC01FF738CC00173A20 /* UnitConversions.swift in Sources */,
 				6BC0BE611FE99A2200C2498E /* HealthKitAuthorization.swift in Sources */,
 				6B8744DA1FF493D2008A0FB5 /* Watch Connection Messages.swift in Sources */,
 				6BC1DE7A1FD6553C00CB20D5 /* NotificationController.swift in Sources */,
