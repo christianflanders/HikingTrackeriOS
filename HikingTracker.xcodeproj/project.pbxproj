@@ -26,6 +26,8 @@
 		6B6E19D91FEDE7EE00B5605A /* Ailerons-Typeface.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6E19D71FEDE7ED00B5605A /* Ailerons-Typeface.otf */; };
 		6B7801741FD5F2AE006F29BD /* HikeInProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7801731FD5F2AE006F29BD /* HikeInProgressViewController.swift */; };
 		6B7801771FD618BE006F29BD /* HealthKitAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7801761FD618BE006F29BD /* HealthKitAuthorization.swift */; };
+		6B7D98D51FF85F1E008C3F06 /* Solar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7D98D41FF85F1E008C3F06 /* Solar.swift */; };
+		6B7D98D61FF85F1E008C3F06 /* Solar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7D98D41FF85F1E008C3F06 /* Solar.swift */; };
 		6B81261D1FDF7981009054A3 /* Meters Alias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B81261C1FDF7981009054A3 /* Meters Alias.swift */; };
 		6B8744D91FF493D2008A0FB5 /* Watch Connection Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8744D81FF493D2008A0FB5 /* Watch Connection Messages.swift */; };
 		6B8744DA1FF493D2008A0FB5 /* Watch Connection Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8744D81FF493D2008A0FB5 /* Watch Connection Messages.swift */; };
@@ -185,6 +187,7 @@
 		6B6E19D71FEDE7ED00B5605A /* Ailerons-Typeface.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ailerons-Typeface.otf"; sourceTree = "<group>"; };
 		6B7801731FD5F2AE006F29BD /* HikeInProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeInProgressViewController.swift; sourceTree = "<group>"; };
 		6B7801761FD618BE006F29BD /* HealthKitAuthorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitAuthorization.swift; sourceTree = "<group>"; };
+		6B7D98D41FF85F1E008C3F06 /* Solar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solar.swift; sourceTree = "<group>"; };
 		6B81261C1FDF7981009054A3 /* Meters Alias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meters Alias.swift"; sourceTree = "<group>"; };
 		6B8744D81FF493D2008A0FB5 /* Watch Connection Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Watch Connection Messages.swift"; path = "HikingTracker/Utilities/Watch Connection Messages.swift"; sourceTree = SOURCE_ROOT; };
 		6B8744DC1FF498B5008A0FB5 /* Calories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calories.swift; sourceTree = "<group>"; };
@@ -334,6 +337,7 @@
 				6B1B12421FE9AB6300FFFDB4 /* DateConversion.swift */,
 				6B6A1D431FEF11A800C4AD3A /* DateExtension.swift */,
 				6B8744DC1FF498B5008A0FB5 /* Calories.swift */,
+				6B7D98D41FF85F1E008C3F06 /* Solar.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -559,7 +563,6 @@
 				FC7DC4F9DC8C273EDE4D7B13 /* [CP] Embed Pods Frameworks */,
 				000405137B0227E14758DCA8 /* [CP] Copy Pods Resources */,
 				6BBA1D411FEA3FA500251162 /* Embed Frameworks */,
-				6BD582A31FF5AB6D00AD30CE /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -890,19 +893,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HikingTrackerTests/Pods-HikingTrackerTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6BD582A31FF5AB6D00AD30CE /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
-		};
 		777F18BDEEBE142BD5BC3E2F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1024,13 +1014,11 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HikingTracker/Pods-HikingTracker-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Solar-iOS/Solar.framework",
 				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework",
 				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework.dSYM",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Solar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework",
 				"${DWARF_DSYM_FOLDER_PATH}/Mapbox.framework.dSYM",
 			);
@@ -1070,6 +1058,7 @@
 				6BB63A451FD5EA2F00E9F4A1 /* MainHikeScreenViewController.swift in Sources */,
 				6B9B19171FDF133100E6A193 /* MapBox Extension.swift in Sources */,
 				6BCC75E11FD621A4005F2F19 /* HikeWorkoutModel.swift in Sources */,
+				6B7D98D51FF85F1E008C3F06 /* Solar.swift in Sources */,
 				6B31A6BD1FF6FD08002069B2 /* UnitConversions.swift in Sources */,
 				6BE204261FE0C072004F0C3E /* HikeHistoryDetailViewController.swift in Sources */,
 				6B8744D91FF493D2008A0FB5 /* Watch Connection Messages.swift in Sources */,
@@ -1101,6 +1090,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B7D98D61FF85F1E008C3F06 /* Solar.swift in Sources */,
 				6B8744DE1FF498B5008A0FB5 /* Calories.swift in Sources */,
 				6B051AC01FF738CC00173A20 /* UnitConversions.swift in Sources */,
 				6BC0BE611FE99A2200C2498E /* HealthKitAuthorization.swift in Sources */,

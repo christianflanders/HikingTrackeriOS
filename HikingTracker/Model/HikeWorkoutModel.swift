@@ -9,7 +9,6 @@
 import Foundation
 import CoreLocation
 import CoreMotion
-import Solar
 
 
 class HikeWorkout {
