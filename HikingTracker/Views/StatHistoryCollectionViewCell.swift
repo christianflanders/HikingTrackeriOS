@@ -24,7 +24,7 @@ class StatHistoryCollectionViewCell: UICollectionViewCell {
     
     func setCellForStat(_ stat: Stats){
         var unitString = ""
-        let user = User()
+        let user = StoredUser()
         let userUnitPreference = user.userDisplayUnits
         switch userUnitPreference {
         case .freedomUnits:
