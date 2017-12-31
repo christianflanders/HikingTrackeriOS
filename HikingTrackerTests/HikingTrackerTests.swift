@@ -15,10 +15,9 @@ import HealthKit
 class HikingTrackerTests: XCTestCase {
     
     
-    let fileOne = "RK_gpx _2017-12-08_0830"
+    let fileOne = "RK_gpx _2017-12-20_1333-xc"
     let fileTwo = "RK_gpx _2015-01-16_0544"
     let timerDuration = 1
-    
     
     
     override func setUp() {
@@ -42,7 +41,6 @@ class HikingTrackerTests: XCTestCase {
 //            XCTAssertEqual(duration, expectedOutputs[i])
 //        }
 //    }
-    
     
     func testHikeWithFakeDataForCaloriesBurned() {
         if let fakeData = createFakeData(from: fileOne) {
@@ -74,12 +72,12 @@ class HikingTrackerTests: XCTestCase {
         }
     }
     
-    
-    
-    func testAddingInFakeDataFromGPXToCoreData(){
+    func testAddingInFakeDataFromGPXToCoreData() {
         let store = PersistanceService.store
-
-        guard let fakeData = createFakeData(from: fileOne) else {return}
+        guard let fakeData = createFakeData(from: fileOne) else {
+            XCTFail()
+            return
+        }
         let hikeWorkoutToTest = HikeWorkout()
         for i in fakeData {
             hikeWorkoutToTest.lastLocation = i
@@ -93,19 +91,29 @@ class HikingTrackerTests: XCTestCase {
         let distance = hikeWorkoutToTest.totalDistanceTraveled
         let distanceUnit = HKUnit(from: .meter)
         let hkDistance = HKQuantity(unit: distanceUnit, doubleValue: Double(distance!))
-
+        
         store.storeHikeWorkout(hikeWorkout: hikeWorkoutToTest, name: fileOne)
-        let workout = HKWorkout(activityType: .hiking, start: startDate!, end: endDate!, duration: (endDate?.timeIntervalSince(startDate!))!, totalEnergyBurned: hkCalories, totalDistance: hkDistance, device: HKDevice.local(), metadata: nil)
-        let healthStore = HKHealthStore()
-        healthStore.save(workout) { (success, error) in
-            if error == nil {
-                print("success saving to health kit store!")
-            }
-            
-        }
+//        let workout = HKWorkout(activityType: .hiking, start: startDate!, end: endDate!, duration: (endDate?.timeIntervalSince(startDate!))!, totalEnergyBurned: hkCalories, totalDistance: hkDistance, device: HKDevice.local(), metadata: nil)
+//        let healthStore = HKHealthStore()
+//        healthStore.save(workout) { (success, error) in
+//            if error == nil {
+//                print("success saving to health kit store!")
+//            }
+//
+//        }
+        store.fetchWorkouts()
+        print(store.fetchedWorkouts.count)
+        let shouldBeTheWorkoutStored = store.fetchedWorkouts.last
+        XCTAssert(shouldBeTheWorkoutStored?.startDate == startDate)
+        XCTAssert(shouldBeTheWorkoutStored?.storedLocations.count == fakeData.count)
+        XCTAssert(shouldBeTheWorkoutStored?.storedLocations.count == fakeData.count)
+        XCTAssert(shouldBeTheWorkoutStored?.duration == hikeWorkoutToTest.duration)
+//        let testVC = HikeHistoryViewController() as! HikeHistoryViewController
+//        let rowsInTable = testVC.hikeHistoryTableView.numberOfRows(inSection: 0)
+//        XCTAssert(store.fetchedWorkouts.count == rowsInTable)
+
+
     }
-    
-    
     
     func createFakeData(from fileName: String) -> [CLLocation]? {
         if let parser = GpxParser(file: fileName) {
@@ -114,6 +122,27 @@ class HikingTrackerTests: XCTestCase {
         } else {
             return nil
         }
+    }
+    
+    
+//    func testSavingUserInformation() {
+//        let userTestNames = ["Christian", "Cali", "Test Name", "iNiNlSeD"]
+//        let userTestMetrics : [DisplayUnits] = [.freedomUnits, .metric, .freedomUnits, .metric]
+//        let genderTest = ["male", "female", "Male", "Female"]
+//        let heightTests = []
+//        let testUser = User()
+//
+//    }
+    
+    func testUnitConversions() {
+        
+    }
+    
+    func testDisplayStringData() {
+        
+    }
+    
+    func addingWorkoutToHealthKit() {
         
     }
 }
