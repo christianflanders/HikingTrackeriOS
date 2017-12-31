@@ -13,7 +13,7 @@ class ShowUserInfoViewController: UIViewController {
     // MARK: Enums
     
     // MARK: Constants
-    private let user = User()
+    private let user = StoredUser()
     
     // MARK: Variables
     
@@ -23,7 +23,6 @@ class ShowUserInfoViewController: UIViewController {
     @IBOutlet weak var heightLabel: UILabel!
     @IBOutlet weak var birthdateLabel: UILabel!
     @IBOutlet weak var sexLabel: UILabel!
-    
     
     // MARK: Weak Vars
     

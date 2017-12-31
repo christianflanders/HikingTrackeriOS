@@ -19,7 +19,7 @@ class HikeWorkout {
     deinit {
     }
     
-    let user = User()
+    let user = StoredUser()
     
     var hikeName = ""
 

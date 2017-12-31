@@ -31,7 +31,7 @@ extension Meters {
     
     var getDisplayString: String {
         let feetConversion = 3.2808
-        let user = User()
+        let user = StoredUser()
         let userPreference = user.userDisplayUnits
         if userPreference == .freedomUnits {
             let convertedToFeet = Int(self * feetConversion)

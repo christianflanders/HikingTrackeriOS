@@ -54,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func checkForUserInfoAndPresentCorrectScreen() {
-        let myUser = User()
+        let myUser = StoredUser()
         let userWeight = myUser.weightInKilos
         if userWeight == nil  || userWeight == 0 {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate

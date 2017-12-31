@@ -31,7 +31,7 @@ UITextFieldDelegate {
     
     private let usaLocale = "es_US"
     
-    private let user = User()
+    private let user = StoredUser()
     
     // MARK: Variables
     
@@ -133,6 +133,11 @@ UITextFieldDelegate {
     
     // MARK: IBActions
     
+    @IBAction func importFromHealthKitButtonPressed(_ sender: UIButton) {
+        let healthKitStore = HealthKitStore()
+        healthKitStore.getUserDataFromHealthKit()
+        
+    }
     @IBAction func pickerDoneButtonPressed(_ sender: UIButton) {
         checkWhichStatAndMarkAsSet()
         hidePicker()
@@ -359,7 +364,7 @@ UITextFieldDelegate {
             if user.userDisplayUnits == .freedomUnits {
                 //Convert weight to grams to store
                 let weightInPounds = Double(weightVaule)
-                let weightInGrams = conversionator.convertPoundsToGrams(pounds: weightInPounds)
+                let weightInGrams = conversionator.convertPoundsToKilograms(pounds: weightInPounds)
                 user.weightInKilos = weightInGrams
                 
                 //Convert height to cm to store
