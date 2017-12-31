@@ -93,14 +93,7 @@ class HikingTrackerTests: XCTestCase {
         let hkDistance = HKQuantity(unit: distanceUnit, doubleValue: Double(distance!))
         
         store.storeHikeWorkout(hikeWorkout: hikeWorkoutToTest, name: fileOne)
-//        let workout = HKWorkout(activityType: .hiking, start: startDate!, end: endDate!, duration: (endDate?.timeIntervalSince(startDate!))!, totalEnergyBurned: hkCalories, totalDistance: hkDistance, device: HKDevice.local(), metadata: nil)
-//        let healthStore = HKHealthStore()
-//        healthStore.save(workout) { (success, error) in
-//            if error == nil {
-//                print("success saving to health kit store!")
-//            }
-//
-//        }
+
         store.fetchWorkouts()
         print(store.fetchedWorkouts.count)
         let shouldBeTheWorkoutStored = store.fetchedWorkouts.last
@@ -135,6 +128,20 @@ class HikingTrackerTests: XCTestCase {
 //    }
     
     func testUnitConversions() {
+        let unitConverter = UnitConversions()
+        let kilograms: [Double] = [1, 2, 5, 20, 600, 661, 100, 10000, 12345, 848384859]
+        let pounds = [2.20462,4.40925,11.0231, 44.0925,1322.77,1457.26, 220.462,22046.23, 27216.066,1870368452.19  ]
+        for i in 0..<kilograms.count {
+            let kiloToPounds = unitConverter.convertKilogramsToPounds(grams: kilograms[i])
+            XCTAssert(Int(pounds[i]) == Int(kiloToPounds))
+        }
+        let centimeters: [Double] = [ 5, 20, 600, 661, 100, 10000, 12345]
+        let inches = [ 1.9685, 7.87402, 236.22, 260.236,39.3701,3937.008, 4860.2362 ]
+        for i in 0..<centimeters.count {
+            let cmToInches = unitConverter.convertCMToInches(cm: centimeters[i])
+            print(cmToInches)
+            XCTAssert(Int(inches[i]) == Int(cmToInches))
+        }
         
     }
     
