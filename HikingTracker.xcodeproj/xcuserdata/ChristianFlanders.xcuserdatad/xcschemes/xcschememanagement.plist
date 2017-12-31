@@ -29,10 +29,15 @@
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
+		<key>HikingTrackerTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>15</integer>
+		</dict>
 		<key>HikingTrackerWithWatch.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>11</integer>
+			<integer>5</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
