@@ -10,20 +10,20 @@ import Foundation
 
 struct UnitConversions {
     
-    func convertGramsToPounds(grams: Double) -> Double {
-        return grams * 0.0022046
+    func convertKilogramsToPounds(grams: Double) -> Double {
+        return grams * 2.2046226218
     }
     
-    func convertPoundsToGrams(pounds: Double) -> Double {
-        return pounds / 0.0022046
+    func convertPoundsToKilograms(pounds: Double) -> Double {
+        return pounds / 2.2046226218
     }
     
     func convertInchesToCM(inches: Double) -> Double {
-        return inches / 0.39370
+        return inches / 0.393701
     }
     
     func convertCMToInches(cm: Double) -> Double {
-        return cm * 0.39370
+        return cm * 0.393701
     }
     
     
