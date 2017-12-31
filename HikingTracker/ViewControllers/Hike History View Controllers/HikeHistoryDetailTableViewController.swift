@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HikeHistoryDetailTableViewController: UITableViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class HikeHistoryDetailTableViewController: UITableViewController {
 
     let statsToDisplay: [Stats] = [.duration, .distance, . elevationGain, .calories, .avgPace, .avgHeartRate, .minAltitude, .maxAltitude, .timeUphill, .timeDownhill]
     
@@ -18,11 +18,22 @@ class HikeHistoryDetailTableViewController: UITableViewController, UICollectionV
     
     @IBOutlet weak var statsCollectionView: UICollectionView!
     
-
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var elevationGainLabel: UILabel!
+    @IBOutlet weak var caloriesLabel: UILabel!
+    @IBOutlet weak var avgPaceLabel: UILabel!
+    @IBOutlet weak var avgHeartRateLabel: UILabel!
+    @IBOutlet weak var minAltitudeLabel: UILabel!
+    @IBOutlet weak var maxAltitudeLabel: UILabel!
+    @IBOutlet weak var timeUphillLabel: UILabel!
+    @IBOutlet weak var timeDownhillLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        statsCollectionView.delegate = self
-        statsCollectionView.dataSource = self
+//        statsCollectionView.delegate = self
+//        statsCollectionView.dataSource = self
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -36,20 +47,20 @@ class HikeHistoryDetailTableViewController: UITableViewController, UICollectionV
     }
 
 
-    //MARK: Collection View Data Source
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StatCell", for: indexPath) as? StatHistoryCollectionViewCell else {fatalError("Error creating collection view cell")}
-        cell.hikeWorkout = hikeWorkout
-        cell.setCellForStat(statsToDisplay[indexPath.row])
-        return cell
-    }
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
+//    //MARK: Collection View Data Source
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return 8
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StatCell", for: indexPath) as? StatHistoryCollectionViewCell else {fatalError("Error creating collection view cell")}
+//        cell.hikeWorkout = hikeWorkout
+//        cell.setCellForStat(statsToDisplay[indexPath.row])
+//        return cell
+//    }
+//
+//    func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        return 1
+//    }
 
 }
