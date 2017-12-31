@@ -13,25 +13,25 @@ import Mapbox
 
 class MainHikeScreenViewController: UIViewController{
 
-    //MARK: Enums
+    // MARK: Enums
     
-    //MARK: Constants
+    // MARK: Constants
     let locationManager = LocationManager.shared
 
-    //MARK: Variables
+    // MARK: Variables
     
-    //MARK: Outlets
+    // MARK: Outlets
     @IBOutlet weak var latLongLabel: UILabel!
     
 //    @IBOutlet weak var mapBoxMapView: MGLMapView!
     
-    //MARK: Weak Vars
+    // MARK: Weak Vars
     
-    //MARK: Public Variables
+    // MARK: Public Variables
     
-    //MARK: Private Variables
+    // MARK: Private Variables
     
-    //MARK: View Life Cycle
+    // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -59,12 +59,12 @@ class MainHikeScreenViewController: UIViewController{
     }
 
     
-    //MARK: IBActions
+    // MARK: IBActions
     @IBAction func startHikeButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "StartHikeButtonPressed", sender: self)
     }
     
-    //MARK: Instance Methods
+    // MARK: Instance Methods
     
     private func updateLatLongLabel(location:CLLocation?){
         guard let location = location else {return}
@@ -98,5 +98,4 @@ class MainHikeScreenViewController: UIViewController{
      }
 
 }
-
 
