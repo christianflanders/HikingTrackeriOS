@@ -10,10 +10,6 @@ import UIKit
 
 class UserStatTableViewCell: UITableViewCell {
     
-    
-    @IBOutlet weak var userStatDescriptionLabel: UILabel!
-    @IBOutlet weak var userStatEnterLabel: UILabel!
-    
 
     override func awakeFromNib() {
         super.awakeFromNib()

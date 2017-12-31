@@ -39,6 +39,8 @@
 		6B8FF3081FF30B4600536C42 /* StatOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8FF3071FF30B4600536C42 /* StatOptions.swift */; };
 		6B8FF30C1FF320F400536C42 /* HikeHistoryDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8FF30B1FF320F300536C42 /* HikeHistoryDetailTableViewController.swift */; };
 		6B91BB211FF9894800CB378F /* UserInformationValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B91BB201FF9894800CB378F /* UserInformationValues.swift */; };
+		6B91BB241FF9924E00CB378F /* MainHikeStoryboards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B91BB231FF9924E00CB378F /* MainHikeStoryboards.storyboard */; };
+		6B91BB261FF992C700CB378F /* HikeHistoryStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B91BB251FF992C700CB378F /* HikeHistoryStoryboard.storyboard */; };
 		6B9B19171FDF133100E6A193 /* MapBox Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9B19161FDF133100E6A193 /* MapBox Extension.swift */; };
 		6BA663B81FF58FFD00DAF05E /* UserStatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA663B71FF58FFD00DAF05E /* UserStatTableViewCell.swift */; };
 		6BAF5B9E1FDF410800480E6A /* GPXParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAF5B9D1FDF410800480E6A /* GPXParser.swift */; };
@@ -198,6 +200,8 @@
 		6B8FF3071FF30B4600536C42 /* StatOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatOptions.swift; sourceTree = "<group>"; };
 		6B8FF30B1FF320F300536C42 /* HikeHistoryDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeHistoryDetailTableViewController.swift; sourceTree = "<group>"; };
 		6B91BB201FF9894800CB378F /* UserInformationValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationValues.swift; sourceTree = "<group>"; };
+		6B91BB231FF9924E00CB378F /* MainHikeStoryboards.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainHikeStoryboards.storyboard; sourceTree = "<group>"; };
+		6B91BB251FF992C700CB378F /* HikeHistoryStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HikeHistoryStoryboard.storyboard; sourceTree = "<group>"; };
 		6B9B19161FDF133100E6A193 /* MapBox Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapBox Extension.swift"; sourceTree = "<group>"; };
 		6BA663B71FF58FFD00DAF05E /* UserStatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatTableViewCell.swift; sourceTree = "<group>"; };
 		6BAF5B9D1FDF410800480E6A /* GPXParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXParser.swift; sourceTree = "<group>"; };
@@ -423,6 +427,8 @@
 		6BB63A3B1FD5CD3200E9F4A1 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				6B91BB251FF992C700CB378F /* HikeHistoryStoryboard.storyboard */,
+				6B91BB231FF9924E00CB378F /* MainHikeStoryboards.storyboard */,
 				6BB63A0D1FD5CCE600E9F4A1 /* Main.storyboard */,
 				6BB63A151FD5CCE600E9F4A1 /* LaunchScreen.storyboard */,
 			);
@@ -762,6 +768,8 @@
 				6B6A1D4F1FF2EF3800C4AD3A /* RK_gpx _2017-12-20_1333-xc.gpx in Resources */,
 				6BB63A141FD5CCE600E9F4A1 /* Assets.xcassets in Resources */,
 				6BB63A0F1FD5CCE600E9F4A1 /* Main.storyboard in Resources */,
+				6B91BB241FF9924E00CB378F /* MainHikeStoryboards.storyboard in Resources */,
+				6B91BB261FF992C700CB378F /* HikeHistoryStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
