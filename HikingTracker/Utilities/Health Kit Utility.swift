@@ -92,7 +92,7 @@ class HealthKitStore {
             }
             let unit = HKUnit.gram()
             let weightInGrams = bodymass.quantity.doubleValue(for: unit)
-            let weigthInKilograms = weightInGrams * 0.001
+            let weightInKilograms = weightInGrams * 0.001
             userInformationFromHealthKit.weightInKG = weightInKilograms
         }
         
