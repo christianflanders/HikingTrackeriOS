@@ -36,8 +36,8 @@ class HikeWorkout {
     
     private var calculatedDuration: Double {
         guard let startDate = startDate else { return 0 }
-        let currentDate = Date()
-        let calculatedDuration = currentDate.timeIntervalSince(startDate)
+        guard let lastEntry = storedLocations.last?.timestamp else { return 0 }
+        let calculatedDuration = lastEntry.timeIntervalSince(startDate)
         let calculatedDurationWithoutPausedTime = calculatedDuration - pausedTime
         return calculatedDurationWithoutPausedTime
     }
