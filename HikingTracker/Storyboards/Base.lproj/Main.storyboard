@@ -280,21 +280,47 @@ VGltZSBEb3duSBBpbGw
                     <view key="view" contentMode="scaleToFill" id="c0c-E4-kmY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xLB-Yc-YQD">
+                                <rect key="frame" x="109" y="194" width="0.0" height="0.0"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vab-BS-h2M">
+                                <rect key="frame" x="124" y="319" width="127" height="29"/>
+                                <segments>
+                                    <segment title="Imperial"/>
+                                    <segment title="Metric"/>
+                                </segments>
+                                <connections>
+                                    <action selector="unitsSegControlChanged:" destination="jGN-Dw-JWH" eventType="valueChanged" id="T86-CC-hkE"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vab-BS-h2M" firstAttribute="centerX" secondItem="c0c-E4-kmY" secondAttribute="centerX" id="TYB-pL-coH"/>
+                            <constraint firstItem="vab-BS-h2M" firstAttribute="centerY" secondItem="c0c-E4-kmY" secondAttribute="centerY" id="vup-Ou-Ql9"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="vVx-Jc-0Gp"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="gear-7" id="gAV-1t-kxB"/>
+                    <connections>
+                        <outlet property="unitsSegControl" destination="vab-BS-h2M" id="hjC-hz-Uhw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jTN-xk-3Qz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="681" y="2140"/>
+            <point key="canvasLocation" x="680.79999999999995" y="2139.5802098950526"/>
         </scene>
         <!--Hike-->
         <scene sceneID="0kk-3h-D4y">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XEW-Yv-ENA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XhI-ye-5To" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Hike" image="tabBarItem:Vkq-Nc-nHS:image" selectedImage="tabBarItem:Vkq-Nc-nHS:image" id="Vkq-Nc-nHS"/>
+                    <tabBarItem key="tabBarItem" title="Hike" image="tabBarItem:Vkq-Nc-nHS:image" selectedImage="pin-map-7" id="Vkq-Nc-nHS"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BAK-WE-yOj">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -919,6 +945,7 @@ VGltZSBEb3duSBBpbGw
         <image name="emoticon-smile-7" width="30" height="30"/>
         <image name="gear-7" width="30" height="30"/>
         <image name="note-write-7" width="30" height="30"/>
+        <image name="pin-map-7" width="30" height="30"/>
         <image name="tabBarItem:Vkq-Nc-nHS:image" width="30" height="30">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGUlNYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QEQcI
