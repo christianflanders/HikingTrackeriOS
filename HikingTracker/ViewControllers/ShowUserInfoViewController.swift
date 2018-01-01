@@ -35,13 +35,24 @@ class ShowUserInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        
+        updateUserStatsDisplay()
+    }
+    
+    
+    // MARK: IBActions
+    
+    
+    func updateUserStatsDisplay() {
         nameLabel.text = user.name
         weightLabel.text = user.getWeightForDisplay()
         heightLabel.text = user.getHeightForDisplay()
         sexLabel.text = user.gender
         birthdateLabel.text = user.birthdate?.displayStringWithoutTime
     }
-    
-    // MARK: IBActions
-    
 }
