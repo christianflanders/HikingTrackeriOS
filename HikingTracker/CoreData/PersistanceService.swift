@@ -27,6 +27,7 @@ final class PersistanceService {
         let newHikeWorkout = SavedHikeWorkout(context: context)
         newHikeWorkout.startDate = hikeWorkout.startDate
         newHikeWorkout.name = name
+        newHikeWorkout.amountOfSecondsPaused = Int64(hikeWorkout.pausedTime)
         for storedLocation in hikeWorkout.storedLocations {
             let locationToStore = Locations(context: context)
             locationToStore.altitude = storedLocation.altitude
@@ -75,6 +76,7 @@ final class PersistanceService {
                 }
             }
             convertedHike.hikeName = hike.name!
+            convertedHike.pausedTime = Double(hike.amountOfSecondsPaused)
             for coordinate in hike.locations! {
                 if let savedLocation = coordinate as? Locations {
                     let coordinate = CLLocationCoordinate2DMake(savedLocation.latitude, savedLocation.longitude)
