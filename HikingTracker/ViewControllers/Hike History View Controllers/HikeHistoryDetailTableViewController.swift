@@ -33,11 +33,16 @@ class HikeHistoryDetailTableViewController: UITableViewController {
     @IBOutlet weak var timeDownhillLabel: UILabel!
     
     @IBOutlet weak var mapContainerView: UIView!
+    
+    @IBOutlet weak var doneButton: UIButton!
+    
     // MARK: Weak Vars
     
     
     // MARK: Public Variables
     var hikeWorkout = HikeWorkout()
+    
+    var doneButtonNeeded = false
     
     // MARK: Private Variables
     
@@ -51,6 +56,19 @@ class HikeHistoryDetailTableViewController: UITableViewController {
         updateDisplay()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        setUpMapBoxView()
+        mapBoxDrawHistoryLine()
+        updateDisplay()
+        
+        if doneButtonNeeded {
+            doneButton.isHidden = false
+        } else {
+            doneButton.isHidden = true
+        }
+
+    }
     // MARK: IBActions
 
     // MARK: Stat Display
@@ -103,5 +121,8 @@ class HikeHistoryDetailTableViewController: UITableViewController {
         }
     }
 
-
+    @IBAction func doneButtonPressed(_ sender: UIButton) {
+        presentingViewController?.presentingViewController?.dismiss(animated: false, completion: nil)
+    }
+    
 }
