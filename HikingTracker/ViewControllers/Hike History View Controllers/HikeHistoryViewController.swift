@@ -32,9 +32,10 @@ class HikeHistoryViewController: UIViewController, UITableViewDataSource, UITabl
 //        self.navigationController?.navigationBar.prefersLargeTitles = true
         
 
-        self.navigationController?.navigationBar.setBackgroundImage(navigationBarBackgroundImage,
-                                                                    for: .default)
-        self.navigationController?.navigationBar.tintColor = DefaultUI().defaultBlack
+//        self.navigationController?.navigationBar.backgroundColor = DefaultUI().navBarBackgroundColor
+//        self.navigationController?.navigationBar.setBackgroundImage(navigationBarBackgroundImage,
+//                                                                    for: .default)
+//        self.navigationController?.navigationBar.tintColor = DefaultUI().defaultBlack
     }
 
     

@@ -26,6 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         checkForUserInfoAndPresentCorrectScreen()
         
+        let navigationBarAppearace = UINavigationBar.appearance()
+        navigationBarAppearace.barTintColor = DefaultUI().navBarBackgroundColor
+        navigationBarAppearace.tintColor = UIColor.white
+        
         return true
     }
 
@@ -70,13 +74,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     fileprivate func setNavigationBarTitleAttributes() {
     
         let navigationTitleAttributes = [
-            NSAttributedStringKey.foregroundColor: defaultBlack,
+            NSAttributedStringKey.foregroundColor: UIColor.white,
             NSAttributedStringKey.font: navigationBarDefaultFont!
         ]
         UINavigationBar.appearance().titleTextAttributes = navigationTitleAttributes
         
         let barButtonAttributes = [
-            NSAttributedStringKey.foregroundColor: defaultBlack,
+            NSAttributedStringKey.foregroundColor: UIColor.blue,
             NSAttributedStringKey.font: barButtonDefaultFont!
         ]
         UIBarButtonItem.appearance().setTitleTextAttributes(barButtonAttributes, for: UIControlState.normal)
