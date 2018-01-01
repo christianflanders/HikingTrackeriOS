@@ -23,7 +23,8 @@ class MainHikeScreenViewController: UIViewController{
     // MARK: Outlets
     @IBOutlet weak var latLongLabel: UILabel!
     
-//    @IBOutlet weak var mapBoxMapView: MGLMapView!
+    @IBOutlet weak var startHikeButton: UIButton!
+    //    @IBOutlet weak var mapBoxMapView: MGLMapView!
     
     // MARK: Weak Vars
     
@@ -35,6 +36,9 @@ class MainHikeScreenViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationController?.isNavigationBarHidden = true
+        
+        startHikeButton.layer.cornerRadius = startHikeButton.frame.height / 2
         //Setup Location Manager
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
