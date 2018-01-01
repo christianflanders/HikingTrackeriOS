@@ -30,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBarAppearace.barTintColor = DefaultUI().navBarBackgroundColor
         navigationBarAppearace.tintColor = UIColor.white
         
+        UITabBar.appearance().tintColor = DefaultUI().navBarBackgroundColor
+        
         return true
     }
 
