@@ -144,7 +144,8 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         timer?.invalidate()
         locationManager.stopUpdatingLocation()
         hikeWorkout.endDate = Date()
-        performSegue(withIdentifier: "HikeFinishedSegue", sender: self)
+        openHikeFinishedVC()
+//        performSegue(withIdentifier: "HikeFinishedSegue", sender: self)
     }
     // MARK: Timer Functions
     
@@ -217,6 +218,16 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
             guard let destinationVC = segue.destination as? HikeFinishedViewController else {fatalError("Problem with HikeFinishedSegue")}
             destinationVC.hikeWorkout = hikeWorkout
         }
+    }
+    
+    func openHikeFinishedVC() {
+        let storyboard: UIStoryboard = UIStoryboard(name: "HikeHistoryStoryboard", bundle: nil)
+        
+        let hikeFinishedVC = storyboard.instantiateViewController(withIdentifier: "Hike History") as! HikeHistoryDetailTableViewController
+        hikeFinishedVC.hikeWorkout = hikeWorkout
+        hikeFinishedVC.doneButtonNeeded = true
+        self.present(hikeFinishedVC, animated: true, completion: nil)
+        
     }
     
     // MARK: CLLocationManagerDelegate
