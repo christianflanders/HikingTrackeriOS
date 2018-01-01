@@ -7,16 +7,19 @@
 //
 
 import UIKit
+import Mapbox
 
 class HikeHistoryDetailTableViewController: UITableViewController {
-
+    // MARK: Enums
+    
+    // MARK: Constants
     let statsToDisplay: [Stats] = [.duration, .distance, . elevationGain, .calories, .avgPace, .avgHeartRate, .minAltitude, .maxAltitude, .timeUphill, .timeDownhill]
     
     
-    var hikeWorkout = HikeWorkout()
+    // MARK: Variables
+    var mapBoxView: MGLMapView!
     
-    
-    @IBOutlet weak var statsCollectionView: UICollectionView!
+    // MARK: Outlets
     
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
@@ -29,38 +32,76 @@ class HikeHistoryDetailTableViewController: UITableViewController {
     @IBOutlet weak var timeUphillLabel: UILabel!
     @IBOutlet weak var timeDownhillLabel: UILabel!
     
+    @IBOutlet weak var mapContainerView: UIView!
+    // MARK: Weak Vars
+    
+    
+    // MARK: Public Variables
+    var hikeWorkout = HikeWorkout()
+    
+    // MARK: Private Variables
+    
+    
+    // MARK: View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        statsCollectionView.delegate = self
-//        statsCollectionView.dataSource = self
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        setUpMapBoxView()
+        mapBoxDrawHistoryLine()
+        updateDisplay()
+    }
+    
+    // MARK: IBActions
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    // MARK: Stat Display
+    
+    func updateDisplay() {
+        durationLabel.text = hikeWorkout.durationAsString
+        distanceLabel.text = hikeWorkout.totalDistanceTraveled?.getDisplayString
+        elevationGainLabel.text = (hikeWorkout.highestElevation - hikeWorkout.lowestElevation).getDisplayString
+        caloriesLabel.text = hikeWorkout.totalCaloriesBurned.getCalorieDisplayString
+        
+        
+        minAltitudeLabel.text = hikeWorkout.lowestElevation.getDisplayString
+        maxAltitudeLabel.text = hikeWorkout.highestElevation.getDisplayString
+        
+        timeUphillLabel.text = String(hikeWorkout.timeTraveldUpHill)
+        timeDownhillLabel.text = String(hikeWorkout.timeTraveledDownHill)
+        
+    }
+    
+    func setUpMapBoxView() {
+        let url = URL(string: "mapbox://styles/mapbox/outdoors-v10")
+        mapBoxView = MGLMapView(frame: mapContainerView.bounds, styleURL: url)
+        mapBoxView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        mapContainerView.addSubview(mapBoxView)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func mapBoxDrawHistoryLine() {
+        if hikeWorkout.coordinates.count > 2 {
+            mapBoxView.drawLineOf(hikeWorkout.coordinates)
+            let bounds = MGLCoordinateBounds(sw: hikeWorkout.coordinates.first!, ne: hikeWorkout.coordinates.last!)
+            mapBoxView.setVisibleCoordinateBounds(bounds, animated: true)
+        }
+        
+    }
+    
+    // MARK: Table View
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            performSegue(withIdentifier: "Chart View", sender: self)
+        }
     }
 
+    // MARK: Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Chart View" {
+            let destinationVC = segue.destination as! HikeChartsViewController
+            destinationVC.hikeWorkout = hikeWorkout
+        }
+    }
 
-//    //MARK: Collection View Data Source
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return 8
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StatCell", for: indexPath) as? StatHistoryCollectionViewCell else {fatalError("Error creating collection view cell")}
-//        cell.hikeWorkout = hikeWorkout
-//        cell.setCellForStat(statsToDisplay[indexPath.row])
-//        return cell
-//    }
-//
-//    func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        return 1
-//    }
 
 }
