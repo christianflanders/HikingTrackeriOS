@@ -130,7 +130,7 @@
         <!--Hike History Detail Table View Controller-->
         <scene sceneID="yOD-eO-H0F">
             <objects>
-                <tableViewController id="rlA-lO-jB5" customClass="HikeHistoryDetailTableViewController" customModule="HikingTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Hike History" id="rlA-lO-jB5" customClass="HikeHistoryDetailTableViewController" customModule="HikingTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4Rt-KH-M0X">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -146,16 +146,26 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Hike Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Qc-7Y-bse">
-                                                    <rect key="frame" x="20" y="10" width="280" height="23.5"/>
+                                                    <rect key="frame" x="20" y="10" width="230" height="24"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6qd-Kw-y5m">
+                                                    <rect key="frame" x="263" y="6" width="37" height="30"/>
+                                                    <state key="normal" title="Done"/>
+                                                    <connections>
+                                                        <action selector="doneButtonPressed:" destination="rlA-lO-jB5" eventType="touchUpInside" id="2gW-qW-wQ8"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="7Qc-7Y-bse" secondAttribute="bottom" constant="10" id="32q-1H-7U1"/>
+                                                <constraint firstItem="6qd-Kw-y5m" firstAttribute="top" secondItem="mjr-Y4-3c3" secondAttribute="top" constant="6" id="5So-Fi-mCj"/>
                                                 <constraint firstItem="7Qc-7Y-bse" firstAttribute="leading" secondItem="mjr-Y4-3c3" secondAttribute="leading" constant="20" id="Fax-dp-eoc"/>
-                                                <constraint firstAttribute="trailing" secondItem="7Qc-7Y-bse" secondAttribute="trailing" constant="20" id="com-Cf-JlQ"/>
+                                                <constraint firstAttribute="trailing" secondItem="6qd-Kw-y5m" secondAttribute="trailing" constant="20" id="UNj-3B-pR7"/>
+                                                <constraint firstAttribute="trailing" secondItem="7Qc-7Y-bse" secondAttribute="trailing" constant="70" id="com-Cf-JlQ"/>
+                                                <constraint firstAttribute="bottom" secondItem="6qd-Kw-y5m" secondAttribute="bottom" constant="7.5" id="uev-wo-qWu"/>
                                                 <constraint firstItem="7Qc-7Y-bse" firstAttribute="top" secondItem="mjr-Y4-3c3" secondAttribute="top" constant="10" id="vxj-eM-1He"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -632,6 +642,7 @@
                         <outlet property="avgPaceLabel" destination="qbs-Ak-sSX" id="Ik4-V7-7RF"/>
                         <outlet property="caloriesLabel" destination="rHW-bX-8lU" id="tS9-4P-hCI"/>
                         <outlet property="distanceLabel" destination="2vH-Qm-2MN" id="0m9-3P-Zov"/>
+                        <outlet property="doneButton" destination="6qd-Kw-y5m" id="6x8-9n-85f"/>
                         <outlet property="durationLabel" destination="8zk-YK-N5l" id="rWg-Av-8Xz"/>
                         <outlet property="elevationGainLabel" destination="hAV-jE-E73" id="htI-aX-Qtw"/>
                         <outlet property="mapContainerView" destination="ndh-gJ-AHa" id="SH4-hw-CZk"/>
@@ -674,7 +685,7 @@
                 </stackView>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SJ8-l5-qlh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1513" y="-8"/>
+            <point key="canvasLocation" x="1511.25" y="-8.4507042253521121"/>
         </scene>
         <!--Hike Charts View Controller-->
         <scene sceneID="SRg-JD-Auv">
@@ -735,13 +746,13 @@
                                                         <rect key="frame" x="10" y="10" width="300" height="33"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Elevation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fzm-ua-wrg">
-                                                                <rect key="frame" x="0.0" y="0.0" width="164.5" height="33"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="69.5" height="33"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Total Gain:1800 ft" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWS-2T-Px8">
-                                                                <rect key="frame" x="164.5" y="0.0" width="135.5" height="33"/>
+                                                                <rect key="frame" x="69.5" y="0.0" width="230.5" height="33"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
