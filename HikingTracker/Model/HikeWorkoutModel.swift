@@ -9,6 +9,8 @@
 import Foundation
 import CoreLocation
 import CoreMotion
+import CoreData
+import HealthKit
 
 
 class HikeWorkout {
@@ -21,7 +23,7 @@ class HikeWorkout {
     
     let user = StoredUser()
     
-    var hikeName = ""
+    var hikeName: String?
 
     private let dateHelper = DateHelper()
     
@@ -35,11 +37,20 @@ class HikeWorkout {
     var duration: Double = 0
     
     private var calculatedDuration: Double {
-        guard let startDate = startDate else { return 0 }
-        guard let lastEntry = storedLocations.last?.timestamp else { return 0 }
-        let calculatedDuration = lastEntry.timeIntervalSince(startDate)
-        let calculatedDurationWithoutPausedTime = calculatedDuration - pausedTime
-        return calculatedDurationWithoutPausedTime
+        if endDate != nil {
+            guard let startDate = startDate else { return 0 }
+            guard let endDate = endDate else { return 0 }
+            let calculatedDuration = endDate.timeIntervalSince(startDate)
+            let calculatedDurationWithoutPausedTime = calculatedDuration - pausedTime
+            return calculatedDurationWithoutPausedTime
+        } else {
+            guard let startDate = startDate else { return 0 }
+            let currentTime = Date()
+            let timeSinceStartDate = currentTime.timeIntervalSince(startDate)
+            let totalSecondsSubtractingPausedSeconds = timeSinceStartDate - pausedTime
+            return totalSecondsSubtractingPausedSeconds
+        }
+
     }
 
      var durationAsString: String {
@@ -160,6 +171,11 @@ class HikeWorkout {
     var coordinates: [CLLocationCoordinate2D] {
         return storedLocations.map { return $0.coordinate }
     }
+    
+    
+    //Saving Hike
+    
+
 
 }
 

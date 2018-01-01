@@ -11,12 +11,15 @@
     </entity>
     <entity name="SavedHikeWorkout" representedClassName="SavedHikeWorkout" syncable="YES" codeGenerationType="class">
         <attribute name="amountOfSecondsPaused" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="locations" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Locations" inverseName="hikeWorkout" inverseEntity="Locations" syncable="YES"/>
     </entity>
     <elements>
         <element name="Locations" positionX="189" positionY="9" width="128" height="150"/>
-        <element name="SavedHikeWorkout" positionX="-162" positionY="5" width="128" height="105"/>
+        <element name="SavedHikeWorkout" positionX="-162" positionY="5" width="128" height="150"/>
     </elements>
 </model>
