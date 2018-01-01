@@ -9,7 +9,7 @@
 import UIKit
 import Mapbox
 
-class HikeHistoryDetailTableViewController: UITableViewController {
+class HikeHistoryDetailTableViewController: UITableViewController, UITextFieldDelegate {
     // MARK: Enums
     
     // MARK: Constants
@@ -34,7 +34,11 @@ class HikeHistoryDetailTableViewController: UITableViewController {
     
     @IBOutlet weak var mapContainerView: UIView!
     
-    @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
+    
+    @IBOutlet weak var discardButton: UIButton!
+    
+    @IBOutlet weak var nameTextField: UITextField!
     
     // MARK: Weak Vars
     
@@ -42,7 +46,7 @@ class HikeHistoryDetailTableViewController: UITableViewController {
     // MARK: Public Variables
     var hikeWorkout = HikeWorkout()
     
-    var doneButtonNeeded = false
+    var unsavedHikeIncoming = false
     
     // MARK: Private Variables
     
@@ -53,7 +57,11 @@ class HikeHistoryDetailTableViewController: UITableViewController {
         super.viewDidLoad()
         setUpMapBoxView()
         mapBoxDrawHistoryLine()
+        nameTextField.delegate = self
         updateDisplay()
+        
+
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -62,11 +70,7 @@ class HikeHistoryDetailTableViewController: UITableViewController {
         mapBoxDrawHistoryLine()
         updateDisplay()
         
-        if doneButtonNeeded {
-            doneButton.isHidden = false
-        } else {
-            doneButton.isHidden = true
-        }
+
 
     }
     // MARK: IBActions
@@ -85,6 +89,19 @@ class HikeHistoryDetailTableViewController: UITableViewController {
         
         timeUphillLabel.text = String(hikeWorkout.timeTraveldUpHill)
         timeDownhillLabel.text = String(hikeWorkout.timeTraveledDownHill)
+        
+        if hikeWorkout.hikeName != nil {
+            nameTextField.text = hikeWorkout.hikeName
+        }
+        
+        if unsavedHikeIncoming {
+            saveButton.isHidden = false
+            discardButton.isHidden = false
+            
+        } else {
+            saveButton.isHidden = true
+            discardButton.isHidden = true
+        }
         
     }
     
@@ -106,6 +123,14 @@ class HikeHistoryDetailTableViewController: UITableViewController {
     
     // MARK: Table View
     
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        if unsavedHikeIncoming {
+            return 3
+        } else {
+            return 2
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
             performSegue(withIdentifier: "Chart View", sender: self)
@@ -120,9 +145,55 @@ class HikeHistoryDetailTableViewController: UITableViewController {
             destinationVC.hikeWorkout = hikeWorkout
         }
     }
-
-    @IBAction func doneButtonPressed(_ sender: UIButton) {
+    
+    func dismissToMainScreen() {
         presentingViewController?.presentingViewController?.dismiss(animated: false, completion: nil)
     }
+
+    
+    // MARK: Name Text Field
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        let textFieldEnteredText = textField.text
+        if textFieldEnteredText != "" {
+            hikeWorkout.hikeName = textFieldEnteredText
+        }
+        return true
+    }
+    
+    // MARK: Hike Saving
+    let saveHike = SaveHike()
+    
+    @IBAction func saveHikeButtonPressed(_ sender: UIButton) {
+        if hikeWorkout.hikeName != nil {
+            saveHike.saveToCoreData(hike: hikeWorkout)
+            saveHike.saveToHealthKit(hike: hikeWorkout)
+            dismissToMainScreen()
+        } else {
+            let alert = UIAlertController(title: "Please name your workout", message: "Message", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Okay", style: .default, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        
+    }
+    
+    @IBAction func discardHikeButtonPressed(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Are you sure?", message: "Your workout will not be saved", preferredStyle: .alert)
+        let okayAction = UIAlertAction(title: "Okay", style: .destructive) { (action) in
+            self.dismissToMainScreen()
+        }
+        let dontDeleteAction = UIAlertAction(title: "Nevermind", style: .cancel, handler: nil)
+        alert.addAction(okayAction)
+        alert.addAction(dontDeleteAction)
+        present(alert, animated: true, completion: nil)
+        
+        
+    }
+    
+    
     
 }

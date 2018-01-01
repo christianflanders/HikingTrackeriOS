@@ -225,7 +225,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         
         let hikeFinishedVC = storyboard.instantiateViewController(withIdentifier: "Hike History") as! HikeHistoryDetailTableViewController
         hikeFinishedVC.hikeWorkout = hikeWorkout
-        hikeFinishedVC.doneButtonNeeded = true
+        hikeFinishedVC.unsavedHikeIncoming = true
         self.present(hikeFinishedVC, animated: true, completion: nil)
         
     }
