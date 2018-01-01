@@ -10,10 +10,27 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
+    @IBOutlet weak var unitsSegControl: UISegmentedControl!
+    
+    let user = StoredUser()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        switch user.userDisplayUnits {
+        case .freedomUnits :
+            unitsSegControl.isEnabledForSegment(at: 0)
+        case .metric :
+            unitsSegControl.isEnabledForSegment(at: 1)
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,14 +39,16 @@ class SettingsViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func unitsSegControlChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            user.userDisplayUnits = .freedomUnits
+        case 1:
+            user.userDisplayUnits = .metric
+        default:
+            print("This segmented control should only have 2 options how did we get here??")
+        }
     }
-    */
+    
 
 }
