@@ -34,7 +34,7 @@ class HealthKitStore {
             return
         }
         
-        let duration = endDate.timeIntervalSince(startDate)
+        let duration = hikeWorkout.calculatedDuration
         
         let workout = HKWorkout(activityType: .hiking, start: startDate, end: endDate, duration: duration,
                                 totalEnergyBurned: hkCalories, totalDistance: hkDistance, device: HKDevice.local(), metadata: nil)
