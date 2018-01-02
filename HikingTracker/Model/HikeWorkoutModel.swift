@@ -36,21 +36,22 @@ class HikeWorkout {
     
     var duration: Double = 0
     
-    private var calculatedDuration: Double {
-        if endDate != nil {
-            guard let startDate = startDate else { return 0 }
-            guard let endDate = endDate else { return 0 }
-            let calculatedDuration = endDate.timeIntervalSince(startDate)
-            let calculatedDurationWithoutPausedTime = calculatedDuration - pausedTime
-            return calculatedDurationWithoutPausedTime
-        } else {
-            guard let startDate = startDate else { return 0 }
-            let currentTime = Date()
-            let timeSinceStartDate = currentTime.timeIntervalSince(startDate)
-            let totalSecondsSubtractingPausedSeconds = timeSinceStartDate - pausedTime
-            return totalSecondsSubtractingPausedSeconds
+    var calculatedDuration: Double {
+        get {
+            if endDate != nil {
+                guard let startDate = startDate else { return 0 }
+                guard let endDate = endDate else { return 0 }
+                let calculatedDuration = endDate.timeIntervalSince(startDate)
+                let calculatedDurationWithoutPausedTime = calculatedDuration - pausedTime
+                return calculatedDurationWithoutPausedTime
+            } else {
+                guard let startDate = startDate else { return 0 }
+                let currentTime = Date()
+                let timeSinceStartDate = currentTime.timeIntervalSince(startDate)
+                let totalSecondsSubtractingPausedSeconds = timeSinceStartDate - pausedTime
+                return totalSecondsSubtractingPausedSeconds
+            }
         }
-
     }
 
      var durationAsString: String {
