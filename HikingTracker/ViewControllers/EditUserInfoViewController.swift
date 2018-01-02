@@ -175,6 +175,7 @@ UITextFieldDelegate {
     
     func showPickerViewFor(_ input: UserInputs) {
         textFieldWillEndEditing()
+        pickerView.selectRow(0, inComponent: 0, animated: true)
         selectedStat = input
         if input == .birthdate {
             hideButtons()
@@ -401,7 +402,7 @@ UITextFieldDelegate {
                 
                 print("Saved metric units!")
             }
-            let alert = UIAlertController(title: "Saved", message: nil, preferredStyle: .alert)
+            let alert = UIAlertController(title: "Saved!", message: nil, preferredStyle: .alert)
             let action = UIAlertAction(title: "Let's Go Hiking!", style: .default) { (buttonAction) in
                 let saveButtonPressedDestination = "MainTabBar"
                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -415,6 +416,11 @@ UITextFieldDelegate {
             present(alert, animated: true, completion: nil)
         } else {
             print(nameSet, birthdaySet, weightSet, heightSet, genderSet)
+   
+            let alert = UIAlertController(title: "Please finish entering all your information", message: "Hike Tracker uses this information to properly track your workout", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Got it", style: .default, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
             //Present an alert saying which stat still needs to be set
             
         }
