@@ -564,8 +564,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="71.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GXC-Ht-2zw">
-                                                    <rect key="frame" x="0.0" y="10" width="320" height="50"/>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GXC-Ht-2zw">
+                                                    <rect key="frame" x="16" y="10" width="288" height="50"/>
                                                     <color key="backgroundColor" red="0.4403552711" green="0.56544411179999998" blue="0.1598808467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="26"/>
                                                     <color key="tintColor" red="0.4403552711" green="0.56544411179999998" blue="0.1598808467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -578,10 +578,10 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="GXC-Ht-2zw" firstAttribute="centerX" secondItem="dzd-xT-Q0D" secondAttribute="centerX" id="C3a-vY-3Eg"/>
-                                                <constraint firstItem="GXC-Ht-2zw" firstAttribute="leading" secondItem="dzd-xT-Q0D" secondAttribute="leadingMargin" constant="-8" id="dc0-2Y-71Q"/>
-                                                <constraint firstItem="GXC-Ht-2zw" firstAttribute="top" secondItem="dzd-xT-Q0D" secondAttribute="topMargin" constant="-1" id="hCb-gd-eGe"/>
-                                                <constraint firstItem="GXC-Ht-2zw" firstAttribute="centerY" secondItem="dzd-xT-Q0D" secondAttribute="centerY" id="zDz-Yz-KBK"/>
+                                                <constraint firstItem="GXC-Ht-2zw" firstAttribute="trailing" secondItem="dzd-xT-Q0D" secondAttribute="trailingMargin" id="8E0-Zc-97t"/>
+                                                <constraint firstItem="GXC-Ht-2zw" firstAttribute="top" secondItem="dzd-xT-Q0D" secondAttribute="topMargin" constant="-1" id="By3-as-lHn"/>
+                                                <constraint firstItem="GXC-Ht-2zw" firstAttribute="centerY" secondItem="dzd-xT-Q0D" secondAttribute="centerY" id="TTD-gS-oo8"/>
+                                                <constraint firstItem="GXC-Ht-2zw" firstAttribute="leading" secondItem="dzd-xT-Q0D" secondAttribute="leadingMargin" id="uyO-3P-axG"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -592,8 +592,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="71.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0J0-TL-kht">
-                                                    <rect key="frame" x="8" y="11" width="304" height="50"/>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0J0-TL-kht">
+                                                    <rect key="frame" x="16" y="11" width="288" height="50"/>
                                                     <color key="backgroundColor" red="0.83699810500000005" green="0.01030125283" blue="0.1089753732" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="26"/>
                                                     <color key="tintColor" red="0.83699810500000005" green="0.01030125283" blue="0.1089753732" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -606,12 +606,10 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="0J0-TL-kht" firstAttribute="trailing" secondItem="i4a-By-BgJ" secondAttribute="trailingMargin" id="IHQ-nX-Dle"/>
-                                                <constraint firstItem="0J0-TL-kht" firstAttribute="top" secondItem="i4a-By-BgJ" secondAttribute="topMargin" id="Vo1-u4-TXl"/>
-                                                <constraint firstItem="0J0-TL-kht" firstAttribute="bottom" secondItem="i4a-By-BgJ" secondAttribute="bottomMargin" id="hLH-x8-gYS"/>
-                                                <constraint firstItem="0J0-TL-kht" firstAttribute="leading" secondItem="i4a-By-BgJ" secondAttribute="leadingMargin" id="keD-Ss-qzM"/>
-                                                <constraint firstItem="0J0-TL-kht" firstAttribute="centerX" secondItem="i4a-By-BgJ" secondAttribute="centerX" id="qLx-bP-j4v"/>
-                                                <constraint firstItem="0J0-TL-kht" firstAttribute="centerY" secondItem="i4a-By-BgJ" secondAttribute="centerY" id="svv-d5-EGg"/>
+                                                <constraint firstItem="0J0-TL-kht" firstAttribute="trailing" secondItem="i4a-By-BgJ" secondAttribute="trailingMargin" id="5nY-tA-6Qr"/>
+                                                <constraint firstItem="0J0-TL-kht" firstAttribute="top" secondItem="i4a-By-BgJ" secondAttribute="topMargin" id="Eez-dO-d6a"/>
+                                                <constraint firstItem="0J0-TL-kht" firstAttribute="bottom" secondItem="i4a-By-BgJ" secondAttribute="bottomMargin" id="eCN-EM-hye"/>
+                                                <constraint firstItem="0J0-TL-kht" firstAttribute="leading" secondItem="i4a-By-BgJ" secondAttribute="leadingMargin" id="qTw-Tr-zHA"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
