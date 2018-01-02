@@ -318,7 +318,6 @@ VGltZSBEb3duSBBpbGw
         <!--Hike-->
         <scene sceneID="0kk-3h-D4y">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XEW-Yv-ENA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XhI-ye-5To" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Hike" image="tabBarItem:Vkq-Nc-nHS:image" selectedImage="pin-map-7" id="Vkq-Nc-nHS"/>
                     <toolbarItems/>
@@ -331,6 +330,7 @@ VGltZSBEb3duSBBpbGw
                         <segue destination="ibs-ZB-tCy" kind="relationship" relationship="rootViewController" id="HpY-N4-A5h"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XEW-Yv-ENA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-41" y="-801"/>
         </scene>
@@ -562,6 +562,7 @@ VGltZSBEb3duSBBpbGw
                                                             </button>
                                                             <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ed2-nh-TVf">
                                                                 <rect key="frame" x="0.0" y="38" width="374.5" height="0.0"/>
+                                                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <date key="date" timeIntervalSinceReferenceDate="536201219.08662099">
                                                                     <!--2017-12-29 00:46:59 +0000-->
                                                                 </date>
