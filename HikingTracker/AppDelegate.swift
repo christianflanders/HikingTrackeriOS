@@ -82,10 +82,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = navigationTitleAttributes
         
         let barButtonAttributes = [
-            NSAttributedStringKey.foregroundColor: UIColor.blue,
+            NSAttributedStringKey.foregroundColor: UIColor.white,
             NSAttributedStringKey.font: barButtonDefaultFont!
         ]
         UIBarButtonItem.appearance().setTitleTextAttributes(barButtonAttributes, for: UIControlState.normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes(barButtonAttributes, for: UIControlState.focused)
+        UIBarButtonItem.appearance().setTitleTextAttributes(barButtonAttributes, for: UIControlState.selected)
+        UIBarButtonItem.appearance().setTitleTextAttributes(barButtonAttributes, for: UIControlState.highlighted)
+
+
     }
 
 }
