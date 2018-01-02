@@ -125,6 +125,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         checkForWatchConnection()
         startHikeUISettings()
         convertDateAndSendToWatch(date: hikeWorkout.startDate!)
+        startPedometer()
     }
     
     fileprivate func resumeHike() {
@@ -153,6 +154,29 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
             self.eachSecond()
         }
+    }
+    
+    private func startPedometer() {
+        let dateToStartPedometer = Date()
+        pedometer.startUpdates(from: dateToStartPedometer) { (pedometerData, error) in
+            if let data = pedometerData {
+                if let pace = data.currentPace {
+                    let metersPerSecondPace = Meters(pace)
+                    let metersPerHour = metersPerSecondPace * 60
+                    if StoredUser().userDisplayUnits == .freedomUnits {
+                        let milesPerHour = metersPerHour.asMiles
+                        let mphString = "\(milesPerHour) miles/hr"
+                        self.paceDisplayLabel.text = mphString
+                    } else {
+                        let metersPerHourString = "\(metersPerHour) mtr/hr"
+                        self.paceDisplayLabel.text = metersPerHourString
+                    }
+                }
+                
+                
+            }
+        }
+        
     }
     
     private func eachSecond() {
