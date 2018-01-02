@@ -42,6 +42,7 @@ class MainHikeScreenViewController: UIViewController{
         //Setup Location Manager
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
+
         //HealthKitSetup
         HealthKitAuthroizationSetup.authorizeHealthKit { (authorized, error) in
             guard authorized else {
@@ -57,18 +58,41 @@ class MainHikeScreenViewController: UIViewController{
         super.viewDidAppear(true)
         //If location services are turned off, display a notification to turn them back on in the settings
         //TODO: Fix alert. Mabye don't allow to dismiss alert unless notification services are turned on?
-        if CLLocationManager.authorizationStatus() == .notDetermined || CLLocationManager.authorizationStatus() == .denied {
-//            presentAlert(title: "Location can't be found!", message: "Turn on location services in settings", view: self)
-        }
+
     }
 
     
     // MARK: IBActions
     @IBAction func startHikeButtonPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "StartHikeButtonPressed", sender: self)
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse || CLLocationManager.authorizationStatus() == .authorizedAlways {
+            performSegue(withIdentifier: "StartHikeButtonPressed", sender: self)
+        } else {
+            showLocationServicesDeniedAlert()
+        }
+        
     }
     
     // MARK: Instance Methods
+    
+    private func showLocationServicesDeniedAlert() {
+        let alert = UIAlertController(title: "Location services not enabled!", message: "Enable location services in settings", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Open Settings", style: .default, handler: { (_) in
+            guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                return
+            }
+            
+            if UIApplication.shared.canOpenURL(settingsUrl) {
+                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                    print("Settings opened: \(success)") // Prints true
+                })
+            }
+        })
+        let laterAction = UIAlertAction(title: "Later", style: .default, handler: nil)
+        
+        alert.addAction(action)
+        alert.addAction(laterAction)
+        self.present(alert, animated: true, completion: nil)
+    }
     
     private func updateLatLongLabel(location:CLLocation?){
         guard let location = location else {return}
