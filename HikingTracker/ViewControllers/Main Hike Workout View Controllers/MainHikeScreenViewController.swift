@@ -11,7 +11,7 @@ import CoreLocation
 import HealthKit
 import Mapbox
 
-class MainHikeScreenViewController: UIViewController{
+class MainHikeScreenViewController: UIViewController {
 
     // MARK: Enums
     
@@ -31,8 +31,12 @@ class MainHikeScreenViewController: UIViewController{
     // MARK: Public Variables
     
     // MARK: Private Variables
+    private var mapView: MGLMapView!
+    private var timer: Timer?
     
     // MARK: View Life Cycle
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -52,13 +56,19 @@ class MainHikeScreenViewController: UIViewController{
             print("HealthKit successfully authorized")
         }
         createMapBoxView()
+        animateUIElements()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        //If location services are turned off, display a notification to turn them back on in the settings
-        //TODO: Fix alert. Mabye don't allow to dismiss alert unless notification services are turned on?
+        startTimer()
 
+
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        timer?.invalidate()
     }
 
     
@@ -73,6 +83,15 @@ class MainHikeScreenViewController: UIViewController{
     }
     
     // MARK: Instance Methods
+    
+    private func animateUIElements() {
+        startHikeButton.alpha = 0
+        latLongLabel.alpha = 0
+        UIView.animate(withDuration: 1.0) {
+            self.startHikeButton.alpha = 1
+            self.latLongLabel.alpha = 1
+        }
+    }
     
     private func showLocationServicesDeniedAlert() {
         let alert = UIAlertController(title: "Location services not enabled!", message: "Enable location services in settings", preferredStyle: .alert)
@@ -94,25 +113,26 @@ class MainHikeScreenViewController: UIViewController{
         self.present(alert, animated: true, completion: nil)
     }
     
-    private func updateLatLongLabel(location:CLLocation?){
-        guard let location = location else {return}
-        let latitude = location.coordinate.latitude
-        let longitude = location.coordinate.longitude
-        let combinedString = "Lat:\(String(describing: latitude)) Long:\(String(describing: longitude))"
+    private func updateLatLongLabel(lat: Double, long: Double) {
+        let latString = String(format: "%.5f", lat)
+        let longString = String(format: "%.5f", long)
+
+        let combinedString = "Lat:\(latString) Long:\(longString)"
         latLongLabel.text = combinedString
     }
     
     fileprivate func createMapBoxView() {
         //Setup Map View
         let url = URL(string: "mapbox://styles/mapbox/outdoors-v10")
-        let mapView = MGLMapView(frame: view.bounds, styleURL: url)
+        mapView = MGLMapView(frame: view.bounds, styleURL: url)
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .follow
-        let userLocation = mapView.userLocation?.location
-        updateLatLongLabel(location: userLocation)
+
         view.addSubview(mapView)
         view.sendSubview(toBack: mapView)
+        eachSecond()
+
     }
     
      // MARK: - Navigation
@@ -124,6 +144,24 @@ class MainHikeScreenViewController: UIViewController{
             }
         }
      }
+    
+    
+    // MARK: Timer
+    // Creating a timer so we can update the latitude and longitude display on a regular interval.
+    private func startTimer() {
+        timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { _ in
+            self.eachSecond()
+        }
+    }
+    
+    private func eachSecond() {
+        let userLocation = mapView.userLocation?.location
+        guard let lat = userLocation?.coordinate.latitude else {return}
+        guard let long = userLocation?.coordinate.longitude else {return}
+        updateLatLongLabel(lat: lat, long: long)
+    }
+
+    
 
 }
 
