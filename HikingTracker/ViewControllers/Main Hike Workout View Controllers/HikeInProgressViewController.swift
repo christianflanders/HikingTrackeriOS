@@ -58,6 +58,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     private var coordinatesForLine = [CLLocationCoordinate2D]()
     private var mapView: MGLMapView!
     private  var hikeWorkout = HikeWorkout()
+    private var currentSpeedInMetersPerSecond = 0.0
     
     private var statsHidden = false
     
@@ -125,7 +126,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         checkForWatchConnection()
         startHikeUISettings()
         convertDateAndSendToWatch(date: hikeWorkout.startDate!)
-        startPedometer()
+//        startPedometerAndUpdatePace()
     }
     
     fileprivate func resumeHike() {
@@ -156,29 +157,26 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         }
     }
     
-    private func startPedometer() {
-        let dateToStartPedometer = Date()
-        pedometer.startUpdates(from: dateToStartPedometer) { (pedometerData, error) in
-            if let data = pedometerData {
-                if let pace = data.currentPace {
-                    let metersPerSecondPace = Meters(pace)
-                    let metersPerHour = metersPerSecondPace * 60
-                    if StoredUser().userDisplayUnits == .freedomUnits {
-                        let milesPerHour = metersPerHour.asMiles
-                        let mphString = "\(milesPerHour) miles/hr"
-                        self.paceDisplayLabel.text = mphString
-                    } else {
-                        let metersPerHourString = "\(metersPerHour) mtr/hr"
-                        self.paceDisplayLabel.text = metersPerHourString
-                    }
-                }
-                
-                
-            }
-        }
-        
-    }
-    
+//    private func startPedometerAndUpdatePace() {
+//        let dateToStartPedometer = Date()
+//        pedometer.startUpdates(from: dateToStartPedometer) { (pedometerData, error) in
+//            if let data = pedometerData {
+//                if let pace = data.currentPace {
+//                    DispatchQueue.main.async {
+//                        let numberOfSecondsInAnHour = 3600.0
+//                        let secondsPerMeter = pace
+//                        let metersPerHourValue = secondsPerMeter.doubleValue * numberOfSecondsInAnHour
+//                        let newMeterPerHourContainer = metersPerHour(metersPerHourValue: Meters(metersPerHourValue), timeStamp: Date())
+//                        self.paceDisplayLabel.text = newMeterPerHourContainer.displayString
+//                        self.hikeWorkout.storedPaceHistory.append(newMeterPerHourContainer)
+//                    }
+//                }
+//
+//            }
+//        }
+//
+//    }
+//
     private func eachSecond() {
         convertDateAndSendToWatch(date: hikeWorkout.startDate!)
         hikeWorkout.duration += 1
@@ -216,6 +214,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         caloriesBurnedDisplayLabel.text = caloriesBurned
         
         //TODO: Pace Label
+        paceDisplayLabel.text = currentSpeedInMetersPerSecond.getDisplayPerHour
         
         if let sunsetTime = hikeWorkout.sunsetTime {
             sunsetDisplayLabel.text = sunsetTime
@@ -261,6 +260,10 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
             print("New Location horiziontal Accuracy is (newLocation.horizontalAccuracy) and the vertical accuracy is \(newLocation.verticalAccuracy)")
             if newLocation.horizontalAccuracy > 2 {
                 hikeWorkout.lastLocation = newLocation
+                let speed = newLocation.speed
+                if speed > 0 {
+                    currentSpeedInMetersPerSecond = speed
+                }
                 sendDistanceToWatch()
             }
         }
