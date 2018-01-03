@@ -174,9 +174,43 @@ class HikeWorkout {
     }
     
     
-    //Saving Hike
+    //Pace
+    
+    var storedPaceHistory = [metersPerHour]()
+    
+    
     
 
 
 }
 
+
+struct metersPerHour{
+    var metersPerHourValue: Meters
+    var timeStamp: Date
+    
+    var displayString: String {
+        get {
+            if StoredUser().userDisplayUnits == .freedomUnits {
+                let milesPerHour = Int(self.metersPerHourValue.asMiles)
+                let mphString = "\(milesPerHour) miles/hr"
+                return mphString
+            } else {
+                let metersPerHourTruncated = Int(self.metersPerHourValue)
+                let metersPerHourString = "\(metersPerHourTruncated) mtr/hr"
+                return metersPerHourString
+            }
+        }
+    }
+}
+
+extension Array where Element: CLLocation {
+    func calculateCenterCoordinate() -> CLLocationCoordinate2D {
+        let totalLat = self.reduce(0.0) { $0 + $1.coordinate.latitude }
+        let totalLong = self.reduce(0.0) { $0 + $1.coordinate.longitude }
+        let averageLat = totalLat / Double(self.count)
+        let averageLong = totalLong / Double(self.count)
+        let calculatedCenterCoordinate = CLLocationCoordinate2D(latitude: averageLat, longitude: averageLong)
+        return calculatedCenterCoordinate
+    }
+}

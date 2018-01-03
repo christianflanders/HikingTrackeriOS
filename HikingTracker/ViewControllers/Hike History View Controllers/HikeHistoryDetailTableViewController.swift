@@ -115,8 +115,12 @@ class HikeHistoryDetailTableViewController: UITableViewController, UITextFieldDe
     func mapBoxDrawHistoryLine() {
         if hikeWorkout.coordinates.count > 2 {
             mapBoxView.drawLineOf(hikeWorkout.coordinates)
-            let bounds = MGLCoordinateBounds(sw: hikeWorkout.coordinates.first!, ne: hikeWorkout.coordinates.last!)
-            mapBoxView.setVisibleCoordinateBounds(bounds, animated: true)
+            let centerCoordinate = hikeWorkout.storedLocations.calculateCenterCoordinate()
+            
+            let camera = MGLMapCamera(lookingAtCenter: centerCoordinate, fromDistance: 5000, pitch: 0.0, heading: 0.0)
+            mapBoxView.camera = camera
+//            let bounds = MGLCoordinateBounds(sw: hikeWorkout.coordinates.first!, ne: hikeWorkout.coordinates.last!)
+//            mapBoxView.setVisibleCoordinateBounds(bounds, animated: true)
         }
         
     }
