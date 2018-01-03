@@ -27,8 +27,8 @@ class HikeChartsViewController: UIViewController {
     @IBOutlet weak var elevationChartView: LineChartView!
     
     
-    @IBOutlet weak var paceChartView: UIView!
     
+    @IBOutlet weak var paceChartGraph: LineChartView!
     // MARK: Weak Vars
     
     
@@ -41,7 +41,8 @@ class HikeChartsViewController: UIViewController {
     // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        drawGraph()
+        drawGraphForElevation()
+        drawGraphForPace()
     }
     
     
@@ -49,11 +50,10 @@ class HikeChartsViewController: UIViewController {
     
     
     // MARK: Charts
-    func drawGraph(){
+    func drawGraphForElevation() {
         var dataEntries = [ChartDataEntry]()
         for i in 0..<hikeWorkout.storedLocations.count {
             let altitude = hikeWorkout.storedLocations[i].altitude
-            
             let dataEntry = ChartDataEntry(x: Double(i), y: altitude)
             dataEntries.append(dataEntry)
         }
@@ -68,6 +68,24 @@ class HikeChartsViewController: UIViewController {
         let lineData = LineChartData(dataSet: chartDataSet)
         elevationChartView.data = lineData
         
+    }
+    
+    func drawGraphForPace() {
+        var dataEntries = [ChartDataEntry]()
+        for paceObject in hikeWorkout.storedPaceHistory {
+            let meterPerHour = paceObject.metersPerHourValue
+            let dateStamp = paceObject.timeStamp
+            let secondsFromHikeStart = dateStamp.timeIntervalSince(hikeWorkout.startDate!)
+            let dataEntry = ChartDataEntry(x: secondsFromHikeStart, y: meterPerHour)
+            dataEntries.append(dataEntry)
+        }
+        let chartDataSet = LineChartDataSet(values: dataEntries, label: "Meters Per Hour")
+        
+        chartDataSet.drawCirclesEnabled = false
+        chartDataSet.mode = .linear
+        
+        let lineData = LineChartData(dataSet: chartDataSet)
+        paceChartGraph.data = lineData
     }
     
 }
