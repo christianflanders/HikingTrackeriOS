@@ -10,25 +10,39 @@ import Foundation
 
 extension Date {
     var displayString: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .long
-        dateFormatter.timeStyle = .short
-        let stringFormatted = dateFormatter.string(from: self)
-        return stringFormatted
+        get {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .long
+            dateFormatter.timeStyle = .short
+            let stringFormatted = dateFormatter.string(from: self)
+            return stringFormatted
+        }
     }
     
     var displayStringWithoutTime: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .long
-        dateFormatter.timeStyle = .none
-        let stringFormatted = dateFormatter.string(from: self)
-        return stringFormatted
+        get {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .long
+            dateFormatter.timeStyle = .none
+            let stringFormatted = dateFormatter.string(from: self)
+            return stringFormatted
+        }
     }
     var displayTimeOnly: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .none
-        dateFormatter.timeStyle = .short
-        let stringFormatted = dateFormatter.string(from: self)
-        return stringFormatted
+        get {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .none
+            dateFormatter.timeStyle = .short
+            let stringFormatted = dateFormatter.string(from: self)
+            return stringFormatted
+        }
+    }
+    
+    var getSecondsAsInt: Int {
+        get {
+            let calendar = Calendar.current
+            let seconds = calendar.component(.second, from: self)
+            return seconds
+        }
     }
 }
