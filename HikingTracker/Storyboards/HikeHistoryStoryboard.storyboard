@@ -784,7 +784,7 @@
                     <connections>
                         <outlet property="elevationChartView" destination="QYA-5M-7R9" id="GTs-d2-rlc"/>
                         <outlet property="elevationGainLabel" destination="4Y3-3W-Pr9" id="BYO-dW-xk8"/>
-                        <outlet property="paceChartView" destination="25e-Ph-T3A" id="fff-zK-RAe"/>
+                        <outlet property="paceChartGraph" destination="25e-Ph-T3A" id="9D7-DJ-OZb"/>
                         <outlet property="paceLabel" destination="YWS-2T-Px8" id="oDY-ow-2ra"/>
                     </connections>
                 </viewController>
