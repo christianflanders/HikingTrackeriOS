@@ -37,12 +37,29 @@ extension Meters {
             let user = StoredUser()
             let userPreference = user.userDisplayUnits
             if userPreference == .freedomUnits {
-                let convertedToFeet = Int(self * feetConversion)
-                let feet = String(convertedToFeet)
-                return "\(feet) ft"
+                let feetToMilesConversion = 0.00018939
+                let convertedToFeet = self * feetConversion
+                if convertedToFeet > 2000 {
+                    let miles = convertedToFeet * feetToMilesConversion
+                    let stringMiles = String(format: "%.2f", miles)
+                    return "\(stringMiles) miles"
+                } else {
+                    let feet = String(Int(convertedToFeet))
+                    return "\(feet) ft"
+                }
             } else {
-                let meters = String(Int(self))
-                return "\(meters) mtrs"
+                let metersInAKilometer = 1000.0
+                if self > metersInAKilometer {
+                    let kilometers = self / metersInAKilometer
+                    let kilometersTruncated = String(format:"%.2f", kilometers)
+                    let displayStringKilometers = "\(kilometersTruncated) km"
+                    return displayStringKilometers
+                } else {
+                    let meters = String(Int(self))
+                    return "\(meters) mtrs"
+                }
+
+
             }
         }
 

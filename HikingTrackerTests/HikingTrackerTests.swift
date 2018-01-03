@@ -21,6 +21,13 @@ class HikingTrackerTests: XCTestCase {
     let timerDuration = 1
     
     
+    let fileOneDistanceInMeters = 7143
+    let fileOneDurationString = "01:54:30"
+    let fileOneDurationDouble: Double = 3600 + 3240 + 30
+    let fileOneUphillDurationAsString = "00:37:52"
+    let fileOneDownhillDurationAsString = "00:35:12"
+    
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -32,46 +39,64 @@ class HikingTrackerTests: XCTestCase {
         super.tearDown()
     }
     
-//    func testDurationCalculationg() {
-//        let testWorkout = HikeWorkout()
-//        let secondsToTest = [60, 120, 5400,9213]
-//        let expectedOutputs = ["00:01:00", "00:02:00", "01:30:00", "02:33:33"]
-//        for i in 0..<secondsToTest.count{
-//            testWorkout.seconds = secondsToTest[i]
-//            let duration = testWorkout.durationAsString
-//            XCTAssertEqual(duration, expectedOutputs[i])
+    
+    
+    func testHikeDistanceCalculation() {
+        let testWorkout = createFakeHikeWorkout()
+        let totalDistanceTraveled = testWorkout.totalDistanceTraveled
+        print(totalDistanceTraveled)
+        let totalDistanceTraveledInt = Int(totalDistanceTraveled)
+        XCTAssertEqual(totalDistanceTraveledInt, fileOneDistanceInMeters)
+    }
+    
+    
+    func testHikeDurationCalculation() {
+        let testWorkout = createFakeHikeWorkout()
+        let calculatedDurationDouble = testWorkout.calculatedDuration
+        let calculatedDurationString = testWorkout.durationAsString
+        XCTAssertEqual(calculatedDurationDouble, fileOneDurationDouble)
+        XCTAssertEqual(calculatedDurationString, fileOneDurationString)
+    }
+    
+    func testMetersAsMiles() {
+        
+    }
+    
+    func metersDisplayStringTest() {
+        
+    }
+    
+    func testHikeTimeUpAndDownhill() {
+        
+    }
+    
+//    func testHikeWithFakeDataForCaloriesBurned() {
+//        if let fakeData = createFakeData(from: fileOne) {
+//            let hikeWorkoutToTest = HikeWorkout()
+//            for i in fakeData {
+//                hikeWorkoutToTest.lastLocation = i
+//            }
+//            let totalTimeUphill = hikeWorkoutToTest.timeTraveldUpHill
+//            let totalTimeTraveledDownhill = hikeWorkoutToTest.timeTraveledDownHill
+//            print(hikeWorkoutToTest.totalCaloriesBurned)
+//            XCTAssertTrue(hikeWorkoutToTest.totalCaloriesBurned < 1000)
+//
 //        }
 //    }
-    
-    func testHikeWithFakeDataForCaloriesBurned() {
-        if let fakeData = createFakeData(from: fileOne) {
-            let hikeWorkoutToTest = HikeWorkout()
-            for i in fakeData {
-                hikeWorkoutToTest.lastLocation = i
-            }
-            let totalTimeUphill = hikeWorkoutToTest.timeTraveldUpHill
-            let totalTimeTraveledDownhill = hikeWorkoutToTest.timeTraveledDownHill
-            print(hikeWorkoutToTest.totalCaloriesBurned)
-            XCTAssertTrue(hikeWorkoutToTest.totalCaloriesBurned < 1000)
-            
-        }
-    }
-    
-    func testHikeWithFakeDataForDistanceTraveled() {
-        if let fakeData = createFakeData(from: fileOne) {
-            let hikeWorkoutToTest = HikeWorkout()
-            for i in fakeData {
-                hikeWorkoutToTest.lastLocation = i
-            }
-            let lowestElevation = hikeWorkoutToTest.lowestElevation
-            let highestElevation = hikeWorkoutToTest.highestElevation
-            if let totalDistance = hikeWorkoutToTest.totalDistanceTraveled {
-                XCTAssert(totalDistance < 4000 && totalDistance > 3800)
-
-                print(totalDistance)
-            }
-        }
-    }
+//
+//    func testHikeWithFakeDataForDistanceTraveled() {
+//        if let fakeData = createFakeData(from: fileOne) {
+//            let hikeWorkoutToTest = HikeWorkout()
+//            for i in fakeData {
+//                hikeWorkoutToTest.lastLocation = i
+//            }
+//            let lowestElevation = hikeWorkoutToTest.lowestElevation
+//            let highestElevation = hikeWorkoutToTest.highestElevation
+//            let totalDistance = hikeWorkoutToTest.totalDistanceTraveled
+//            XCTAssert(totalDistance < 4000 && totalDistance > 3800)
+//            print(totalDistance)
+//        }
+//    }
     
     func testAddingInFakeDataFromGPXToCoreData() {
         let store = PersistanceService.store
@@ -85,48 +110,65 @@ class HikingTrackerTests: XCTestCase {
         }
         let startDate = fakeData.first?.timestamp
         hikeWorkoutToTest.startDate = startDate
-//        let endDate = fakeData.last?.timestamp
-//        let caloriesBurned = hikeWorkoutToTest.totalCaloriesBurned
-//        let calorieUnit = HKUnit(from: .kilocalorie)
-//        let hkCalories = HKQuantity(unit: calorieUnit, doubleValue: caloriesBurned)
-//        let distance = hikeWorkoutToTest.totalDistanceTraveled
-//        let distanceUnit = HKUnit(from: .meter)
-//        let hkDistance = HKQuantity(unit: distanceUnit, doubleValue: Double(distance!))
+        //        let endDate = fakeData.last?.timestamp
+        //        let caloriesBurned = hikeWorkoutToTest.totalCaloriesBurned
+        //        let calorieUnit = HKUnit(from: .kilocalorie)
+        //        let hkCalories = HKQuantity(unit: calorieUnit, doubleValue: caloriesBurned)
+        //        let distance = hikeWorkoutToTest.totalDistanceTraveled
+        //        let distanceUnit = HKUnit(from: .meter)
+        //        let hkDistance = HKQuantity(unit: distanceUnit, doubleValue: Double(distance!))
         
         store.storeHikeWorkout(hikeWorkout: hikeWorkoutToTest, name: "Unit test input")
-
+        
         store.fetchWorkouts()
         print(store.fetchedWorkouts.count)
-//        let shouldBeTheWorkoutStored = store.fetchedWorkouts.first
-//        XCTAssert(shouldBeTheWorkoutStored?.startDate == startDate)
-//        XCTAssert(shouldBeTheWorkoutStored?.storedLocations.count == fakeData.count)
-//        XCTAssert(shouldBeTheWorkoutStored?.storedLocations.count == fakeData.count)
-//        XCTAssert(shouldBeTheWorkoutStored?.duration == hikeWorkoutToTest.duration)
-//        let testVC = HikeHistoryViewController() as! HikeHistoryViewController
-//        let rowsInTable = testVC.hikeHistoryTableView.numberOfRows(inSection: 0)
-//        XCTAssert(store.fetchedWorkouts.count == rowsInTable)
-
-
+        //        let shouldBeTheWorkoutStored = store.fetchedWorkouts.first
+        //        XCTAssert(shouldBeTheWorkoutStored?.startDate == startDate)
+        //        XCTAssert(shouldBeTheWorkoutStored?.storedLocations.count == fakeData.count)
+        //        XCTAssert(shouldBeTheWorkoutStored?.storedLocations.count == fakeData.count)
+        //        XCTAssert(shouldBeTheWorkoutStored?.duration == hikeWorkoutToTest.duration)
+        //        let testVC = HikeHistoryViewController() as! HikeHistoryViewController
+        //        let rowsInTable = testVC.hikeHistoryTableView.numberOfRows(inSection: 0)
+        //        XCTAssert(store.fetchedWorkouts.count == rowsInTable)
+        
+        
     }
     
     func createFakeData(from fileName: String) -> [CLLocation]? {
         if let parser = GpxParser(file: fileName) {
             let (_, coordinates): (String, [CLLocation]) = parser.parse()
+            print(coordinates.count)
             return coordinates
         } else {
             return nil
         }
     }
     
+    func createFakeHikeWorkout() -> HikeWorkout {
+        let hikeWorkoutToTest = HikeWorkout()
+        if let fakeData = createFakeData(from: fileOne) {
+            for i in fakeData {
+                hikeWorkoutToTest.lastLocation = i
+            }
+        }
+        print(hikeWorkoutToTest.storedLocations.count)
+        let startDate = hikeWorkoutToTest.storedLocations.first?.timestamp
+        let lastLocation = hikeWorkoutToTest.storedLocations.count - 1
+        let endDate = hikeWorkoutToTest.storedLocations[lastLocation].timestamp
+        hikeWorkoutToTest.endDate = endDate
+        hikeWorkoutToTest.startDate = startDate
+        hikeWorkoutToTest.pausedTime = 0
+        return hikeWorkoutToTest
+    }
     
-//    func testSavingUserInformation() {
-//        let userTestNames = ["Christian", "Cali", "Test Name", "iNiNlSeD"]
-//        let userTestMetrics : [DisplayUnits] = [.freedomUnits, .metric, .freedomUnits, .metric]
-//        let genderTest = ["male", "female", "Male", "Female"]
-//        let heightTests = []
-//        let testUser = User()
-//
-//    }
+    //    func testSavingUserInformation() {
+    //        let userTestNames = ["Christian", "Cali", "Test Name", "iNiNlSeD"]
+    //        let userTestMetrics : [DisplayUnits] = [.freedomUnits, .metric, .freedomUnits, .metric]
+    //        let genderTest = ["male", "female", "Male", "Female"]
+    //        let heightTests = []
+    //        let testUser = User()
+    //
+    //    }
     
     func testUnitConversions() {
         let unitConverter = UnitConversions()

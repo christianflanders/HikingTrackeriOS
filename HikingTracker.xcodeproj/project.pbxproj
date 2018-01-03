@@ -18,6 +18,7 @@
 		6B1B12431FE9AB6300FFFDB4 /* DateConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1B12421FE9AB6300FFFDB4 /* DateConversion.swift */; };
 		6B1B12441FE9ABD900FFFDB4 /* DateConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1B12421FE9AB6300FFFDB4 /* DateConversion.swift */; };
 		6B31A6BD1FF6FD08002069B2 /* UnitConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B31A6BC1FF6FD08002069B2 /* UnitConversions.swift */; };
+		6B35497A1FFDA1CD00BE3AC5 /* ShortStoughRunkeeper1220.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 6B3549781FFDA1CD00BE3AC5 /* ShortStoughRunkeeper1220.gpx */; };
 		6B4F6E621FE09A6600545DE3 /* PersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4F6E611FE09A6600545DE3 /* PersistanceService.swift */; };
 		6B5904E21FDC791D00BF96CD /* HikeFinishedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5904E11FDC791D00BF96CD /* HikeFinishedViewController.swift */; };
 		6B5FA3921FF58BD4008C4771 /* EditUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5FA3911FF58BD4008C4771 /* EditUserInfoViewController.swift */; };
@@ -63,6 +64,7 @@
 		6BB63A4D1FD5EA5E00E9F4A1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB63A4C1FD5EA5E00E9F4A1 /* SettingsViewController.swift */; };
 		6BBA1D3D1FEA3FA500251162 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BBA1D3A1FEA3F9C00251162 /* Charts.framework */; };
 		6BBA1D3E1FEA3FA500251162 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6BBA1D3A1FEA3F9C00251162 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6BBF0F221FFC998900591C50 /* PauseNoise.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6BBF0F201FFC998900591C50 /* PauseNoise.wav */; };
 		6BC0BE5B1FE8881C00C2498E /* StartHikeInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC0BE5A1FE8881C00C2498E /* StartHikeInterfaceController.swift */; };
 		6BC0BE5E1FE8D44C00C2498E /* HikeWorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCC75E01FD621A4005F2F19 /* HikeWorkoutModel.swift */; };
 		6BC0BE5F1FE8DBE800C2498E /* Meters Alias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B81261C1FDF7981009054A3 /* Meters Alias.swift */; };
@@ -187,6 +189,7 @@
 		6B1B12421FE9AB6300FFFDB4 /* DateConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConversion.swift; sourceTree = "<group>"; };
 		6B249CA91FEA20370092B518 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B31A6BC1FF6FD08002069B2 /* UnitConversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitConversions.swift; sourceTree = "<group>"; };
+		6B3549781FFDA1CD00BE3AC5 /* ShortStoughRunkeeper1220.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ShortStoughRunkeeper1220.gpx; sourceTree = "<group>"; };
 		6B4F6E611FE09A6600545DE3 /* PersistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceService.swift; sourceTree = "<group>"; };
 		6B5904E11FDC791D00BF96CD /* HikeFinishedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeFinishedViewController.swift; sourceTree = "<group>"; };
 		6B5FA3911FF58BD4008C4771 /* EditUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserInfoViewController.swift; sourceTree = "<group>"; };
@@ -233,6 +236,7 @@
 		6BB63A4A1FD5EA5500E9F4A1 /* ChecklistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistViewController.swift; sourceTree = "<group>"; };
 		6BB63A4C1FD5EA5E00E9F4A1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		6BBA1D341FEA3F9C00251162 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
+		6BBF0F201FFC998900591C50 /* PauseNoise.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = PauseNoise.wav; sourceTree = "<group>"; };
 		6BC0BE5A1FE8881C00C2498E /* StartHikeInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartHikeInterfaceController.swift; sourceTree = "<group>"; };
 		6BC0BE621FE99A8000C2498E /* HikeTrackerWatchApp Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "HikeTrackerWatchApp Extension.entitlements"; sourceTree = "<group>"; };
 		6BC0BE631FE99A8000C2498E /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS4.2.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -318,6 +322,7 @@
 			children = (
 				6B077C9F1FFAF7B400A87E2C /* FastRunStough.gpx */,
 				6B6A1D4E1FF2EF3800C4AD3A /* RK_gpx _2017-12-20_1333-xc.gpx */,
+				6B3549781FFDA1CD00BE3AC5 /* ShortStoughRunkeeper1220.gpx */,
 				6B91BB421FF9C59500CB378F /* GPX 1 For Unit Testing.gpx */,
 			);
 			path = "GPX Files";
@@ -478,6 +483,7 @@
 				6B6E19D61FEDE7B200B5605A /* Fonts */,
 				6BCD37A51FD88F7A00FE8C03 /* HikeTest.gpx */,
 				6BB63A131FD5CCE600E9F4A1 /* Assets.xcassets */,
+				6BBF0F201FFC998900591C50 /* PauseNoise.wav */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -772,10 +778,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BBF0F221FFC998900591C50 /* PauseNoise.wav in Resources */,
 				6BB63A171FD5CCE600E9F4A1 /* LaunchScreen.storyboard in Resources */,
 				6B6E19D81FEDE7EE00B5605A /* Ailerons-Typeface.otf in Resources */,
 				6B6A1D4F1FF2EF3800C4AD3A /* RK_gpx _2017-12-20_1333-xc.gpx in Resources */,
 				6BB63A141FD5CCE600E9F4A1 /* Assets.xcassets in Resources */,
+				6B35497A1FFDA1CD00BE3AC5 /* ShortStoughRunkeeper1220.gpx in Resources */,
 				6B91BB431FF9C59500CB378F /* GPX 1 For Unit Testing.gpx in Resources */,
 				6B077CA01FFAF7B400A87E2C /* FastRunStough.gpx in Resources */,
 				6BB63A0F1FD5CCE600E9F4A1 /* Main.storyboard in Resources */,
