@@ -15,16 +15,20 @@ import HealthKit
 
 class HikeWorkoutHappening {
     
-    let formatter = Formatter()
     
-    var totalDistanceInMeters = 0.0
+    // Duration
+    var startDate: Date?
+    var endDate: Date?
     
+    //Pause state is set by the view controller, and when it is set, sends an extra location object so the time calculation is accurate
     var paused = false
-    var timeTraveldUpHill = 0.0
-    var timeTraveledDownHill = 0.0
+    private var pausedTime = 0.0
     
-    var pausedTime = 0.0
+    private var timeTraveldUpHill = 0.0
+    private var timeTraveledDownHill = 0.0
     
+    
+    //Total time is calculated during the workout by taking the start time and figuring out the interval since then, subtracting paused seconds
     var totalTime: Double {
         get {
             guard let startTime = startDate else { return 0.0 }
@@ -35,15 +39,40 @@ class HikeWorkoutHappening {
         }
     }
     
-    var startDate: Date?
-    var endDate: Date?
     
+    // Distance
+    var totalDistanceInMeters = 0.0
+    
+    // Altitude
     var currentAltitudeInMeters = 0.0
     
-    let user = StoredUser()
+    // Calories
     
+    // Will update in future with better calorie calculation algorithm
+    let user = StoredUser()
+    private let hikeUphillMETValue = 6.00
+    private let hikeDownhillMETValue = 2.8
+    
+    var totalCaloriesBurned: Calorie {
+        get {
+            var totalCaloriesBurned: Double = 0.0
+            guard let userWeight = user.weightInKilos else {return 0}
+            
+            let caloriesBurnedPerHourUphill = userWeight * hikeUphillMETValue
+            let percentageOfHourUphill = Double(timeTraveldUpHill) * 0.0002
+            totalCaloriesBurned += caloriesBurnedPerHourUphill * percentageOfHourUphill
+            
+            let caloriesBurnedPerHourDownhill = userWeight * hikeDownhillMETValue
+            let percentageOfHourDownhill = Double(timeTraveledDownHill) * 0.0002
+            totalCaloriesBurned += caloriesBurnedPerHourDownhill * percentageOfHourDownhill
+            return totalCaloriesBurned
+        }
+    }
+    
+    // Locations
     var storedLocations = [CLLocation]()
     
+    //This is where most of the functionality happens. The view controller gives us a location object, we figure out if we're going up or downhill currently, if we're paused or not, and sets distance and duration information
     func addNewLocation(_ newLocation: CLLocation) {
         currentAltitudeInMeters = newLocation.altitude
         if storedLocations.isEmpty {
@@ -55,7 +84,15 @@ class HikeWorkoutHappening {
         checkIfPausedAndSetCorrectDuration(lastLocation: lastLocation, newLocation: newLocation)
         totalDistanceInMeters += lastLocation.distance(from: newLocation)
         storedLocations.append(newLocation)
-        
+    }
+    
+    
+    //Used for drawing the line on the map
+    var coordinates: [CLLocationCoordinate2D] {
+        get {
+            return storedLocations.map { return $0.coordinate }
+            
+        }
     }
     
     private func checkElevationDirectionAndSetUpOrDownDuration(lastLocation: CLLocation, newLocation:CLLocation) {
@@ -76,32 +113,8 @@ class HikeWorkoutHappening {
         }
     }
     
-    private let hikeUphillMETValue = 6.00
-    private let hikeDownhillMETValue = 2.8
+    // Display
     
-    var totalCaloriesBurned: Calorie {
-        get {
-            var totalCaloriesBurned: Double = 0.0
-            guard let userWeight = user.weightInKilos else {return 0}
-            
-            let caloriesBurnedPerHourUphill = userWeight * hikeUphillMETValue
-            let percentageOfHourUphill = Double(timeTraveldUpHill) * 0.0002
-            totalCaloriesBurned += caloriesBurnedPerHourUphill * percentageOfHourUphill
-            
-            let caloriesBurnedPerHourDownhill = userWeight * hikeDownhillMETValue
-            let percentageOfHourDownhill = Double(timeTraveledDownHill) * 0.0002
-            totalCaloriesBurned += caloriesBurnedPerHourDownhill * percentageOfHourDownhill
-            return totalCaloriesBurned
-        }
-    }
-    
-    
-    var coordinates: [CLLocationCoordinate2D] {
-        get {
-            return storedLocations.map { return $0.coordinate }
-            
-        }
-    }
     
     private var sunsetTime: String? {
         get {
@@ -114,13 +127,14 @@ class HikeWorkoutHappening {
         }
     }
     
+    // Called to figure out the information we need for the stats display, returns a display object to display on screen
     func getDisplayStrings() -> HikeInProgressDisplay {
         var newDisplay = HikeInProgressDisplay()
         let formatter = MeasurementFormatter()
         formatter.unitStyle = .medium
         formatter.unitOptions = .naturalScale
-
-
+        
+        
         //Duration
         let duration = totalTime
         let durationFormatted = DateHelper().convertDurationToStringDate(duration)
@@ -136,13 +150,13 @@ class HikeWorkoutHappening {
         newDisplay.distance = distanceString
         
         //Pace
-//        if let lastLocation = storedLocations.last {
-//            let speedInMetersPerSecond = lastLocation.speed
-//            let speedMeasurement = Measurement(value: speedInMetersPerSecond, unit: UnitLength.meters)
-//            let speedMeasurementString = formatter.string(from: speedMeasurement)
-//            let speedMeasurementWithIdentifier = "\(speedMeasurementString)/hr"
-//            newDisplay.pace = speedMeasurementWithIdentifier
-//        }
+        if let lastLocation = storedLocations.last {
+            let speedInMetersPerSecond = lastLocation.speed
+            let speedMeasurement = Measurement(value: speedInMetersPerSecond, unit: UnitLength.meters)
+            let speedMeasurementString = formatter.string(from: speedMeasurement)
+            let speedMeasurementWithIdentifier = "\(speedMeasurementString)/hr"
+            newDisplay.pace = speedMeasurementWithIdentifier
+        }
         //Sunset
         if let sunsetTime = sunsetTime {
             newDisplay.sunsetTime = sunsetTime
@@ -156,13 +170,4 @@ class HikeWorkoutHappening {
 
 }
 
-struct HikeInProgressDisplay {
-    var duration = "-"
-    var altitude = "-"
-    var distance = "-"
-    var caloriesBurned = "-"
-    var pace = "-"
-    var sunsetTime = "-"
-    
-    
-}
+
