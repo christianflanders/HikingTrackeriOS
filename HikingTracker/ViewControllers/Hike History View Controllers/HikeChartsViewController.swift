@@ -33,7 +33,7 @@ class HikeChartsViewController: UIViewController {
     
     
     // MARK: Public Variables
-    public var hikeWorkout = HikeWorkout()
+    public var hikeWorkout = HikeWorkoutInProgress()
     
     // MARK: Private Variables
     

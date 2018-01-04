@@ -12,13 +12,13 @@ import HealthKit
 
 struct SaveHike {
     
-    func saveToCoreData(hike: HikeWorkout) {
+    func saveToCoreData(hike: HikeWorkoutInProgress) {
         guard let hikeName = hike.hikeName else { return }
         let dataStore = PersistanceService.store
         dataStore.storeHikeWorkout(hikeWorkout: hike, name: hikeName)
     }
     
-    func saveToHealthKit(hike: HikeWorkout) {
+    func saveToHealthKit(hike: HikeWorkoutInProgress) {
         guard let hikeName = hike.hikeName else { return }
         let healthKit = HealthKitStore()
         healthKit.storeHikeToHealthKit(hike, name: hikeName)

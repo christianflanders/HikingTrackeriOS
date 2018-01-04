@@ -104,7 +104,7 @@ class HikingTrackerTests: XCTestCase {
             XCTFail()
             return
         }
-        let hikeWorkoutToTest = HikeWorkout()
+        let hikeWorkoutToTest = HikeWorkoutInProgress()
         for i in fakeData {
             hikeWorkoutToTest.lastLocation = i
         }
@@ -144,8 +144,8 @@ class HikingTrackerTests: XCTestCase {
         }
     }
     
-    func createFakeHikeWorkout() -> HikeWorkout {
-        let hikeWorkoutToTest = HikeWorkout()
+    func createFakeHikeWorkout() -> HikeWorkoutInProgress {
+        let hikeWorkoutToTest = HikeWorkoutInProgress()
         if let fakeData = createFakeData(from: fileOne) {
             for i in fakeData {
                 hikeWorkoutToTest.lastLocation = i

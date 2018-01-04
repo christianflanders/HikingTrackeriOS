@@ -13,7 +13,7 @@ import CoreData
 import HealthKit
 
 
-class HikeWorkout {
+class HikeWorkoutInProgress {
     
     init() {
     }
@@ -151,26 +151,40 @@ class HikeWorkout {
     
     var storedLocations = [CLLocation]()
     
-    var lastLocation: CLLocation? {
-        willSet (newLocation) {
-            guard let lastLocationSet = lastLocation else {return}
-            guard let newLocationToSet = newLocation else {return}
-            //Check if we're going up or down hill and add that to our time traveled in either direction
-            let lastLocationTime = lastLocationSet.timestamp
-            if !paused {
-                if lastLocationSet.altitude < newLocationToSet.altitude {
-                    timeTraveldUpHill += Double(newLocationToSet.timestamp.timeIntervalSince(lastLocationTime))
-                } else if lastLocationSet.altitude > newLocationToSet.altitude {
-                    timeTraveledDownHill += Double(newLocationToSet.timestamp.timeIntervalSince(lastLocationTime))
-                }
-            }
-            //Add the previous location to our stored Locations
-            storedLocations.append(lastLocationSet)
+    func addNewLocation(_ newLocation: CLLocation) {
+        if storedLocations.isEmpty {
+            storedLocations.append(newLocation)
+            return
         }
+        guard let lastLocationSet = storedLocations.last else {return}
+        
+        
+        
+        
+        
+        storedLocations.append(newLocation)
     }
     
     var coordinates: [CLLocationCoordinate2D] {
         return storedLocations.map { return $0.coordinate }
+    }
+    
+    private func checkElevationDirectionAndSetUpOrDownDuration(lastLocation: CLLocation, newLocation:CLLocation) {
+        if !paused {
+            let timeDifference = newLocation.timestamp.timeIntervalSince(lastLocation.timestamp)
+            if lastLocation.altitude < newLocation.altitude {
+                timeTraveldUpHill += timeDifference
+            } else if lastLocation.altitude > newLocation.altitude || lastLocation.altitude == newLocation.altitude {
+                timeTraveledDownHill += timeDifference
+            }
+        }
+    }
+    
+    private func checkIfPausedAndSetPausedDuration(lastLocation: CLLocation, newLocation:CLLocation) {
+        let timeDifference = newLocation.timestamp.timeIntervalSince(lastLocation.timestamp)
+        if paused {
+            
+        }
     }
     
     

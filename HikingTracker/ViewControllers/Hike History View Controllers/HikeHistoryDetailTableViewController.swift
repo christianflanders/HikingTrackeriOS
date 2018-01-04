@@ -44,7 +44,7 @@ class HikeHistoryDetailTableViewController: UITableViewController, UITextFieldDe
     
     
     // MARK: Public Variables
-    var hikeWorkout = HikeWorkout()
+    var hikeWorkout = HikeWorkoutInProgress()
     
     var unsavedHikeIncoming = false
     

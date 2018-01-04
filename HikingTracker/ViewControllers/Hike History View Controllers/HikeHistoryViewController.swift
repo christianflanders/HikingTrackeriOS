@@ -17,10 +17,10 @@ class HikeHistoryViewController: UIViewController, UITableViewDataSource, UITabl
     
     @IBOutlet weak var hikeHistoryTableView: UITableView!
     
-    private var pastWorkouts = [HikeWorkout]()
+    private var pastWorkouts = [HikeWorkoutInProgress]()
     
     
-    var selectedHikeWorkout = HikeWorkout()
+    var selectedHikeWorkout = HikeWorkoutInProgress()
     
     private let navigationBarBackgroundImage = DefaultUI().navBarBackgroundImage
     

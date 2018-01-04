@@ -12,33 +12,34 @@ import CoreMotion
 import CoreData
 import HealthKit
 
-class HikeWorkoutFromHistory {
-    
-    var startDate: Date
-    
-    var endDate: Date
-    
-    
-    var caloriesBurned: Double
-    
-    var durationInSeconds: Double
-    
-    var totalElevationGainInMeters: Meters
-    
-    var totalCaloriesBurned: Calorie
-    
-    var avgPacePerHour: Meters
-    
-    var minAltitude: Meters
-    
-    var maxAltitude: Meters
-    
-    var timeUpHillInSeconds:Double
-    
-    var timeDownhillInSeconds: Double
-    
-    var storedLocations: [CLLocation]
-    
-    
-    
-}
+//class HikeWorkoutFromHistory {
+//
+//    var startDate: Date
+//
+//    var endDate: Date
+//
+//
+//    var caloriesBurned: Double
+//
+//    var durationInSeconds: Double
+//
+//    var totalElevationGainInMeters: Meters
+//
+//    var totalCaloriesBurned: Calorie
+//
+//    var avgPacePerHour: Meters
+//
+//    var minAltitude: Meters
+//
+//    var maxAltitude: Meters
+//
+//    var timeUpHillInSeconds:Double
+//
+//    var timeDownhillInSeconds: Double
+//
+//    var storedLocations: [CLLocation]
+//
+//
+//
+//}
+

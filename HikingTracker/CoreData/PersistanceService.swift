@@ -21,9 +21,9 @@ final class PersistanceService {
         return persistentContainer.viewContext
     }
     
-    var fetchedWorkouts = [HikeWorkout]()
+    var fetchedWorkouts = [HikeWorkoutInProgress]()
     
-    func storeHikeWorkout(hikeWorkout: HikeWorkout, name: String) {
+    func storeHikeWorkout(hikeWorkout: HikeWorkoutInProgress, name: String) {
         let newHikeWorkout = SavedHikeWorkout(context: context)
         newHikeWorkout.startDate = hikeWorkout.startDate
         newHikeWorkout.name = name
@@ -65,10 +65,10 @@ final class PersistanceService {
         fetchedWorkouts = convertSavedHikesToRegularClass(fetchedHikeWorkouts)
     }
     
-    private func convertSavedHikesToRegularClass(_ fetched: [SavedHikeWorkout]) -> [HikeWorkout] {
-        var convertedHikes = [HikeWorkout]()
+    private func convertSavedHikesToRegularClass(_ fetched: [SavedHikeWorkout]) -> [HikeWorkoutInProgress] {
+        var convertedHikes = [HikeWorkoutInProgress]()
         for hike in fetched {
-            let convertedHike = HikeWorkout()
+            let convertedHike = HikeWorkoutInProgress()
             if let startDate = hike.startDate {
                 convertedHike.startDate = startDate
             } else {
@@ -87,7 +87,7 @@ final class PersistanceService {
                                                  horizontalAccuracy: savedLocation.horizontalAccuracy,
                                                  verticalAccuracy: savedLocation.verticalAccuracy,
                                                  timestamp: savedLocation.timestamp!)
-                    convertedHike.lastLocation = newLocation
+                    convertedHike.addNewLocation(newLocation)
                 }
             }
             convertedHikes.append(convertedHike)

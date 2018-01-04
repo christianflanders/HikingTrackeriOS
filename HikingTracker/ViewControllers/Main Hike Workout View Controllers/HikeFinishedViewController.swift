@@ -18,7 +18,7 @@ class HikeFinishedViewController: UIViewController, UITextFieldDelegate {
     //MARK: Constants
     private let saveSegueIdentifier = "SaveHikeSegue"
     //MARK: Variables
-    weak var hikeWorkout: HikeWorkout?
+    weak var hikeWorkout: HikeWorkoutInProgress?
     var mapBoxView: MGLMapView!
     
     //MARK: Outlets
@@ -107,7 +107,7 @@ class HikeFinishedViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: Instance Methods
     
-    func updateDisplayWithHikeInformation(_ hikeWorkout: HikeWorkout) {
+    func updateDisplayWithHikeInformation(_ hikeWorkout: HikeWorkoutInProgress) {
         let duration = hikeWorkout.durationAsString
         durationLabel.text = duration
         let elevationGain = Int(hikeWorkout.highestElevation - hikeWorkout.lowestElevation)

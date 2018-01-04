@@ -13,7 +13,7 @@ import Charts
 
 class HikeHistoryDetailViewController: UIViewController {
 
-    var hikeWorkout = HikeWorkout()
+    var hikeWorkout = HikeWorkoutInProgress()
     
     @IBOutlet weak var elevationGainLabel: UILabel!
     @IBOutlet weak var totalDistanceLabel: UILabel!

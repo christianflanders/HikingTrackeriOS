@@ -13,7 +13,7 @@ class HealthKitStore {
     
     init() {}
     
-    func storeHikeToHealthKit(_ hikeWorkout: HikeWorkout, name: String)  {
+    func storeHikeToHealthKit(_ hikeWorkout: HikeWorkoutInProgress, name: String)  {
         
         let healthStore = HKHealthStore()
         
