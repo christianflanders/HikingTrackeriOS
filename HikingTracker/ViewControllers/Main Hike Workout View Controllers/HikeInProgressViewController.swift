@@ -12,7 +12,6 @@ import CoreMotion
 import CoreLocation
 import Mapbox
 import WatchConnectivity
-import AVFoundation
 
 class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate, WCSessionDelegate, MGLMapViewDelegate{
     
@@ -65,7 +64,6 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     
     private var paused = false
     
-    var player: AVAudioPlayer?
     //MARK: View Life Cycle
     
     override func viewDidLoad() {
@@ -86,7 +84,6 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     // MARK: IBActions
     
     @IBAction func pauseHikeButtonPressed(_ sender: UIButton) {
-        playSound()
         watchConnection.sendMessage([watchMessages.pauseHike: true], replyHandler: nil, errorHandler: nil)
         pauseHike()
     }
@@ -208,9 +205,10 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
             altitudeDisplayLabel.text = stringToDisplay
         }
         
-         let distance = hikeWorkout.totalDistanceTraveled
+        if let distance = hikeWorkout.totalDistanceTraveled {
             let stringToDisplay = distance.getDisplayString
             distanceDisplayLabel.text = stringToDisplay
+        }
         
         let caloriesBurned = hikeWorkout.totalCaloriesBurned.getCalorieDisplayString
         caloriesBurnedDisplayLabel.text = caloriesBurned
@@ -348,16 +346,16 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         
         let stringDateToSendToWatch = dateFormatter.string(from: date)
         watchConnection.sendMessage([watchMessages.startDate: stringDateToSendToWatch], replyHandler: nil) { error in
-            
+            print(error)
         }
     }
     
     private func sendDistanceToWatch() {
-        let distance = hikeWorkout.totalDistanceTraveled
+        guard let distance = hikeWorkout.totalDistanceTraveled else {return}
         let stringDistance =  String(Int(distance))
         let stringToSend = "\(stringDistance) meters"
         watchConnection.sendMessage([watchMessages.distance: stringToSend], replyHandler: nil) { error in
-            
+            print(error)
         }
     }
     
@@ -365,7 +363,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         let caloriesBurned = Int(hikeWorkout.totalCaloriesBurned)
         let stringCalories = String(caloriesBurned)
         watchConnection.sendMessage([watchMessages.calories: stringCalories], replyHandler: nil) { error in
-            
+            print(error)
         }
     }
     
@@ -383,33 +381,4 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     
     // MARK: Solar
     
-    
-    
-    // MARK: Av Foundation
-    
-    
-    func playSound() {
- 
-        guard let path = Bundle.main.path(forResource: "PauseNoise", ofType: "wav") else {return}
-        let url = URL(fileURLWithPath: path)
-        do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-            try AVAudioSession.sharedInstance().setActive(true)
-            
-            
-            
-            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
-            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.wav.rawValue)
-            
-            /* iOS 10 and earlier require the following line:
-             player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
-            
-            guard let player = player else { return }
-            
-            player.play()
-            
-        } catch let error {
-            print(error.localizedDescription)
-        }
-    }
 }

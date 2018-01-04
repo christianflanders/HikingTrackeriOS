@@ -23,7 +23,7 @@ class HealthKitStore {
         
         let distanceInMeters = hikeWorkout.totalDistanceTraveled
         let distanceUnit = HKUnit(from: .meter)
-        let hkDistance = HKQuantity(unit: distanceUnit, doubleValue: distanceInMeters)
+        let hkDistance = HKQuantity(unit: distanceUnit, doubleValue: distanceInMeters!)
         
         guard let startDate = hikeWorkout.startDate else {
             print("Problem getting start date")

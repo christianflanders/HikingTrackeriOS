@@ -68,7 +68,7 @@ class HikeHistoryViewController: UIViewController, UITableViewDataSource, UITabl
     
         cell.hikeDateLabel.text = workout.startDate?.displayString
         cell.hikeDurationLabel.text = workout.durationAsString
-        cell.hikeDistanceLabel.text = workout.totalDistanceTraveled.getDisplayString
+        cell.hikeDistanceLabel.text = workout.totalDistanceTraveled?.getDisplayString
         print(workout.storedLocations.count)
         return cell
     }

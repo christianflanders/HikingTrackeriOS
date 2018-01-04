@@ -79,7 +79,7 @@ class HikeHistoryDetailTableViewController: UITableViewController, UITextFieldDe
     
     func updateDisplay() {
         durationLabel.text = hikeWorkout.durationAsString
-        distanceLabel.text = hikeWorkout.totalDistanceTraveled.getDisplayString
+        distanceLabel.text = hikeWorkout.totalDistanceTraveled?.getDisplayString
         elevationGainLabel.text = (hikeWorkout.highestElevation - hikeWorkout.lowestElevation).getDisplayString
         caloriesLabel.text = hikeWorkout.totalCaloriesBurned.getCalorieDisplayString
         
@@ -87,8 +87,8 @@ class HikeHistoryDetailTableViewController: UITableViewController, UITextFieldDe
         minAltitudeLabel.text = hikeWorkout.lowestElevation.getDisplayString
         maxAltitudeLabel.text = hikeWorkout.highestElevation.getDisplayString
         
-        timeUphillLabel.text = hikeWorkout.timeTraveledUpHillDisplayString
-        timeDownhillLabel.text = hikeWorkout.timeTraveledDownhilllDisplayString
+        timeUphillLabel.text = String(hikeWorkout.timeTraveldUpHill)
+        timeDownhillLabel.text = String(hikeWorkout.timeTraveledDownHill)
         
         if hikeWorkout.hikeName != nil {
             nameTextField.text = hikeWorkout.hikeName

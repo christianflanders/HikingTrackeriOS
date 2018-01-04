@@ -24,13 +24,13 @@ class HikeWorkout {
     let user = StoredUser()
     
     var hikeName: String?
-    
+
     private let dateHelper = DateHelper()
     
     var pausedTime = 0.0
     var paused = false
     //Time Information
-    //    var seconds = 0
+//    var seconds = 0
     var startDate: Date?
     var endDate: Date?
     
@@ -53,122 +53,98 @@ class HikeWorkout {
             }
         }
     }
-    
-    var durationAsString: String {
-        get {
-            return dateHelper.convertDurationToStringDate(calculatedDuration)
-        }
+
+     var durationAsString: String {
+        return dateHelper.convertDurationToStringDate(calculatedDuration)
+
     }
     
     var timeTraveldUpHill = 0.0
     var timeTraveledDownHill = 0.0
-    
-    var timeTraveledUpHillDisplayString: String {
-        get {
-            return dateHelper.convertDurationToStringDate(timeTraveldUpHill)
-        }
-    }
-    
-    var timeTraveledDownhilllDisplayString: String {
-        get {
-            return dateHelper.convertDurationToStringDate(timeTraveledDownHill)
-        }
-    }
-    
+
     var sunsetTime: String? {
-        get {
-            guard let currentLocation = self.storedLocations.first else { return " " }
-            guard let startDate = startDate else {return " "}
-            let solar = Solar(for: startDate, coordinate: currentLocation.coordinate)
-            guard let sunset = solar?.sunset else { return "" }
-            let string = sunset.displayTimeOnly
-            return string
-        }
+        guard let currentLocation = self.storedLocations.first else { return " " }
+        guard let startDate = startDate else {return " "}
+        let solar = Solar(for: startDate, coordinate: currentLocation.coordinate)
+        guard let sunset = solar?.sunset else { return "" }
+        let string = sunset.displayTimeOnly
+        
+        return string
     }
     
     
     //Elevation & Distance Information
     
     var lowestElevation: Meters {
-        get {
-            guard var lowestAltitude = storedLocations.first?.altitude else {return 0}
-            for location in storedLocations {
-                if location.altitude < lowestAltitude {
-                    lowestAltitude = location.altitude
-                }
+        guard var lowestAltitude = storedLocations.first?.altitude else {return 0}
+        for location in storedLocations {
+            if location.altitude < lowestAltitude {
+                lowestAltitude = location.altitude
             }
-            return Meters(lowestAltitude)
         }
+        return Meters(lowestAltitude)
     }
     
     
     var highestElevation: Meters {
-        get {
-            guard var highestAltitude = storedLocations.first?.altitude else {return 0}
-            for location in storedLocations {
-                if location.altitude > highestAltitude {
-                    highestAltitude = location.altitude
-                }
+        guard var highestAltitude = storedLocations.first?.altitude else {return 0}
+        for location in storedLocations {
+            if location.altitude > highestAltitude {
+                highestAltitude = location.altitude
             }
-            return Meters(highestAltitude)
         }
+        return Meters(highestAltitude)
     }
     
-    
-    
-    
+    var totalDistanceTraveled: Meters? {
+        guard let distanceTraveledUphill = distanceTraveledUphill else {return 0}
+        guard let distanceTraveledDownhill = distanceTraveledDownhill else {return 0}
+        return distanceTraveledUphill + distanceTraveledDownhill
+    }
     
     var distanceTraveledDownhill: Meters? {
-        get {
-            var totalDistanceTraveleDownhill = 0.0
-            guard var lastLocation = storedLocations.first else {return 0.0}
-            for i in storedLocations {
-                if i.altitude < lastLocation.altitude {
-                    totalDistanceTraveleDownhill += i.distance(from: lastLocation)
-                    
-                }
-                lastLocation = i
+        var totalDistanceTraveleDownhill = 0.0
+        guard var lastLocation = storedLocations.first else {return 0.0}
+        for i in storedLocations {
+            if i.altitude < lastLocation.altitude {
+                totalDistanceTraveleDownhill += i.distance(from: lastLocation)
+                
             }
-            print(totalDistanceTraveleDownhill)
-            return totalDistanceTraveleDownhill
+            lastLocation = i
         }
+        return totalDistanceTraveleDownhill
     }
     
     var distanceTraveledUphill: Meters? {
-        get {
-            var totalDistanceTraveleDownhill = 0.0
-            guard var lastLocation = storedLocations.first else {return 0.0}
-            for i in storedLocations {
-                if i.altitude < lastLocation.altitude {
-                    totalDistanceTraveleDownhill += i.distance(from: lastLocation)
-                }
-                lastLocation = i
+        var totalDistanceTraveledUphill = 0.0
+        guard var lastLocation = storedLocations.first else {return 0.0}
+        for i in storedLocations {
+            if lastLocation.altitude < i.altitude || lastLocation.altitude == i.altitude {
+                totalDistanceTraveledUphill += i.distance(from: lastLocation)
             }
-            print(totalDistanceTraveleDownhill)
-            return totalDistanceTraveleDownhill
+            lastLocation = i
         }
+        return totalDistanceTraveledUphill
     }
     
     
-    //Calorie Information
+        //Calorie Information
     
     private let hikeUphillMETValue = 6.00
     private let hikeDownhillMETValue = 2.8
     
     var totalCaloriesBurned: Calorie {
-        get {
-            var totalCaloriesBurned: Double = 0.0
-            guard let userWeight = user.weightInKilos else {return 0}
-            
-            let caloriesBurnedPerHourUphill = userWeight * hikeUphillMETValue
-            let percentageOfHourUphill = Double(timeTraveldUpHill) * 0.0002
-            totalCaloriesBurned += caloriesBurnedPerHourUphill * percentageOfHourUphill
-            
-            let caloriesBurnedPerHourDownhill = userWeight * hikeDownhillMETValue
-            let percentageOfHourDownhill = Double(timeTraveledDownHill) * 0.0002
-            totalCaloriesBurned += caloriesBurnedPerHourDownhill * percentageOfHourDownhill
-            return totalCaloriesBurned
-        }
+        var totalCaloriesBurned: Double = 0.0
+        guard let userWeight = user.weightInKilos else {return 0}
+        
+        let caloriesBurnedPerHourUphill = userWeight * hikeUphillMETValue
+        let percentageOfHourUphill = Double(timeTraveldUpHill) * 0.0002
+        totalCaloriesBurned += caloriesBurnedPerHourUphill * percentageOfHourUphill
+        
+        let caloriesBurnedPerHourDownhill = userWeight * hikeDownhillMETValue
+        let percentageOfHourDownhill = Double(timeTraveledDownHill) * 0.0002
+        totalCaloriesBurned += caloriesBurnedPerHourDownhill * percentageOfHourDownhill
+        return totalCaloriesBurned
     }
     
     //Locations
@@ -176,37 +152,22 @@ class HikeWorkout {
     var storedLocations = [CLLocation]()
     
     var lastLocation: CLLocation? {
-        get {
-            return storedLocations.last
-        }
-        set (newLocation) {
-            guard let newLocation = newLocation else {return}
-            storedLocations.append(newLocation)
-            if paused {
-                
-            }
-        }
-    }
-    
-    var totalDistanceTraveled: Meters {
-        get {
-            if storedLocations.count > 1 {
-                var totalDistance = 0.0
-                for i in 0..<storedLocations.count - 1{
-                    let currentLocation = storedLocations[i]
-                    let nextLocation = storedLocations[i + 1]
-                    let distanceFromThisLocationToNext = currentLocation.distance(from: nextLocation)
-                    totalDistance += distanceFromThisLocationToNext
+        willSet (newLocation) {
+            guard let lastLocationSet = lastLocation else {return}
+            guard let newLocationToSet = newLocation else {return}
+            //Check if we're going up or down hill and add that to our time traveled in either direction
+            let lastLocationTime = lastLocationSet.timestamp
+            if !paused {
+                if lastLocationSet.altitude < newLocationToSet.altitude {
+                    timeTraveldUpHill += Double(newLocationToSet.timestamp.timeIntervalSince(lastLocationTime))
+                } else if lastLocationSet.altitude > newLocationToSet.altitude {
+                    timeTraveledDownHill += Double(newLocationToSet.timestamp.timeIntervalSince(lastLocationTime))
                 }
-                return totalDistance
-            } else {
-                return 0
             }
+            //Add the previous location to our stored Locations
+            storedLocations.append(lastLocationSet)
         }
     }
-    
-    
-    
     
     var coordinates: [CLLocationCoordinate2D] {
         return storedLocations.map { return $0.coordinate }
@@ -219,8 +180,8 @@ class HikeWorkout {
     
     
     
-    
-    
+
+
 }
 
 
@@ -252,10 +213,4 @@ extension Array where Element: CLLocation {
         let calculatedCenterCoordinate = CLLocationCoordinate2D(latitude: averageLat, longitude: averageLong)
         return calculatedCenterCoordinate
     }
-}
-
-
-struct hikeDataObject {
-    var location: CLLocation?
-    var paused = false
 }
