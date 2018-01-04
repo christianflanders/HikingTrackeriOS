@@ -13,7 +13,7 @@ import CoreLocation
 import Mapbox
 import WatchConnectivity
 
-class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate, WCSessionDelegate, MGLMapViewDelegate{
+class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate, MGLMapViewDelegate{
     
     // MARK: Enums
     
@@ -30,12 +30,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     // MARK: Variables
     
     // MARK: Outlets
-    @IBOutlet weak var altitudeDisplayLabel: UILabel!
-    @IBOutlet weak var durationDisplayLabel: UILabel!
-    @IBOutlet weak var paceDisplayLabel: UILabel!
-    @IBOutlet weak var distanceDisplayLabel: UILabel!
-    @IBOutlet weak var caloriesBurnedDisplayLabel: UILabel!
-    @IBOutlet weak var sunsetDisplayLabel: UILabel!
+
     
     @IBOutlet weak var mapContainerView: UIView!
     
@@ -43,7 +38,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     @IBOutlet weak var holdToEndButtonOutlet: UIButton!
     @IBOutlet weak var pauseHikeButtonOutlet: UIButton!
     
-    @IBOutlet weak var duringHikeStatsContainerView: UIView!
+    @IBOutlet weak var hikeStatsDisplay: HikeInProgressStatDisplay!
     @IBOutlet weak var gradImageView: UIImageView!
     
     // MARK: Weak Vars
@@ -57,7 +52,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     private var pedometerData:  CMPedometerData?
     private var coordinatesForLine = [CLLocationCoordinate2D]()
     private var mapView: MGLMapView!
-    private  var hikeWorkout = HikeWorkout()
+    private  var hikeWorkout = HikeWorkoutHappening()
     private var currentSpeedInMetersPerSecond = 0.0
     
     private var statsHidden = false
@@ -79,6 +74,26 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         super.viewWillDisappear(true)
         timer?.invalidate()
         locationManager.stopUpdatingLocation()
+    }
+    // MARK: Location Manager Delegaet
+    // This is where we do most of the work, giving the hike workout object each location we get from the location manager
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        for newLocation in locations {
+            print("New Location horiziontal Accuracy is (newLocation.horizontalAccuracy) and the vertical accuracy is \(newLocation.verticalAccuracy)")
+            if newLocation.horizontalAccuracy > 2 {
+                hikeWorkout.addNewLocation(newLocation)
+//                sendDistanceToWatch()
+            }
+        }
+    }
+    
+    fileprivate func setupAndStartLocationManager() {
+        locationManager.delegate = self
+        locationManager.activityType = .fitness
+        locationManager.distanceFilter = 10
+        locationManager.allowsBackgroundLocationUpdates = true
+        locationManager.startUpdatingLocation()
     }
     
     // MARK: IBActions
@@ -104,14 +119,14 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
             mapView.userLocationVerticalAlignment = MGLAnnotationVerticalAlignment.center
             UIView.animate(withDuration: animationDuration) {
                 
-                self.duringHikeStatsContainerView.alpha = 0
+                self.hikeStatsDisplay.alpha = 0
                 self.gradImageView.alpha = 0
                 self.statsHidden = true
             }
         } else {
             mapView.userLocationVerticalAlignment = MGLAnnotationVerticalAlignment.top
             UIView.animate(withDuration: animationDuration) {
-                self.duringHikeStatsContainerView.alpha = 1
+                self.hikeStatsDisplay.alpha = 1
                 self.gradImageView.alpha = 1
                 self.statsHidden = false
             }
@@ -123,9 +138,9 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     private func startHike() {
         hikeWorkout.startDate = Date()
         startTimer()
-        checkForWatchConnection()
+//        checkForWatchConnection()
         startHikeUISettings()
-        convertDateAndSendToWatch(date: hikeWorkout.startDate!)
+//        convertDateAndSendToWatch(date: hikeWorkout.startDate!)
 //        startPedometerAndUpdatePace()
     }
     
@@ -157,31 +172,10 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         }
     }
     
-//    private func startPedometerAndUpdatePace() {
-//        let dateToStartPedometer = Date()
-//        pedometer.startUpdates(from: dateToStartPedometer) { (pedometerData, error) in
-//            if let data = pedometerData {
-//                if let pace = data.currentPace {
-//                    DispatchQueue.main.async {
-//                        let numberOfSecondsInAnHour = 3600.0
-//                        let secondsPerMeter = pace
-//                        let metersPerHourValue = secondsPerMeter.doubleValue * numberOfSecondsInAnHour
-//                        let newMeterPerHourContainer = metersPerHour(metersPerHourValue: Meters(metersPerHourValue), timeStamp: Date())
-//                        self.paceDisplayLabel.text = newMeterPerHourContainer.displayString
-//                        self.hikeWorkout.storedPaceHistory.append(newMeterPerHourContainer)
-//                    }
-//                }
-//
-//            }
-//        }
-//
-//    }
-//
     private func eachSecond() {
-        convertDateAndSendToWatch(date: hikeWorkout.startDate!)
-        hikeWorkout.duration += 1
+//        convertDateAndSendToWatch(date: hikeWorkout.startDate!)
         updateDisplay()
-        sendCaloriesToWatch()
+//        sendCaloriesToWatch()
         let coordinatesForLine = hikeWorkout.coordinates
         if coordinatesForLine.count != 0 {
             mapView.drawLineOf(coordinatesForLine)
@@ -194,31 +188,11 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     // MARK: UI Functions
     
     private func updateDisplay() {
-        //This is kind of hiding the problem where if paused it jumps back and forth between 2 different seconds...🙃
+
         if !paused {
-            let duration = hikeWorkout.durationAsString
-            durationDisplayLabel.text = duration
+            hikeStatsDisplay.setDisplay(with: hikeWorkout.getDisplayStrings())
         }
         
-        if let altitude = hikeWorkout.lastLocation?.altitude {
-            let stringToDisplay = altitude.getDisplayString
-            altitudeDisplayLabel.text = stringToDisplay
-        }
-        
-        if let distance = hikeWorkout.totalDistanceTraveled {
-            let stringToDisplay = distance.getDisplayString
-            distanceDisplayLabel.text = stringToDisplay
-        }
-        
-        let caloriesBurned = hikeWorkout.totalCaloriesBurned.getCalorieDisplayString
-        caloriesBurnedDisplayLabel.text = caloriesBurned
-        
-        //TODO: Pace Label
-        paceDisplayLabel.text = currentSpeedInMetersPerSecond.getDisplayPerHour
-        
-        if let sunsetTime = hikeWorkout.sunsetTime {
-            sunsetDisplayLabel.text = sunsetTime
-        }
         
     }
     
@@ -239,135 +213,22 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "HikeFinishedSegue" {
             guard let destinationVC = segue.destination as? HikeFinishedViewController else {fatalError("Problem with HikeFinishedSegue")}
-            destinationVC.hikeWorkout = hikeWorkout
+//            destinationVC.hikeWorkout = hikeWorkout
         }
     }
     
     func openHikeFinishedVC() {
-        let storyboard: UIStoryboard = UIStoryboard(name: "HikeHistoryStoryboard", bundle: nil)
-        
-        let hikeFinishedVC = storyboard.instantiateViewController(withIdentifier: "Hike History") as! HikeHistoryDetailTableViewController
-        hikeFinishedVC.hikeWorkout = hikeWorkout
-        hikeFinishedVC.unsavedHikeIncoming = true
-        self.present(hikeFinishedVC, animated: true, completion: nil)
-        
+//        let storyboard: UIStoryboard = UIStoryboard(name: "HikeHistoryStoryboard", bundle: nil)
+//
+//        let hikeFinishedVC = storyboard.instantiateViewController(withIdentifier: "Hike History") as! HikeHistoryDetailTableViewController
+//        hikeFinishedVC.hikeWorkout = hikeWorkout
+//        hikeFinishedVC.unsavedHikeIncoming = true
+//        self.present(hikeFinishedVC, animated: true, completion: nil)
+//
     }
-    
-    // MARK: CLLocationManagerDelegate
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        for newLocation in locations {
-            print("New Location horiziontal Accuracy is (newLocation.horizontalAccuracy) and the vertical accuracy is \(newLocation.verticalAccuracy)")
-            if newLocation.horizontalAccuracy > 2 {
-                hikeWorkout.lastLocation = newLocation
-                let speed = newLocation.speed
-                if speed > 0 {
-                    currentSpeedInMetersPerSecond = speed
-                }
-                sendDistanceToWatch()
-            }
-        }
-    }
-    
-    fileprivate func setupAndStartLocationManager() {
-        locationManager.delegate = self
-        locationManager.activityType = .fitness
-        locationManager.distanceFilter = 10
-        locationManager.allowsBackgroundLocationUpdates = true
-        locationManager.startUpdatingLocation()
-    }
-    
-    // MARK: Watch Connectivity Delegate
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        
-    }
-    
-    func sessionDidBecomeInactive(_ session: WCSession) {
-        print("Watch session became inactive")
-    }
-    
-    func sessionDidDeactivate(_ session: WCSession) {
-        print("Watch session deactivated")
-    }
-    
-    // MARK: Watch Connection Functions
-    
-    func session(_ session: WCSession, didReceiveMessage message: [String: Any]) {
-        print("Message recieved from watch!")
-        
-        if let pauseMessage = message[watchMessages.pauseHike] as? Bool {
-            if pauseMessage {
-                DispatchQueue.main.async {
-                    self.pauseHike()
-                }
-            }
-        }
-        if let resumeMessage = message[watchMessages.resumeHike] as? Bool {
-            if resumeMessage {
-                DispatchQueue.main.async {
-                    self.resumeHike()
-                }
-            }
-        }
-        if let endMessage = message[watchMessages.endHike] as? Bool {
-            if endMessage {
-                DispatchQueue.main.async {
-                    self.endHike()
-                }
-            }
-        }
-        
-    }
-    
-    private func checkForWatchConnection() {
-        if WCSession.isSupported() {
-            watchConnection.delegate = self
-            watchConnection.activate()
-            if watchConnection.activationState != .activated {
-                watchConnection.activate()
-            }
-            let configuration = HKWorkoutConfiguration()
-            configuration.activityType = .hiking
-            configuration.locationType = .outdoor
-            let healthStore = HKHealthStore()
-            healthStore.startWatchApp(with: configuration) { (success, _) in
-                if success {
-                    print("should be opening watch app with workout configuration")
-                }
-            }
-        }
-    }
-    
-    private func convertDateAndSendToWatch(date: Date) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US")
-        dateFormatter.dateStyle = .long
-        dateFormatter.timeStyle = .full
-        
-        let stringDateToSendToWatch = dateFormatter.string(from: date)
-        watchConnection.sendMessage([watchMessages.startDate: stringDateToSendToWatch], replyHandler: nil) { error in
-            print(error)
-        }
-    }
-    
-    private func sendDistanceToWatch() {
-        guard let distance = hikeWorkout.totalDistanceTraveled else {return}
-        let stringDistance =  String(Int(distance))
-        let stringToSend = "\(stringDistance) meters"
-        watchConnection.sendMessage([watchMessages.distance: stringToSend], replyHandler: nil) { error in
-            print(error)
-        }
-    }
-    
-    private func sendCaloriesToWatch() {
-        let caloriesBurned = Int(hikeWorkout.totalCaloriesBurned)
-        let stringCalories = String(caloriesBurned)
-        watchConnection.sendMessage([watchMessages.calories: stringCalories], replyHandler: nil) { error in
-            print(error)
-        }
-    }
-    
+
     // MARK: MapboxView
+    
     fileprivate func createAndAddMapBoxView() {
         //Setup map view here becuase it murders interface builder
         let url = URL(string: "mapbox://styles/mapbox/outdoors-v10")

@@ -25,7 +25,15 @@ class HikeWorkoutHappening {
     
     var pausedTime = 0.0
     
-    var totalTime = 0.0
+    var totalTime: Double {
+        get {
+            guard let startTime = startDate else { return 0.0 }
+            let currentTime = Date()
+            let totalDuration = currentTime.timeIntervalSince(startTime)
+            let durationMinusPausedTime = totalDuration - pausedTime
+            return durationMinusPausedTime
+        }
+    }
     
     var startDate: Date?
     var endDate: Date?
@@ -42,15 +50,17 @@ class HikeWorkoutHappening {
             storedLocations.append(newLocation)
             return
         }
+        guard let lastLocation = storedLocations.last else {return}
+        checkElevationDirectionAndSetUpOrDownDuration(lastLocation: lastLocation, newLocation: newLocation)
+        checkIfPausedAndSetCorrectDuration(lastLocation: lastLocation, newLocation: newLocation)
+        totalDistanceInMeters += lastLocation.distance(from: newLocation)
         storedLocations.append(newLocation)
-        guard let lastLocationSet = storedLocations.last else {return}
         
     }
     
     private func checkElevationDirectionAndSetUpOrDownDuration(lastLocation: CLLocation, newLocation:CLLocation) {
         if !paused {
             let timeDifference = newLocation.timestamp.timeIntervalSince(lastLocation.timestamp)
-            totalTime += timeDifference
             if lastLocation.altitude < newLocation.altitude {
                 timeTraveldUpHill += timeDifference
             } else if lastLocation.altitude > newLocation.altitude || lastLocation.altitude == newLocation.altitude {
@@ -59,7 +69,7 @@ class HikeWorkoutHappening {
         }
     }
     
-    private func checkIfPausedAndSetPausedDuration(lastLocation: CLLocation, newLocation:CLLocation) {
+    private func checkIfPausedAndSetCorrectDuration(lastLocation: CLLocation, newLocation:CLLocation) {
         let timeDifference = newLocation.timestamp.timeIntervalSince(lastLocation.timestamp)
         if paused {
             pausedTime += timeDifference
@@ -126,13 +136,13 @@ class HikeWorkoutHappening {
         newDisplay.distance = distanceString
         
         //Pace
-        if let lastLocation = storedLocations.last {
-            let speedInMetersPerSecond = lastLocation.speed
-            let speedMeasurement = Measurement(value: speedInMetersPerSecond, unit: UnitLength.meters)
-            let speedMeasurementString = formatter.string(from: speedMeasurement)
-            let speedMeasurementWithIdentifier = "\(speedMeasurementString)/hr"
-            newDisplay.pace = speedMeasurementWithIdentifier
-        }
+//        if let lastLocation = storedLocations.last {
+//            let speedInMetersPerSecond = lastLocation.speed
+//            let speedMeasurement = Measurement(value: speedInMetersPerSecond, unit: UnitLength.meters)
+//            let speedMeasurementString = formatter.string(from: speedMeasurement)
+//            let speedMeasurementWithIdentifier = "\(speedMeasurementString)/hr"
+//            newDisplay.pace = speedMeasurementWithIdentifier
+//        }
         //Sunset
         if let sunsetTime = sunsetTime {
             newDisplay.sunsetTime = sunsetTime
@@ -140,7 +150,7 @@ class HikeWorkoutHappening {
         //Calories
         let totalCaloriesBurnedString = totalCaloriesBurned.getDisplayString
         newDisplay.caloriesBurned = totalCaloriesBurnedString
-
+        
         return newDisplay
     }
 
