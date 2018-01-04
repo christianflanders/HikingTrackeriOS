@@ -45,7 +45,7 @@ class HikingTrackerTests: XCTestCase {
         let testWorkout = createFakeHikeWorkout()
         let totalDistanceTraveled = testWorkout.totalDistanceTraveled
         print(totalDistanceTraveled)
-        let totalDistanceTraveledInt = Int(totalDistanceTraveled)
+        let totalDistanceTraveledInt = Int(totalDistanceTraveled!)
         XCTAssertEqual(totalDistanceTraveledInt, fileOneDistanceInMeters)
     }
     
