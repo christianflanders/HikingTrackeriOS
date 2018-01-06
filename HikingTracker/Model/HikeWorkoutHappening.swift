@@ -14,6 +14,7 @@ import HealthKit
 
 
 class HikeWorkoutHappening {
+
     
     
     // Duration
@@ -22,7 +23,7 @@ class HikeWorkoutHappening {
     
     //Pause state is set by the view controller, and when it is set, sends an extra location object so the time calculation is accurate
     var paused = false
-    var pausedTime = 0.0
+    var totalPausedTime = 0.0
     
     
     //These are set in checkElevationDirectionAndSetUpOrDownDuration. They are only added to if the workout is not paused
@@ -30,6 +31,42 @@ class HikeWorkoutHappening {
     var timeTraveldUpHill = 0.0
     var timeTraveledDownHill = 0.0
     
+    func pauseHike(time: Date) {
+        pausedNotificationTime = time
+    }
+    
+    func resumeHike(time: Date) {
+        let resumedTime = time
+        guard let previousPausedNotification = pausedNotificationTime else { return }
+        let pausedDuration = resumedTime.timeIntervalSince(previousPausedNotification)
+        totalPausedTime += pausedDuration
+        print("That pause was \(pausedDuration)")
+        print("Total time paused is \(totalPausedTime)")
+    }
+    
+    enum PausedOptions {
+        case paused
+        case resume
+    }
+    
+    enum CurrentAltitudeDirection {
+        case uphill
+        case downhill
+    }
+    
+    private var currentAltitudeDirection: CurrentAltitudeDirection?
+    
+    private func resumeFromPausedAndCheckIfDownhillOrUphill(time: TimeInterval) {
+        guard let altitudeDirection = currentAltitudeDirection else { return }
+        switch altitudeDirection {
+        case.uphill :
+            timeTraveldUpHill += time
+        case .downhill:
+            timeTraveledDownHill += time
+        }
+    }
+    
+    var pausedNotificationTime: Date?
     
     //Total time is calculated during the workout by taking the start time and figuring out the interval since then, subtracting paused seconds
     var totalTime: Double {
@@ -38,13 +75,13 @@ class HikeWorkoutHappening {
                 guard let startTime = startDate else { return 0.0 }
                 let currentTime = Date()
                 let totalDuration = currentTime.timeIntervalSince(startTime)
-                let durationMinusPausedTime = totalDuration - pausedTime
+                let durationMinusPausedTime = totalDuration - totalPausedTime
                 return durationMinusPausedTime
             } else {
                 guard let startTime = startDate else { return 0.0 }
                 guard let endDate = endDate else { return 0.0 }
                 let totalDuration = endDate.timeIntervalSince(startTime)
-                let durationMinusPausedTime = totalDuration - pausedTime
+                let durationMinusPausedTime = totalDuration - totalPausedTime
                 return durationMinusPausedTime
             }
 
@@ -122,7 +159,6 @@ class HikeWorkoutHappening {
         }
         guard let lastLocation = storedLocations.last else {return}
         checkElevationDirectionAndSetUpOrDownDuration(lastLocation: lastLocation, newLocation: newLocation)
-        checkIfPausedAndSetCorrectDuration(lastLocation: lastLocation, newLocation: newLocation)
         totalDistanceInMeters += lastLocation.distance(from: newLocation)
         storedLocations.append(newLocation)
     }
@@ -138,19 +174,18 @@ class HikeWorkoutHappening {
     
     private func checkElevationDirectionAndSetUpOrDownDuration(lastLocation: CLLocation, newLocation:CLLocation) {
         if !paused {
-            let timeDifference = newLocation.timestamp.timeIntervalSince(lastLocation.timestamp)
             if lastLocation.altitude < newLocation.altitude {
-                timeTraveldUpHill += timeDifference
+                currentAltitudeDirection = CurrentAltitudeDirection.uphill
             } else if lastLocation.altitude > newLocation.altitude || lastLocation.altitude == newLocation.altitude {
-                timeTraveledDownHill += timeDifference
+                currentAltitudeDirection = CurrentAltitudeDirection.downhill
             }
         }
     }
-    
+
     private func checkIfPausedAndSetCorrectDuration(lastLocation: CLLocation, newLocation:CLLocation) {
         let timeDifference = newLocation.timestamp.timeIntervalSince(lastLocation.timestamp)
         if paused {
-            pausedTime += timeDifference
+            totalPausedTime += timeDifference
         }
     }
     

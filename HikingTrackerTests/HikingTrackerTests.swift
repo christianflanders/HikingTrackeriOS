@@ -157,7 +157,7 @@ class HikingTrackerTests: XCTestCase {
         let endDate = hikeWorkoutToTest.storedLocations[lastLocation].timestamp
         hikeWorkoutToTest.endDate = endDate
         hikeWorkoutToTest.startDate = startDate
-        hikeWorkoutToTest.pausedTime = 0
+        hikeWorkoutToTest.totalPausedTime = 0
         return hikeWorkoutToTest
     }
     

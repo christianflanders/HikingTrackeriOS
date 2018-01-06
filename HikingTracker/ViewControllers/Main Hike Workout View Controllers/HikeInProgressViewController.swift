@@ -61,6 +61,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     
     private var currentLocation = CLLocation()
     
+    
     //MARK: View Life Cycle
     
     override func viewDidLoad() {
@@ -70,6 +71,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
             startHike()
         }
         createAndAddMapBoxView()
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -145,6 +147,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         startHikeUISettings()
 //        convertDateAndSendToWatch(date: hikeWorkout.startDate!)
 //        startPedometerAndUpdatePace()
+
     }
     
     fileprivate func resumeHike() {
@@ -152,6 +155,8 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         paused = false
         hikeWorkout.paused = false
         hikeWorkout.addNewLocation(currentLocation)
+        let resumeTime = Date()
+        hikeWorkout.resumeHike(time:resumeTime)
     }
     
     fileprivate func pauseHike() {
@@ -159,6 +164,13 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         paused = true
         hikeWorkout.paused = true
         hikeWorkout.addNewLocation(currentLocation)
+        let pauseTime = Date()
+        hikeWorkout.pauseHike(time:pauseTime)
+
+    }
+    
+    private func sendPauseHikeNotification() {
+        
     }
     
     private func endHike() {
@@ -177,8 +189,9 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     }
     
     private func eachSecond() {
-//        convertDateAndSendToWatch(date: hikeWorkout.startDate!)
+//        convertDateAndSendToWatch(date: hikeWorkout.startDate!)https://academy.realm.io/
         updateDisplay()
+        print(Date())
 //        sendCaloriesToWatch()
         let coordinatesForLine = hikeWorkout.coordinates
         if coordinatesForLine.count != 0 {
@@ -213,6 +226,8 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         resumeButtonOutlet.isHidden = false
         holdToEndButtonOutlet.isHidden = false
     }
+    
+    
     
     // MARK: Segue Navigation
     
