@@ -176,6 +176,22 @@ class HikingTrackerTests: XCTestCase {
         
     }
     
+    func testTimeTraveledEquality() {
+        // Since the time travled up or down hill durations are only added too when the workout isnt paused,
+        // Adding them together should equal the total time, which figures out the total time of the workout subtracting paused seconds
+        let hikeToTest = createFakeHikeWorkout()
+        let addedTogetherTime = hikeToTest.timeTraveldUpHill + hikeToTest.timeTraveledDownHill
+        let totalTime = hikeToTest.totalTime
+        XCTAssertEqual(addedTogetherTime, totalTime)
+        
+    }
+    
+    func testHikeUploadToFirebase() {
+        let hikeToTest = createFakeHikeWorkout()
+        let saveHelper = SaveHikeToFirebase()
+        saveHelper.convertAndUploadHikeToFirebase(hikeToTest, name: "Unit Test Upload")
+    }
+    
     func testUnitConversions() {
         let unitConverter = UnitConversions()
         let kilograms: [Double] = [1, 2, 5, 20, 600, 661, 100, 10000, 12345, 848384859]
@@ -191,7 +207,6 @@ class HikingTrackerTests: XCTestCase {
             print(cmToInches)
             XCTAssert(Int(inches[i]) == Int(cmToInches))
         }
-        
     }
     
     func testDisplayStringData() {
