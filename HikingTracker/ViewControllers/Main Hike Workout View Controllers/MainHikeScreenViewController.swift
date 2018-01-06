@@ -10,8 +10,11 @@ import UIKit
 import CoreLocation
 import HealthKit
 import Mapbox
+import Firebase
+import FirebaseAuthUI
 
-class MainHikeScreenViewController: UIViewController {
+class MainHikeScreenViewController: UIViewController, FUIAuthDelegate {
+
 
     // MARK: Enums
     
@@ -29,10 +32,11 @@ class MainHikeScreenViewController: UIViewController {
     // MARK: Weak Vars
     
     // MARK: Public Variables
-    
+
     // MARK: Private Variables
     private var mapView: MGLMapView!
     private var timer: Timer?
+    private var authUIView: UINavigationController?
     
     // MARK: View Life Cycle
 
@@ -41,7 +45,7 @@ class MainHikeScreenViewController: UIViewController {
         super.viewDidLoad()
 
         self.navigationController?.isNavigationBarHidden = true
-        
+//        testPostToFireBase()
         startHikeButton.layer.cornerRadius = startHikeButton.frame.height / 2
         //Setup Location Manager
         locationManager.requestAlwaysAuthorization()
@@ -57,7 +61,14 @@ class MainHikeScreenViewController: UIViewController {
         }
         createMapBoxView()
         animateUIElements()
+        if Auth.auth().currentUser == nil {
+            let authUI = FUIAuth.defaultAuthUI()
+            let authUIView = authUI?.authViewController()
+            authUI?.delegate = self
+            present(authUIView!, animated: true, completion: nil)
+        }
     }
+  
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -160,7 +171,28 @@ class MainHikeScreenViewController: UIViewController {
         guard let long = userLocation?.coordinate.longitude else {return}
         updateLatLongLabel(lat: lat, long: long)
     }
+    
+    // MARK: Firebase Auth Delegate
+    func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
+        authUIView?.dismiss(animated: true, completion: nil)
+    }
+    
+    func testPostToFireBase() {
+        let title = "Boobies"
 
+        let message = "lol"
+        var testArray = [[String:Any]]()
+        for i in 0...10 {
+            testArray.append([String(i): i])
+            
+        }
+        
+        let post: [String:Any] = ["title" : title,
+                                  "message": testArray]
+        let databaseRef = Database.database().reference()
+        databaseRef.child("Posts").childByAutoId().setValue(post)
+        
+    }
     
 
 }
