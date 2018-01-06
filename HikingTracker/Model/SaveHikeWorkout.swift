@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 import HealthKit
+import CoreLocation
 
 struct SaveHike {
     
@@ -23,6 +24,61 @@ struct SaveHike {
         let healthKit = HealthKitStore()
         healthKit.storeHikeToHealthKit(hike, name: hikeName)
     }
+    
+    
 }
 
+
+//class HikeHistoryRecord {
+//    
+//    // Information
+//    var name: String?
+//    var notes: String?
+//    
+//    // Duration
+//    let startDate: Date?
+//    let endDate: Date?
+//        let pausedTime: Double?
+//    let timeTraveledUphill: Double?
+//    let totalTime: Double?
+//    
+//    // Distance
+//    
+//    let totalDistanceInMeters: Meters?
+//    let distanceUphillInMeters: Meters?
+//        let distanceDownhillInMeters: Meters?
+//    
+//        // Elevation
+//    
+//    let lowestAltitudeInMeters: Meters?
+//        let highestAltitudeInMeters: Meters?
+//    
+//            // Calories
+//    
+//    let totalCaloriesBurned: Calorie?
+//    
+//    // Pace
+//    
+//    
+//    
+//    // Heart Rate (if avaliable)
+//    
+//    // Locations
+//    let storedLocations = [CLLocation]()
+//        let coordinates = [CLLocationCoordinate2D]()
+//    
+//
+//    init(liveHikeWorkout: HikeWorkoutHappening) {
+//        <#statements#>
+//    }
+//}
+//
+//
+//struct ConvertHikeToSaved {
+//    
+//    public var hikeWorkoutToBeConverted = HikeWorkoutHappening()
+//    
+//    
+//    
+//}
 
