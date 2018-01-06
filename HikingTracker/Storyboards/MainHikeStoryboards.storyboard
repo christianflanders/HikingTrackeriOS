@@ -391,12 +391,12 @@
                                                     <rect key="frame" x="16" y="10" width="343" height="52"/>
                                                     <color key="backgroundColor" red="0.4403552711" green="0.56544411179999998" blue="0.1598808467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="26"/>
-                                                    <color key="tintColor" red="0.4403552711" green="0.56544411179999998" blue="0.1598808467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="tintColor" red="1" green="0.3469023705" blue="0.33474233749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <state key="normal" title="Save">
                                                         <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="saveHikeButtonPressed:" destination="eAG-qo-Txa" eventType="touchUpInside" id="2xX-ht-0J0"/>
+                                                        <action selector="saveHikeButtonPressed:" destination="eAG-qo-Txa" eventType="touchUpInside" id="1sr-Ez-z68"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
