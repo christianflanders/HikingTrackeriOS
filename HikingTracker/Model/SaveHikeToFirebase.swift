@@ -75,7 +75,7 @@ struct SaveHikeToFirebase {
         } else {
             nameForHike = name!
         }
-        databaseRef.child("HikeWorkouts").child(nameForHike).setValue(convertedDict)
+        databaseRef.child("HikeWorkouts").childByAutoId().setValue(convertedDict)
     }
     
 
