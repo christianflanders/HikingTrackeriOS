@@ -22,20 +22,32 @@ class HikeWorkoutHappening {
     
     //Pause state is set by the view controller, and when it is set, sends an extra location object so the time calculation is accurate
     var paused = false
-    private var pausedTime = 0.0
+    var pausedTime = 0.0
     
-    private var timeTraveldUpHill = 0.0
-    private var timeTraveledDownHill = 0.0
+    
+    //These are set in checkElevationDirectionAndSetUpOrDownDuration. They are only added to if the workout is not paused
+    //Adding these two values together should match the total time figure. Should probably test for that.
+    var timeTraveldUpHill = 0.0
+    var timeTraveledDownHill = 0.0
     
     
     //Total time is calculated during the workout by taking the start time and figuring out the interval since then, subtracting paused seconds
     var totalTime: Double {
         get {
-            guard let startTime = startDate else { return 0.0 }
-            let currentTime = Date()
-            let totalDuration = currentTime.timeIntervalSince(startTime)
-            let durationMinusPausedTime = totalDuration - pausedTime
-            return durationMinusPausedTime
+            if endDate == nil {
+                guard let startTime = startDate else { return 0.0 }
+                let currentTime = Date()
+                let totalDuration = currentTime.timeIntervalSince(startTime)
+                let durationMinusPausedTime = totalDuration - pausedTime
+                return durationMinusPausedTime
+            } else {
+                guard let startTime = startDate else { return 0.0 }
+                guard let endDate = endDate else { return 0.0 }
+                let totalDuration = endDate.timeIntervalSince(startTime)
+                let durationMinusPausedTime = totalDuration - pausedTime
+                return durationMinusPausedTime
+            }
+
         }
     }
     
@@ -46,10 +58,39 @@ class HikeWorkoutHappening {
     // Altitude
     var currentAltitudeInMeters = 0.0
     
+    var highestAltitudeInMeters: Double {
+        get {
+            if storedLocations.count != 0 {
+                let highestAltitude = storedLocations.reduce(0.0) { max($0, $1.altitude)}
+                return highestAltitude
+                } else {
+                    return 0.0
+                }
+            }
+        }
+    
+    var lowestAltitudeInMeters: Double {
+        get {
+            if storedLocations.count != 0 {
+                guard let firstLocationAltitude = self.storedLocations.first?.altitude else {return 0.0}
+                let highestAltitude = storedLocations.reduce(firstLocationAltitude) { min($0, $1.altitude)}
+                return highestAltitude
+            } else {
+                return 0.0
+            }
+        }
+    }
+    
+    var totalElevationDifferenceInMeters: Double {
+        get {
+            return self.highestAltitudeInMeters - self.lowestAltitudeInMeters
+        }
+    }
+    
     // Calories
     
     // Will update in future with better calorie calculation algorithm
-    let user = StoredUser()
+    private let user = StoredUser()
     private let hikeUphillMETValue = 6.00
     private let hikeDownhillMETValue = 2.8
     
@@ -116,7 +157,7 @@ class HikeWorkoutHappening {
     // Display
     
     
-    private var sunsetTime: String? {
+    var sunsetTime: String? {
         get {
             guard let currentLocation = self.storedLocations.first else { return " " }
             guard let startDate = startDate else {return " "}
@@ -128,46 +169,11 @@ class HikeWorkoutHappening {
     }
     
     // Called to figure out the information we need for the stats display, returns a display object to display on screen
-    func getDisplayStrings() -> HikeInProgressDisplay {
-        var newDisplay = HikeInProgressDisplay()
-        let formatter = MeasurementFormatter()
-        formatter.unitStyle = .medium
-        formatter.unitOptions = .naturalScale
-        
-        
-        //Duration
-        let duration = totalTime
-        let durationFormatted = DateHelper().convertDurationToStringDate(duration)
-        newDisplay.duration = durationFormatted
-        //Altitude
-        let altitudeInMeters = Measurement(value: currentAltitudeInMeters, unit: UnitLength.meters)
-        let altitudeString = formatter.string(from: altitudeInMeters)
-        newDisplay.altitude = altitudeString
-        
-        //Distance
-        let distanceInMeters = Measurement(value: totalDistanceInMeters, unit: UnitLength.meters)
-        let distanceString = formatter.string(from: distanceInMeters)
-        newDisplay.distance = distanceString
-        
-        //Pace
-        if let lastLocation = storedLocations.last {
-            let speedInMetersPerSecond = lastLocation.speed
-            let speedMeasurement = Measurement(value: speedInMetersPerSecond, unit: UnitLength.meters)
-            let speedMeasurementString = formatter.string(from: speedMeasurement)
-            let speedMeasurementWithIdentifier = "\(speedMeasurementString)/hr"
-            newDisplay.pace = speedMeasurementWithIdentifier
-        }
-        //Sunset
-        if let sunsetTime = sunsetTime {
-            newDisplay.sunsetTime = sunsetTime
-        }
-        //Calories
-        let totalCaloriesBurnedString = totalCaloriesBurned.getDisplayString
-        newDisplay.caloriesBurned = totalCaloriesBurnedString
-        
-        return newDisplay
-    }
-
+ 
+    
+    
 }
+
+
 
 
