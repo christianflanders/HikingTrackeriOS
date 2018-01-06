@@ -32,12 +32,88 @@ class HikeFinishedDisplayStrings: HikeInProgressDisplay {
 }
 
 
+class ConvertHikeToDisplayStrings {
+    
+    fileprivate let formatter = MeasurementFormatter()
+    
+    fileprivate func setFormatterStyle(){
+        formatter.unitStyle = .medium
+        formatter.unitOptions = .naturalScale
+    }
+    
+    final func getDisplayStrings(from hike: HikeWorkoutHappening) -> HikeInProgressDisplay {
+        var newDisplay = HikeInProgressDisplay()
+        setFormatterStyle()
+        let durationFormatted = getDurationDisplayString(from: hike)
+        newDisplay.duration = durationFormatted
+        
+        //Duration
+        let altitudeString = getAltitudeDisplayString(from: hike)
+        newDisplay.altitude = altitudeString
+        
+        //Distance
+        let distanceString = getDistanceDisplayString(from: hike)
+        newDisplay.distance = distanceString
+        
+        //Pace
+        let speedString = getPaceDisplayString(from: hike)
+        
+        newDisplay.pace = speedString
+        
+        //Sunset
+        if let sunsetTime = hike.sunsetTime {
+            newDisplay.sunsetTime = sunsetTime
+        }
+        //Calories
+        let totalCaloriesBurnedString = getCaloriesDisplayString(from: hike)
+        newDisplay.caloriesBurned = totalCaloriesBurnedString
+        
+        return newDisplay
+    }
+    
+    fileprivate func getCaloriesDisplayString(from hike: HikeWorkoutHappening) -> String {
+        let totalCaloriesBurned = hike.totalCaloriesBurned
+        let totalCaloriesBurnedString = "\(totalCaloriesBurned) kcl"
+        return totalCaloriesBurnedString
+    }
+    
+    fileprivate func getPaceDisplayString(from hike: HikeWorkoutHappening) -> String {
+        if let lastLocation = hike.storedLocations.last {
+            let speedInMetersPerSecond = lastLocation.speed
+            let speedMeasurement = Measurement(value: speedInMetersPerSecond, unit: UnitLength.meters)
+            let speedMeasurementString = formatter.string(from: speedMeasurement)
+            let speedMeasurementWithIdentifier = "\(speedMeasurementString)/hr"
+            return speedMeasurementWithIdentifier
+        } else {
+            return "Error"
+        }
+    }
+    
+    fileprivate func getDurationDisplayString(from hike: HikeWorkoutHappening) -> String {
+        let duration = hike.totalTime
+        let durationFormatted = DateHelper().convertDurationToStringDate(duration)
+        return durationFormatted
+    }
+    
+    fileprivate func getAltitudeDisplayString(from hike: HikeWorkoutHappening) -> String {
+        let altitudeInMeters = Measurement(value: hike.currentAltitudeInMeters, unit: UnitLength.meters)
+        let altitudeString = formatter.string(from: altitudeInMeters)
+        return altitudeString
+    }
+    
+    fileprivate func getDistanceDisplayString(from hike: HikeWorkoutHappening) -> String {
+        let distanceInMeters = Measurement(value: hike.totalDistanceInMeters, unit: UnitLength.meters)
+        let distanceString = formatter.string(from: distanceInMeters)
+        return distanceString
+    }
+}
+
 
 class ConvertHikeToFinishedDisplayStrings: ConvertHikeToDisplayStrings {
     
-    let metersUnit = UnitLength.meters
+    private let metersUnit = UnitLength.meters
     
-    let dateFormatter = DateFormatter()
+    private let dateFormatter = DateFormatter()
     
     func getFinishedDisplayStrings(from hike: HikeWorkoutHappening) -> HikeFinishedDisplayStrings {
         var newDisplay = HikeFinishedDisplayStrings()
@@ -69,40 +145,43 @@ class ConvertHikeToFinishedDisplayStrings: ConvertHikeToDisplayStrings {
         let timeTravledDownhillString = getTimeDownhillDisplayString(from: hike)
         newDisplay.timeDownill = timeTravledDownhillString
         
+        
+        // TODO: Temporary until these are added
+        newDisplay.avgHeartRate = "-"
+        newDisplay.avgPace = "-"
         return newDisplay
     }
     
-    func getLowestAltitudeDisplayString(from hike: HikeWorkoutHappening) -> String {
+    private func getLowestAltitudeDisplayString(from hike: HikeWorkoutHappening) -> String {
         let lowestAltitudeInMeters = Measurement(value: hike.lowestAltitudeInMeters, unit: metersUnit)
         let lowestAltitudeString = formatter.string(from: lowestAltitudeInMeters)
         return lowestAltitudeString
     }
     
-    func getHighestAltitudeDisplayString(from hike: HikeWorkoutHappening) -> String {
+    private func getHighestAltitudeDisplayString(from hike: HikeWorkoutHappening) -> String {
         let highestAltitudeInMeters = Measurement(value: hike.highestAltitudeInMeters, unit: metersUnit)
         let highestAltitudeString = formatter.string(from: highestAltitudeInMeters)
         return highestAltitudeString
     }
     
-    func calculateTotalElevationChange(from hike: HikeWorkoutHappening) -> String {
+    private func calculateTotalElevationChange(from hike: HikeWorkoutHappening) -> String {
             let totalElevationGainInMeters = hike.highestAltitudeInMeters - hike.lowestAltitudeInMeters
             let totalElevationMeasurment = Measurement(value: totalElevationGainInMeters, unit: metersUnit)
             let totalElevationString = formatter.string(from: totalElevationMeasurment)
             return totalElevationString
     }
     
-    func getTimeUphillDisplayString(from hike: HikeWorkoutHappening) -> String {
+    private func getTimeUphillDisplayString(from hike: HikeWorkoutHappening) -> String {
         let timeTravledUphill = hike.timeTraveldUpHill
         let timeTraveledUphillString = timeTravledUphill.getDisplayString
         return timeTraveledUphillString
     }
     
-    func getTimeDownhillDisplayString(from hike: HikeWorkoutHappening) -> String {
+    private func getTimeDownhillDisplayString(from hike: HikeWorkoutHappening) -> String {
         let timeTravledDownhill = hike.timeTraveledDownHill
         let timeTraveledDownhillString = timeTravledDownhill.getDisplayString
         return timeTraveledDownhillString
     }
-    
 
 }
 
