@@ -174,9 +174,12 @@ class HikeWorkoutHappening {
     
     private func checkElevationDirectionAndSetUpOrDownDuration(lastLocation: CLLocation, newLocation:CLLocation) {
         if !paused {
+            let timeDifference = newLocation.timestamp.timeIntervalSince(lastLocation.timestamp)
             if lastLocation.altitude < newLocation.altitude {
+                timeTraveldUpHill += timeDifference
                 currentAltitudeDirection = CurrentAltitudeDirection.uphill
             } else if lastLocation.altitude > newLocation.altitude || lastLocation.altitude == newLocation.altitude {
+                timeTraveledDownHill += timeDifference
                 currentAltitudeDirection = CurrentAltitudeDirection.downhill
             }
         }
