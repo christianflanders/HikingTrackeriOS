@@ -180,17 +180,19 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         if coordinatesForLine.count != 0 {
             mapView.drawLineOf(coordinatesForLine)
         }
-        if paused {
-            hikeWorkout.pausedTime += 1
-        }
+//        if paused {
+//            hikeWorkout.pausedTime += 1
+//        }
     }
     
     // MARK: UI Functions
     
     private func updateDisplay() {
+        let hikeDisplayConverter = ConvertHikeToDisplayStrings()
+        let displayStrings = hikeDisplayConverter.getDisplayStrings(from: hikeWorkout)
 
         if !paused {
-            hikeStatsDisplay.setDisplay(with: hikeWorkout.getDisplayStrings())
+            hikeStatsDisplay.setDisplay(with: displayStrings)
         }
         
         
@@ -212,19 +214,13 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "HikeFinishedSegue" {
-            guard let destinationVC = segue.destination as? HikeFinishedViewController else {fatalError("Problem with HikeFinishedSegue")}
-//            destinationVC.hikeWorkout = hikeWorkout
+            guard let destinationVC = segue.destination as? HikeFinishedTableViewController else {fatalError("Problem with HikeFinishedSegue")}
+            destinationVC.hikeWorkout = hikeWorkout
         }
     }
     
     func openHikeFinishedVC() {
-//        let storyboard: UIStoryboard = UIStoryboard(name: "HikeHistoryStoryboard", bundle: nil)
-//
-//        let hikeFinishedVC = storyboard.instantiateViewController(withIdentifier: "Hike History") as! HikeHistoryDetailTableViewController
-//        hikeFinishedVC.hikeWorkout = hikeWorkout
-//        hikeFinishedVC.unsavedHikeIncoming = true
-//        self.present(hikeFinishedVC, animated: true, completion: nil)
-//
+        performSegue(withIdentifier: "HikeFinishedSegue"  , sender: self)
     }
 
     // MARK: MapboxView
