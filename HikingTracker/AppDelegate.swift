@@ -8,10 +8,11 @@
 import UIKit
 import CoreData
 import WatchConnectivity
+import Firebase
+import FirebaseAuthUI
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
 
     var window: UIWindow?
     
@@ -21,6 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        FirebaseApp.configure()
+        let databaseRef = Database.database()
+        databaseRef.isPersistenceEnabled = true
         
         setNavigationBarTitleAttributes()
         
@@ -89,8 +94,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIBarButtonItem.appearance().setTitleTextAttributes(barButtonAttributes, for: UIControlState.focused)
         UIBarButtonItem.appearance().setTitleTextAttributes(barButtonAttributes, for: UIControlState.selected)
         UIBarButtonItem.appearance().setTitleTextAttributes(barButtonAttributes, for: UIControlState.highlighted)
-
-
     }
+    
+    // MARK: Firebase Auth Delegate
+
 
 }
