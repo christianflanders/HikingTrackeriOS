@@ -25,6 +25,7 @@
 		6B6A1D421FEF09CC00C4AD3A /* DefaultUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6A1D411FEF09CC00C4AD3A /* DefaultUI.swift */; };
 		6B6A1D441FEF11A800C4AD3A /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6A1D431FEF11A800C4AD3A /* DateExtension.swift */; };
 		6B6A1D4F1FF2EF3800C4AD3A /* RK_gpx _2017-12-20_1333-xc.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 6B6A1D4E1FF2EF3800C4AD3A /* RK_gpx _2017-12-20_1333-xc.gpx */; };
+		6B6B45F12000A61900A9FB7C /* HikeHistoryStatContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6B45F02000A61900A9FB7C /* HikeHistoryStatContainerViewController.swift */; };
 		6B6E19D81FEDE7EE00B5605A /* Ailerons-Typeface.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6E19D71FEDE7ED00B5605A /* Ailerons-Typeface.otf */; };
 		6B6E19D91FEDE7EE00B5605A /* Ailerons-Typeface.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6E19D71FEDE7ED00B5605A /* Ailerons-Typeface.otf */; };
 		6B7801741FD5F2AE006F29BD /* HikeInProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7801731FD5F2AE006F29BD /* HikeInProgressViewController.swift */; };
@@ -47,9 +48,6 @@
 		6B8AA11A1FFDF2D8009FCFB2 /* HikeInProgressWatchExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8AA1191FFDF2D8009FCFB2 /* HikeInProgressWatchExtension.swift */; };
 		6B8D30E620004DCA005F08AC /* Altimeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDDA10D1FD7610B0069970C /* Altimeter.swift */; };
 		6B8D30E720004DCF005F08AC /* StatOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8FF3071FF30B4600536C42 /* StatOptions.swift */; };
-		6B8D30EB20004E4E005F08AC /* HikeHistoryStatDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8D30EA20004E4E005F08AC /* HikeHistoryStatDisplayViewController.swift */; };
-		6B8D310F200057D3005F08AC /* HikeHistoryStatDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8D310E200057D3005F08AC /* HikeHistoryStatDisplayView.swift */; };
-		6B8D3111200057E9005F08AC /* HikeHistoryStatDisplayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B8D3110200057E9005F08AC /* HikeHistoryStatDisplayView.xib */; };
 		6B8D311420007CE1005F08AC /* HikeFinishedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8D311320007CE1005F08AC /* HikeFinishedTableViewController.swift */; };
 		6B8D3116200080D5005F08AC /* HikeDisplayStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8D3115200080D5005F08AC /* HikeDisplayStrings.swift */; };
 		6B8FF3011FF2FD6F00536C42 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6A1D431FEF11A800C4AD3A /* DateExtension.swift */; };
@@ -100,7 +98,6 @@
 		6BC1DE8D1FD7368D00CB20D5 /* LocationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1DE8C1FD7368D00CB20D5 /* LocationServices.swift */; };
 		6BCC75E11FD621A4005F2F19 /* HikeWorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCC75E01FD621A4005F2F19 /* HikeWorkoutModel.swift */; };
 		6BD14B941FFED7DB004B3FD7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BD14B931FFED7DB004B3FD7 /* GoogleService-Info.plist */; };
-		6BD687C81FFECB2D003FED46 /* HikeInProgressDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD687C71FFECB2D003FED46 /* HikeInProgressDisplay.swift */; };
 		6BDDA10E1FD7610B0069970C /* Altimeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDDA10D1FD7610B0069970C /* Altimeter.swift */; };
 		6BE204261FE0C072004F0C3E /* HikeHistoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE204251FE0C072004F0C3E /* HikeHistoryDetailViewController.swift */; };
 		6BE204291FE1CBDF004F0C3E /* Health Kit Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE204281FE1CBDF004F0C3E /* Health Kit Utility.swift */; };
@@ -215,6 +212,7 @@
 		6B6A1D411FEF09CC00C4AD3A /* DefaultUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUI.swift; sourceTree = "<group>"; };
 		6B6A1D431FEF11A800C4AD3A /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		6B6A1D4E1FF2EF3800C4AD3A /* RK_gpx _2017-12-20_1333-xc.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "RK_gpx _2017-12-20_1333-xc.gpx"; path = "../../../../Gpx Files/RK_gpx _2017-12-20_1333-xc.gpx"; sourceTree = "<group>"; };
+		6B6B45F02000A61900A9FB7C /* HikeHistoryStatContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeHistoryStatContainerViewController.swift; sourceTree = "<group>"; };
 		6B6E19D71FEDE7ED00B5605A /* Ailerons-Typeface.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ailerons-Typeface.otf"; sourceTree = "<group>"; };
 		6B7801731FD5F2AE006F29BD /* HikeInProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeInProgressViewController.swift; sourceTree = "<group>"; };
 		6B7801761FD618BE006F29BD /* HealthKitAuthorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitAuthorization.swift; sourceTree = "<group>"; };
@@ -229,9 +227,6 @@
 		6B8AA1151FFDF04C009FCFB2 /* HikeInProgressStatDisplay.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HikeInProgressStatDisplay.xib; sourceTree = "<group>"; };
 		6B8AA1171FFDF0A7009FCFB2 /* HikeInProgressStatDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeInProgressStatDisplay.swift; sourceTree = "<group>"; };
 		6B8AA1191FFDF2D8009FCFB2 /* HikeInProgressWatchExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeInProgressWatchExtension.swift; sourceTree = "<group>"; };
-		6B8D30EA20004E4E005F08AC /* HikeHistoryStatDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeHistoryStatDisplayViewController.swift; sourceTree = "<group>"; };
-		6B8D310E200057D3005F08AC /* HikeHistoryStatDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeHistoryStatDisplayView.swift; sourceTree = "<group>"; };
-		6B8D3110200057E9005F08AC /* HikeHistoryStatDisplayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HikeHistoryStatDisplayView.xib; sourceTree = "<group>"; };
 		6B8D311320007CE1005F08AC /* HikeFinishedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeFinishedTableViewController.swift; sourceTree = "<group>"; };
 		6B8D3115200080D5005F08AC /* HikeDisplayStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeDisplayStrings.swift; sourceTree = "<group>"; };
 		6B8FF3071FF30B4600536C42 /* StatOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatOptions.swift; sourceTree = "<group>"; };
@@ -288,7 +283,6 @@
 		6BCC75E01FD621A4005F2F19 /* HikeWorkoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeWorkoutModel.swift; sourceTree = "<group>"; };
 		6BCD37A51FD88F7A00FE8C03 /* HikeTest.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = HikeTest.gpx; path = HikingTracker/Resources/HikeTest.gpx; sourceTree = SOURCE_ROOT; };
 		6BD14B931FFED7DB004B3FD7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		6BD687C71FFECB2D003FED46 /* HikeInProgressDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeInProgressDisplay.swift; sourceTree = "<group>"; };
 		6BDDA10D1FD7610B0069970C /* Altimeter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Altimeter.swift; sourceTree = "<group>"; };
 		6BE204251FE0C072004F0C3E /* HikeHistoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeHistoryDetailViewController.swift; sourceTree = "<group>"; };
 		6BE204281FE1CBDF004F0C3E /* Health Kit Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Health Kit Utility.swift"; sourceTree = "<group>"; };
@@ -373,11 +367,11 @@
 		6B7801721FD5F276006F29BD /* Main Hike Workout View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				6B8D311320007CE1005F08AC /* HikeFinishedTableViewController.swift */,
 				6BB63A441FD5EA2F00E9F4A1 /* MainHikeScreenViewController.swift */,
-				6B8AA1191FFDF2D8009FCFB2 /* HikeInProgressWatchExtension.swift */,
 				6B7801731FD5F2AE006F29BD /* HikeInProgressViewController.swift */,
-				6B5904E11FDC791D00BF96CD /* HikeFinishedViewController.swift */,
+				6B8AA1191FFDF2D8009FCFB2 /* HikeInProgressWatchExtension.swift */,
+				6B6B45F02000A61900A9FB7C /* HikeHistoryStatContainerViewController.swift */,
+				6B8D311320007CE1005F08AC /* HikeFinishedTableViewController.swift */,
 			);
 			path = "Main Hike Workout View Controllers";
 			sourceTree = "<group>";
@@ -402,6 +396,7 @@
 		6B8D30E420004DBA005F08AC /* OLD */ = {
 			isa = PBXGroup;
 			children = (
+				6B5904E11FDC791D00BF96CD /* HikeFinishedViewController.swift */,
 				6BE204251FE0C072004F0C3E /* HikeHistoryDetailViewController.swift */,
 				6B8AA0EA1FFDD7D9009FCFB2 /* HikeWorkoutFromHistory.swift */,
 				6BDDA10D1FD7610B0069970C /* Altimeter.swift */,
@@ -415,8 +410,6 @@
 		6B8D30EC20004E51005F08AC /* Hike Related */ = {
 			isa = PBXGroup;
 			children = (
-				6B8D311220005F7C005F08AC /* HikeHistoryStatDisplayView */,
-				6B8D30EA20004E4E005F08AC /* HikeHistoryStatDisplayViewController.swift */,
 				6B8D310D2000578E005F08AC /* HikeInProgressStatDisplay */,
 				6B91BB3C1FF99DB900CB378F /* HikeHistoryTableViewCell.swift */,
 				6B7D98D81FF8637E008C3F06 /* HistoryStatTableViewCell.swift */,
@@ -431,15 +424,6 @@
 				6B8AA1171FFDF0A7009FCFB2 /* HikeInProgressStatDisplay.swift */,
 			);
 			path = HikeInProgressStatDisplay;
-			sourceTree = "<group>";
-		};
-		6B8D311220005F7C005F08AC /* HikeHistoryStatDisplayView */ = {
-			isa = PBXGroup;
-			children = (
-				6B8D310E200057D3005F08AC /* HikeHistoryStatDisplayView.swift */,
-				6B8D3110200057E9005F08AC /* HikeHistoryStatDisplayView.xib */,
-			);
-			path = HikeHistoryStatDisplayView;
 			sourceTree = "<group>";
 		};
 		6BB639FD1FD5CCE600E9F4A1 = {
@@ -548,7 +532,6 @@
 				6B8AA0ED1FFDDBE9009FCFB2 /* HikeWorkoutHappening.swift */,
 				6BA9BBDA1FFF374C00BE48B4 /* SaveHikeToFirebase.swift */,
 				6B8D3115200080D5005F08AC /* HikeDisplayStrings.swift */,
-				6BD687C71FFECB2D003FED46 /* HikeInProgressDisplay.swift */,
 				6B077C9D1FFAF12900A87E2C /* SaveHikeWorkout.swift */,
 				6BC1DE8C1FD7368D00CB20D5 /* LocationServices.swift */,
 				6BB48A8A1FD87B0500D5A9C5 /* StoredUserModel.swift */,
@@ -875,7 +858,6 @@
 				6BB63A0F1FD5CCE600E9F4A1 /* Main.storyboard in Resources */,
 				6B91BB241FF9924E00CB378F /* MainHikeStoryboards.storyboard in Resources */,
 				6B91BB261FF992C700CB378F /* HikeHistoryStoryboard.storyboard in Resources */,
-				6B8D3111200057E9005F08AC /* HikeHistoryStatDisplayView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1176,12 +1158,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B91BB211FF9894800CB378F /* UserInformationValues.swift in Sources */,
-				6B8D30EB20004E4E005F08AC /* HikeHistoryStatDisplayViewController.swift in Sources */,
 				6BC1DE8D1FD7368D00CB20D5 /* LocationServices.swift in Sources */,
 				6B6A1D441FEF11A800C4AD3A /* DateExtension.swift in Sources */,
-				6B8D310F200057D3005F08AC /* HikeHistoryStatDisplayView.swift in Sources */,
 				6BA9BBDB1FFF374C00BE48B4 /* SaveHikeToFirebase.swift in Sources */,
-				6BD687C81FFECB2D003FED46 /* HikeInProgressDisplay.swift in Sources */,
 				6B81261D1FDF7981009054A3 /* Meters Alias.swift in Sources */,
 				6BA663B81FF58FFD00DAF05E /* UserStatTableViewCell.swift in Sources */,
 				6B8AA0E71FFDBAB7009FCFB2 /* HikeWorkoutCalculatingStats.swift in Sources */,
@@ -1200,6 +1179,7 @@
 				6B051ABF1FF726CB00173A20 /* ShowUserInfoViewController.swift in Sources */,
 				6B4F6E621FE09A6600545DE3 /* PersistanceService.swift in Sources */,
 				6BDDA10E1FD7610B0069970C /* Altimeter.swift in Sources */,
+				6B6B45F12000A61900A9FB7C /* HikeHistoryStatContainerViewController.swift in Sources */,
 				6BB63A121FD5CCE600E9F4A1 /* HikingTracker.xcdatamodeld in Sources */,
 				6B91BB411FF9C24A00CB378F /* HikeChartsViewController.swift in Sources */,
 				6B91BB3D1FF99DB900CB378F /* HikeHistoryTableViewCell.swift in Sources */,
