@@ -59,6 +59,8 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     
     private var paused = false
     
+    private var currentLocation = CLLocation()
+    
     //MARK: View Life Cycle
     
     override func viewDidLoad() {
@@ -83,6 +85,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
             print("New Location horiziontal Accuracy is (newLocation.horizontalAccuracy) and the vertical accuracy is \(newLocation.verticalAccuracy)")
             if newLocation.horizontalAccuracy > 2 {
                 hikeWorkout.addNewLocation(newLocation)
+                currentLocation = newLocation
 //                sendDistanceToWatch()
             }
         }
@@ -148,13 +151,14 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         startHikeUISettings()
         paused = false
         hikeWorkout.paused = false
-        
+        hikeWorkout.addNewLocation(currentLocation)
     }
     
     fileprivate func pauseHike() {
         pauseOrStopHikeUISettings()
         paused = true
         hikeWorkout.paused = true
+        hikeWorkout.addNewLocation(currentLocation)
     }
     
     private func endHike() {
