@@ -21,16 +21,6 @@ class HikeFinishedTableViewController: UITableViewController , UITextFieldDelega
     
     // MARK: Outlets
     
-//    @IBOutlet weak var durationLabel: UILabel!
-//    @IBOutlet weak var distanceLabel: UILabel!
-//    @IBOutlet weak var elevationGainLabel: UILabel!
-//    @IBOutlet weak var caloriesLabel: UILabel!
-//    @IBOutlet weak var avgPaceLabel: UILabel!
-//    @IBOutlet weak var avgHeartRateLabel: UILabel!
-//    @IBOutlet weak var minAltitudeLabel: UILabel!
-//    @IBOutlet weak var maxAltitudeLabel: UILabel!
-//    @IBOutlet weak var timeUphillLabel: UILabel!
-//    @IBOutlet weak var timeDownhillLabel: UILabel!
     
     @IBOutlet weak var mapContainerView: UIView!
     
@@ -148,6 +138,7 @@ class HikeFinishedTableViewController: UITableViewController , UITextFieldDelega
         let saveToFirebaseHelper = SaveHikeToFirebase()
         let convertedHike = saveToFirebaseHelper.convertAndUploadHikeToFirebase(hikeWorkout, name: "Test Upload")
         print("Uploaded!")
+        dismissToMainScreen()
         
     }
     
