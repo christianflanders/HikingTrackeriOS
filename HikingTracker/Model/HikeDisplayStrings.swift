@@ -42,7 +42,7 @@ class ConvertHikeToDisplayStrings {
     }
     
     final func getDisplayStrings(from hike: HikeWorkoutHappening) -> HikeInProgressDisplay {
-        var newDisplay = HikeInProgressDisplay()
+        let newDisplay = HikeInProgressDisplay()
         setFormatterStyle()
         let durationFormatted = getDurationDisplayString(from: hike)
         newDisplay.duration = durationFormatted
@@ -116,7 +116,7 @@ class ConvertHikeToFinishedDisplayStrings: ConvertHikeToDisplayStrings {
     private let dateFormatter = DateFormatter()
     
     func getFinishedDisplayStrings(from hike: HikeWorkoutHappening) -> HikeFinishedDisplayStrings {
-        var newDisplay = HikeFinishedDisplayStrings()
+        let newDisplay = HikeFinishedDisplayStrings()
         setFormatterStyle()
         let durationFormatted = getDurationDisplayString(from: hike)
         newDisplay.duration = durationFormatted
