@@ -151,17 +151,7 @@ class HikeWorkoutHappening {
     var storedLocations = [CLLocation]()
     
     //This is where most of the functionality happens. The view controller gives us a location object, we figure out if we're going up or downhill currently, if we're paused or not, and sets distance and duration information
-    func addNewLocation(_ newLocation: CLLocation) {
-        currentAltitudeInMeters = newLocation.altitude
-        if storedLocations.isEmpty {
-            storedLocations.append(newLocation)
-            return
-        }
-        guard let lastLocation = storedLocations.last else {return}
-        checkElevationDirectionAndSetUpOrDownDuration(lastLocation: lastLocation, newLocation: newLocation)
-        totalDistanceInMeters += lastLocation.distance(from: newLocation)
-        storedLocations.append(newLocation)
-    }
+
     
     
     //Used for drawing the line on the map
@@ -172,18 +162,6 @@ class HikeWorkoutHappening {
         }
     }
     
-    private func checkElevationDirectionAndSetUpOrDownDuration(lastLocation: CLLocation, newLocation:CLLocation) {
-        if !paused {
-            let timeDifference = newLocation.timestamp.timeIntervalSince(lastLocation.timestamp)
-            if lastLocation.altitude < newLocation.altitude {
-                timeTraveldUpHill += timeDifference
-                currentAltitudeDirection = CurrentAltitudeDirection.uphill
-            } else if lastLocation.altitude > newLocation.altitude || lastLocation.altitude == newLocation.altitude {
-                timeTraveledDownHill += timeDifference
-                currentAltitudeDirection = CurrentAltitudeDirection.downhill
-            }
-        }
-    }
 
     private func checkIfPausedAndSetCorrectDuration(lastLocation: CLLocation, newLocation:CLLocation) {
         let timeDifference = newLocation.timestamp.timeIntervalSince(lastLocation.timestamp)
