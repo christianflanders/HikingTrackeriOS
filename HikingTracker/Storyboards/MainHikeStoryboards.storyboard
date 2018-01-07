@@ -837,6 +837,7 @@
                             <constraint firstAttribute="trailing" secondItem="zqg-fv-mo1" secondAttribute="trailing" constant="10" id="jKO-QV-SCb"/>
                             <constraint firstAttribute="bottom" secondItem="zqg-fv-mo1" secondAttribute="bottom" constant="10" id="olX-S8-WR9"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="oR6-Y6-IEw"/>
                     </view>
                     <connections>
                         <outlet property="avgHeartRateLabel" destination="jNw-6q-SMP" id="dvi-fV-kOg"/>
