@@ -11,7 +11,7 @@ import Firebase
 
 struct SaveHikeToFirebase {
 
-    private func convertHikeIntoData(hikeWorkoutToSave: HikeWorkoutHappening?) -> [String: Any] {
+     func convertHikeIntoData(hikeWorkoutToSave: HikeWorkoutHappening?) -> [String: Any] {
         var newHikeDict = [String: Any]()
         let firebaseDictStructure = FirebaseDict()
         guard let hikeWorkout = hikeWorkoutToSave else { return newHikeDict }
@@ -94,7 +94,6 @@ struct FirebaseDict {
     var timeUphillInSecondsKey = "timeUphillInSeconds"
     var timeDownhillInSecondsKey = "timeDownhillInSeconds"
     var storedLocationsKey = "storedLocationsKey"
-
 }
 
 struct Location {
