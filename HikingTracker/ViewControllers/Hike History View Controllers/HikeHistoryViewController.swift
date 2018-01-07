@@ -7,45 +7,66 @@
 //
 
 import UIKit
+import Firebase
 
 class HikeHistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
+    // MARK: Enums
+    
+    // MARK: Constants
     private let hikeSelectedSegue = "HikeFromHistorySelected"
-    
-    private let persistantContainer = PersistanceService.store
-    
-    @IBOutlet weak var hikeHistoryTableView: UITableView!
-    
-    private var pastWorkouts = [HikeWorkoutInProgress]()
-    
-    
-    var selectedHikeWorkout = HikeWorkoutInProgress()
     
     private let navigationBarBackgroundImage = DefaultUI().navBarBackgroundImage
     
-
+    
+    // MARK: Variables
+    
+    
+    // MARK: Outlets
+    @IBOutlet weak var hikeHistoryTableView: UITableView!
+    
+    // MARK: Weak Vars
+    
+    
+    // MARK: Public Variables
+    var selectedHikeWorkout = HikeWorkoutInProgress()
+    var ref: DatabaseReference!
+    var handle: DatabaseHandle!
+    
+    // MARK: Private Variables
+    private var pastWorkouts = [DecodedHike]()
+    private var workouts = [[String: Any]]()
+    
+    // MARK: View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
-//        self.navigationController?.navigationBar.prefersLargeTitles = true
+        hikeHistoryTableView.delegate = self
+        hikeHistoryTableView.dataSource = self
         
-
-//        self.navigationController?.navigationBar.backgroundColor = DefaultUI().navBarBackgroundColor
-//        self.navigationController?.navigationBar.setBackgroundImage(navigationBarBackgroundImage,
-//                                                                    for: .default)
-//        self.navigationController?.navigationBar.tintColor = DefaultUI().defaultBlack
+        ref = Database.database().reference()
+        handle = ref.child("HikeWorkouts").observe(.childAdded, with: { (snapshot) in
+            let hikeDict = snapshot.value as? [String: Any] ?? [:]
+            //            print(hikeDict)
+            let decodedHike = DecodedHike(fromFirebaseDict: hikeDict)
+            self.pastWorkouts.append(decodedHike)
+            self.hikeHistoryTableView.reloadData()
+            print("There are \(self.pastWorkouts.count) Workouts")
+        })
+        
     }
-
+    
     
     override func viewDidAppear(_ animated: Bool) {
-        getWorkoutsFromMemoryAndUpdateTable()
     }
     
-
+    // MARK: IBActions
+    
+    
+    
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == hikeSelectedSegue {
@@ -54,7 +75,17 @@ class HikeHistoryViewController: UIViewController, UITableViewDataSource, UITabl
         }
     }
     
-    //MARK: TableView DataSource
+    
+    
+    // MARK: Download Workouts From Firebase
+    
+    func downloadWorkoutsFromFirebase() {
+        // TODO: Add in user ID checking
+        
+        
+    }
+    // MARK: TableView DataSource
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return pastWorkouts.count
     }
@@ -64,29 +95,28 @@ class HikeHistoryViewController: UIViewController, UITableViewDataSource, UITabl
         let index = indexPath.row
         let workout = pastWorkouts[index]
         
-        cell.hikeNameLabel.text = workout.hikeName
-    
+        //        cell.hikeNameLabel.text = workout.hikeName
+        //
         cell.hikeDateLabel.text = workout.startDate?.displayString
-        cell.hikeDurationLabel.text = workout.durationAsString
-        cell.hikeDistanceLabel.text = workout.totalDistanceTraveled?.getDisplayString
-        print(workout.storedLocations.count)
+        if let duration = workout.durationInSeconds {
+            let durationString = DateHelper().convertDurationToStringDate(duration)
+            cell.hikeDurationLabel.text = durationString
+        }
+        
+        //        cell.hikeDistanceLabel.text = workout.totalDistanceTraveled?.getDisplayString
+        
         return cell
     }
     
-    //MARK: TableView Delegate
+    // MARK: TableView Delegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let index = indexPath.row
-        selectedHikeWorkout = pastWorkouts[index]
+        //        selectedHikeWorkout = pastWorkouts[index]
         performSegue(withIdentifier: hikeSelectedSegue, sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     
-    fileprivate func getWorkoutsFromMemoryAndUpdateTable() {
-        persistantContainer.fetchWorkouts()
-        pastWorkouts = persistantContainer.fetchedWorkouts
-        hikeHistoryTableView.delegate = self
-        hikeHistoryTableView.dataSource = self
-        hikeHistoryTableView.reloadData()
-    }
+    
 }
+

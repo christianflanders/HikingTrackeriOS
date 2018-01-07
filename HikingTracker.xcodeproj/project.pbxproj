@@ -27,6 +27,7 @@
 		6B6A1D4F1FF2EF3800C4AD3A /* RK_gpx _2017-12-20_1333-xc.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 6B6A1D4E1FF2EF3800C4AD3A /* RK_gpx _2017-12-20_1333-xc.gpx */; };
 		6B6B45F12000A61900A9FB7C /* HikeHistoryStatContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6B45F02000A61900A9FB7C /* HikeHistoryStatContainerViewController.swift */; };
 		6B6B45F5200174D200A9FB7C /* PauseHikeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6B45F4200174D200A9FB7C /* PauseHikeProtocol.swift */; };
+		6B6B45F72001A4BF00A9FB7C /* DecodeFirebaseHikes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6B45F62001A4BF00A9FB7C /* DecodeFirebaseHikes.swift */; };
 		6B6E19D81FEDE7EE00B5605A /* Ailerons-Typeface.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6E19D71FEDE7ED00B5605A /* Ailerons-Typeface.otf */; };
 		6B6E19D91FEDE7EE00B5605A /* Ailerons-Typeface.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6E19D71FEDE7ED00B5605A /* Ailerons-Typeface.otf */; };
 		6B7801741FD5F2AE006F29BD /* HikeInProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7801731FD5F2AE006F29BD /* HikeInProgressViewController.swift */; };
@@ -215,6 +216,7 @@
 		6B6A1D4E1FF2EF3800C4AD3A /* RK_gpx _2017-12-20_1333-xc.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "RK_gpx _2017-12-20_1333-xc.gpx"; path = "../../../../Gpx Files/RK_gpx _2017-12-20_1333-xc.gpx"; sourceTree = "<group>"; };
 		6B6B45F02000A61900A9FB7C /* HikeHistoryStatContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeHistoryStatContainerViewController.swift; sourceTree = "<group>"; };
 		6B6B45F4200174D200A9FB7C /* PauseHikeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseHikeProtocol.swift; sourceTree = "<group>"; };
+		6B6B45F62001A4BF00A9FB7C /* DecodeFirebaseHikes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeFirebaseHikes.swift; sourceTree = "<group>"; };
 		6B6E19D71FEDE7ED00B5605A /* Ailerons-Typeface.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ailerons-Typeface.otf"; sourceTree = "<group>"; };
 		6B7801731FD5F2AE006F29BD /* HikeInProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeInProgressViewController.swift; sourceTree = "<group>"; };
 		6B7801761FD618BE006F29BD /* HealthKitAuthorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitAuthorization.swift; sourceTree = "<group>"; };
@@ -534,6 +536,7 @@
 				6B8AA0ED1FFDDBE9009FCFB2 /* HikeWorkoutHappening.swift */,
 				6B6B45F4200174D200A9FB7C /* PauseHikeProtocol.swift */,
 				6BA9BBDA1FFF374C00BE48B4 /* SaveHikeToFirebase.swift */,
+				6B6B45F62001A4BF00A9FB7C /* DecodeFirebaseHikes.swift */,
 				6B8D3115200080D5005F08AC /* HikeDisplayStrings.swift */,
 				6B077C9D1FFAF12900A87E2C /* SaveHikeWorkout.swift */,
 				6BC1DE8C1FD7368D00CB20D5 /* LocationServices.swift */,
@@ -1189,6 +1192,7 @@
 				6B6B45F5200174D200A9FB7C /* PauseHikeProtocol.swift in Sources */,
 				6B6A1D421FEF09CC00C4AD3A /* DefaultUI.swift in Sources */,
 				6B8FF30C1FF320F400536C42 /* HikeHistoryDetailTableViewController.swift in Sources */,
+				6B6B45F72001A4BF00A9FB7C /* DecodeFirebaseHikes.swift in Sources */,
 				6B1B12431FE9AB6300FFFDB4 /* DateConversion.swift in Sources */,
 				6B5904E21FDC791D00BF96CD /* HikeFinishedViewController.swift in Sources */,
 				6BB63A451FD5EA2F00E9F4A1 /* MainHikeScreenViewController.swift in Sources */,
