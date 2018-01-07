@@ -72,7 +72,7 @@ class ConvertHikeToDisplayStrings {
     }
     
     fileprivate func getCaloriesDisplayString(from hike: HikeWorkoutHappening) -> String {
-        let totalCaloriesBurned = hike.totalCaloriesBurned
+        let totalCaloriesBurned = Int(hike.totalCaloriesBurned)
         let totalCaloriesBurnedString = "\(totalCaloriesBurned) kcl"
         return totalCaloriesBurnedString
     }
@@ -80,7 +80,7 @@ class ConvertHikeToDisplayStrings {
     fileprivate func getPaceDisplayString(from hike: HikeWorkoutHappening) -> String {
         if let lastLocation = hike.storedLocations.last {
             let speedInMetersPerSecond = lastLocation.speed
-            let speedMeasurement = Measurement(value: speedInMetersPerSecond, unit: UnitLength.meters)
+            let speedMeasurement = Measurement(value: speedInMetersPerSecond.rounded(), unit: UnitLength.meters)
             let speedMeasurementString = formatter.string(from: speedMeasurement)
             let speedMeasurementWithIdentifier = "\(speedMeasurementString)/hr"
             return speedMeasurementWithIdentifier
@@ -96,13 +96,13 @@ class ConvertHikeToDisplayStrings {
     }
     
     fileprivate func getAltitudeDisplayString(from hike: HikeWorkoutHappening) -> String {
-        let altitudeInMeters = Measurement(value: hike.currentAltitudeInMeters, unit: UnitLength.meters)
+        let altitudeInMeters = Measurement(value: hike.currentAltitudeInMeters.rounded(), unit: UnitLength.meters)
         let altitudeString = formatter.string(from: altitudeInMeters)
         return altitudeString
     }
     
     fileprivate func getDistanceDisplayString(from hike: HikeWorkoutHappening) -> String {
-        let distanceInMeters = Measurement(value: hike.totalDistanceInMeters, unit: UnitLength.meters)
+        let distanceInMeters = Measurement(value: hike.totalDistanceInMeters.rounded(), unit: UnitLength.meters)
         let distanceString = formatter.string(from: distanceInMeters)
         return distanceString
     }
