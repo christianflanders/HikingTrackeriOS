@@ -16,5 +16,3 @@ struct DefaultUI {
 
     public let navBarBackgroundColor = UIColor(red: 101/255, green: 133/255, blue: 37/255, alpha: 1)
 }
-
-

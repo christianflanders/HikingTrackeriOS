@@ -1,21 +1,22 @@
 //
-//  SaveHikeToFirebase.swift
+//  Hike In Progress Save To Firebase.swift
 //  HikingTracker
 //
-//  Created by Christian Flanders on 1/4/18.
+//  Created by Christian Flanders on 1/7/18.
 //  Copyright © 2018 Christian Flanders. All rights reserved.
 //
 
 import Foundation
+import CoreLocation
 import Firebase
 
-struct SaveHikeToFirebase {
-
-     func convertHikeIntoData(hikeWorkoutToSave: HikeWorkoutHappening?) -> [String: Any] {
+extension HikeInProgress {
+    
+    private func convertHikeIntoData(hikeWorkoutToSave: HikeInProgress?) -> [String: Any] {
         var newHikeDict = [String: Any]()
         let firebaseDictStructure = FirebaseDict()
         guard let hikeWorkout = hikeWorkoutToSave else { return newHikeDict }
-
+        
         if let startDate = hikeWorkout.startDate {
             let stringStartDate = startDate.displayString
             newHikeDict[firebaseDictStructure.startDateKey] = stringStartDate
@@ -24,14 +25,14 @@ struct SaveHikeToFirebase {
             let stringEndDate = endDate.displayString
             newHikeDict[firebaseDictStructure.endDateKey] = stringEndDate
         }
-        let caloriesBurned = hikeWorkout.totalCaloriesBurned
+        let caloriesBurned = hikeWorkout.caloriesBurned
         newHikeDict[firebaseDictStructure.caloriesBurnedKey]
             = caloriesBurned
-
-        let durationInSeconds = hikeWorkout.totalTime
+        
+        let durationInSeconds = hikeWorkout.durationInSeconds
         newHikeDict[firebaseDictStructure.durationInSecondsKey]
-        = durationInSeconds
-
+            = durationInSeconds
+        
         let totalElevationDifferenceInMeters = hikeWorkout.totalElevationDifferenceInMeters
         newHikeDict[firebaseDictStructure.totalElevationInMetersKey] = totalElevationDifferenceInMeters
         
@@ -42,17 +43,17 @@ struct SaveHikeToFirebase {
         
         let maxAltitudeInMeters = hikeWorkout.highestAltitudeInMeters
         newHikeDict[firebaseDictStructure.maxAltitudeInMetersKey] = maxAltitudeInMeters
-
-        let timeDownhillInSeconds = hikeWorkout.timeTraveledDownHill
+        
+        let timeDownhillInSeconds = hikeWorkout.timeDownhillInSeconds
         newHikeDict[firebaseDictStructure.timeDownhillInSecondsKey] = timeDownhillInSeconds
         
-        let timeUphillInSeconds = hikeWorkout.timeTraveldUpHill
+        let timeUphillInSeconds = hikeWorkout.timeUphillInSeconds
         newHikeDict[firebaseDictStructure.timeUphillInSecondsKey] = timeUphillInSeconds
         
         var locationDict = [[String: Any]]()
         let locationKeys = Location()
         for location in hikeWorkout.storedLocations {
-            var newLocation = [String:Any]()
+            var newLocation = [String: Any]()
             newLocation[locationKeys.latitudeKey] = location.coordinate.latitude
             newLocation[locationKeys.longitudeKey] = location.coordinate.longitude
             newLocation[locationKeys.altitudeKey] = location.altitude
@@ -66,9 +67,9 @@ struct SaveHikeToFirebase {
         return newHikeDict
     }
     
-    func convertAndUploadHikeToFirebase(_ newHike: HikeWorkoutHappening, name: String?) {
+    func convertAndUploadHikeToFirebase(_ newHike: HikeInProgress, name: String?) {
         let convertedDict = convertHikeIntoData(hikeWorkoutToSave: newHike)
-        var nameForHike = ""
+        var nameForHike = name ?? " "
         let databaseRef = Database.database().reference()
         if name == nil {
             nameForHike = "Hike on \(newHike.startDate?.displayString)"
@@ -77,35 +78,4 @@ struct SaveHikeToFirebase {
         }
         databaseRef.child("HikeWorkouts").childByAutoId().setValue(convertedDict)
     }
-    
-
 }
-
-struct FirebaseDict {
-
-    var startDateKey = "startDate"
-    var endDateKey = "endDate"
-    var caloriesBurnedKey = "caloriesBurned"
-    var durationInSecondsKey = "durationInSeconds"
-    var totalElevationInMetersKey = "totalElevationInMeters"
-    var avgPaceInMetersPerHourKey = "avgPaceInMetersPerHour"
-    var minAltitudeInMetersKey = "minAltitudeInMeters"
-    var maxAltitudeInMetersKey = "maxAltitudeInMeters"
-    var timeUphillInSecondsKey = "timeUphillInSeconds"
-    var timeDownhillInSecondsKey = "timeDownhillInSeconds"
-    var storedLocationsKey = "storedLocationsKey"
-}
-
-struct Location {
-
-    var latitudeKey = "latitude"
-    var longitudeKey = "longitude"
-    var altitudeKey = "altitude"
-    var timestampKey = "timestamp"
-    var speedInMetersPerSecondKey = "speedInMetersPerSecond"
-
-
-}
-
-
-

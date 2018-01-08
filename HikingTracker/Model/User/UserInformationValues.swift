@@ -15,6 +15,4 @@ struct UserInformationValues {
     var name: String?
     var weightInKG: Double?
     var birthdate: Date?
-    
-    
 }

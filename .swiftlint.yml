@@ -9,6 +9,8 @@ excluded:
     - Charts-master
     - HikingTracker/Utilities/GPXParser.swift
     - Source/Utilites/GPXParser.swift
+    - HikingTracker/Utilities/Solar.swift
+    - Source/Utilities/Solar.swift
 
 
 

@@ -36,7 +36,7 @@ class HikeFinishedTableViewController: UITableViewController , UITextFieldDelega
     
     
     // MARK: Public Variables
-    var hikeWorkout = HikeWorkoutHappening()
+    var hikeWorkout = HikeInProgress()
     
     
     

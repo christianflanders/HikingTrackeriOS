@@ -65,7 +65,7 @@ class DecodedHike {
         
     }
     
-    func convertFirebaseLocations(_ locations: [[String:Any]]) -> [CLLocation] {
+    func convertFirebaseLocations(_ locations: [[String: Any]]) -> [CLLocation] {
         var convertedLocations = [CLLocation]()
         for dict in locations {
             let longitude = dict[locationKeys.longitudeKey] as! Double

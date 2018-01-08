@@ -52,7 +52,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     private var pedometerData:  CMPedometerData?
     private var coordinatesForLine = [CLLocationCoordinate2D]()
     private var mapView: MGLMapView!
-    private  var hikeWorkout = HikeWorkoutHappening()
+    private  var hikeWorkout = HikeInProgress()
     private var currentSpeedInMetersPerSecond = 0.0
     
     private var statsHidden = false
@@ -156,7 +156,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         hikeWorkout.paused = false
         hikeWorkout.addNewLocation(currentLocation)
         let resumeTime = Date()
-        hikeWorkout.resumeHike(time:resumeTime)
+        hikeWorkout.resumeHike(time: resumeTime)
     }
     
     fileprivate func pauseHike() {
@@ -165,7 +165,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         hikeWorkout.paused = true
         hikeWorkout.addNewLocation(currentLocation)
         let pauseTime = Date()
-        hikeWorkout.pauseHike(time:pauseTime)
+        hikeWorkout.pauseHike(time: pauseTime)
 
     }
     
@@ -205,7 +205,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     // MARK: UI Functions
     
     private func updateDisplay() {
-        let hikeDisplayConverter = ConvertHikeToDisplayStrings()
+        hikeWorkout.
         let displayStrings = hikeDisplayConverter.getDisplayStrings(from: hikeWorkout)
 
         if !paused {

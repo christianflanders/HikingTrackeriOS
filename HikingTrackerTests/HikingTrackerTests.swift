@@ -144,8 +144,8 @@ class HikingTrackerTests: XCTestCase {
         }
     }
     
-    func createFakeHikeWorkout() -> HikeWorkoutHappening {
-        let hikeWorkoutToTest = HikeWorkoutHappening()
+    func createFakeHikeWorkout() -> HikeInProgress {
+        let hikeWorkoutToTest = HikeInProgress()
         if let fakeData = createFakeData(from: fileOne) {
             for i in fakeData {
                 hikeWorkoutToTest.addNewLocation(i)
