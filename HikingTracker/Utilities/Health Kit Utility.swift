@@ -13,42 +13,42 @@ class HealthKitStore {
     
     init() {}
     
-    func storeHikeToHealthKit(_ hikeWorkout: HikeWorkoutInProgress, name: String)  {
-        
-        let healthStore = HKHealthStore()
-        
-        let caloriesBurned = hikeWorkout.totalCaloriesBurned
-        let calorieUnit = HKUnit(from: .kilocalorie)
-        let hkCalories = HKQuantity(unit: calorieUnit, doubleValue: caloriesBurned)
-        
-        let distanceInMeters = hikeWorkout.totalDistanceTraveled
-        let distanceUnit = HKUnit(from: .meter)
-        let hkDistance = HKQuantity(unit: distanceUnit, doubleValue: distanceInMeters!)
-        
-        guard let startDate = hikeWorkout.startDate else {
-            print("Problem getting start date")
-            return
-        }
-        guard let endDate = hikeWorkout.endDate else {
-            print("Problem getting start date")
-            return
-        }
-        
-        let duration = hikeWorkout.calculatedDuration
-        
-        let workout = HKWorkout(activityType: .hiking, start: startDate, end: endDate, duration: duration,
-                                totalEnergyBurned: hkCalories, totalDistance: hkDistance, device: HKDevice.local(), metadata: nil)
-        
-        healthStore.save(workout) { (_, error) in
-            if error == nil {
-                print("Success saving workout to health kit store!")
-            } else {
-                
-            }
-        }
-        
-    }
-    
+//    func storeHikeToHealthKit(_ hikeWorkout: HikeWorkoutInProgress, name: String)  {
+//        
+//        let healthStore = HKHealthStore()
+//        
+//        let caloriesBurned = hikeWorkout.totalCaloriesBurned
+//        let calorieUnit = HKUnit(from: .kilocalorie)
+//        let hkCalories = HKQuantity(unit: calorieUnit, doubleValue: caloriesBurned)
+//        
+//        let distanceInMeters = hikeWorkout.totalDistanceTraveled
+//        let distanceUnit = HKUnit(from: .meter)
+//        let hkDistance = HKQuantity(unit: distanceUnit, doubleValue: distanceInMeters!)
+//        
+//        guard let startDate = hikeWorkout.startDate else {
+//            print("Problem getting start date")
+//            return
+//        }
+//        guard let endDate = hikeWorkout.endDate else {
+//            print("Problem getting start date")
+//            return
+//        }
+//        
+//        let duration = hikeWorkout.calculatedDuration
+//        
+//        let workout = HKWorkout(activityType: .hiking, start: startDate, end: endDate, duration: duration,
+//                                totalEnergyBurned: hkCalories, totalDistance: hkDistance, device: HKDevice.local(), metadata: nil)
+//        
+//        healthStore.save(workout) { (_, error) in
+//            if error == nil {
+//                print("Success saving workout to health kit store!")
+//            } else {
+//                
+//            }
+//        }
+//        
+//    }
+//    
     func getUserDataFromHealthKit() -> UserInformationValues {
         var userInformationFromHealthKit = UserInformationValues()
         

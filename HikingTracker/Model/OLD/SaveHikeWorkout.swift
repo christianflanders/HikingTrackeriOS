@@ -11,22 +11,22 @@ import CoreData
 import HealthKit
 import CoreLocation
 
-struct SaveHike {
-    
-    func saveToCoreData(hike: HikeWorkoutInProgress) {
-        guard let hikeName = hike.hikeName else { return }
-        let dataStore = PersistanceService.store
-        dataStore.storeHikeWorkout(hikeWorkout: hike, name: hikeName)
-    }
-    
-    func saveToHealthKit(hike: HikeWorkoutInProgress) {
-        guard let hikeName = hike.hikeName else { return }
-        let healthKit = HealthKitStore()
-        healthKit.storeHikeToHealthKit(hike, name: hikeName)
-    }
-    
-    
-}
+//struct SaveHike {
+//    
+//    func saveToCoreData(hike: HikeWorkoutInProgress) {
+//        guard let hikeName = hike.hikeName else { return }
+//        let dataStore = PersistanceService.store
+//        dataStore.storeHikeWorkout(hikeWorkout: hike, name: hikeName)
+//    }
+//    
+//    func saveToHealthKit(hike: HikeWorkoutInProgress) {
+//        guard let hikeName = hike.hikeName else { return }
+//        let healthKit = HealthKitStore()
+//        healthKit.storeHikeToHealthKit(hike, name: hikeName)
+//    }
+//    
+//    
+//}
 
 
 //class HikeHistoryRecord {

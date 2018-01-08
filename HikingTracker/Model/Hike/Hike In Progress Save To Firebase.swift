@@ -67,15 +67,15 @@ extension HikeInProgress {
         return newHikeDict
     }
     
-    func convertAndUploadHikeToFirebase(_ newHike: HikeInProgress, name: String?) {
-        let convertedDict = convertHikeIntoData(hikeWorkoutToSave: newHike)
+    func convertAndUploadHikeToFirebase(name: String?) {
+        let convertedDict = convertHikeIntoData(hikeWorkoutToSave: self)
         var nameForHike = name ?? " "
         let databaseRef = Database.database().reference()
-        if name == nil {
-            nameForHike = "Hike on \(newHike.startDate?.displayString)"
-        } else {
-            nameForHike = name!
-        }
+//        if name == nil {
+//            nameForHike = "Hike on \(newHike.startDate?.displayString)"
+//        } else {
+//            nameForHike = name!
+//        }
         databaseRef.child("HikeWorkouts").childByAutoId().setValue(convertedDict)
     }
 }

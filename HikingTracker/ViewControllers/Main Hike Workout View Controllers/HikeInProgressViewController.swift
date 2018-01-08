@@ -20,7 +20,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     // MARK: Constants
     
     private let locationManager = LocationManager.shared
-    private let altimeter = Altimeter.shared
+    
     private let pedometer = CMPedometer()
     
     private let watchConnection = WCSession.default
@@ -71,6 +71,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
             startHike()
         }
         createAndAddMapBoxView()
+        self.tabBarController?.tabBar.isHidden = true
         
     }
     
@@ -205,14 +206,13 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     // MARK: UI Functions
     
     private func updateDisplay() {
-        hikeWorkout.
-        let displayStrings = hikeDisplayConverter.getDisplayStrings(from: hikeWorkout)
-
+        let converter = HikeDisplayStrings()
+        let newDisplay = converter.getInProgressDisplayStrings(hike: hikeWorkout)
+        
         if !paused {
-            hikeStatsDisplay.setDisplay(with: displayStrings)
+            hikeStatsDisplay.setDisplay(with: newDisplay)
         }
-        
-        
+
     }
     
     fileprivate func startHikeUISettings() {
@@ -226,9 +226,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         resumeButtonOutlet.isHidden = false
         holdToEndButtonOutlet.isHidden = false
     }
-    
-    
-    
+
     // MARK: Segue Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -239,7 +237,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     }
     
     func openHikeFinishedVC() {
-        performSegue(withIdentifier: "HikeFinishedSegue"  , sender: self)
+        performSegue(withIdentifier: "HikeFinishedSegue", sender: self)
     }
 
     // MARK: MapboxView

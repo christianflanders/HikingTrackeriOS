@@ -85,7 +85,21 @@ class HikeInProgress: HikeInformation {
     
     // MARK: Duration Information
     
-    var durationInSeconds = 0.0
+    var durationInSeconds: Double {
+        if endDate == nil {
+            guard let startTime = startDate else { return 0.0 }
+            let currentTime = Date()
+            let totalDuration = currentTime.timeIntervalSince(startTime)
+            let durationMinusPausedTime = totalDuration - totalPausedTime
+            return durationMinusPausedTime
+        } else {
+            guard let startTime = startDate else { return 0.0 }
+            guard let endDate = endDate else { return 0.0 }
+            let totalDuration = endDate.timeIntervalSince(startTime)
+            let durationMinusPausedTime = totalDuration - totalPausedTime
+            return durationMinusPausedTime
+        }
+    }
     
     var timeDownhillInSeconds = 0.0
     

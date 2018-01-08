@@ -9,11 +9,11 @@
 import UIKit
 import Mapbox
 
-class HikeFinishedTableViewController: UITableViewController , UITextFieldDelegate{
+class HikeFinishedTableViewController: UITableViewController, UITextFieldDelegate {
     // MARK: Enums
     
     // MARK: Constants
-    let statsToDisplay: [Stats] = [.duration, .distance, . elevationGain, .calories, .avgPace, .avgHeartRate, .minAltitude, .maxAltitude, .timeUphill, .timeDownhill]
+//    let statsToDisplay: [Stats] = [.duration, .distance, . elevationGain, .calories, .avgPace, .avgHeartRate, .minAltitude, .maxAltitude, .timeUphill, .timeDownhill]
     
     
     // MARK: Variables
@@ -34,11 +34,8 @@ class HikeFinishedTableViewController: UITableViewController , UITextFieldDelega
     
     // MARK: Weak Vars
     
-    
     // MARK: Public Variables
     var hikeWorkout = HikeInProgress()
-    
-    
     
     // MARK: Private Variables
     
@@ -51,7 +48,8 @@ class HikeFinishedTableViewController: UITableViewController , UITextFieldDelega
         mapBoxDrawHistoryLine()
         nameTextField.delegate = self
         print("VC Loaded")
-        let finishedHikeDisplayConverter = ConvertHikeToFinishedDisplayStrings()
+                self.tabBarController?.tabBar.isHidden = true
+        let finishedHikeDisplayConverter = HikeDisplayStrings()
         let finishedDisplay = finishedHikeDisplayConverter.getFinishedDisplayStrings(from: hikeWorkout)
         let childVC = childViewControllers.last as! HikeHistoryStatContainerViewController
         childVC.updateDisplay(hike: finishedDisplay)
@@ -61,8 +59,6 @@ class HikeFinishedTableViewController: UITableViewController , UITextFieldDelega
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
 
-
-
     }
     // MARK: IBActions
     
@@ -70,8 +66,6 @@ class HikeFinishedTableViewController: UITableViewController , UITextFieldDelega
     
     func updateDisplay() {
    
-        
-
     }
     
     func setUpMapBoxView() {
@@ -118,9 +112,7 @@ class HikeFinishedTableViewController: UITableViewController , UITextFieldDelega
         presentingViewController?.presentingViewController?.dismiss(animated: false, completion: nil)
     }
     
-    
     // MARK: Name Text Field
-    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -132,11 +124,10 @@ class HikeFinishedTableViewController: UITableViewController , UITextFieldDelega
     }
     
     // MARK: Hike Saving
-    let saveHike = SaveHike()
+//    let saveHike = SaveHike()
     
     @IBAction func saveHikeButtonPressed(_ sender: UIButton) {
-        let saveToFirebaseHelper = SaveHikeToFirebase()
-        let convertedHike = saveToFirebaseHelper.convertAndUploadHikeToFirebase(hikeWorkout, name: "Test Upload")
+        hikeWorkout.convertAndUploadHikeToFirebase(name: "No name")
         print("Uploaded!")
         dismissToMainScreen()
         
@@ -151,7 +142,6 @@ class HikeFinishedTableViewController: UITableViewController , UITextFieldDelega
         alert.addAction(okayAction)
         alert.addAction(dontDeleteAction)
         present(alert, animated: true, completion: nil)
-        
         
     }
     

@@ -19,7 +19,6 @@
 		6B1B12441FE9ABD900FFFDB4 /* DateConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1B12421FE9AB6300FFFDB4 /* DateConversion.swift */; };
 		6B31A6BD1FF6FD08002069B2 /* UnitConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B31A6BC1FF6FD08002069B2 /* UnitConversions.swift */; };
 		6B35497A1FFDA1CD00BE3AC5 /* ShortStoughRunkeeper1220.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 6B3549781FFDA1CD00BE3AC5 /* ShortStoughRunkeeper1220.gpx */; };
-		6B4F6E621FE09A6600545DE3 /* PersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4F6E611FE09A6600545DE3 /* PersistanceService.swift */; };
 		6B5904E21FDC791D00BF96CD /* HikeFinishedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5904E11FDC791D00BF96CD /* HikeFinishedViewController.swift */; };
 		6B5FA3921FF58BD4008C4771 /* EditUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5FA3911FF58BD4008C4771 /* EditUserInfoViewController.swift */; };
 		6B6A1D421FEF09CC00C4AD3A /* DefaultUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6A1D411FEF09CC00C4AD3A /* DefaultUI.swift */; };
@@ -69,7 +68,6 @@
 		6BB48A8B1FD87B0500D5A9C5 /* StoredUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB48A8A1FD87B0500D5A9C5 /* StoredUserModel.swift */; };
 		6BB63A0A1FD5CCE600E9F4A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB63A091FD5CCE600E9F4A1 /* AppDelegate.swift */; };
 		6BB63A0F1FD5CCE600E9F4A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BB63A0D1FD5CCE600E9F4A1 /* Main.storyboard */; };
-		6BB63A121FD5CCE600E9F4A1 /* HikingTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6BB63A101FD5CCE600E9F4A1 /* HikingTracker.xcdatamodeld */; };
 		6BB63A141FD5CCE600E9F4A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BB63A131FD5CCE600E9F4A1 /* Assets.xcassets */; };
 		6BB63A171FD5CCE600E9F4A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BB63A151FD5CCE600E9F4A1 /* LaunchScreen.storyboard */; };
 		6BB63A221FD5CCE600E9F4A1 /* HikingTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB63A211FD5CCE600E9F4A1 /* HikingTrackerTests.swift */; };
@@ -96,6 +94,7 @@
 		6BC1DE7E1FD6553C00CB20D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BC1DE7D1FD6553C00CB20D5 /* Assets.xcassets */; };
 		6BC1DE831FD6553C00CB20D5 /* HikeTrackerWatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 6BC1DE641FD6553B00CB20D5 /* HikeTrackerWatchApp.app */; };
 		6BC1DE8D1FD7368D00CB20D5 /* LocationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1DE8C1FD7368D00CB20D5 /* LocationServices.swift */; };
+		6BC9FEF1200304A50071590A /* Find Center Coordinate .swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC9FEF0200304A50071590A /* Find Center Coordinate .swift */; };
 		6BCC75E11FD621A4005F2F19 /* HikeWorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCC75E01FD621A4005F2F19 /* HikeWorkoutModel.swift */; };
 		6BD14B941FFED7DB004B3FD7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BD14B931FFED7DB004B3FD7 /* GoogleService-Info.plist */; };
 		6BDDA10E1FD7610B0069970C /* Altimeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDDA10D1FD7610B0069970C /* Altimeter.swift */; };
@@ -211,7 +210,6 @@
 		6B249CA91FEA20370092B518 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B31A6BC1FF6FD08002069B2 /* UnitConversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitConversions.swift; sourceTree = "<group>"; };
 		6B3549781FFDA1CD00BE3AC5 /* ShortStoughRunkeeper1220.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ShortStoughRunkeeper1220.gpx; sourceTree = "<group>"; };
-		6B4F6E611FE09A6600545DE3 /* PersistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceService.swift; sourceTree = "<group>"; };
 		6B5904E11FDC791D00BF96CD /* HikeFinishedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeFinishedViewController.swift; sourceTree = "<group>"; };
 		6B5FA3911FF58BD4008C4771 /* EditUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserInfoViewController.swift; sourceTree = "<group>"; };
 		6B6A1D411FEF09CC00C4AD3A /* DefaultUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUI.swift; sourceTree = "<group>"; };
@@ -253,7 +251,6 @@
 		6BB63A061FD5CCE600E9F4A1 /* HikingTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HikingTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BB63A091FD5CCE600E9F4A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6BB63A0E1FD5CCE600E9F4A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		6BB63A111FD5CCE600E9F4A1 /* HikingTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HikingTracker.xcdatamodel; sourceTree = "<group>"; };
 		6BB63A131FD5CCE600E9F4A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6BB63A161FD5CCE600E9F4A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6BB63A181FD5CCE600E9F4A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -287,6 +284,7 @@
 		6BC1DE7F1FD6553C00CB20D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6BC1DE801FD6553C00CB20D5 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		6BC1DE8C1FD7368D00CB20D5 /* LocationServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServices.swift; sourceTree = "<group>"; };
+		6BC9FEF0200304A50071590A /* Find Center Coordinate .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Find Center Coordinate .swift"; sourceTree = "<group>"; };
 		6BCC75E01FD621A4005F2F19 /* HikeWorkoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeWorkoutModel.swift; sourceTree = "<group>"; };
 		6BCD37A51FD88F7A00FE8C03 /* HikeTest.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = HikeTest.gpx; path = HikingTracker/Resources/HikeTest.gpx; sourceTree = SOURCE_ROOT; };
 		6BD14B931FFED7DB004B3FD7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -391,6 +389,8 @@
 		6B7801751FD6189E006F29BD /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				6BC1DE8C1FD7368D00CB20D5 /* LocationServices.swift */,
+				6B9B19161FDF133100E6A193 /* MapBox Extension.swift */,
 				6B31A6BC1FF6FD08002069B2 /* UnitConversions.swift */,
 				6B8744D81FF493D2008A0FB5 /* Watch Connection Messages.swift */,
 				6B81261C1FDF7981009054A3 /* Meters Alias.swift */,
@@ -401,6 +401,7 @@
 				6B6A1D431FEF11A800C4AD3A /* DateExtension.swift */,
 				6B8744DC1FF498B5008A0FB5 /* Calories.swift */,
 				6B7D98D41FF85F1E008C3F06 /* Solar.swift */,
+				6BC9FEF0200304A50071590A /* Find Center Coordinate .swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -415,8 +416,6 @@
 				6B8FF3071FF30B4600536C42 /* StatOptions.swift */,
 				6B8AA0E61FFDBAB7009FCFB2 /* HikeWorkoutCalculatingStats.swift */,
 				6BCC75E01FD621A4005F2F19 /* HikeWorkoutModel.swift */,
-				6B9B19161FDF133100E6A193 /* MapBox Extension.swift */,
-				6BC1DE8C1FD7368D00CB20D5 /* LocationServices.swift */,
 			);
 			path = OLD;
 			sourceTree = "<group>";
@@ -474,7 +473,6 @@
 				6B8D30E420004DBA005F08AC /* OLD */,
 				6B7801751FD6189E006F29BD /* Utilities */,
 				6BB63A401FD5CDFF00E9F4A1 /* HikingTracker.entitlements */,
-				6BB63A3F1FD5CD9200E9F4A1 /* CoreData */,
 				6BB63A3E1FD5CD7F00E9F4A1 /* Resources */,
 				6BB63A3D1FD5CD5A00E9F4A1 /* Model */,
 				6BB63A3C1FD5CD4000E9F4A1 /* ViewControllers */,
@@ -561,15 +559,6 @@
 				6BBF0F201FFC998900591C50 /* PauseNoise.wav */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		6BB63A3F1FD5CD9200E9F4A1 /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				6BB63A101FD5CCE600E9F4A1 /* HikingTracker.xcdatamodeld */,
-				6B4F6E611FE09A6600545DE3 /* PersistanceService.swift */,
-			);
-			path = CoreData;
 			sourceTree = "<group>";
 		};
 		6BB63A411FD5CDFF00E9F4A1 /* Frameworks */ = {
@@ -1202,6 +1191,7 @@
 			files = (
 				6B91BB211FF9894800CB378F /* UserInformationValues.swift in Sources */,
 				6BC1DE8D1FD7368D00CB20D5 /* LocationServices.swift in Sources */,
+				6BC9FEF1200304A50071590A /* Find Center Coordinate .swift in Sources */,
 				6B6A1D441FEF11A800C4AD3A /* DateExtension.swift in Sources */,
 				6BA931092002E06D001FE585 /* Hike Information Protocol.swift in Sources */,
 				6BA9BBDB1FFF374C00BE48B4 /* SaveHikeToFirebase.swift in Sources */,
@@ -1222,10 +1212,8 @@
 				6B8D3116200080D5005F08AC /* HikeDisplayStrings.swift in Sources */,
 				6B8FF3081FF30B4600536C42 /* StatOptions.swift in Sources */,
 				6B051ABF1FF726CB00173A20 /* ShowUserInfoViewController.swift in Sources */,
-				6B4F6E621FE09A6600545DE3 /* PersistanceService.swift in Sources */,
 				6BDDA10E1FD7610B0069970C /* Altimeter.swift in Sources */,
 				6B6B45F12000A61900A9FB7C /* HikeHistoryStatContainerViewController.swift in Sources */,
-				6BB63A121FD5CCE600E9F4A1 /* HikingTracker.xcdatamodeld in Sources */,
 				6B91BB411FF9C24A00CB378F /* HikeChartsViewController.swift in Sources */,
 				6B91BB3D1FF99DB900CB378F /* HikeHistoryTableViewCell.swift in Sources */,
 				6B6A1D421FEF09CC00C4AD3A /* DefaultUI.swift in Sources */,
@@ -1727,19 +1715,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		6BB63A101FD5CCE600E9F4A1 /* HikingTracker.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				6BB63A111FD5CCE600E9F4A1 /* HikingTracker.xcdatamodel */,
-			);
-			currentVersion = 6BB63A111FD5CCE600E9F4A1 /* HikingTracker.xcdatamodel */;
-			path = HikingTracker.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 6BB639FE1FD5CCE600E9F4A1 /* Project object */;
 }

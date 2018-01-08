@@ -21,14 +21,9 @@ class HikeHistoryStatContainerViewController: UIViewController {
     @IBOutlet weak var maxAltitudeLabel: UILabel!
     @IBOutlet weak var timeUphillLabel: UILabel!
     @IBOutlet weak var timeDownhillLabel: UILabel!
-    
-    
-    
-    
+
     var hikeDisplay: HikeFinishedDisplayStrings!
     
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
 //        updateDisplay(with: hikeDisplay)

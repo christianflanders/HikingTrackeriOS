@@ -30,7 +30,7 @@ class HikeHistoryViewController: UIViewController, UITableViewDataSource, UITabl
     
     
     // MARK: Public Variables
-    var selectedHikeWorkout = HikeWorkoutInProgress()
+    var selectedHikeWorkout = HikeInProgress()
     var ref: DatabaseReference!
     var handle: DatabaseHandle!
     

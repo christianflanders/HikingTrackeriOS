@@ -13,7 +13,7 @@ class HikeHistoryDetailTableViewController: UITableViewController, UITextFieldDe
     // MARK: Enums
     
     // MARK: Constants
-    let statsToDisplay: [Stats] = [.duration, .distance, . elevationGain, .calories, .avgPace, .avgHeartRate, .minAltitude, .maxAltitude, .timeUphill, .timeDownhill]
+//    let statsToDisplay: [Stats] = [.duration, .distance, . elevationGain, .calories, .avgPace, .avgHeartRate, .minAltitude, .maxAltitude, .timeUphill, .timeDownhill]
     
     
     // MARK: Variables
@@ -21,17 +21,7 @@ class HikeHistoryDetailTableViewController: UITableViewController, UITextFieldDe
     
     // MARK: Outlets
     
-    @IBOutlet weak var durationLabel: UILabel!
-    @IBOutlet weak var distanceLabel: UILabel!
-    @IBOutlet weak var elevationGainLabel: UILabel!
-    @IBOutlet weak var caloriesLabel: UILabel!
-    @IBOutlet weak var avgPaceLabel: UILabel!
-    @IBOutlet weak var avgHeartRateLabel: UILabel!
-    @IBOutlet weak var minAltitudeLabel: UILabel!
-    @IBOutlet weak var maxAltitudeLabel: UILabel!
-    @IBOutlet weak var timeUphillLabel: UILabel!
-    @IBOutlet weak var timeDownhillLabel: UILabel!
-    
+
     @IBOutlet weak var mapContainerView: UIView!
     
     @IBOutlet weak var saveButton: UIButton!
@@ -40,11 +30,13 @@ class HikeHistoryDetailTableViewController: UITableViewController, UITextFieldDe
     
     @IBOutlet weak var nameTextField: UITextField!
     
+    @IBOutlet weak var statContainerView: UIView!
+    
     // MARK: Weak Vars
     
     
     // MARK: Public Variables
-    var hikeWorkout = HikeWorkoutInProgress()
+    var hikeWorkout = HikeInProgress()
     
     var unsavedHikeIncoming = false
     
@@ -59,6 +51,11 @@ class HikeHistoryDetailTableViewController: UITableViewController, UITextFieldDe
         mapBoxDrawHistoryLine()
         nameTextField.delegate = self
         updateDisplay()
+        
+        let finishedHikeDisplayConverter = HikeDisplayStrings()
+        let finishedDisplay = finishedHikeDisplayConverter.getFinishedDisplayStrings(from: hikeWorkout)
+        let childVC = childViewControllers.last as! HikeHistoryStatContainerViewController
+        childVC.updateDisplay(hike: finishedDisplay)
         
 
 
@@ -78,31 +75,7 @@ class HikeHistoryDetailTableViewController: UITableViewController, UITextFieldDe
     // MARK: Stat Display
     
     func updateDisplay() {
-        durationLabel.text = hikeWorkout.durationAsString
-        distanceLabel.text = hikeWorkout.totalDistanceTraveled?.getDisplayString
-        elevationGainLabel.text = (hikeWorkout.highestElevation - hikeWorkout.lowestElevation).getDisplayString
-        caloriesLabel.text = hikeWorkout.totalCaloriesBurned.getCalorieDisplayString
-        
-        
-        minAltitudeLabel.text = hikeWorkout.lowestElevation.getDisplayString
-        maxAltitudeLabel.text = hikeWorkout.highestElevation.getDisplayString
-        
-        timeUphillLabel.text = String(hikeWorkout.timeTraveldUpHill)
-        timeDownhillLabel.text = String(hikeWorkout.timeTraveledDownHill)
-        
-        if hikeWorkout.hikeName != nil {
-            nameTextField.text = hikeWorkout.hikeName
-        }
-        
-        if unsavedHikeIncoming {
-            saveButton.isHidden = false
-            discardButton.isHidden = false
-            
-        } else {
-            saveButton.isHidden = true
-            discardButton.isHidden = true
-        }
-        
+
     }
     
     func setUpMapBoxView() {
@@ -147,7 +120,7 @@ class HikeHistoryDetailTableViewController: UITableViewController, UITextFieldDe
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Chart View" {
             let destinationVC = segue.destination as! HikeChartsViewController
-            destinationVC.hikeWorkout = hikeWorkout
+//            destinationVC.hikeWorkout = hikeWorkout
         }
     }
     
@@ -163,41 +136,14 @@ class HikeHistoryDetailTableViewController: UITableViewController, UITextFieldDe
         textField.resignFirstResponder()
         let textFieldEnteredText = textField.text
         if textFieldEnteredText != "" {
-            hikeWorkout.hikeName = textFieldEnteredText
+//            hikeWorkout.hikeName = textFieldEnteredText
         }
         return true
     }
     
-    // MARK: Hike Saving
-    let saveHike = SaveHike()
+
     
-    @IBAction func saveHikeButtonPressed(_ sender: UIButton) {
-        if hikeWorkout.hikeName != nil {
-            saveHike.saveToCoreData(hike: hikeWorkout)
-            saveHike.saveToHealthKit(hike: hikeWorkout)
-            dismissToMainScreen()
-        } else {
-            let alert = UIAlertController(title: "Please name your workout", message: "Message", preferredStyle: .alert)
-            let action = UIAlertAction(title: "Okay", style: .default, handler: nil)
-            alert.addAction(action)
-            self.present(alert, animated: true, completion: nil)
-        }
-        
-        
-    }
-    
-    @IBAction func discardHikeButtonPressed(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Are you sure?", message: "Your workout will not be saved", preferredStyle: .alert)
-        let okayAction = UIAlertAction(title: "Okay", style: .destructive) { (action) in
-            self.dismissToMainScreen()
-        }
-        let dontDeleteAction = UIAlertAction(title: "Nevermind", style: .cancel, handler: nil)
-        alert.addAction(okayAction)
-        alert.addAction(dontDeleteAction)
-        present(alert, animated: true, completion: nil)
-        
-        
-    }
+
     
     
     

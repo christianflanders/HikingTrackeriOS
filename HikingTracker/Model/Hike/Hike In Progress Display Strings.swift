@@ -131,7 +131,7 @@ class HikeDisplayStrings {
     private func getLowestAltitudeDisplayString(from hike: HikeInformation) -> String {
         let formatter = MeasurementFormatter()
         
-        let lowestAltitudeInMeters = Measurement(value: hike.lowestAltitudeInMeters, unit: metersUnit)
+        let lowestAltitudeInMeters = Measurement(value: hike.lowestAltitudeInMeters, unit: UnitLength.meters)
         let lowestAltitudeString = formatter.string(from: lowestAltitudeInMeters)
         return lowestAltitudeString
     }
@@ -139,7 +139,7 @@ class HikeDisplayStrings {
     private func getHighestAltitudeDisplayString(from hike: HikeInformation) -> String {
         let formatter = MeasurementFormatter()
         
-        let highestAltitudeInMeters = Measurement(value: hike.highestAltitudeInMeters, unit: metersUnit)
+        let highestAltitudeInMeters = Measurement(value: hike.highestAltitudeInMeters, unit: UnitLength.meters)
         let highestAltitudeString = formatter.string(from: highestAltitudeInMeters)
         return highestAltitudeString
     }
@@ -148,19 +148,19 @@ class HikeDisplayStrings {
         let formatter = MeasurementFormatter()
         
         let totalElevationGainInMeters = hike.highestAltitudeInMeters - hike.lowestAltitudeInMeters
-        let totalElevationMeasurment = Measurement(value: totalElevationGainInMeters, unit: metersUnit)
+        let totalElevationMeasurment = Measurement(value: totalElevationGainInMeters, unit: UnitLength.meters)
         let totalElevationString = formatter.string(from: totalElevationMeasurment)
         return totalElevationString
     }
     
     private func getTimeUphillDisplayString(from hike: HikeInformation) -> String {
-        let timeTravledUphill = hike.timeTraveldUpHill
+        let timeTravledUphill = hike.timeUphillInSeconds
         let timeTraveledUphillString = timeTravledUphill.getDisplayString
         return timeTraveledUphillString
     }
     
     private func getTimeDownhillDisplayString(from hike: HikeInformation) -> String {
-        let timeTravledDownhill = hike.timeTraveledDownHill
+        let timeTravledDownhill = hike.timeDownhillInSeconds
         let timeTraveledDownhillString = timeTravledDownhill.getDisplayString
         return timeTraveledDownhillString
     }
