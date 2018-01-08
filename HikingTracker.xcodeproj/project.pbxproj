@@ -54,8 +54,6 @@
 		6B8FF3081FF30B4600536C42 /* StatOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8FF3071FF30B4600536C42 /* StatOptions.swift */; };
 		6B8FF30C1FF320F400536C42 /* HikeHistoryDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8FF30B1FF320F300536C42 /* HikeHistoryDetailTableViewController.swift */; };
 		6B91BB211FF9894800CB378F /* UserInformationValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B91BB201FF9894800CB378F /* UserInformationValues.swift */; };
-		6B91BB241FF9924E00CB378F /* MainHikeStoryboards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B91BB231FF9924E00CB378F /* MainHikeStoryboards.storyboard */; };
-		6B91BB261FF992C700CB378F /* HikeHistoryStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B91BB251FF992C700CB378F /* HikeHistoryStoryboard.storyboard */; };
 		6B91BB3D1FF99DB900CB378F /* HikeHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B91BB3C1FF99DB900CB378F /* HikeHistoryTableViewCell.swift */; };
 		6B91BB411FF9C24A00CB378F /* HikeChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B91BB401FF9C24A00CB378F /* HikeChartsViewController.swift */; };
 		6B91BB431FF9C59500CB378F /* GPX 1 For Unit Testing.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 6B91BB421FF9C59500CB378F /* GPX 1 For Unit Testing.gpx */; };
@@ -236,8 +234,6 @@
 		6B8FF3071FF30B4600536C42 /* StatOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatOptions.swift; sourceTree = "<group>"; };
 		6B8FF30B1FF320F300536C42 /* HikeHistoryDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeHistoryDetailTableViewController.swift; sourceTree = "<group>"; };
 		6B91BB201FF9894800CB378F /* UserInformationValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationValues.swift; sourceTree = "<group>"; };
-		6B91BB231FF9924E00CB378F /* MainHikeStoryboards.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainHikeStoryboards.storyboard; sourceTree = "<group>"; };
-		6B91BB251FF992C700CB378F /* HikeHistoryStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HikeHistoryStoryboard.storyboard; sourceTree = "<group>"; };
 		6B91BB3C1FF99DB900CB378F /* HikeHistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HikeHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		6B91BB401FF9C24A00CB378F /* HikeChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeChartsViewController.swift; sourceTree = "<group>"; };
 		6B91BB421FF9C59500CB378F /* GPX 1 For Unit Testing.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "GPX 1 For Unit Testing.gpx"; sourceTree = "<group>"; };
@@ -515,8 +511,6 @@
 		6BB63A3B1FD5CD3200E9F4A1 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				6B91BB251FF992C700CB378F /* HikeHistoryStoryboard.storyboard */,
-				6B91BB231FF9924E00CB378F /* MainHikeStoryboards.storyboard */,
 				6BB63A0D1FD5CCE600E9F4A1 /* Main.storyboard */,
 				6BB63A151FD5CCE600E9F4A1 /* LaunchScreen.storyboard */,
 			);
@@ -888,8 +882,6 @@
 				6B91BB431FF9C59500CB378F /* GPX 1 For Unit Testing.gpx in Resources */,
 				6B077CA01FFAF7B400A87E2C /* FastRunStough.gpx in Resources */,
 				6BB63A0F1FD5CCE600E9F4A1 /* Main.storyboard in Resources */,
-				6B91BB241FF9924E00CB378F /* MainHikeStoryboards.storyboard in Resources */,
-				6B91BB261FF992C700CB378F /* HikeHistoryStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

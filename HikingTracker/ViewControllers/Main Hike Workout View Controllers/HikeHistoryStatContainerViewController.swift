@@ -47,5 +47,9 @@ class HikeHistoryStatContainerViewController: UIViewController {
         timeDownhillLabel.text = hike.timeDownill
         
     }
+    
+    func goAway() {
+        self.dismiss(animated: true, completion: nil)
+    }
 
 }

@@ -38,7 +38,7 @@ class HikeFinishedTableViewController: UITableViewController, UITextFieldDelegat
     var hikeWorkout = HikeInProgress()
     
     // MARK: Private Variables
-    
+    private var childVC: HikeHistoryStatContainerViewController?
     
     // MARK: View Life Cycle
     
@@ -51,8 +51,8 @@ class HikeFinishedTableViewController: UITableViewController, UITextFieldDelegat
                 self.tabBarController?.tabBar.isHidden = true
         let finishedHikeDisplayConverter = HikeDisplayStrings()
         let finishedDisplay = finishedHikeDisplayConverter.getFinishedDisplayStrings(from: hikeWorkout)
-        let childVC = childViewControllers.last as! HikeHistoryStatContainerViewController
-        childVC.updateDisplay(hike: finishedDisplay)
+        childVC = childViewControllers.last as? HikeHistoryStatContainerViewController
+        childVC?.updateDisplay(hike: finishedDisplay)
 
     }
     
@@ -109,7 +109,11 @@ class HikeFinishedTableViewController: UITableViewController, UITextFieldDelegat
     }
     
     func dismissToMainScreen() {
+
+//        childVC?.goAway()
         presentingViewController?.presentingViewController?.dismiss(animated: false, completion: nil)
+//        self.navigationController?.popViewController(animated: true)
+//        self.dismiss(animated: true, completion: nil)
     }
     
     // MARK: Name Text Field
