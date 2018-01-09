@@ -28,6 +28,20 @@
 		6B6B45F72001A4BF00A9FB7C /* DecodeFirebaseHikes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6B45F62001A4BF00A9FB7C /* DecodeFirebaseHikes.swift */; };
 		6B6E19D81FEDE7EE00B5605A /* Ailerons-Typeface.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6E19D71FEDE7ED00B5605A /* Ailerons-Typeface.otf */; };
 		6B6E19D91FEDE7EE00B5605A /* Ailerons-Typeface.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6E19D71FEDE7ED00B5605A /* Ailerons-Typeface.otf */; };
+		6B6ED181200570CA0094B3EB /* Cabin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6ED179200570C90094B3EB /* Cabin-Regular.ttf */; };
+		6B6ED182200570CA0094B3EB /* Cabin-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6ED17A200570C90094B3EB /* Cabin-SemiBold.ttf */; };
+		6B6ED183200570CA0094B3EB /* Cabin-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6ED17B200570CA0094B3EB /* Cabin-Italic.ttf */; };
+		6B6ED184200570CA0094B3EB /* Cabin-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6ED17C200570CA0094B3EB /* Cabin-Bold.ttf */; };
+		6B6ED185200570CA0094B3EB /* Cabin-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6ED17D200570CA0094B3EB /* Cabin-Medium.ttf */; };
+		6B6ED186200570CA0094B3EB /* Cabin-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6ED17E200570CA0094B3EB /* Cabin-MediumItalic.ttf */; };
+		6B6ED187200570CA0094B3EB /* Cabin-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6ED17F200570CA0094B3EB /* Cabin-SemiBoldItalic.ttf */; };
+		6B6ED188200570CA0094B3EB /* Cabin-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6ED180200570CA0094B3EB /* Cabin-BoldItalic.ttf */; };
+		6B6ED189200570D00094B3EB /* Oswald-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6ED171200570A90094B3EB /* Oswald-Bold.ttf */; };
+		6B6ED18A200570D00094B3EB /* Oswald-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6ED177200570AB0094B3EB /* Oswald-ExtraLight.ttf */; };
+		6B6ED18B200570D00094B3EB /* Oswald-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6ED173200570A90094B3EB /* Oswald-Light.ttf */; };
+		6B6ED18C200570D00094B3EB /* Oswald-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6ED174200570AB0094B3EB /* Oswald-Medium.ttf */; };
+		6B6ED18D200570D00094B3EB /* Oswald-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6ED175200570AB0094B3EB /* Oswald-Regular.ttf */; };
+		6B6ED18E200570D00094B3EB /* Oswald-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6ED176200570AB0094B3EB /* Oswald-SemiBold.ttf */; };
 		6B7801741FD5F2AE006F29BD /* HikeInProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7801731FD5F2AE006F29BD /* HikeInProgressViewController.swift */; };
 		6B7801771FD618BE006F29BD /* HealthKitAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7801761FD618BE006F29BD /* HealthKitAuthorization.swift */; };
 		6B7D98D51FF85F1E008C3F06 /* Solar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7D98D41FF85F1E008C3F06 /* Solar.swift */; };
@@ -216,6 +230,20 @@
 		6B6B45F02000A61900A9FB7C /* HikeHistoryStatContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeHistoryStatContainerViewController.swift; sourceTree = "<group>"; };
 		6B6B45F62001A4BF00A9FB7C /* DecodeFirebaseHikes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeFirebaseHikes.swift; sourceTree = "<group>"; };
 		6B6E19D71FEDE7ED00B5605A /* Ailerons-Typeface.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ailerons-Typeface.otf"; sourceTree = "<group>"; };
+		6B6ED171200570A90094B3EB /* Oswald-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Bold.ttf"; sourceTree = "<group>"; };
+		6B6ED173200570A90094B3EB /* Oswald-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Light.ttf"; sourceTree = "<group>"; };
+		6B6ED174200570AB0094B3EB /* Oswald-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Medium.ttf"; sourceTree = "<group>"; };
+		6B6ED175200570AB0094B3EB /* Oswald-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Regular.ttf"; sourceTree = "<group>"; };
+		6B6ED176200570AB0094B3EB /* Oswald-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-SemiBold.ttf"; sourceTree = "<group>"; };
+		6B6ED177200570AB0094B3EB /* Oswald-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-ExtraLight.ttf"; sourceTree = "<group>"; };
+		6B6ED179200570C90094B3EB /* Cabin-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Regular.ttf"; sourceTree = "<group>"; };
+		6B6ED17A200570C90094B3EB /* Cabin-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-SemiBold.ttf"; sourceTree = "<group>"; };
+		6B6ED17B200570CA0094B3EB /* Cabin-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Italic.ttf"; sourceTree = "<group>"; };
+		6B6ED17C200570CA0094B3EB /* Cabin-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Bold.ttf"; sourceTree = "<group>"; };
+		6B6ED17D200570CA0094B3EB /* Cabin-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Medium.ttf"; sourceTree = "<group>"; };
+		6B6ED17E200570CA0094B3EB /* Cabin-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-MediumItalic.ttf"; sourceTree = "<group>"; };
+		6B6ED17F200570CA0094B3EB /* Cabin-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		6B6ED180200570CA0094B3EB /* Cabin-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-BoldItalic.ttf"; sourceTree = "<group>"; };
 		6B7801731FD5F2AE006F29BD /* HikeInProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeInProgressViewController.swift; sourceTree = "<group>"; };
 		6B7801761FD618BE006F29BD /* HealthKitAuthorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitAuthorization.swift; sourceTree = "<group>"; };
 		6B7D98D41FF85F1E008C3F06 /* Solar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solar.swift; sourceTree = "<group>"; };
@@ -365,9 +393,39 @@
 		6B6E19D61FEDE7B200B5605A /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				6B6ED18F200570D50094B3EB /* Cabin */,
+				6B6ED178200570B10094B3EB /* Oswald */,
 				6B6E19D71FEDE7ED00B5605A /* Ailerons-Typeface.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		6B6ED178200570B10094B3EB /* Oswald */ = {
+			isa = PBXGroup;
+			children = (
+				6B6ED171200570A90094B3EB /* Oswald-Bold.ttf */,
+				6B6ED177200570AB0094B3EB /* Oswald-ExtraLight.ttf */,
+				6B6ED173200570A90094B3EB /* Oswald-Light.ttf */,
+				6B6ED174200570AB0094B3EB /* Oswald-Medium.ttf */,
+				6B6ED175200570AB0094B3EB /* Oswald-Regular.ttf */,
+				6B6ED176200570AB0094B3EB /* Oswald-SemiBold.ttf */,
+			);
+			path = Oswald;
+			sourceTree = "<group>";
+		};
+		6B6ED18F200570D50094B3EB /* Cabin */ = {
+			isa = PBXGroup;
+			children = (
+				6B6ED17C200570CA0094B3EB /* Cabin-Bold.ttf */,
+				6B6ED180200570CA0094B3EB /* Cabin-BoldItalic.ttf */,
+				6B6ED17B200570CA0094B3EB /* Cabin-Italic.ttf */,
+				6B6ED17D200570CA0094B3EB /* Cabin-Medium.ttf */,
+				6B6ED17E200570CA0094B3EB /* Cabin-MediumItalic.ttf */,
+				6B6ED179200570C90094B3EB /* Cabin-Regular.ttf */,
+				6B6ED17A200570C90094B3EB /* Cabin-SemiBold.ttf */,
+				6B6ED17F200570CA0094B3EB /* Cabin-SemiBoldItalic.ttf */,
+			);
+			path = Cabin;
 			sourceTree = "<group>";
 		};
 		6B7801721FD5F276006F29BD /* Main Hike Workout View Controllers */ = {
@@ -872,14 +930,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BD14B941FFED7DB004B3FD7 /* GoogleService-Info.plist in Resources */,
+				6B6ED18E200570D00094B3EB /* Oswald-SemiBold.ttf in Resources */,
 				6BBF0F221FFC998900591C50 /* PauseNoise.wav in Resources */,
 				6BB63A171FD5CCE600E9F4A1 /* LaunchScreen.storyboard in Resources */,
 				6B6E19D81FEDE7EE00B5605A /* Ailerons-Typeface.otf in Resources */,
+				6B6ED184200570CA0094B3EB /* Cabin-Bold.ttf in Resources */,
 				6B6A1D4F1FF2EF3800C4AD3A /* RK_gpx _2017-12-20_1333-xc.gpx in Resources */,
+				6B6ED181200570CA0094B3EB /* Cabin-Regular.ttf in Resources */,
+				6B6ED18D200570D00094B3EB /* Oswald-Regular.ttf in Resources */,
+				6B6ED185200570CA0094B3EB /* Cabin-Medium.ttf in Resources */,
+				6B6ED183200570CA0094B3EB /* Cabin-Italic.ttf in Resources */,
+				6B6ED186200570CA0094B3EB /* Cabin-MediumItalic.ttf in Resources */,
+				6B6ED188200570CA0094B3EB /* Cabin-BoldItalic.ttf in Resources */,
+				6B6ED189200570D00094B3EB /* Oswald-Bold.ttf in Resources */,
 				6BB63A141FD5CCE600E9F4A1 /* Assets.xcassets in Resources */,
+				6B6ED182200570CA0094B3EB /* Cabin-SemiBold.ttf in Resources */,
+				6B6ED18C200570D00094B3EB /* Oswald-Medium.ttf in Resources */,
 				6B8AA1161FFDF04C009FCFB2 /* HikeInProgressStatDisplay.xib in Resources */,
+				6B6ED187200570CA0094B3EB /* Cabin-SemiBoldItalic.ttf in Resources */,
 				6B35497A1FFDA1CD00BE3AC5 /* ShortStoughRunkeeper1220.gpx in Resources */,
+				6B6ED18A200570D00094B3EB /* Oswald-ExtraLight.ttf in Resources */,
 				6B91BB431FF9C59500CB378F /* GPX 1 For Unit Testing.gpx in Resources */,
+				6B6ED18B200570D00094B3EB /* Oswald-Light.ttf in Resources */,
 				6B077CA01FFAF7B400A87E2C /* FastRunStough.gpx in Resources */,
 				6BB63A0F1FD5CCE600E9F4A1 /* Main.storyboard in Resources */,
 			);
