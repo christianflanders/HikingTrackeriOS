@@ -11,19 +11,38 @@ import CoreLocation
 
 
 
-class DecodedHike {
+class DecodedHike: HikeInformation {
+    
     var storedLocations = [CLLocation]()
+    var startDate: Date?
+    
+    var endDate: Date?
+    
+    var caloriesBurned: Double = 0
+    
+    var durationInSeconds: Double = 0
+    
+    var totalElevationDifferenceInMeters: Double = 0
+    
+    var lowestAltitudeInMeters: Double = 0
+    
+    var highestAltitudeInMeters: Double = 0
+    
+    var timeDownhillInSeconds: Double = 0
+    
+    var timeUphillInSeconds: Double = 0
+    
+    var totalDistanceInMeters: Double = 0
+    
+    var currentAltitudeInMeters: Double = 0
+    
+    var coordinates: [CLLocationCoordinate2D] {
+        return storedLocations.map { return $0.coordinate }
+    }
+    
+
     private let locationKeys = Location()
     private let firebaseKeys = FirebaseDict()
-    var startDate: Date?
-    var endDate: Date?
-    var caloriesBurned: Double?
-    var durationInSeconds: Double?
-    var totalElevationDifferenceInMeters: Double?
-    var minAlitudeInMeters: Double?
-    var maxAltitudeInMeters: Double?
-    var timeDownhillInSeconds: Double?
-    var timeUphillInSeconds: Double?
     
     func convertStringDateToDate(string: String) -> Date? {
         let dateFormatter = DateFormatter()
@@ -39,11 +58,11 @@ class DecodedHike {
         self.storedLocations = convertFirebaseLocations(locations)
         
         let startDateString = fromFirebaseDict[firebaseKeys.startDateKey] as! String
-        let convertedDate = convertStringDateToDate(string: startDateString)
+        let convertedDate = self.convertStringDateToDate(string: startDateString)
         self.startDate = convertedDate
         
         let endDateString = fromFirebaseDict[firebaseKeys.endDateKey] as! String
-        let convertedEndDate = convertStringDateToDate(string: endDateString)
+        let convertedEndDate = self.convertStringDateToDate(string: endDateString)
         self.endDate = convertedEndDate
         
         let caloriesBurnedDouble = fromFirebaseDict[firebaseKeys.caloriesBurnedKey] as! Double
@@ -54,9 +73,9 @@ class DecodedHike {
         
         self.totalElevationDifferenceInMeters = fromFirebaseDict[firebaseKeys.totalElevationInMetersKey] as! Double
         
-        self.minAlitudeInMeters = fromFirebaseDict[firebaseKeys.minAltitudeInMetersKey] as!  Double
+        self.lowestAltitudeInMeters = fromFirebaseDict[firebaseKeys.minAltitudeInMetersKey] as!  Double
         
-        self.maxAltitudeInMeters = fromFirebaseDict[firebaseKeys.maxAltitudeInMetersKey] as! Double
+        self.highestAltitudeInMeters = fromFirebaseDict[firebaseKeys.maxAltitudeInMetersKey] as! Double
         
         self.timeUphillInSeconds = fromFirebaseDict[firebaseKeys.timeUphillInSecondsKey] as! Double
         self.timeDownhillInSeconds = fromFirebaseDict[firebaseKeys.timeDownhillInSecondsKey] as! Double
