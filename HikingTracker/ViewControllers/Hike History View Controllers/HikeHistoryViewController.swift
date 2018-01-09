@@ -30,7 +30,7 @@ class HikeHistoryViewController: UIViewController, UITableViewDataSource, UITabl
     
     
     // MARK: Public Variables
-    var selectedHikeWorkout = HikeInProgress()
+    var selectedHikeWorkout: DecodedHike?
     var ref: DatabaseReference!
     var handle: DatabaseHandle!
     
@@ -98,10 +98,9 @@ class HikeHistoryViewController: UIViewController, UITableViewDataSource, UITabl
         //        cell.hikeNameLabel.text = workout.hikeName
         //
         cell.hikeDateLabel.text = workout.startDate?.displayString
-        if let duration = workout.durationInSeconds {
+        let duration = workout.durationInSeconds
             let durationString = DateHelper().convertDurationToStringDate(duration)
             cell.hikeDurationLabel.text = durationString
-        }
         
         //        cell.hikeDistanceLabel.text = workout.totalDistanceTraveled?.getDisplayString
         
@@ -111,7 +110,7 @@ class HikeHistoryViewController: UIViewController, UITableViewDataSource, UITabl
     // MARK: TableView Delegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let index = indexPath.row
-        //        selectedHikeWorkout = pastWorkouts[index]
+        selectedHikeWorkout = pastWorkouts[index]
         performSegue(withIdentifier: hikeSelectedSegue, sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
