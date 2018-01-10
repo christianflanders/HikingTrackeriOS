@@ -53,6 +53,10 @@ class HikeFinishedTableViewController: UITableViewController, UITextFieldDelegat
         let finishedDisplay = finishedHikeDisplayConverter.getFinishedDisplayStrings(from: hikeWorkout)
         childVC = childViewControllers.last as? HikeHistoryStatContainerViewController
         childVC?.updateDisplay(hike: finishedDisplay)
+        
+        saveButton.layer.cornerRadius = saveButton.frame.height / 2
+        discardButton.layer.cornerRadius = discardButton.frame.height / 2
+
 
     }
     
@@ -116,6 +120,8 @@ class HikeFinishedTableViewController: UITableViewController, UITextFieldDelegat
 //        self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func goBackButtonPressed(_ sender: UIButton) {
+    }
     // MARK: Name Text Field
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -133,8 +139,12 @@ class HikeFinishedTableViewController: UITableViewController, UITextFieldDelegat
     @IBAction func saveHikeButtonPressed(_ sender: UIButton) {
         hikeWorkout.convertAndUploadHikeToFirebase(name: "No name")
         print("Uploaded!")
-        dismissToMainScreen()
-        
+        let alert = UIAlertController(title: "Workout saved!", message: "Great job. Or something.", preferredStyle: .alert)
+        let thanksBroAction = UIAlertAction(title: "Thanks bro", style: .default) { (_) in
+            self.dismissToMainScreen()
+        }
+        alert.addAction(thanksBroAction)
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func discardHikeButtonPressed(_ sender: UIButton) {
