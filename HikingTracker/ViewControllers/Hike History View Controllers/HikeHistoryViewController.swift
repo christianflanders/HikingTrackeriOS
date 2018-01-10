@@ -45,20 +45,12 @@ class HikeHistoryViewController: UIViewController, UITableViewDataSource, UITabl
         hikeHistoryTableView.delegate = self
         hikeHistoryTableView.dataSource = self
         
-        ref = Database.database().reference()
-        handle = ref.child("HikeWorkouts").observe(.childAdded, with: { (snapshot) in
-            let hikeDict = snapshot.value as? [String: Any] ?? [:]
-            //            print(hikeDict)
-            let decodedHike = DecodedHike(fromFirebaseDict: hikeDict)
-            self.pastWorkouts.append(decodedHike)
-            self.hikeHistoryTableView.reloadData()
-            print("There are \(self.pastWorkouts.count) Workouts")
-        })
-        
+        downloadWorkoutsFromFirebase()
     }
     
     
     override func viewDidAppear(_ animated: Bool) {
+        downloadWorkoutsFromFirebase()
     }
     
     // MARK: IBActions
@@ -81,6 +73,16 @@ class HikeHistoryViewController: UIViewController, UITableViewDataSource, UITabl
     
     func downloadWorkoutsFromFirebase() {
         // TODO: Add in user ID checking
+        ref = Database.database().reference()
+        handle = ref.child("HikeWorkouts").observe(.childAdded, with: { (snapshot) in
+            let hikeDict = snapshot.value as? [String: Any] ?? [:]
+            //            print(hikeDict)
+            let decodedHike = DecodedHike(fromFirebaseDict: hikeDict)
+            self.pastWorkouts.append(decodedHike)
+            self.pastWorkouts.sort { $0.startDate! > $1.startDate! }
+            self.hikeHistoryTableView.reloadData()
+            print("There are \(self.pastWorkouts.count) Workouts")
+        })
         
         
     }
