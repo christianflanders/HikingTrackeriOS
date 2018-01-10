@@ -208,11 +208,16 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     private func updateDisplay() {
         let converter = HikeDisplayStrings()
         let newDisplay = converter.getInProgressDisplayStrings(hike: hikeWorkout)
-        
+        if let sunsetTime = hikeWorkout.sunsetTime {
+            newDisplay.sunsetTime = sunsetTime
+        }
         if !paused {
             hikeStatsDisplay.setDisplay(with: newDisplay)
         }
 
+    }
+    private func calculateSunsetTime() {
+        
     }
     
     fileprivate func startHikeUISettings() {
