@@ -71,11 +71,12 @@ extension HikeInProgress {
         let convertedDict = convertHikeIntoData(hikeWorkoutToSave: self)
         var nameForHike = name ?? " "
         let databaseRef = Database.database().reference()
+        let stringDate = convertedDict[FirebaseDict().startDateKey] as! String
 //        if name == nil {
 //            nameForHike = "Hike on \(newHike.startDate?.displayString)"
 //        } else {
 //            nameForHike = name!
 //        }
-        databaseRef.child("HikeWorkouts").childByAutoId().setValue(convertedDict)
+        databaseRef.child("HikeWorkouts").child(stringDate).setValue(convertedDict)
     }
 }
