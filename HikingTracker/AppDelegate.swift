@@ -35,8 +35,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBarAppearace.barTintColor = DefaultUI().navBarBackgroundColor
         navigationBarAppearace.tintColor = UIColor.white
         
-        UITabBar.appearance().tintColor = DefaultUI().navBarBackgroundColor
+
         
+        setTabBarAppearanceAttributes()
         return true
     }
 
@@ -93,6 +94,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIBarButtonItem.appearance().setTitleTextAttributes(barButtonAttributes, for: UIControlState.focused)
         UIBarButtonItem.appearance().setTitleTextAttributes(barButtonAttributes, for: UIControlState.selected)
         UIBarButtonItem.appearance().setTitleTextAttributes(barButtonAttributes, for: UIControlState.highlighted)
+    }
+    
+    
+    private func setTabBarAppearanceAttributes() {
+        let appearance = UITabBarItem.appearance()
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Cabin", size: 10)], for: .normal)
+//        let attributes = [NSAttributedStringKey.font: UIFont ]
+//        appearance.setTitleTextAttributes(attributes, for: .normal)
+        
+        UITabBar.appearance().tintColor = DefaultUI().navBarBackgroundColor
     }
     
     // MARK: Firebase Auth Delegate
