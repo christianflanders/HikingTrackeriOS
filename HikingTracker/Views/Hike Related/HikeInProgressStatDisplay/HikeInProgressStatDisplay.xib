@@ -9,11 +9,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Ailerons-Typeface.otf">
-            <string>Ailerons-Regular</string>
+        <array key="Cabin-Regular.ttf">
+            <string>Cabin-Regular</string>
         </array>
-        <array key="Futura.ttc">
-            <string>Futura-Medium</string>
+        <array key="Oswald-Regular.ttf">
+            <string>Oswald-Regular</string>
         </array>
     </customFonts>
     <objects>
@@ -39,24 +39,24 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="pY8-eV-mJn" userLabel="Stats Stack View">
-                            <rect key="frame" x="0.0" y="0.0" width="385" height="135"/>
+                            <rect key="frame" x="0.0" y="0.0" width="269" height="123"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="a4C-N8-CcO" userLabel="Left Stats Stack">
-                                    <rect key="frame" x="0.0" y="0.0" width="167.5" height="135"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="109.5" height="123"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" spacing="-20" translatesAutoresizingMaskIntoConstraints="NO" id="Zgb-WV-Kiu" userLabel="Altitude Stack">
-                                            <rect key="frame" x="0.0" y="0.0" width="167.5" height="45"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="109.5" height="41"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Altitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNm-vX-zNs">
-                                                    <rect key="frame" x="0.0" y="0.0" width="167.5" height="32.5"/>
-                                                    <fontDescription key="fontDescription" name="Ailerons-Regular" family="Ailerons" pointSize="19"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="109.5" height="30.5"/>
+                                                    <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="19"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lL-9T-zJE">
-                                                    <rect key="frame" x="0.0" y="12.5" width="167.5" height="32.5"/>
-                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="-" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lL-9T-zJE">
+                                                    <rect key="frame" x="0.0" y="10.5" width="109.5" height="30.5"/>
+                                                    <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="25"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -64,17 +64,17 @@
                                             <viewLayoutGuide key="safeArea" id="RiU-3a-Y3b"/>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" spacing="-20" translatesAutoresizingMaskIntoConstraints="NO" id="lNI-dt-NBz" userLabel="Pace">
-                                            <rect key="frame" x="0.0" y="45" width="167.5" height="45"/>
+                                            <rect key="frame" x="0.0" y="41" width="109.5" height="41"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Pace" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEm-sn-pWr">
-                                                    <rect key="frame" x="0.0" y="0.0" width="167.5" height="32.5"/>
-                                                    <fontDescription key="fontDescription" name="Ailerons-Regular" family="Ailerons" pointSize="19"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="109.5" height="30.5"/>
+                                                    <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="19"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7Q-z1-eNE">
-                                                    <rect key="frame" x="0.0" y="12.5" width="167.5" height="32.5"/>
-                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="-" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7Q-z1-eNE">
+                                                    <rect key="frame" x="0.0" y="10.5" width="109.5" height="30.5"/>
+                                                    <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="25"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -82,17 +82,17 @@
                                             <viewLayoutGuide key="safeArea" id="V5f-u5-dRR"/>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" spacing="-20" translatesAutoresizingMaskIntoConstraints="NO" id="dS1-HZ-z2V">
-                                            <rect key="frame" x="0.0" y="90" width="167.5" height="45"/>
+                                            <rect key="frame" x="0.0" y="82" width="109.5" height="41"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Calories Burned" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="NWI-TB-f9v">
-                                                    <rect key="frame" x="0.0" y="0.0" width="167.5" height="32.5"/>
-                                                    <fontDescription key="fontDescription" name="Ailerons-Regular" family="Ailerons" pointSize="19"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="109.5" height="30.5"/>
+                                                    <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="19"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpv-d8-brI">
-                                                    <rect key="frame" x="0.0" y="12.5" width="167.5" height="32.5"/>
-                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="-" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpv-d8-brI">
+                                                    <rect key="frame" x="0.0" y="10.5" width="109.5" height="30.5"/>
+                                                    <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="25"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -101,20 +101,20 @@
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="g6j-Nm-XPq">
-                                    <rect key="frame" x="217.5" y="0.0" width="167.5" height="135"/>
+                                    <rect key="frame" x="159.5" y="0.0" width="109.5" height="123"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" spacing="-20" translatesAutoresizingMaskIntoConstraints="NO" id="Le2-30-NDV">
-                                            <rect key="frame" x="0.0" y="0.0" width="167.5" height="45"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="109.5" height="41"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rm7-Nr-RdW">
-                                                    <rect key="frame" x="0.0" y="0.0" width="167.5" height="32.5"/>
-                                                    <fontDescription key="fontDescription" name="Ailerons-Regular" family="Ailerons" pointSize="19"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="109.5" height="30.5"/>
+                                                    <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="19"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3II-g9-7NN">
-                                                    <rect key="frame" x="0.0" y="12.5" width="167.5" height="32.5"/>
-                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="-" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3II-g9-7NN">
+                                                    <rect key="frame" x="0.0" y="10.5" width="109.5" height="30.5"/>
+                                                    <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="25"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -122,17 +122,17 @@
                                             <viewLayoutGuide key="safeArea" id="05S-8V-cpS"/>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" spacing="-20" translatesAutoresizingMaskIntoConstraints="NO" id="Feh-25-NGZ">
-                                            <rect key="frame" x="0.0" y="45" width="167.5" height="45"/>
+                                            <rect key="frame" x="0.0" y="41" width="109.5" height="41"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f40-x8-76q">
-                                                    <rect key="frame" x="0.0" y="0.0" width="167.5" height="32.5"/>
-                                                    <fontDescription key="fontDescription" name="Ailerons-Regular" family="Ailerons" pointSize="19"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="109.5" height="30.5"/>
+                                                    <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="19"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dI8-Ri-nHe">
-                                                    <rect key="frame" x="0.0" y="12.5" width="167.5" height="32.5"/>
-                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="-" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dI8-Ri-nHe">
+                                                    <rect key="frame" x="0.0" y="10.5" width="109.5" height="30.5"/>
+                                                    <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="25"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -140,17 +140,17 @@
                                             <viewLayoutGuide key="safeArea" id="NrN-wB-fhF"/>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" spacing="-20" translatesAutoresizingMaskIntoConstraints="NO" id="Eem-94-4SE">
-                                            <rect key="frame" x="0.0" y="90" width="167.5" height="45"/>
+                                            <rect key="frame" x="0.0" y="82" width="109.5" height="41"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Sunset" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPo-co-8ay">
-                                                    <rect key="frame" x="0.0" y="0.0" width="167.5" height="32.5"/>
-                                                    <fontDescription key="fontDescription" name="Ailerons-Regular" family="Ailerons" pointSize="19"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="109.5" height="30.5"/>
+                                                    <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="19"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gBD-Ae-Qgc">
-                                                    <rect key="frame" x="0.0" y="12.5" width="167.5" height="32.5"/>
-                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="-" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gBD-Ae-Qgc">
+                                                    <rect key="frame" x="0.0" y="10.5" width="109.5" height="30.5"/>
+                                                    <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="25"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
