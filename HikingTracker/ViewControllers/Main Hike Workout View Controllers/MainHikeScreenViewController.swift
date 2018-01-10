@@ -61,18 +61,22 @@ class MainHikeScreenViewController: UIViewController, FUIAuthDelegate {
         }
         createMapBoxView()
         animateUIElements()
-        if Auth.auth().currentUser == nil {
-            let authUI = FUIAuth.defaultAuthUI()
-            let authUIView = authUI?.authViewController()
-            authUI?.delegate = self
-            present(authUIView!, animated: true, completion: nil)
-        }
+
+        startHikeButton.titleLabel?.textAlignment = NSTextAlignment.center
+
+        startHikeButton.titleLabel?.addCharacterSpacing(value:4)
     }
   
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         startTimer()
+        if Auth.auth().currentUser == nil {
+            let authUI = FUIAuth.defaultAuthUI()
+            let authUIView = authUI?.authViewController()
+            authUI?.delegate = self
+            present(authUIView!, animated: true, completion: nil)
+        }
 
 
     }
@@ -130,6 +134,7 @@ class MainHikeScreenViewController: UIViewController, FUIAuthDelegate {
 
         let combinedString = "Lat:\(latString) Long:\(longString)"
         latLongLabel.text = combinedString
+        timer?.invalidate()
     }
     
     fileprivate func createMapBoxView() {
