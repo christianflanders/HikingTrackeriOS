@@ -16,8 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    let navigationBarDefaultFont = UIFont(name: "Futura-Medium", size: 24)
-    let barButtonDefaultFont = UIFont(name: "Futura-Medium", size: 14)
+    let navigationBarDefaultFont = UIFont(name: "Cabin", size: 24)
+    let barButtonDefaultFont = UIFont(name: "Cabin", size: 14)
     let defaultBlack = DefaultUI().defaultBlack
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
