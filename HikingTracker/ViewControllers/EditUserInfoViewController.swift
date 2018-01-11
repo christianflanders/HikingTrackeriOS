@@ -21,6 +21,7 @@ UITextFieldDelegate {
         case weight
     }
     
+    
     // MARK: Constants
     private let userOptions = [0 : "Name", 1 : "Gender", 2 : "Birthdate", 3 :  "Weight"]
     private let enumOptions = [0 : UserInputs.name, 1 : UserInputs.gender, 2 : UserInputs.birthdate, 3 :  UserInputs.weight]
@@ -52,11 +53,14 @@ UITextFieldDelegate {
     
     @IBOutlet weak var saveImportButtonStack: UIStackView!
     
+    @IBOutlet weak var saveButtonOutlet: UIButton!
+    @IBOutlet weak var importFromHealthKitButtonOutlet: UIButton!
     // MARK: Weak Vars
     
     // MARK: Public Variables
     
     // MARK: Private Variables
+    
     private var setName = "" {
         willSet {
             nameSet = true
@@ -111,6 +115,9 @@ UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        saveButtonOutlet.layer.cornerRadius = saveButtonOutlet.frame.height / 3
+        importFromHealthKitButtonOutlet.layer.cornerRadius = importFromHealthKitButtonOutlet.frame.height / 3
         
         pickerContainerView.isHidden = true
         pickerView.dataSource = self
@@ -438,5 +445,21 @@ UITextFieldDelegate {
         setName = nameTextField.text!
         nameTextField.placeholder = nameTextField.text
         nameSet = true
+    }
+
+    
+    func checkIfValuesExistAndSetLabels() {
+        
+    }
+    
+    func getInfoFromHealthKitAndSetValues(){
+        
+    }
+    
+    func saveSetUserInfo(){
+        
+    }
+    func checkAllUserInfoIsEntered() {
+        
     }
 }
