@@ -71,14 +71,28 @@ class MainHikeScreenViewController: UIViewController, FUIAuthDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         startTimer()
-        if Auth.auth().currentUser == nil {
+        if let currentUser = Auth.auth().currentUser {
+            currentUser.getIDTokenForcingRefresh(true, completion: { (_, error) in
+                if error != nil {
+                    print("User deleted")
+                    let authUI = FUIAuth.defaultAuthUI()
+                    let authUIView = authUI?.authViewController()
+                    authUI?.delegate = self
+                    self.present(authUIView!, animated: true, completion: nil)
+                } else {
+                    print("User found go ahead")
+                }
+            })
+        } else {
+            print("log in")
             let authUI = FUIAuth.defaultAuthUI()
             let authUIView = authUI?.authViewController()
             authUI?.delegate = self
             present(authUIView!, animated: true, completion: nil)
         }
+        if Auth.auth().currentUser == nil {
 
-
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
