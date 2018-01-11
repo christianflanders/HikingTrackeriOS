@@ -17,6 +17,10 @@ extension HikeInProgress {
         let firebaseDictStructure = FirebaseDict()
         guard let hikeWorkout = hikeWorkoutToSave else { return newHikeDict }
         
+        let hikeName = hikeWorkout.hikeName
+        newHikeDict[firebaseDictStructure.hikeNameKey] = hikeName
+        
+        
         if let startDate = hikeWorkout.startDate {
             let stringStartDate = startDate.displayString
             newHikeDict[firebaseDictStructure.startDateKey] = stringStartDate
@@ -32,6 +36,9 @@ extension HikeInProgress {
         let durationInSeconds = hikeWorkout.durationInSeconds
         newHikeDict[firebaseDictStructure.durationInSecondsKey]
             = durationInSeconds
+        
+        let totalDistanceInMeters = hikeWorkout.totalDistanceInMeters
+        newHikeDict[firebaseDictStructure.totalDistanceInMetersKey] = totalDistanceInMeters
         
         let totalElevationDifferenceInMeters = hikeWorkout.totalElevationDifferenceInMeters
         newHikeDict[firebaseDictStructure.totalElevationInMetersKey] = totalElevationDifferenceInMeters
@@ -63,7 +70,6 @@ extension HikeInProgress {
         }
         newHikeDict[firebaseDictStructure.storedLocationsKey] = locationDict
         
-        
         return newHikeDict
     }
     
@@ -77,6 +83,14 @@ extension HikeInProgress {
 //        } else {
 //            nameForHike = name!
 //        }
-        databaseRef.child("HikeWorkouts").child(stringDate).setValue(convertedDict)
+//        databaseRef.child(FirebaseDatabase().childKey).child(stringDate).setValue(convertedDict)
+        if let userUID = Auth.auth().currentUser?.uid {
+            databaseRef.child(userUID).child(FirebaseDatabase().childKey).child(stringDate).setValue(convertedDict)
+        } else {
+            print("problem getting userUID")
+        }
+
+//        databaseRef.child(FirebaseDatabase().childKey).child(stringDate).setValue(convertedDict)
+
     }
 }
