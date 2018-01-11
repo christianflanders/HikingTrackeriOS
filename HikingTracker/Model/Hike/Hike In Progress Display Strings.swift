@@ -23,7 +23,10 @@ class HikeDisplayStrings {
         newDisplay.duration = durationFormatted
         
         //Duration
-        let altitudeString = getAltitudeDisplayString(from: hike)
+        
+        //Altitude
+        let currentAltitudeInMeters = hike.currentAltitudeInMeters
+        let altitudeString = currentAltitudeInMeters.getDisplayString
         newDisplay.altitude = altitudeString
         
         //Distance
