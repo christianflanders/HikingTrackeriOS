@@ -124,11 +124,13 @@ class HikeFinishedTableViewController: UITableViewController, UITextFieldDelegat
     }
     // MARK: Name Text Field
     
+    
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         let textFieldEnteredText = textField.text
         if textFieldEnteredText != "" {
-//            hikeWorkout.hikeName = textFieldEnteredText
+            hikeWorkout.hikeName = textFieldEnteredText!
         }
         return true
     }

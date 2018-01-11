@@ -8,6 +8,7 @@
 
 import UIKit
 import Mapbox
+import Firebase
 
 class HikeHistoryDetailTableViewController: UITableViewController, UITextFieldDelegate {
     // MARK: Enums
@@ -51,7 +52,7 @@ class HikeHistoryDetailTableViewController: UITableViewController, UITextFieldDe
         mapBoxDrawHistoryLine()
         nameTextField.delegate = self
         updateDisplay()
-        
+        nameTextField.text = hikeWorkout?.hikeName
 
  
 
@@ -86,16 +87,17 @@ class HikeHistoryDetailTableViewController: UITableViewController, UITextFieldDe
     }
 
     func mapBoxDrawHistoryLine() {
-//        if hikeWorkout?.coordinates.count > 2 {
-//            mapBoxView.drawLineOf(hikeWorkout?.coordinates)
-//            let centerCoordinate = hikeWorkout?.storedLocations.calculateCenterCoordinate()
-//            
-//            let camera = MGLMapCamera(lookingAtCenter: centerCoordinate, fromDistance: 5000, pitch: 0.0, heading: 0.0)
-//            mapBoxView.camera = camera
-////            let bounds = MGLCoordinateBounds(sw: hikeWorkout.coordinates.first!, ne: hikeWorkout.coordinates.last!)
-////            mapBoxView.setVisibleCoordinateBounds(bounds, animated: true)
-//        }
-//        
+        guard let hikeWorkout = hikeWorkout else { return }
+        if hikeWorkout.coordinates.count > 2 {
+            mapBoxView.drawLineOf(hikeWorkout.coordinates)
+            let centerCoordinate = hikeWorkout.storedLocations.calculateCenterCoordinate()
+            
+            let camera = MGLMapCamera(lookingAtCenter: centerCoordinate, fromDistance: 5000, pitch: 0.0, heading: 0.0)
+            mapBoxView.camera = camera
+//            let bounds = MGLCoordinateBounds(sw: hikeWorkout.coordinates.first!, ne: hikeWorkout.coordinates.last!)
+//            mapBoxView.setVisibleCoordinateBounds(bounds, animated: true)
+        }
+        
     }
     
     // MARK: Table View
@@ -120,7 +122,7 @@ class HikeHistoryDetailTableViewController: UITableViewController, UITextFieldDe
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Chart View" {
             let destinationVC = segue.destination as! HikeChartsViewController
-//            destinationVC.hikeWorkout = hikeWorkout
+            destinationVC.hikeWorkout = hikeWorkout
         }
     }
     
@@ -133,10 +135,19 @@ class HikeHistoryDetailTableViewController: UITableViewController, UITextFieldDe
     
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let hike = hikeWorkout else { return true }
         textField.resignFirstResponder()
         let textFieldEnteredText = textField.text
-        if textFieldEnteredText != "" {
-//            hikeWorkout.hikeName = textFieldEnteredText
+        if textFieldEnteredText != ""  && textFieldEnteredText != nil {
+            hike.hikeName = textFieldEnteredText!
+            let startDateKey = hike.startDate?.displayString
+            let databaseRef = Database.database().reference()
+            if let userUID = Auth.auth().currentUser?.uid {
+                let newNameDict = [FirebaseDict().hikeNameKey: hike.hikeName]
+                databaseRef.child(userUID).child(FirebaseDatabase().childKey).child(startDateKey!).updateChildValues(newNameDict)
+            } else {
+                print("problem getting userUID")
+            }
         }
         return true
     }

@@ -14,6 +14,8 @@ import HealthKit
 
 
 class HikeInProgress: HikeInformation {
+    
+    var hikeName = ""
 
     // MARK: Location information
     
