@@ -192,7 +192,6 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     private func eachSecond() {
 //        convertDateAndSendToWatch(date: hikeWorkout.startDate!)https://academy.realm.io/
         updateDisplay()
-        print(Date())
 //        sendCaloriesToWatch()
         let coordinatesForLine = hikeWorkout.coordinates
         if coordinatesForLine.count != 0 {
