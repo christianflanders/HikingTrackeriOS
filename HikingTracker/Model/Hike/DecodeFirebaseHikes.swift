@@ -13,6 +13,8 @@ import CoreLocation
 
 class DecodedHike: HikeInformation {
     
+    var hikeName = ""
+    
     var storedLocations = [CLLocation]()
     var startDate: Date?
     
@@ -54,8 +56,16 @@ class DecodedHike: HikeInformation {
     
     init(fromFirebaseDict: [String: Any]) {
         
-        var locations = fromFirebaseDict[firebaseKeys.storedLocationsKey] as! [[String : Any]]
-        self.storedLocations = convertFirebaseLocations(locations)
+        if let locations = fromFirebaseDict[firebaseKeys.storedLocationsKey] as? [[String : Any]] {
+            self.storedLocations = convertFirebaseLocations(locations)
+        }
+        
+        if let hikeNameString = fromFirebaseDict[firebaseKeys.hikeNameKey] as? String {
+            self.hikeName = hikeNameString
+        } else {
+            self.hikeName = "No Name Found"
+        }
+        
         
         let startDateString = fromFirebaseDict[firebaseKeys.startDateKey] as! String
         let convertedDate = self.convertStringDateToDate(string: startDateString)
@@ -72,6 +82,10 @@ class DecodedHike: HikeInformation {
         self.durationInSeconds = durationInSecondsDouble
         
         self.totalElevationDifferenceInMeters = fromFirebaseDict[firebaseKeys.totalElevationInMetersKey] as! Double
+        
+        if let distanceTraveledInMeters = fromFirebaseDict[firebaseKeys.totalDistanceInMetersKey] as? Double {
+            self.totalDistanceInMeters = distanceTraveledInMeters
+        }
         
         self.lowestAltitudeInMeters = fromFirebaseDict[firebaseKeys.minAltitudeInMetersKey] as!  Double
         
