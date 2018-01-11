@@ -20,6 +20,8 @@
 		6B31A6BD1FF6FD08002069B2 /* UnitConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B31A6BC1FF6FD08002069B2 /* UnitConversions.swift */; };
 		6B35497A1FFDA1CD00BE3AC5 /* ShortStoughRunkeeper1220.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 6B3549781FFDA1CD00BE3AC5 /* ShortStoughRunkeeper1220.gpx */; };
 		6B48E1322006BC6A00D24F44 /* Label Kerning Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B48E1312006BC6A00D24F44 /* Label Kerning Extension.swift */; };
+		6B48E1352006F60B00D24F44 /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B48E1342006F60B00D24F44 /* BalloonMarker.swift */; };
+		6B48E1392006F9EF00D24F44 /* CustomMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B48E1382006F9EF00D24F44 /* CustomMarker.swift */; };
 		6B5904E21FDC791D00BF96CD /* HikeFinishedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5904E11FDC791D00BF96CD /* HikeFinishedViewController.swift */; };
 		6B5FA3921FF58BD4008C4771 /* EditUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5FA3911FF58BD4008C4771 /* EditUserInfoViewController.swift */; };
 		6B6A1D421FEF09CC00C4AD3A /* DefaultUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6A1D411FEF09CC00C4AD3A /* DefaultUI.swift */; };
@@ -224,6 +226,8 @@
 		6B31A6BC1FF6FD08002069B2 /* UnitConversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitConversions.swift; sourceTree = "<group>"; };
 		6B3549781FFDA1CD00BE3AC5 /* ShortStoughRunkeeper1220.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ShortStoughRunkeeper1220.gpx; sourceTree = "<group>"; };
 		6B48E1312006BC6A00D24F44 /* Label Kerning Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label Kerning Extension.swift"; sourceTree = "<group>"; };
+		6B48E1342006F60B00D24F44 /* BalloonMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BalloonMarker.swift; path = HikingTracker/Views/BalloonMarker.swift; sourceTree = SOURCE_ROOT; };
+		6B48E1382006F9EF00D24F44 /* CustomMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarker.swift; sourceTree = "<group>"; };
 		6B5904E11FDC791D00BF96CD /* HikeFinishedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeFinishedViewController.swift; sourceTree = "<group>"; };
 		6B5FA3911FF58BD4008C4771 /* EditUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserInfoViewController.swift; sourceTree = "<group>"; };
 		6B6A1D411FEF09CC00C4AD3A /* DefaultUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUI.swift; sourceTree = "<group>"; };
@@ -563,6 +567,8 @@
 		6BB63A3A1FD5CD2800E9F4A1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6B48E1382006F9EF00D24F44 /* CustomMarker.swift */,
+				6B48E1342006F60B00D24F44 /* BalloonMarker.swift */,
 				6B8D30EC20004E51005F08AC /* Hike Related */,
 				6BA663B71FF58FFD00DAF05E /* UserStatTableViewCell.swift */,
 			);
@@ -850,6 +856,9 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.HealthKit = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
 								enabled = 1;
 							};
 							com.apple.Push = {
@@ -1259,6 +1268,7 @@
 				6B91BB211FF9894800CB378F /* UserInformationValues.swift in Sources */,
 				6BC1DE8D1FD7368D00CB20D5 /* LocationServices.swift in Sources */,
 				6BC9FEF1200304A50071590A /* Find Center Coordinate .swift in Sources */,
+				6B48E1352006F60B00D24F44 /* BalloonMarker.swift in Sources */,
 				6B6A1D441FEF11A800C4AD3A /* DateExtension.swift in Sources */,
 				6BA931092002E06D001FE585 /* Hike Information Protocol.swift in Sources */,
 				6BA9BBDB1FFF374C00BE48B4 /* SaveHikeToFirebase.swift in Sources */,
@@ -1279,6 +1289,7 @@
 				6B8D3116200080D5005F08AC /* HikeDisplayStrings.swift in Sources */,
 				6B8FF3081FF30B4600536C42 /* StatOptions.swift in Sources */,
 				6B051ABF1FF726CB00173A20 /* ShowUserInfoViewController.swift in Sources */,
+				6B48E1392006F9EF00D24F44 /* CustomMarker.swift in Sources */,
 				6BDDA10E1FD7610B0069970C /* Altimeter.swift in Sources */,
 				6B6B45F12000A61900A9FB7C /* HikeHistoryStatContainerViewController.swift in Sources */,
 				6B91BB411FF9C24A00CB378F /* HikeChartsViewController.swift in Sources */,
