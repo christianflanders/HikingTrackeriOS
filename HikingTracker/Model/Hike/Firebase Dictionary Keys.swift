@@ -20,6 +20,8 @@ struct FirebaseDict {
     var timeUphillInSecondsKey = "timeUphillInSeconds"
     var timeDownhillInSecondsKey = "timeDownhillInSeconds"
     var storedLocationsKey = "storedLocationsKey"
+    var totalDistanceInMetersKey = "totalDistanceInMeters"
+    var hikeNameKey = "hikeName"
 }
 
 struct Location {
@@ -31,4 +33,9 @@ struct Location {
     var speedInMetersPerSecondKey = "speedInMetersPerSecond"
     
     
+}
+
+
+struct FirebaseDatabase {
+    let childKey = "HikeWorkouts"
 }
