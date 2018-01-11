@@ -58,11 +58,33 @@ extension Meters {
                     let meters = String(Int(self))
                     return "\(meters) mtrs"
                 }
-
-
             }
         }
-
+    }
+    
+    var getMetersOrFeetOnly: String {
+        get {
+            let feetConversion = 3.2808
+            let user = StoredUser()
+            let userPreference = user.userDisplayUnits
+            if userPreference == .freedomUnits {
+                let feetToMilesConversion = 0.00018939
+                let convertedToFeet = self * feetConversion
+                    let feet = String(Int(convertedToFeet))
+                    return "\(feet) ft"
+            } else {
+                let metersInAKilometer = 1000.0
+                if self > metersInAKilometer {
+                    let kilometers = self / metersInAKilometer
+                    let kilometersTruncated = String(format:"%.2f", kilometers)
+                    let displayStringKilometers = "\(kilometersTruncated) km"
+                    return displayStringKilometers
+                } else {
+                    let meters = String(Int(self))
+                    return "\(meters) mtrs"
+                }
+            }
+        }
     }
     
     var getDisplayPerHour: String {
