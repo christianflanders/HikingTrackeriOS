@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuthUI
 
-class ShowUserInfoViewController: UIViewController {
+
+class ShowUserInfoViewController: UIViewController, FUIAuthDelegate {
     
     // MARK: Enums
     
@@ -47,6 +50,15 @@ class ShowUserInfoViewController: UIViewController {
     
     // MARK: IBActions
     
+    @IBAction func logOutBarButtonPressed(_ sender: UIBarButtonItem) {
+        do {
+            try Auth.auth().signOut()
+            checkUserAuthAndPresentCorrectInformation()
+        } catch {
+            print("Problem signing out!")
+        }
+
+    }
     
     func updateUserStatsDisplay() {
         nameLabel.text = user.name
@@ -54,5 +66,27 @@ class ShowUserInfoViewController: UIViewController {
         heightLabel.text = user.getHeightForDisplay()
         sexLabel.text = user.gender
         birthdateLabel.text = user.birthdate?.displayStringWithoutTime
+    }
+    
+    func checkUserAuthAndPresentCorrectInformation(){
+        if let currentUser = Auth.auth().currentUser {
+            currentUser.getIDTokenForcingRefresh(true, completion: { (_, error) in
+                if error != nil {
+                    print("User deleted")
+                    let authUI = FUIAuth.defaultAuthUI()
+                    let authUIView = authUI?.authViewController()
+                    authUI?.delegate = self
+                    self.present(authUIView!, animated: true, completion: nil)
+                } else {
+                    print("User found go ahead")
+                }
+            })
+        } else {
+            print("log in")
+            let authUI = FUIAuth.defaultAuthUI()
+            let authUIView = authUI?.authViewController()
+            authUI?.delegate = self
+            present(authUIView!, animated: true, completion: nil)
+        }
     }
 }

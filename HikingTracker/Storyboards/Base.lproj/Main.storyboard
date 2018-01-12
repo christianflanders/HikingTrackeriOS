@@ -659,7 +659,11 @@
                         <viewLayoutGuide key="safeArea" id="5p8-eE-fxL"/>
                     </view>
                     <navigationItem key="navigationItem" id="4qJ-gD-Pde">
-                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="NuP-vz-Pev"/>
+                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="NuP-vz-Pev">
+                            <connections>
+                                <action selector="logOutBarButtonPressed:" destination="5yx-c7-Rti" id="ClO-sp-mvL"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="KYz-7R-Cnt">
                             <connections>
                                 <segue destination="cmh-ua-QLR" kind="show" id="awF-Qt-DWA"/>
@@ -1064,13 +1068,13 @@
                                                         <rect key="frame" x="10" y="10" width="355" height="30"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Pace" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbX-Jo-y70">
-                                                                <rect key="frame" x="0.0" y="0.0" width="38" height="30"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="284.5" height="30"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Avg Pace" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ie-Bq-4mc">
-                                                                <rect key="frame" x="38" y="0.0" width="317" height="30"/>
+                                                                <rect key="frame" x="284.5" y="0.0" width="70.5" height="30"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
