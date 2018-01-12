@@ -86,10 +86,10 @@ class StoredUser {
         }
     }
     
-    func getWeightForDisplay() -> String {
+    func getWeightForDisplay() -> String? {
         let unitConversion = UnitConversions()
         let displayUnit = self.userDisplayUnits
-        guard let weight = self.weightInKilos else  {return "N/A"}
+        guard let weight = self.weightInKilos else  {return nil}
         switch displayUnit {
         case .freedomUnits:
             let weightInPounds = unitConversion.convertKilogramsToPounds(grams: weight)
@@ -102,8 +102,8 @@ class StoredUser {
         }
     }
     
-    func getHeightForDisplay() -> String {
-        guard let height = self.heightInMeters else {return "N/A"}
+    func getHeightForDisplay() -> String? {
+        guard let height = self.heightInMeters else {return nil}
         let displayUnit = self.userDisplayUnits
         let unitConversion = UnitConversions()
         switch displayUnit {

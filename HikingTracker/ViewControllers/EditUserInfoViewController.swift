@@ -125,10 +125,13 @@ UITextFieldDelegate {
         
         nameTextField.delegate = self
         
+        checkIfValuesExistAndSetLabels()
+        
         datePicker.maximumDate = Date()
         hideDatePicker()
         hidePicker()
         showButtons()
+        
         defaultLocale = Locale.current
         if defaultLocale.usesMetricSystem {
             setUnitsToCommunist()
@@ -449,6 +452,25 @@ UITextFieldDelegate {
 
     
     func checkIfValuesExistAndSetLabels() {
+        let user = StoredUser()
+        
+        if let weightInKilos = user.getWeightForDisplay() {
+            weightButtonOutlet.setTitle(weightInKilos, for: .normal)
+        }
+        if let userName = user.name {
+            nameTextField.text = userName
+        }
+        
+        if let gender = user.gender {
+            sexButtonOutlet.setTitle(gender, for: .normal)
+        }
+        if let heightDisplayString = user.getHeightForDisplay() {
+            heightButtonOutlet.setTitle(heightDisplayString, for: .normal)
+        }
+        if let birthdate = user.birthdate?.displayStringWithoutTime {
+            birthdayButtonOutlet.setTitle(birthdate, for: .normal)
+        }
+        
         
     }
     
@@ -463,3 +485,6 @@ UITextFieldDelegate {
         
     }
 }
+
+
+
