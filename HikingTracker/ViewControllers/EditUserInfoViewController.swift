@@ -125,7 +125,7 @@ UITextFieldDelegate {
         
         nameTextField.delegate = self
         
-        checkIfValuesExistAndSetLabels()
+//        checkIfValuesExistAndSetLabels()
         
         datePicker.maximumDate = Date()
         hideDatePicker()
