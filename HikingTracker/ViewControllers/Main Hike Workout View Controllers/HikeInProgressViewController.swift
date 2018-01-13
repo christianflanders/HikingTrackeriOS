@@ -76,11 +76,14 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        print("View dissapearing")
         super.viewWillDisappear(true)
         timer?.invalidate()
         locationManager.stopUpdatingLocation()
     }
-    // MARK: Location Manager Delegaet
+    
+    
+    // MARK: Location Manager Delegate
     // This is where we do most of the work, giving the hike workout object each location we get from the location manager
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
