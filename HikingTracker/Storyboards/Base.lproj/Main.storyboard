@@ -60,53 +60,6 @@
             </objects>
             <point key="canvasLocation" x="-3401" y="-29"/>
         </scene>
-        <!--Checklist-->
-        <scene sceneID="ud3-hQ-hu2">
-            <objects>
-                <viewController title="Checklist" id="Ylq-AN-PCL" customClass="ChecklistViewController" customModule="HikingTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="K1Q-LS-xTx">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DDs-7Z-HGQ">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Kb3-LA-5Um">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Kb3-LA-5Um" id="qSb-cw-t6u">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBj-OE-sZQ">
-                                                    <rect key="frame" x="15" y="12" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="DDs-7Z-HGQ" firstAttribute="bottom" secondItem="Am3-b4-Bmc" secondAttribute="bottom" id="7Xa-cO-eEI"/>
-                            <constraint firstItem="DDs-7Z-HGQ" firstAttribute="leading" secondItem="Am3-b4-Bmc" secondAttribute="leading" id="JKi-R1-PTL"/>
-                            <constraint firstItem="DDs-7Z-HGQ" firstAttribute="trailing" secondItem="Am3-b4-Bmc" secondAttribute="trailing" id="Kh8-ZG-xez"/>
-                            <constraint firstItem="DDs-7Z-HGQ" firstAttribute="top" secondItem="Am3-b4-Bmc" secondAttribute="top" id="eSC-el-Iw2"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="Am3-b4-Bmc"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Checklist" id="RUO-bu-2EN"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Hbq-KC-aE1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1513" y="768"/>
-        </scene>
         <!--Settings-->
         <scene sceneID="Yqc-Y7-RQz">
             <objects>
@@ -2175,12 +2128,83 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Ylq-AN-PCL" kind="relationship" relationship="rootViewController" id="Juf-Wc-4y9"/>
+                        <segue destination="2ne-QK-yf7" kind="relationship" relationship="rootViewController" id="LLS-0R-fyZ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nd9-0e-l3w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="679" y="768"/>
+            <point key="canvasLocation" x="681" y="767"/>
+        </scene>
+        <!--Checklist Table View Controller-->
+        <scene sceneID="W5s-mY-1dW">
+            <objects>
+                <tableViewController id="2ne-QK-yf7" customClass="ChecklistTableViewController" customModule="HikingTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="T8j-pA-eOz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChecklistCell" id="Fhp-rG-4x1" customClass="ChecklistTableViewCell" customModule="HikingTracker" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Fhp-rG-4x1" id="cWP-sd-IdY">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Item Name" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4yb-L8-iy1">
+                                            <rect key="frame" x="16" y="6" width="239" height="30"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="17"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fg9-68-bfy" customClass="DLRadioButton">
+                                            <rect key="frame" x="304" y="8" width="43" height="26"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="43" id="fq8-5n-ah3"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="iconSize">
+                                                    <real key="value" value="20"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
+                                                    <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="iconStrokeWidth">
+                                                    <real key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="indicatorSize">
+                                                    <real key="value" value="15"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">
+                                                    <color key="value" red="0.7166367173" green="0.91973358390000004" blue="0.5048458576" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="marginWidth">
+                                                    <real key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="4yb-L8-iy1" firstAttribute="leading" secondItem="cWP-sd-IdY" secondAttribute="leadingMargin" id="6fG-gh-4vH"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Fg9-68-bfy" secondAttribute="bottom" constant="-1" id="ASz-0Z-Yr5"/>
+                                        <constraint firstItem="Fg9-68-bfy" firstAttribute="centerY" secondItem="cWP-sd-IdY" secondAttribute="centerY" id="YAT-nq-VnF"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Fg9-68-bfy" secondAttribute="trailing" constant="12" id="dAf-PL-QP4"/>
+                                        <constraint firstItem="Fg9-68-bfy" firstAttribute="leading" secondItem="4yb-L8-iy1" secondAttribute="trailing" constant="49" id="iFz-Dq-hrG"/>
+                                        <constraint firstItem="4yb-L8-iy1" firstAttribute="centerY" secondItem="Fg9-68-bfy" secondAttribute="centerY" id="v3G-w4-kY6"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="2ne-QK-yf7" id="2Js-hw-vx2"/>
+                            <outlet property="delegate" destination="2ne-QK-yf7" id="Zc7-Or-W3b"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="OOP-8F-eT7"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="owE-GM-1Sa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1614" y="767"/>
         </scene>
         <!--Settings-->
         <scene sceneID="kCh-W0-oDI">
