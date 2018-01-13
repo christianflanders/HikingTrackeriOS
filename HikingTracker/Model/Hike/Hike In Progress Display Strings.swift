@@ -132,39 +132,34 @@ class HikeDisplayStrings {
         return distanceString
     }
     private func getLowestAltitudeDisplayString(from hike: HikeInformation) -> String {
-        let formatter = MeasurementFormatter()
-        
-        let lowestAltitudeInMeters = Measurement(value: hike.lowestAltitudeInMeters, unit: UnitLength.meters)
-        let lowestAltitudeString = formatter.string(from: lowestAltitudeInMeters)
+        let hikeLowestAltitudeInMeters = hike.lowestAltitudeInMeters
+        let lowestAltitudeString = hikeLowestAltitudeInMeters.getMetersOrFeetOnly
         return lowestAltitudeString
     }
     
     private func getHighestAltitudeDisplayString(from hike: HikeInformation) -> String {
-        let formatter = MeasurementFormatter()
-        
-        let highestAltitudeInMeters = Measurement(value: hike.highestAltitudeInMeters, unit: UnitLength.meters)
-        let highestAltitudeString = formatter.string(from: highestAltitudeInMeters)
+        let hikeHighestAltitudeInMeters = hike.highestAltitudeInMeters
+        let highestAltitudeString = hikeHighestAltitudeInMeters.getMetersOrFeetOnly
         return highestAltitudeString
     }
     
     private func calculateTotalElevationChange(from hike: HikeInformation) -> String {
-        let formatter = MeasurementFormatter()
-        
         let totalElevationGainInMeters = hike.highestAltitudeInMeters - hike.lowestAltitudeInMeters
-        let totalElevationMeasurment = Measurement(value: totalElevationGainInMeters, unit: UnitLength.meters)
-        let totalElevationString = formatter.string(from: totalElevationMeasurment)
+        let totalElevationString = totalElevationGainInMeters.getMetersOrFeetOnly
         return totalElevationString
     }
     
     private func getTimeUphillDisplayString(from hike: HikeInformation) -> String {
+        let dateHelper = DateHelper()
         let timeTravledUphill = hike.timeUphillInSeconds
-        let timeTraveledUphillString = timeTravledUphill.getDisplayString
+        let timeTraveledUphillString = dateHelper.convertDurationToStringDate(timeTravledUphill)
         return timeTraveledUphillString
     }
     
     private func getTimeDownhillDisplayString(from hike: HikeInformation) -> String {
+        let dateHelper = DateHelper()
         let timeTravledDownhill = hike.timeDownhillInSeconds
-        let timeTraveledDownhillString = timeTravledDownhill.getDisplayString
+        let timeTraveledDownhillString = dateHelper.convertDurationToStringDate(timeTravledDownhill)
         return timeTraveledDownhillString
     }
 }
