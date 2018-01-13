@@ -35,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBarAppearace.barTintColor = DefaultUI().navBarBackgroundColor
         navigationBarAppearace.tintColor = UIColor.white
         
+//        UIApplication.shared.statusBarStyle = .lightContent
 
         
         setTabBarAppearanceAttributes()
@@ -99,7 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func setTabBarAppearanceAttributes() {
         let appearance = UITabBarItem.appearance()
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Cabin", size: 10)], for: .normal)
+        appearance.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Cabin", size: 10)!], for: .normal)
 //        let attributes = [NSAttributedStringKey.font: UIFont ]
 //        appearance.setTitleTextAttributes(attributes, for: .normal)
         
