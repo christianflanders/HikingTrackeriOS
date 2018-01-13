@@ -1030,13 +1030,13 @@
                                                         <rect key="frame" x="10" y="10" width="355" height="30"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Elevation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Y2-od-Bpz">
-                                                                <rect key="frame" x="0.0" y="0.0" width="219.5" height="30"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="69.5" height="30"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Total Gain:1800 ft" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tXD-zq-v5Y">
-                                                                <rect key="frame" x="219.5" y="0.0" width="135.5" height="30"/>
+                                                                <rect key="frame" x="69.5" y="0.0" width="285.5" height="30"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -1068,13 +1068,13 @@
                                                         <rect key="frame" x="10" y="10" width="355" height="30"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Pace" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbX-Jo-y70">
-                                                                <rect key="frame" x="0.0" y="0.0" width="284.5" height="30"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="38" height="30"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Avg Pace" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ie-Bq-4mc">
-                                                                <rect key="frame" x="284.5" y="0.0" width="70.5" height="30"/>
+                                                                <rect key="frame" x="38" y="0.0" width="317" height="30"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -1569,6 +1569,7 @@
                         <outlet property="mapContainerView" destination="yxz-ft-130" id="zR1-nQ-Yag"/>
                         <outlet property="nameTextField" destination="88r-g0-mfu" id="hly-jg-eWz"/>
                         <outlet property="saveButton" destination="Mmr-2N-NXc" id="17s-jy-8Fx"/>
+                        <segue destination="Qhk-ua-fWK" kind="unwind" identifier="unwindToMainScreenSegue" unwindAction="unwindToMeWithSegue:" id="7ey-bh-EhB"/>
                     </connections>
                 </tableViewController>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" id="ntq-Ut-Ekd">
@@ -1602,6 +1603,7 @@
                     <viewLayoutGuide key="safeArea" id="yRd-fN-yj3"/>
                 </stackView>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fnt-Ph-Heh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Qhk-ua-fWK" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2466" y="-822"/>
         </scene>
