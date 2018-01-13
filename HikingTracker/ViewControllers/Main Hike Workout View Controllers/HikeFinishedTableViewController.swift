@@ -107,7 +107,7 @@ class HikeFinishedTableViewController: UITableViewController, UITextFieldDelegat
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Chart View" {
-            let destinationVC = segue.destination as! HikeChartsViewController
+//            let destinationVC = segue.destination as! HikeChartsViewController
 //            destinationVC.hikeWorkout = hikeWorkout
         }
     }
@@ -115,7 +115,8 @@ class HikeFinishedTableViewController: UITableViewController, UITextFieldDelegat
     func dismissToMainScreen() {
 
 //        childVC?.goAway()
-        presentingViewController?.presentingViewController?.dismiss(animated: false, completion: nil)
+        performSegue(withIdentifier: "unwindToMainScreenSegue", sender: self)
+//        presentingViewController?.presentingViewController?.dismiss(animated: false, completion: nil)
 //        self.navigationController?.popViewController(animated: true)
 //        self.dismiss(animated: true, completion: nil)
     }
@@ -140,6 +141,7 @@ class HikeFinishedTableViewController: UITableViewController, UITextFieldDelegat
     
     @IBAction func saveHikeButtonPressed(_ sender: UIButton) {
         hikeWorkout.convertAndUploadHikeToFirebase(name: "No name")
+        hikeWorkout.storeHikeToHealthKit(name: hikeWorkout.hikeName)
         print("Uploaded!")
         let alert = UIAlertController(title: "Workout saved!", message: "Great job. Or something.", preferredStyle: .alert)
         let thanksBroAction = UIAlertAction(title: "Thanks bro", style: .default) { (_) in
