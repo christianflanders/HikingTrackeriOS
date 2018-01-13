@@ -112,6 +112,7 @@
 		6BC9FEF1200304A50071590A /* Find Center Coordinate .swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC9FEF0200304A50071590A /* Find Center Coordinate .swift */; };
 		6BCC75E11FD621A4005F2F19 /* HikeWorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCC75E01FD621A4005F2F19 /* HikeWorkoutModel.swift */; };
 		6BD14B941FFED7DB004B3FD7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BD14B931FFED7DB004B3FD7 /* GoogleService-Info.plist */; };
+		6BD9A5CF2009976900B1577F /* Save Hike To HealthKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9A5CE2009976900B1577F /* Save Hike To HealthKit.swift */; };
 		6BDDA10E1FD7610B0069970C /* Altimeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDDA10D1FD7610B0069970C /* Altimeter.swift */; };
 		6BE204261FE0C072004F0C3E /* HikeHistoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE204251FE0C072004F0C3E /* HikeHistoryDetailViewController.swift */; };
 		6BE204291FE1CBDF004F0C3E /* Health Kit Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE204281FE1CBDF004F0C3E /* Health Kit Utility.swift */; };
@@ -318,6 +319,7 @@
 		6BCC75E01FD621A4005F2F19 /* HikeWorkoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeWorkoutModel.swift; sourceTree = "<group>"; };
 		6BCD37A51FD88F7A00FE8C03 /* HikeTest.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = HikeTest.gpx; path = HikingTracker/Resources/HikeTest.gpx; sourceTree = SOURCE_ROOT; };
 		6BD14B931FFED7DB004B3FD7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6BD9A5CE2009976900B1577F /* Save Hike To HealthKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Save Hike To HealthKit.swift"; sourceTree = "<group>"; };
 		6BDDA10D1FD7610B0069970C /* Altimeter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Altimeter.swift; sourceTree = "<group>"; };
 		6BE204251FE0C072004F0C3E /* HikeHistoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeHistoryDetailViewController.swift; sourceTree = "<group>"; };
 		6BE204281FE1CBDF004F0C3E /* Health Kit Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Health Kit Utility.swift"; sourceTree = "<group>"; };
@@ -697,6 +699,7 @@
 			children = (
 				6BA931082002E06D001FE585 /* Hike Information Protocol.swift */,
 				6B8AA0ED1FFDDBE9009FCFB2 /* HikeInProgress.swift */,
+				6BD9A5CE2009976900B1577F /* Save Hike To HealthKit.swift */,
 				6BE245092002F90300CBFF5C /* Hike In Progress Display Strings.swift */,
 				6BE245072002E46F00CBFF5C /* Hike In Progress Save To Firebase.swift */,
 				6BE2450E2002FF4200CBFF5C /* Firebase Dictionary Keys.swift */,
@@ -1305,6 +1308,7 @@
 				6BCC75E11FD621A4005F2F19 /* HikeWorkoutModel.swift in Sources */,
 				6B48E1322006BC6A00D24F44 /* Label Kerning Extension.swift in Sources */,
 				6BE2450F2002FF4200CBFF5C /* Firebase Dictionary Keys.swift in Sources */,
+				6BD9A5CF2009976900B1577F /* Save Hike To HealthKit.swift in Sources */,
 				6B8D311420007CE1005F08AC /* HikeFinishedTableViewController.swift in Sources */,
 				6B7D98D51FF85F1E008C3F06 /* Solar.swift in Sources */,
 				6BE245082002E46F00CBFF5C /* Hike In Progress Save To Firebase.swift in Sources */,
