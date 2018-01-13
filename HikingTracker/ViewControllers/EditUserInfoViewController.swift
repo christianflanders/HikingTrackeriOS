@@ -9,27 +9,16 @@
 import UIKit
 
 class EditUserInfoViewController: UIViewController,
-    UIPickerViewDataSource, UIPickerViewDelegate,
-UITextFieldDelegate {
+    UIPickerViewDataSource,
+    UIPickerViewDelegate,
+    UITextFieldDelegate {
     
     // MARK: Enums
-    enum UserInputs {
-        case name
-        case height
-        case gender
-        case birthdate
-        case weight
-    }
-    
-    
+
+
     // MARK: Constants
     private let userOptions = [0 : "Name", 1 : "Gender", 2 : "Birthdate", 3 :  "Weight"]
-    private let enumOptions = [0 : UserInputs.name, 1 : UserInputs.gender, 2 : UserInputs.birthdate, 3 :  UserInputs.weight]
-    
-    private let genderOptions = ["Male", "Female"]
-    private let heightOptions = ["ft", "meters"]
-    private let weightOptions = ["lbs", "kg"]
-    
+
     private let usaLocale = "es_US"
     
     private let user = StoredUser()
@@ -63,50 +52,15 @@ UITextFieldDelegate {
     
     // MARK: Private Variables
     
-    private var setName = "" {
-        willSet {
-            nameSet = true
-        }
-    }
-    
-    private var weightVaule = 0 {
-        willSet {
-            weightSet = true
-        }
-    }
-    
-    private var weightUnit = ""
-    
-    private var heightValue = "0" {
-        willSet {
-            heightSet = true
-        }
-    }
-    private var heightInchValue = "0"
-    private var setHeightString = ""
-    
-    private var genderVaule = "" {
-        willSet {
-            genderSet = true
-        }
-    }
+
     
 
     private var selectedStat: UserInputs?
     
-    private var nameSet = false
-    private var weightSet = false
-    private var heightSet = false
-    private var birthdaySet = false
-    private var genderSet = false
-    
+
     private var defaultLocale: Locale!
-    private var displayUnits: DisplayUnits {
-        return user.userDisplayUnits
-    }
-    private var weightDisplayUnit = ""
-    private var heightDisplayUnit = ""
-    
+
+
     private var setBirthdate = Date() {
         willSet {
             birthdaySet = true
@@ -115,6 +69,15 @@ UITextFieldDelegate {
     
     // MARK: View Life Cycle
     
+    fileprivate func checkForLocalAndSetUnitsAccordingly() {
+        defaultLocale = Locale.current
+        if defaultLocale.usesMetricSystem {
+            setUnitsToCommunist()
+        } else {
+            setUnitsToFreedom()
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -122,6 +85,7 @@ UITextFieldDelegate {
         importFromHealthKitButtonOutlet.layer.cornerRadius = importFromHealthKitButtonOutlet.frame.height / 3
         
         pickerContainerView.isHidden = true
+
         pickerView.dataSource = self
         pickerView.delegate = self
         
@@ -136,21 +100,14 @@ UITextFieldDelegate {
         hidePicker()
         showButtons()
         
-        defaultLocale = Locale.current
-        if defaultLocale.usesMetricSystem {
-            setUnitsToCommunist()
-        } else {
-            setUnitsToFreedom()
-        }
+        checkForLocalAndSetUnitsAccordingly()
         
     }
     
     // MARK: IBActions
     
     @IBAction func importFromHealthKitButtonPressed(_ sender: UIButton) {
-        let healthKitStore = HealthKitStore()
-        healthKitStore.getUserDataFromHealthKit()
-        
+        getInfoFromHealthKitAndSetValues()
     }
     @IBAction func pickerDoneButtonPressed(_ sender: UIButton) {
         checkWhichStatAndMarkAsSet()
@@ -474,8 +431,6 @@ UITextFieldDelegate {
         if let birthdate = user.birthdate?.displayStringWithoutTime {
             birthdayButtonOutlet.setTitle(birthdate, for: .normal)
         }
-        
-        
     }
     
     func getInfoFromHealthKitAndSetValues(){
@@ -488,6 +443,7 @@ UITextFieldDelegate {
     func checkAllUserInfoIsEntered() {
         
     }
+
 }
 
 
