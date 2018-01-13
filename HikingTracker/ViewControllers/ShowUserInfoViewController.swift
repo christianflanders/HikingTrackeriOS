@@ -50,16 +50,16 @@ class ShowUserInfoViewController: UIViewController, FUIAuthDelegate {
     
     // MARK: IBActions
     
-    @IBAction func logOutBarButtonPressed(_ sender: UIBarButtonItem) {
-        do {
-            try Auth.auth().signOut()
-            checkUserAuthAndPresentCorrectInformation()
-        } catch {
-            print("Problem signing out!")
-        }
-
-    }
-    
+//    @IBAction func logOutBarButtonPressed(_ sender: UIBarButtonItem) {
+//        do {
+//            try Auth.auth().signOut()
+//            checkUserAuthAndPresentCorrectInformation()
+//        } catch {
+//            print("Problem signing out!")
+//        }
+//
+//    }
+//
     func updateUserStatsDisplay() {
         nameLabel.text = user.name
         weightLabel.text = user.getWeightForDisplay()
