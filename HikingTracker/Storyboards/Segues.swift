@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+struct SegueIdentifiers {
+    let editProfileSegueIdentifier = "Edit Profile Segue"
+    let showConnectedServices = "Connected Services Segue"
+
+
+}

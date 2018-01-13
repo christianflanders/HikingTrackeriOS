@@ -35,6 +35,8 @@ UITextFieldDelegate {
     private let user = StoredUser()
     
     // MARK: Variables
+
+    var comingFromShowUserScreen = false
     
     // MARK: Outlets
     
@@ -124,8 +126,10 @@ UITextFieldDelegate {
         pickerView.delegate = self
         
         nameTextField.delegate = self
-        
-//        checkIfValuesExistAndSetLabels()
+
+        if comingFromShowUserScreen {
+            checkIfValuesExistAndSetLabels()
+        }
         
         datePicker.maximumDate = Date()
         hideDatePicker()

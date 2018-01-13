@@ -126,14 +126,6 @@ class StoredUser {
         let stringToSave = dateFormatter.string(from: date)
         return stringToSave
     }
-    
-//    func convertBirthdateToString(_ string: String) -> Date {
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateStyle = .full
-//        dateFormatter.timeStyle = .none
-//        let dateToReturn = dateFormatter.date(from: string)
-//        return dateToReturn!
-//    }
 
 }
 
@@ -149,4 +141,11 @@ struct UserEntriesKeys {
     let birthdate = "birthdate"
     let gender = "gender"
     let localUnits = "localUnits"
+}
+
+struct UserSavedSettings {
+    var pauseButtonSound = false
+    var resetChecklistSwitch = true
+    var openWatchAppAutomaticallySwith = true
+
 }

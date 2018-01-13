@@ -89,4 +89,14 @@ class ShowUserInfoViewController: UIViewController, FUIAuthDelegate {
             present(authUIView!, animated: true, completion: nil)
         }
     }
+
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Show User Info Segue" {
+            if let navCont = segue.destination as? UINavigationController {
+                let destinationVC = navCont.topViewController as! EditUserInfoViewController
+                destinationVC.comingFromShowUserScreen = true
+            }
+        }
+    }
 }
