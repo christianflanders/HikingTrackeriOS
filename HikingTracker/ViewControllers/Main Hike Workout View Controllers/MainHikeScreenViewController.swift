@@ -81,6 +81,8 @@ class MainHikeScreenViewController: UIViewController, FUIAuthDelegate {
                     self.present(authUIView!, animated: true, completion: nil)
                 } else {
                     print("User found go ahead")
+                    let fireBaseUserEmail = Auth.auth().currentUser?.email
+                    print(fireBaseUserEmail!)
                 }
             })
         } else {
@@ -197,22 +199,14 @@ class MainHikeScreenViewController: UIViewController, FUIAuthDelegate {
     }
     
     func testPostToFireBase() {
-        let title = "Boobies"
 
-        let message = "lol"
-        var testArray = [[String:Any]]()
-        for i in 0...10 {
-            testArray.append([String(i): i])
-            
-        }
-        
-        let post: [String:Any] = ["title" : title,
-                                  "message": testArray]
-        let databaseRef = Database.database().reference()
-        databaseRef.child("Posts").childByAutoId().setValue(post)
-        
     }
     
+    
+    
+    @IBAction func unwindToMe(segue: UIStoryboardSegue) {
+        
+    }
 
 }
 
