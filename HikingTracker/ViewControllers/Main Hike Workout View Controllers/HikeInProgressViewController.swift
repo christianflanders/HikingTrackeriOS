@@ -11,6 +11,7 @@ import HealthKit
 import CoreMotion
 import CoreLocation
 import Mapbox
+import WatchKit
 import WatchConnectivity
 
 class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate, MGLMapViewDelegate{
@@ -21,11 +22,9 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     
     private let locationManager = LocationManager.shared
     
-    private let pedometer = CMPedometer()
+    fileprivate let watchConnection = WCSession.default
     
-    private let watchConnection = WCSession.default
-    
-    private let watchMessages = WatchConnectionMessages()
+    fileprivate let watchMessages = WatchConnectionMessages()
     
     // MARK: Variables
     
@@ -108,17 +107,17 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     // MARK: IBActions
     
     @IBAction func pauseHikeButtonPressed(_ sender: UIButton) {
-        watchConnection.sendMessage([watchMessages.pauseHike: true], replyHandler: nil, errorHandler: nil)
+        sendPauseMessageToWatch()
         pauseHike()
     }
     
     @IBAction func holdToEndButtonPressed(_ sender: UIButton) {
-        watchConnection.sendMessage([watchMessages.endHike: true], replyHandler: nil, errorHandler: nil)
+        sendEndMessageToWatch()
         endHike()
     }
     
     @IBAction func resumeButtonPressed(_ sender: UIButton) {
-        watchConnection.sendMessage([watchMessages.resumeHike: true], replyHandler: nil, errorHandler: nil)
+        sendResumeMessageToWatch()
         resumeHike()
     }
     
@@ -144,21 +143,22 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     
     // MARK: Hike Lifecycle
     
-    private func startHike() {
+    fileprivate func startHike() {
         hikeWorkout.startDate = Date()
         startTimer()
-//        checkForWatchConnection()
+        checkForWatchConnection()
         startHikeUISettings()
-//        convertDateAndSendToWatch(date: hikeWorkout.startDate!)
+        sendStartMessageToWatch()
+
+
 //        startPedometerAndUpdatePace()
 
     }
     
-    fileprivate func resumeHike() {
+     fileprivate func resumeHike() {
         startHikeUISettings()
         paused = false
         hikeWorkout.paused = false
-        hikeWorkout.addNewLocation(currentLocation)
         let resumeTime = Date()
         hikeWorkout.resumeHike(time: resumeTime)
     }
@@ -167,23 +167,23 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         pauseOrStopHikeUISettings()
         paused = true
         hikeWorkout.paused = true
-        hikeWorkout.addNewLocation(currentLocation)
         let pauseTime = Date()
         hikeWorkout.pauseHike(time: pauseTime)
 
     }
     
-    private func sendPauseHikeNotification() {
-        
-    }
+
     
-    private func endHike() {
+    fileprivate func endHike() {
         timer?.invalidate()
         locationManager.stopUpdatingLocation()
         hikeWorkout.endDate = Date()
         openHikeFinishedVC()
 //        performSegue(withIdentifier: "HikeFinishedSegue", sender: self)
     }
+    
+    
+    
     // MARK: Timer Functions
     
     private func startTimer() {
@@ -193,9 +193,11 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     }
     
     private func eachSecond() {
-//        convertDateAndSendToWatch(date: hikeWorkout.startDate!)https://academy.realm.io/
         updateDisplay()
-//        sendCaloriesToWatch()
+        sendCaloriesToWatch()
+        convertDateAndSendToWatch()
+        sendDistanceToWatch()
+        
         let coordinatesForLine = hikeWorkout.coordinates
         if coordinatesForLine.count != 0 {
             mapView.drawLineOf(coordinatesForLine)
@@ -262,4 +264,127 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     
     // MARK: Solar
     
+}
+
+
+
+
+extension HikeInProgressViewController: WCSessionDelegate {
+    // MARK: Watch Connectivity Delegate
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        print("Watch session became inactive")
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        print("Watch session deactivated")
+    }
+    
+    // MARK: Watch Connection Functions
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String: Any]) {
+        print("Message recieved from watch!")
+        
+        if let pauseMessage = message[watchMessages.pauseHike] as? Bool {
+            if pauseMessage {
+                DispatchQueue.main.async {
+                    self.pauseHike()
+                }
+            }
+        }
+        if let resumeMessage = message[watchMessages.resumeHike] as? Bool {
+            if resumeMessage {
+                DispatchQueue.main.async {
+                    self.resumeHike()
+                }
+            }
+        }
+        if let endMessage = message[watchMessages.endHike] as? Bool {
+            if endMessage {
+                DispatchQueue.main.async {
+                    self.endHike()
+                }
+            }
+        }
+        
+    }
+    
+    private func checkForWatchConnection() {
+        if WCSession.isSupported() {
+            watchConnection.delegate = self
+            watchConnection.activate()
+            if watchConnection.activationState != .activated {
+                watchConnection.activate()
+            }
+            let configuration = HKWorkoutConfiguration()
+            configuration.activityType = .hiking
+            configuration.locationType = .outdoor
+            let healthStore = HKHealthStore()
+            healthStore.startWatchApp(with: configuration) { (success, _) in
+                if success {
+                    print("should be opening watch app with workout configuration")
+                }
+            }
+        }
+    }
+    
+    private func convertDateAndSendToWatch() {
+        let dateHelper = DateHelper()
+        let currentDuration = hikeWorkout.durationInSeconds
+        let adjustDurationToDealWithWatchStartupTime = currentDuration + 2
+        let stringDuration = dateHelper.convertDurationToStringDate(adjustDurationToDealWithWatchStartupTime)
+        watchConnection.sendMessage([watchMessages.startDate: stringDuration], replyHandler: nil) { error in
+            print(error)
+        }
+    }
+    
+    private func sendDistanceToWatch() {
+        let distance = hikeWorkout.totalDistanceInMeters
+        let stringDistance = distance.getDisplayString
+        watchConnection.sendMessage([watchMessages.distance: stringDistance], replyHandler: nil) { error in
+            print(error)
+        }
+    }
+    
+    private func sendCaloriesToWatch() {
+        let caloriesBurned = Int(hikeWorkout.caloriesBurned)
+        let stringCalories = String("\(caloriesBurned) kcl")
+        watchConnection.sendMessage([watchMessages.calories: stringCalories], replyHandler: nil) { error in
+            print(error)
+        }
+    }
+    
+    
+    
+    
+    // MARK: Send Lifecycle messages to watch
+    fileprivate func sendStartMessageToWatch() {
+        let startMessage = watchMessages.startHike
+        watchConnection.sendMessage([startMessage: true], replyHandler: nil) { (error) in
+            print(error)
+        }
+    }
+    fileprivate func sendPauseMessageToWatch(){
+        let pauseMessage = watchMessages.pauseHike
+        watchConnection.sendMessage([pauseMessage: true], replyHandler: nil) { (error) in
+            print(error)
+        }
+    }
+    
+    fileprivate func sendResumeMessageToWatch(){
+        let resumeMessage = watchMessages.resumeHike
+        watchConnection.sendMessage([resumeMessage: true], replyHandler: nil) { (error) in
+            print(error)
+        }
+    }
+    
+    fileprivate func sendEndMessageToWatch() {
+        let endMessage = watchMessages.endHike
+        watchConnection.sendMessage([endMessage: true], replyHandler: nil) { (error) in
+            print(error)
+        }
+    }
 }

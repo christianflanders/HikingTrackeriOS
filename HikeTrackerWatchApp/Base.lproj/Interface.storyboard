@@ -9,6 +9,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13756"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="ArialHB.ttc">
+            <string>ArialHebrew-Light</string>
+        </array>
         <array key="Avenir.ttc">
             <string>Avenir-Heavy</string>
         </array>
@@ -33,7 +36,7 @@
                                     <fontDescription key="font" name="Avenir-Heavy" family="Avenir" pointSize="8"/>
                                 </label>
                                 <label alignment="right" text="Label" id="dOb-sB-uB0">
-                                    <fontDescription key="font" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
+                                    <fontDescription key="font" style="UICTFontTextStyleBody"/>
                                 </label>
                             </items>
                         </group>
@@ -43,7 +46,7 @@
                                     <fontDescription key="font" name="Avenir-Heavy" family="Avenir" pointSize="8"/>
                                 </label>
                                 <label alignment="right" text="Label" id="uDz-5q-aV3">
-                                    <fontDescription key="font" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
+                                    <fontDescription key="font" style="UICTFontTextStyleBody"/>
                                 </label>
                             </items>
                         </group>
@@ -96,7 +99,14 @@
         <!--Interface Controller-->
         <scene sceneID="LJ0-IL-cFe">
             <objects>
-                <controller id="5S5-8i-ih6"/>
+                <controller id="5S5-8i-ih6">
+                    <items>
+                        <label alignment="center" text="HikeTracker" id="Njt-97-FcK"/>
+                        <label alignment="center" text="Start a new workout from your iPhone" textAlignment="center" numberOfLines="3" id="VQb-hG-XTl">
+                            <fontDescription key="font" name="ArialHebrew-Light" family="Arial Hebrew" pointSize="14"/>
+                        </label>
+                    </items>
+                </controller>
             </objects>
             <point key="canvasLocation" x="705" y="328"/>
         </scene>

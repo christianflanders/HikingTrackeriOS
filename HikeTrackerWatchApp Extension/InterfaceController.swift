@@ -25,6 +25,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, HKWorkoutSe
     private var distanceRecieved = ""
     private var caloriesRecieved = ""
     private var session: HKWorkoutSession?
+    private var stringDurationFromPhone = "-"
     
     @IBOutlet var durationLabel: WKInterfaceLabel!
     @IBOutlet var caloriesBurnedLabel: WKInterfaceLabel!
@@ -89,29 +90,15 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, HKWorkoutSe
     }
     
     func updateDisplay(){
-        guard let startDate = startDateFromPhone else {return}
-        let currentDate = Date()
-        let duration = currentDate.timeIntervalSince(startDate)
-        let stringDuration = dateHelper.convertDurationToStringDate(duration)
-        durationLabel.setText(stringDuration)
+        durationLabel.setText(stringDurationFromPhone)
         distanceLabel.setText(distanceRecieved)
         caloriesBurnedLabel.setText(caloriesRecieved)
 
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        if dateRecieved == false {
-            if let  dateStringFromPhone = message[watchMessages.startDate] as? String {
-                let dateFormatter = DateFormatter()
-                dateFormatter.locale = Locale(identifier: "en_US")
-                dateFormatter.dateStyle = .long
-                dateFormatter.timeStyle = .full
-                let returnDate = dateFormatter.date(from: dateStringFromPhone)
-                paused = false
-                guard let startDateFromPhoneRecieved = returnDate else {fatalError("problem converting date from phone")}
-                startDateFromPhone = startDateFromPhoneRecieved
-                dateRecieved = true
-            }
+        if let durationFromPhone = message[watchMessages.startDate] as? String {
+            stringDurationFromPhone = durationFromPhone
         }
         if let calories = message[watchMessages.calories] as? String {
             caloriesRecieved = calories
@@ -120,7 +107,12 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, HKWorkoutSe
         if let distanceFromPhone = message[watchMessages.distance] as? String {
             distanceRecieved = distanceFromPhone
         }
-        
+        if let startHikeMessage = message[watchMessages.startHike] as? Bool {
+            if startHikeMessage {
+                startHike()
+            }
+            
+        }
         if let pauseHikeMessage = message[watchMessages.pauseHike] as? Bool {
             if pauseHikeMessage {
                 pauseHike()
@@ -139,7 +131,9 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, HKWorkoutSe
         }
     }
     
-    
+    func startHike(){
+        startTimer()
+    }
     
     func authorizeHealthKit() {
         HealthKitAuthroizationSetup.authorizeHealthKit { (authorized, error) in
@@ -180,9 +174,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, HKWorkoutSe
     }
     
     private func eachSecond(){
-        if !paused {
-            updateDisplay()
-        }
+        updateDisplay()
     }
     
     
