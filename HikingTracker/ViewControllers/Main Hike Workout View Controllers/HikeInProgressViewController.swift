@@ -78,6 +78,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         print("View dissapearing")
         super.viewWillDisappear(true)
         timer?.invalidate()
+        locationManager.delegate = nil
         locationManager.stopUpdatingLocation()
     }
     
@@ -105,7 +106,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     }
     
     // MARK: IBActions
-    
+
     @IBAction func pauseHikeButtonPressed(_ sender: UIButton) {
         sendPauseMessageToWatch()
         pauseHike()
@@ -125,7 +126,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         let animationDuration = 0.5
         if !statsHidden {
             mapView.userLocationVerticalAlignment = MGLAnnotationVerticalAlignment.center
-            UIView.animate(withDuration: animationDuration) {
+            UIView.animate(withDuration: animationDuration) { [unowned self] in
                 
                 self.hikeStatsDisplay.alpha = 0
                 self.gradImageView.alpha = 0
@@ -133,7 +134,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
             }
         } else {
             mapView.userLocationVerticalAlignment = MGLAnnotationVerticalAlignment.top
-            UIView.animate(withDuration: animationDuration) {
+            UIView.animate(withDuration: animationDuration) { [unowned self] in
                 self.hikeStatsDisplay.alpha = 1
                 self.gradImageView.alpha = 1
                 self.statsHidden = false
@@ -179,7 +180,6 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         locationManager.stopUpdatingLocation()
         hikeWorkout.endDate = Date()
         openHikeFinishedVC()
-//        performSegue(withIdentifier: "HikeFinishedSegue", sender: self)
     }
     
     
@@ -187,7 +187,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     // MARK: Timer Functions
     
     private func startTimer() {
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [unowned self] _ in
             self.eachSecond()
         }
     }
@@ -357,10 +357,8 @@ extension HikeInProgressViewController: WCSessionDelegate {
         }
     }
     
-    
-    
-    
     // MARK: Send Lifecycle messages to watch
+
     fileprivate func sendStartMessageToWatch() {
         let startMessage = watchMessages.startHike
         watchConnection.sendMessage([startMessage: true], replyHandler: nil) { (error) in
