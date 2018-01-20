@@ -1534,7 +1534,7 @@
             </objects>
             <point key="canvasLocation" x="1513" y="-822"/>
         </scene>
-        <!--Hike Finished Table View Controller-->
+        <!--Done!-->
         <scene sceneID="EpC-Hu-zBq">
             <objects>
                 <tableViewController id="2ew-jA-7lK" customClass="HikeFinishedTableViewController" customModule="HikingTracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -1732,7 +1732,7 @@
                             <outlet property="delegate" destination="2ew-jA-7lK" id="Pi6-dM-RyU"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="zSB-X3-Dk0"/>
+                    <navigationItem key="navigationItem" title="Done!" id="zSB-X3-Dk0"/>
                     <connections>
                         <outlet property="discardButton" destination="qvs-V2-Rbe" id="NW7-lm-G9x"/>
                         <outlet property="hikeHistoryContainer" destination="oKl-Zh-eQ9" id="2dP-Kv-Hdw"/>

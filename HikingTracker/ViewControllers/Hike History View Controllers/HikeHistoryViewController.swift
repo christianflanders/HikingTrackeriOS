@@ -42,7 +42,6 @@ class HikeHistoryViewController: UIViewController, UITableViewDataSource, UITabl
         super.viewDidLoad()
         hikeHistoryTableView.delegate = self
         hikeHistoryTableView.dataSource = self
-        
         downloadWorkoutsFromFirebase()
     }
     

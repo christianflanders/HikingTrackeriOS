@@ -43,7 +43,6 @@ extension HikeInProgress {
         let totalElevationDifferenceInMeters = hikeWorkout.totalElevationDifferenceInMeters
         newHikeDict[firebaseDictStructure.totalElevationInMetersKey] = totalElevationDifferenceInMeters
         
-        //Avg Pace In Meters
         
         let minAltitudeInMeters = hikeWorkout.lowestAltitudeInMeters
         newHikeDict[firebaseDictStructure.minAltitudeInMetersKey] = minAltitudeInMeters
@@ -65,11 +64,24 @@ extension HikeInProgress {
             newLocation[locationKeys.longitudeKey] = location.coordinate.longitude
             newLocation[locationKeys.altitudeKey] = location.altitude
             newLocation[locationKeys.speedInMetersPerSecondKey] = location.speed
-            newLocation[locationKeys.timestampKey] = location.timestamp.displayString
+            newLocation[locationKeys.timestampKey] = location.timestamp.longStringVersionForArchive
             locationDict.append(newLocation)
         }
         newHikeDict[firebaseDictStructure.storedLocationsKey] = locationDict
-        
+
+
+        let storedPaces = hikeWorkout.storedPaces
+        var paceDict = [[String: Any]]()
+        let paceKeys = PaceKeys()
+        for paces in storedPaces {
+            var newPace = [String: Any]()
+            newPace[paceKeys.metersPerHour] = paces.metersTraveledPerHour
+            let archiveStringDate = paces.timeStamp.longStringVersionForArchive
+            newPace[paceKeys.timestamp] = archiveStringDate
+            paceDict.append(newPace)
+        }
+        newHikeDict[firebaseDictStructure.storedPaces] = paceDict
+
         return newHikeDict
     }
     

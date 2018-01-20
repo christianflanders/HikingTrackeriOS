@@ -31,6 +31,8 @@ class HikeInProgress: HikeInformation {
         }
         guard let lastLocation = storedLocations.last else {return}
         checkElevationDirectionAndSetUpOrDownDuration(lastLocation: lastLocation, newLocation: newLocation)
+        let newPace = calculatePaceBetweenTwoPoints(pointOne: lastLocation, pointTwo: newLocation)
+        storedPaces.append(newPace)
         totalDistanceInMeters += lastLocation.distance(from: newLocation)
         storedLocations.append(newLocation)
     }
@@ -48,14 +50,37 @@ class HikeInProgress: HikeInformation {
         }
     }
     
-        var coordinates: [CLLocationCoordinate2D] {
-            return storedLocations.map { return $0.coordinate }
-        }
+    var coordinates: [CLLocationCoordinate2D] {
+        return storedLocations.map { return $0.coordinate }
+    }
 
 
     // MARK: Pace
 
-    
+    var storedPaces = [Pace]()
+    var currentPaceInMetersPerHour = 0.0
+
+    func calculatePaceBetweenTwoPoints(pointOne: CLLocation, pointTwo: CLLocation) -> Pace{
+        let pointOneDate = pointOne.timestamp
+        let pointTwoDate = pointTwo.timestamp
+        let timeBetweenInSeconds = pointTwoDate.timeIntervalSince(pointOneDate)
+
+        let distanceBetweenPointsInMeters = pointTwo.distance(from: pointOne)
+
+        let currentPaceInMetersPerHour = calulateMetersPerHourFrom(seconds: timeBetweenInSeconds, distanceInMeters: distanceBetweenPointsInMeters)
+        let newPace = Pace(metersTraveledPerHour: currentPaceInMetersPerHour, timeStamp: pointTwoDate)
+        return newPace
+
+        
+    }
+
+    func calulateMetersPerHourFrom(seconds: Double, distanceInMeters: Double) -> Double{
+        let secondsInOneHour = 3600.0
+        let mySecondsConvertedToHour = seconds / secondsInOneHour
+        let oneHour = mySecondsConvertedToHour / mySecondsConvertedToHour
+        let metersTraveledInOneHour = distanceInMeters / mySecondsConvertedToHour
+        return metersTraveledInOneHour
+    }
     // MARK: Altitude Information
     private var currentAltitudeDirection: CurrentAltitudeDirection?
     

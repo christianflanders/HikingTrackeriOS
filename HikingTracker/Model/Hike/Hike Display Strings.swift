@@ -87,7 +87,7 @@ class HikeDisplayStrings {
         
         // TODO: Temporary until these are added
         newDisplay.avgHeartRate = "-"
-        newDisplay.avgPace = "-"
+        newDisplay.avgPace = getAveragePaceDisplayString(from: hike)
         return newDisplay
     }
     
@@ -98,17 +98,33 @@ class HikeDisplayStrings {
         let totalCaloriesBurnedString = "\(totalCaloriesBurned) kcl"
         return totalCaloriesBurnedString
     }
+
+    private func getAveragePaceDisplayString(from hike: HikeInformation) -> String {
+        let formatter = MeasurementFormatter()
+        if !hike.storedPaces.isEmpty {
+            let storedPaces = hike.storedPaces
+            let totalPacesReduced = storedPaces.reduce(0.0,{ $0 + $1.metersTraveledPerHour} )
+            let averagePaceInMetersPerHour = totalPacesReduced / Double(storedPaces.count)
+            let averagePaceMeasurment = Measurement(value: averagePaceInMetersPerHour, unit: UnitLength.meters)
+            let averagePaceMeasurementString = formatter.string(from: averagePaceMeasurment)
+            let returnString = "\(averagePaceMeasurementString) "
+            return returnString
+        } else {
+            return "_"
+        }
+    }
     
     private func getPaceDisplayString(from hike: HikeInformation) -> String {
         let formatter = MeasurementFormatter()
-        if let lastLocation = hike.storedLocations.last {
-            let speedInMetersPerSecond = lastLocation.speed
-            let speedMeasurement = Measurement(value: speedInMetersPerSecond.rounded(), unit: UnitLength.meters)
+        if !hike.storedPaces.isEmpty {
+            let lastPace = hike.storedPaces.last
+            let speedInMetersPerSecond = lastPace?.metersTraveledPerHour
+            let speedMeasurement = Measurement(value: (speedInMetersPerSecond?.rounded())!, unit: UnitLength.meters)
             let speedMeasurementString = formatter.string(from: speedMeasurement)
             let speedMeasurementWithIdentifier = "\(speedMeasurementString)/hr"
             return speedMeasurementWithIdentifier
         } else {
-            return "Error"
+            return "_"
         }
     }
     

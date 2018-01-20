@@ -12,6 +12,8 @@ import CoreLocation
 
 
 class DecodedHike: HikeInformation {
+
+    var storedPaces = [Pace]()
     
     var hikeName = ""
     
@@ -59,6 +61,11 @@ class DecodedHike: HikeInformation {
         if let locations = fromFirebaseDict[firebaseKeys.storedLocationsKey] as? [[String : Any]] {
             self.storedLocations = convertFirebaseLocations(locations)
         }
+
+        if let paces = fromFirebaseDict[firebaseKeys.storedPaces] as? [[String: Any]] {
+            self.storedPaces = convertFirebasePaces(paces)
+        }
+
         
         if let hikeNameString = fromFirebaseDict[firebaseKeys.hikeNameKey] as? String {
             self.hikeName = hikeNameString
@@ -106,12 +113,30 @@ class DecodedHike: HikeInformation {
             let altitude = dict[locationKeys.altitudeKey] as! Double
             let speed = dict[locationKeys.speedInMetersPerSecondKey] as! Double
             let dateString = dict[locationKeys.timestampKey] as! String
-            guard let dateStamp = convertStringDateToDate(string: dateString) else {fatalError("Problem with date formatting")}
+            let converter = ConvertDate()
+            let dateStamp = converter.fromArchiveString(dateString)
             let newCoordinate = CLLocationCoordinate2DMake(latitude, longitude)
             let newLocation = CLLocation(coordinate: newCoordinate, altitude: altitude, horizontalAccuracy: 0, verticalAccuracy: 0, course: 0, speed: speed, timestamp: dateStamp)
             convertedLocations.append(newLocation)
         }
 
         return convertedLocations
+    }
+
+    func convertFirebasePaces(_ paceDict: [[String: Any]]) -> [Pace] {
+        var convertedPaces = [Pace]()
+        let paceKeys = PaceKeys()
+        if !paceDict.isEmpty {
+            for dict in paceDict {
+                let metersPerHour = dict[paceKeys.metersPerHour] as! Double
+                let timeStampString = dict[paceKeys.timestamp] as! String
+                let converter = ConvertDate()
+                let convertedToDate = converter.fromArchiveString(timeStampString)
+                let newPace = Pace(metersTraveledPerHour: metersPerHour, timeStamp: convertedToDate)
+                convertedPaces.append(newPace)
+            }
+        }
+        return convertedPaces
+
     }
 }

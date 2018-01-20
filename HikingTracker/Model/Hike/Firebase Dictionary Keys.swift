@@ -9,33 +9,37 @@
 import Foundation
 struct FirebaseDict {
     
-    var startDateKey = "startDate"
-    var endDateKey = "endDate"
-    var caloriesBurnedKey = "caloriesBurned"
-    var durationInSecondsKey = "durationInSeconds"
-    var totalElevationInMetersKey = "totalElevationInMeters"
-    var avgPaceInMetersPerHourKey = "avgPaceInMetersPerHour"
-    var minAltitudeInMetersKey = "minAltitudeInMeters"
-    var maxAltitudeInMetersKey = "maxAltitudeInMeters"
-    var timeUphillInSecondsKey = "timeUphillInSeconds"
-    var timeDownhillInSecondsKey = "timeDownhillInSeconds"
-    var storedLocationsKey = "storedLocationsKey"
-    var totalDistanceInMetersKey = "totalDistanceInMeters"
-    var hikeNameKey = "hikeName"
+    let startDateKey = "startDate"
+    let endDateKey = "endDate"
+    let caloriesBurnedKey = "caloriesBurned"
+    let durationInSecondsKey = "durationInSeconds"
+    let totalElevationInMetersKey = "totalElevationInMeters"
+    let avgPaceInMetersPerHourKey = "avgPaceInMetersPerHour"
+    let minAltitudeInMetersKey = "minAltitudeInMeters"
+    let maxAltitudeInMetersKey = "maxAltitudeInMeters"
+    let timeUphillInSecondsKey = "timeUphillInSeconds"
+    let timeDownhillInSecondsKey = "timeDownhillInSeconds"
+    let storedLocationsKey = "storedLocationsKey"
+    let totalDistanceInMetersKey = "totalDistanceInMeters"
+    let hikeNameKey = "hikeName"
+    let storedPaces = "storedPaces"
+    
 }
 
 struct Location {
     
-    var latitudeKey = "latitude"
-    var longitudeKey = "longitude"
-    var altitudeKey = "altitude"
-    var timestampKey = "timestamp"
-    var speedInMetersPerSecondKey = "speedInMetersPerSecond"
-    
-    
+    let latitudeKey = "latitude"
+    let longitudeKey = "longitude"
+    let altitudeKey = "altitude"
+    let timestampKey = "timestamp"
+    let speedInMetersPerSecondKey = "speedInMetersPerSecond"
+
 }
 
-
+struct PaceKeys {
+    let metersPerHour = "metersPerHour"
+    let timestamp = "timestamp"
+}
 struct FirebaseDatabase {
     let childKey = "HikeWorkouts"
 }

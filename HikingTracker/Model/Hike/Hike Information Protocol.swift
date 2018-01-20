@@ -24,4 +24,5 @@ protocol HikeInformation {
     var timeUphillInSeconds: Double {get}
     var totalDistanceInMeters: Double {get}
     var currentAltitudeInMeters: Double {get}
+    var storedPaces: [Pace] {get}
 }

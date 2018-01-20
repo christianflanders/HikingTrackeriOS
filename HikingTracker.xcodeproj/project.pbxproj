@@ -124,10 +124,12 @@
 		6BE204261FE0C072004F0C3E /* HikeHistoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE204251FE0C072004F0C3E /* HikeHistoryDetailViewController.swift */; };
 		6BE204291FE1CBDF004F0C3E /* Health Kit Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE204281FE1CBDF004F0C3E /* Health Kit Utility.swift */; };
 		6BE245062002E44600CBFF5C /* HikeInProgressEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE245052002E44600CBFF5C /* HikeInProgressEnums.swift */; };
-		6BE245082002E46F00CBFF5C /* Hike In Progress Save To Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE245072002E46F00CBFF5C /* Hike In Progress Save To Firebase.swift */; };
-		6BE2450A2002F90300CBFF5C /* Hike In Progress Display Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE245092002F90300CBFF5C /* Hike In Progress Display Strings.swift */; };
+		6BE245082002E46F00CBFF5C /* Hike Save To Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE245072002E46F00CBFF5C /* Hike Save To Firebase.swift */; };
+		6BE2450A2002F90300CBFF5C /* Hike Display Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE245092002F90300CBFF5C /* Hike Display Strings.swift */; };
 		6BE2450C2002FA9800CBFF5C /* Hike Finished Display Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE2450B2002FA9800CBFF5C /* Hike Finished Display Strings.swift */; };
 		6BE2450F2002FF4200CBFF5C /* Firebase Dictionary Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE2450E2002FF4200CBFF5C /* Firebase Dictionary Keys.swift */; };
+		6BFEEF142013EB5200D4399E /* Pace Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFEEF132013EB5200D4399E /* Pace Model.swift */; };
+		6BFEEF172013FF0F00D4399E /* Convert Date From Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFEEF162013FF0F00D4399E /* Convert Date From Archive.swift */; };
 		7AC42571F36F80108A4C3949 /* Pods_HikingTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31C907DBAE9A71343833582E /* Pods_HikingTracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -340,10 +342,12 @@
 		6BE204251FE0C072004F0C3E /* HikeHistoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeHistoryDetailViewController.swift; sourceTree = "<group>"; };
 		6BE204281FE1CBDF004F0C3E /* Health Kit Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Health Kit Utility.swift"; sourceTree = "<group>"; };
 		6BE245052002E44600CBFF5C /* HikeInProgressEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeInProgressEnums.swift; sourceTree = "<group>"; };
-		6BE245072002E46F00CBFF5C /* Hike In Progress Save To Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Hike In Progress Save To Firebase.swift"; sourceTree = "<group>"; };
-		6BE245092002F90300CBFF5C /* Hike In Progress Display Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Hike In Progress Display Strings.swift"; sourceTree = "<group>"; };
+		6BE245072002E46F00CBFF5C /* Hike Save To Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Hike Save To Firebase.swift"; sourceTree = "<group>"; };
+		6BE245092002F90300CBFF5C /* Hike Display Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Hike Display Strings.swift"; sourceTree = "<group>"; };
 		6BE2450B2002FA9800CBFF5C /* Hike Finished Display Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Hike Finished Display Strings.swift"; sourceTree = "<group>"; };
 		6BE2450E2002FF4200CBFF5C /* Firebase Dictionary Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Firebase Dictionary Keys.swift"; sourceTree = "<group>"; };
+		6BFEEF132013EB5200D4399E /* Pace Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pace Model.swift"; sourceTree = "<group>"; };
+		6BFEEF162013FF0F00D4399E /* Convert Date From Archive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Convert Date From Archive.swift"; sourceTree = "<group>"; };
 		72E941687429CA2ACA31744B /* Pods-HikingTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HikingTrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HikingTrackerTests/Pods-HikingTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 		80AE14E10AD06687F619AD17 /* Pods-HikeTrackerWatchApp Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HikeTrackerWatchApp Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HikeTrackerWatchApp Extension/Pods-HikeTrackerWatchApp Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		83152D5FF92631A91309EA53 /* Pods_HikeTrackerWatchApp_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HikeTrackerWatchApp_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -477,6 +481,7 @@
 				6BE204281FE1CBDF004F0C3E /* Health Kit Utility.swift */,
 				6B1B12421FE9AB6300FFFDB4 /* DateConversion.swift */,
 				6B6A1D431FEF11A800C4AD3A /* DateExtension.swift */,
+				6BFEEF162013FF0F00D4399E /* Convert Date From Archive.swift */,
 				6B8744DC1FF498B5008A0FB5 /* Calories.swift */,
 				6B7D98D41FF85F1E008C3F06 /* Solar.swift */,
 				6BC9FEF0200304A50071590A /* Find Center Coordinate .swift */,
@@ -627,6 +632,7 @@
 		6BB63A3D1FD5CD5A00E9F4A1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6BFEEF132013EB5200D4399E /* Pace Model.swift */,
 				6BB3CD39200D467A00E6B89D /* ChecklistItem.swift */,
 				6BE245112002FF6500CBFF5C /* User */,
 				6BE245102002FF5F00CBFF5C /* Hike */,
@@ -702,8 +708,8 @@
 		6BE204271FE0C079004F0C3E /* Hike History View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				6B8FF30B1FF320F300536C42 /* HikeHistoryDetailTableViewController.swift */,
 				6BB63A461FD5EA4000E9F4A1 /* HikeHistoryViewController.swift */,
+				6B8FF30B1FF320F300536C42 /* HikeHistoryDetailTableViewController.swift */,
 				6B91BB401FF9C24A00CB378F /* HikeChartsViewController.swift */,
 			);
 			path = "Hike History View Controllers";
@@ -725,8 +731,8 @@
 				6BA931082002E06D001FE585 /* Hike Information Protocol.swift */,
 				6B8AA0ED1FFDDBE9009FCFB2 /* HikeInProgress.swift */,
 				6BD9A5CE2009976900B1577F /* Save Hike To HealthKit.swift */,
-				6BE245092002F90300CBFF5C /* Hike In Progress Display Strings.swift */,
-				6BE245072002E46F00CBFF5C /* Hike In Progress Save To Firebase.swift */,
+				6BE245092002F90300CBFF5C /* Hike Display Strings.swift */,
+				6BE245072002E46F00CBFF5C /* Hike Save To Firebase.swift */,
 				6BE2450E2002FF4200CBFF5C /* Firebase Dictionary Keys.swift */,
 				6BE245052002E44600CBFF5C /* HikeInProgressEnums.swift */,
 				6B6B45F62001A4BF00A9FB7C /* DecodeFirebaseHikes.swift */,
@@ -1346,9 +1352,10 @@
 				6B8D311420007CE1005F08AC /* HikeFinishedTableViewController.swift in Sources */,
 				6B7D98D51FF85F1E008C3F06 /* Solar.swift in Sources */,
 				6B01AC772012C50F002528D3 /* AddItemToChecklistView.swift in Sources */,
-				6BE245082002E46F00CBFF5C /* Hike In Progress Save To Firebase.swift in Sources */,
+				6BE245082002E46F00CBFF5C /* Hike Save To Firebase.swift in Sources */,
 				6B31A6BD1FF6FD08002069B2 /* UnitConversions.swift in Sources */,
 				6BE204261FE0C072004F0C3E /* HikeHistoryDetailViewController.swift in Sources */,
+				6BFEEF142013EB5200D4399E /* Pace Model.swift in Sources */,
 				6B8744D91FF493D2008A0FB5 /* Watch Connection Messages.swift in Sources */,
 				6BAF5B9E1FDF410800480E6A /* GPXParser.swift in Sources */,
 				6B7801741FD5F2AE006F29BD /* HikeInProgressViewController.swift in Sources */,
@@ -1357,7 +1364,8 @@
 				6B7D98D91FF8637E008C3F06 /* HistoryStatTableViewCell.swift in Sources */,
 				6BB63A4D1FD5EA5E00E9F4A1 /* SettingsViewController.swift in Sources */,
 				6B8AA11A1FFDF2D8009FCFB2 /* HikeInProgressWatchExtension.swift in Sources */,
-				6BE2450A2002F90300CBFF5C /* Hike In Progress Display Strings.swift in Sources */,
+				6BFEEF172013FF0F00D4399E /* Convert Date From Archive.swift in Sources */,
+				6BE2450A2002F90300CBFF5C /* Hike Display Strings.swift in Sources */,
 				6B8AA1181FFDF0A7009FCFB2 /* HikeInProgressStatDisplay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

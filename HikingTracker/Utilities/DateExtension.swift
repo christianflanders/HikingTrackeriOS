@@ -9,6 +9,9 @@
 import Foundation
 
 extension Date {
+
+
+    
     var displayString: String {
         get {
             let dateFormatter = DateFormatter()
@@ -17,6 +20,14 @@ extension Date {
             let stringFormatted = dateFormatter.string(from: self)
             return stringFormatted
         }
+    }
+
+    var longStringVersionForArchive: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .full
+        dateFormatter.timeStyle = .full
+        let stringFormatted = dateFormatter.string(from: self)
+        return stringFormatted
     }
     
     var displayStringWithoutTime: String {
