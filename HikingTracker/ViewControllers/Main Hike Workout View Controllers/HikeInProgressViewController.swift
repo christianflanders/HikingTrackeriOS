@@ -240,7 +240,8 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "HikeFinishedSegue" {
-            guard let destinationVC = segue.destination as? HikeFinishedTableViewController else {fatalError("Problem with HikeFinishedSegue")}
+            let destinationNav = segue.destination as! UINavigationController
+            let destinationVC = destinationNav.topViewController as! HikeFinishedTableViewController
             destinationVC.hikeWorkout = hikeWorkout
         }
     }

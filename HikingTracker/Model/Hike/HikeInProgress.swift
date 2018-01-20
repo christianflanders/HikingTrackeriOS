@@ -51,6 +51,10 @@ class HikeInProgress: HikeInformation {
         var coordinates: [CLLocationCoordinate2D] {
             return storedLocations.map { return $0.coordinate }
         }
+
+
+    // MARK: Pace
+
     
     // MARK: Altitude Information
     private var currentAltitudeDirection: CurrentAltitudeDirection?
@@ -149,7 +153,7 @@ class HikeInProgress: HikeInformation {
         totalCaloriesBurned += caloriesBurnedPerHourDownhill * percentageOfHourDownhill
         return totalCaloriesBurned
     }
-    
+
     // MARK: Sunset
     
     var sunsetTime: String? {
