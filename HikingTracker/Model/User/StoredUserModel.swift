@@ -76,58 +76,58 @@ class StoredUser {
                 return .freedomUnits
             }
         }
-        set {
-            switch newValue {
-            case .freedomUnits:
-                defaults.set("freedomUnits", forKey: keys.localUnits)
-            case .metric:
-                defaults.set("metric", forKey: keys.localUnits)
-            }
-        }
+//        set {
+//            switch newValue {
+//            case .freedomUnits:
+//                defaults.set("freedomUnits", forKey: keys.localUnits)
+//            case .metric:
+//                defaults.set("metric", forKey: keys.localUnits)
+//            }
+//        }
     }
-    
-    func getWeightForDisplay() -> String? {
-        let unitConversion = UnitConversions()
-        let displayUnit = self.userDisplayUnits
-        guard let weight = self.weightInKilos else  {return nil}
-        switch displayUnit {
-        case .freedomUnits:
-            let weightInPounds = unitConversion.convertKilogramsToPounds(grams: weight)
-            let weightString = "\(weightInPounds) lbs"
-            return weightString
-        case .metric:
-            let weightString = "\(weight) grams"
-            return weightString
-
-        }
-    }
-    
-    func getHeightForDisplay() -> String? {
-        guard let height = self.heightInMeters else {return nil}
-        let displayUnit = self.userDisplayUnits
-        let unitConversion = UnitConversions()
-        switch displayUnit {
-        case .freedomUnits:
-            let heightInInches = unitConversion.convertCMToInches(cm: height)
-            let feet = Int(heightInInches) / 12
-            let inches = Int(heightInInches) % 12
-            let heightString = "\(feet)\"\(inches) ft"
-            return heightString
-        case .metric:
-            let heightString = "\(height) cm"
-            return heightString
-        }
-    }
-    
-    func convertBirthdateToString(_ date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .full
-        dateFormatter.timeStyle = .none
-        let stringToSave = dateFormatter.string(from: date)
-        return stringToSave
-    }
-
-}
+//
+//    func getWeightForDisplay() -> String? {
+//        let unitConversion = UnitConversions()
+//        let displayUnit = self.userDisplayUnits
+//        guard let weight = self.weightInKilos else  {return nil}
+//        switch displayUnit {
+//        case .freedomUnits:
+//            let weightInPounds = unitConversion.convertKilogramsToPounds(grams: weight)
+//            let weightString = "\(weightInPounds) lbs"
+//            return weightString
+//        case .metric:
+//            let weightString = "\(weight) grams"
+//            return weightString
+//
+//        }
+//    }
+//
+//    func getHeightForDisplay() -> String? {
+//        guard let height = self.heightInMeters else {return nil}
+//        let displayUnit = self.userDisplayUnits
+//        let unitConversion = UnitConversions()
+//        switch displayUnit {
+//        case .freedomUnits:
+//            let heightInInches = unitConversion.convertCMToInches(cm: height)
+//            let feet = Int(heightInInches) / 12
+//            let inches = Int(heightInInches) % 12
+//            let heightString = "\(feet)\"\(inches) ft"
+//            return heightString
+//        case .metric:
+//            let heightString = "\(height) cm"
+//            return heightString
+//        }
+//    }
+//
+//    func convertBirthdateToString(_ date: Date) -> String {
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateStyle = .full
+//        dateFormatter.timeStyle = .none
+//        let stringToSave = dateFormatter.string(from: date)
+//        return stringToSave
+//    }
+//
+//}
 
 enum DisplayUnits {
     case metric

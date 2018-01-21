@@ -116,6 +116,7 @@
 		6BD14B941FFED7DB004B3FD7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BD14B931FFED7DB004B3FD7 /* GoogleService-Info.plist */; };
 		6BD9A5CF2009976900B1577F /* Save Hike To HealthKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9A5CE2009976900B1577F /* Save Hike To HealthKit.swift */; };
 		6BDDA10E1FD7610B0069970C /* Altimeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDDA10D1FD7610B0069970C /* Altimeter.swift */; };
+		6BDFF60C20153D5F00364AB0 /* UserInfoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDFF60B20153D5F00364AB0 /* UserInfoPickerViewController.swift */; };
 		6BE204261FE0C072004F0C3E /* HikeHistoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE204251FE0C072004F0C3E /* HikeHistoryDetailViewController.swift */; };
 		6BE204291FE1CBDF004F0C3E /* Health Kit Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE204281FE1CBDF004F0C3E /* Health Kit Utility.swift */; };
 		6BE245062002E44600CBFF5C /* HikeInProgressEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE245052002E44600CBFF5C /* HikeInProgressEnums.swift */; };
@@ -325,6 +326,7 @@
 		6BD14B931FFED7DB004B3FD7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6BD9A5CE2009976900B1577F /* Save Hike To HealthKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Save Hike To HealthKit.swift"; sourceTree = "<group>"; };
 		6BDDA10D1FD7610B0069970C /* Altimeter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Altimeter.swift; sourceTree = "<group>"; };
+		6BDFF60B20153D5F00364AB0 /* UserInfoPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoPickerViewController.swift; sourceTree = "<group>"; };
 		6BE204251FE0C072004F0C3E /* HikeHistoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeHistoryDetailViewController.swift; sourceTree = "<group>"; };
 		6BE204281FE1CBDF004F0C3E /* Health Kit Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Health Kit Utility.swift"; sourceTree = "<group>"; };
 		6BE245052002E44600CBFF5C /* HikeInProgressEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeInProgressEnums.swift; sourceTree = "<group>"; };
@@ -594,6 +596,7 @@
 		6BB63A3C1FD5CD4000E9F4A1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				6BDFF60B20153D5F00364AB0 /* UserInfoPickerViewController.swift */,
 				6B7801721FD5F276006F29BD /* Main Hike Workout View Controllers */,
 				6BE204271FE0C079004F0C3E /* Hike History View Controllers */,
 				6BB63A4A1FD5EA5500E9F4A1 /* ChecklistViewController.swift */,
@@ -1299,6 +1302,7 @@
 				6B8AA0EE1FFDDBE9009FCFB2 /* HikeInProgress.swift in Sources */,
 				6B8D3116200080D5005F08AC /* HikeDisplayStrings.swift in Sources */,
 				6B8FF3081FF30B4600536C42 /* StatOptions.swift in Sources */,
+				6BDFF60C20153D5F00364AB0 /* UserInfoPickerViewController.swift in Sources */,
 				6B051ABF1FF726CB00173A20 /* ShowUserInfoViewController.swift in Sources */,
 				6B48E1392006F9EF00D24F44 /* CustomMarker.swift in Sources */,
 				6BDDA10E1FD7610B0069970C /* Altimeter.swift in Sources */,

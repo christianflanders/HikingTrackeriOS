@@ -8,441 +8,76 @@
 
 import UIKit
 
-class EditUserInfoViewController: UIViewController,
-    UIPickerViewDataSource,
-    UIPickerViewDelegate,
-    UITextFieldDelegate {
-    
+class EditUserInfoViewController: UIViewController, UITextFieldDelegate {
+
+
     // MARK: Enums
 
-
     // MARK: Constants
-    private let userOptions = [0 : "Name", 1 : "Gender", 2 : "Birthdate", 3 :  "Weight"]
 
-    private let usaLocale = "es_US"
-    
-    private let user = StoredUser()
-    
+
     // MARK: Variables
 
-    var comingFromShowUserScreen = false
-    
+
     // MARK: Outlets
-    
-    @IBOutlet weak var pickerView: UIPickerView!
-    
-    @IBOutlet weak var pickerContainerView: UIView!
-    
-    @IBOutlet weak var datePicker: UIDatePicker!
-    @IBOutlet weak var nameTextField: UITextField!
-    
-    @IBOutlet weak var doneButtonOutlet: UIButton!
+    @IBOutlet weak var userPickerVCContainer: UIView!
+
+    @IBOutlet weak var importFromHealthKitButtonOutlet: UIButton!
+    @IBOutlet weak var saveUserInfoButtonOutlet: UIButton!
+
+    @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var weightButtonOutlet: UIButton!
     @IBOutlet weak var heightButtonOutlet: UIButton!
-    @IBOutlet weak var sexButtonOutlet: UIButton!
-    @IBOutlet weak var birthdayButtonOutlet: UIButton!
-    
-    @IBOutlet weak var saveImportButtonStack: UIStackView!
-    
-    @IBOutlet weak var saveButtonOutlet: UIButton!
-    @IBOutlet weak var importFromHealthKitButtonOutlet: UIButton!
+    @IBOutlet weak var birthdateButtonOutlet: UIButton!
+    @IBOutlet weak var genderButtonOutlet: UIButton!
     // MARK: Weak Vars
-    
+
+
     // MARK: Public Variables
-    
+
+
     // MARK: Private Variables
-    
-
-    
-
-    private var selectedStat: UserInputs?
-    
-
-    private var defaultLocale: Locale!
 
 
-    private var setBirthdate = Date() {
-        willSet {
-            birthdaySet = true
-        }
-    }
-    
     // MARK: View Life Cycle
-    
-    fileprivate func checkForLocalAndSetUnitsAccordingly() {
-        defaultLocale = Locale.current
-        if defaultLocale.usesMetricSystem {
-            setUnitsToCommunist()
-        } else {
-            setUnitsToFreedom()
-        }
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        saveButtonOutlet.layer.cornerRadius = saveButtonOutlet.frame.height / 3
-        importFromHealthKitButtonOutlet.layer.cornerRadius = importFromHealthKitButtonOutlet.frame.height / 3
-        
-        pickerContainerView.isHidden = true
+        hidePickerVC()
 
-        pickerView.dataSource = self
-        pickerView.delegate = self
-        
-        nameTextField.delegate = self
-
-        if comingFromShowUserScreen {
-            checkIfValuesExistAndSetLabels()
-        }
-        
-        datePicker.maximumDate = Date()
-        hideDatePicker()
-        hidePicker()
-        showButtons()
-        
-        checkForLocalAndSetUnitsAccordingly()
-        
     }
-    
+
+
     // MARK: IBActions
-    
+
     @IBAction func importFromHealthKitButtonPressed(_ sender: UIButton) {
-        getInfoFromHealthKitAndSetValues()
-    }
-    @IBAction func pickerDoneButtonPressed(_ sender: UIButton) {
-        checkWhichStatAndMarkAsSet()
-        hidePicker()
-        hideDatePicker()
-        showButtons()
-    }
-    
-    @IBAction func weightButttonPressed(_ sender: UIButton) {
-        showPickerViewFor(.weight)
-        pickerView.reloadAllComponents()
-        
-    }
-    
-    @IBAction func heightButtonPressed(_ sender: UIButton) {
-        showPickerViewFor(.height)
-        pickerView.reloadAllComponents()
-        
-    }
-    
-    @IBAction func sexButtonPressed(_ sender: UIButton) {
-        showPickerViewFor(.gender)
-        pickerView.reloadAllComponents()
-        
-    }
-    
-    @IBAction func birthdayButtonPressed(_ sender: UIButton) {
-        showPickerViewFor(.birthdate)
-        pickerView.reloadAllComponents()
-        
-    }
-    
-    @IBAction func saveButtonPressed(_ sender: UIButton) {
-        getAndSaveData()
-    }
-    
-    func showPickerViewFor(_ input: UserInputs) {
-        textFieldWillEndEditing()
-        pickerView.selectRow(0, inComponent: 0, animated: true)
-        selectedStat = input
-        if input == .birthdate {
-            hideButtons()
-            hidePicker()
-            showDatePicker()
-        } else {
-            hideButtons()
-            hideDatePicker()
-            showPicker()
-        }
-    }
-    
-    // MARK: UIPickerViewDelegate
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        guard let rowSelected = selectedStat else {return 5}
-        switch rowSelected {
-        case .gender:
-            return 1
-        case .weight:
-            return 1
-        case .height:
-            if displayUnits == .freedomUnits {
-                return 2
-            } else {
-                return 1
-            }
-        default:
-            return 10
-        }
-    }
-    
-    // MARK: UIPickerViewDataSource
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        guard let rowSelected = selectedStat else {return 5}
-        switch rowSelected {
-        case .weight:
-            return 600
-        case .height:
-            if displayUnits == .freedomUnits {
-                if component == 0 {
-                    return 9
-                } else {
-                    return 11
-                }
-            } else {
-                return 275
-            }
-        case .gender:
-            return genderOptions.count
-        default:
-            return 2
-        }
-        
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        guard let rowSelected = selectedStat else {return " "}
-        switch rowSelected {
-        case .weight:
-            if component == 0 {
-                return String(row)
-            } else {
-                return weightOptions[row]
-            }
-        case .height:
-            return String(row)
-        case .gender:
-            return genderOptions[row]
-        default:
-            return " "
-        }
-        
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        guard let rowSelected = selectedStat else {return}
-        switch rowSelected {
-        case .weight:
-            weightVaule = row
-            let combinedString = "\(weightVaule) \(weightDisplayUnit)"
-            weightButtonOutlet.setTitle(combinedString, for: .normal)
-            
-        case .height:
-            if component == 0 {
-                heightValue = String(row)
-            } else if component == 1 {
-                heightInchValue = String(row)
-            }
-            if displayUnits == .freedomUnits {
-                setHeightString = "\(heightValue)\"\(heightInchValue) ft"
-            } else {
-                setHeightString = "\(heightValue) cm"
-            }
-            heightButtonOutlet.setTitle(setHeightString, for: .normal)
-            
-        case .gender :
-            genderVaule = genderOptions[row]
-            sexButtonOutlet.setTitle(genderVaule, for: .normal)
-            
-        //put shit here
-        default:
-            print("should not have hit default")
-        }
-    }
-    
-    // MARK: UIDatePickerView
-    
-    @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
-        birthdayButtonOutlet.setTitle(sender.date.displayStringWithoutTime, for: .normal)
-        setBirthdate = sender.date
-        birthdaySet = true
-    }
-    
-    // MARK: Showing/Hiding Functions
-    
-    private func hideButtons() {
-        saveImportButtonStack.isHidden = true
-        doneButtonOutlet.isHidden = false
-        
-    }
-    
-    private func showButtons() {
-        saveImportButtonStack.isHidden = false
-        doneButtonOutlet.isHidden = true
-        
-    }
-    
-    private func showDatePicker() {
-        pickerContainerView.isHidden = false
-        doneButtonOutlet.isHidden = false
-        datePicker.isHidden = false
-    }
-    
-    private func hideDatePicker() {
-        pickerContainerView.isHidden = true
-        doneButtonOutlet.isHidden = true
-        datePicker.isHidden = true
-    }
-    
-    private func showPicker() {
-        pickerContainerView.isHidden = false
-        doneButtonOutlet.isHidden = false
-        pickerView.isHidden = false
-    }
-    
-    private func hidePicker() {
-        pickerContainerView.isHidden = true
-        doneButtonOutlet.isHidden = true
-        pickerView.isHidden = true
-    }
-    
-    func checkWhichStatAndMarkAsSet() {
-        guard let whichSet = selectedStat else {return}
-        switch whichSet {
-        case .weight:
-            weightSet = true
-        case .height:
-            heightSet  = true
-        case .gender:
-            genderSet = true
-        default:
-            print("Probably shouldnt have hit default here")
-        }
-    }
-    
-    // MARK: Local Units
-    
-    func setUnitsToFreedom() {
-        user.userDisplayUnits = .freedomUnits
-        weightDisplayUnit = "lbs"
-        heightDisplayUnit = "ft"
-    }
-    
-    func setUnitsToCommunist() {
-        user.userDisplayUnits = .metric
-        weightDisplayUnit = "grams"
-        heightDisplayUnit = "cm"
-    }
-    
-    // MARK: Saving Data
-    
-    func getAndSaveData() {
-        let conversionator = UnitConversions()
-        if weightSet && heightSet && genderSet && nameSet {
-            if user.userDisplayUnits == .freedomUnits {
-                //Convert weight to grams to store
-                let weightInPounds = Double(weightVaule)
-                let weightInGrams = conversionator.convertPoundsToKilograms(pounds: weightInPounds)
-                user.weightInKilos = weightInGrams
-                
-                //Convert height to cm to store
-                guard let heightFeet = Double(heightValue) else {return}
-                guard let heightInches = Double(heightInchValue) else {return}
-                let feetToInches = heightFeet * 12
-                let totalInches = feetToInches + heightInches
-                let inchesToCM = conversionator.convertInchesToCM(inches: totalInches)
-                user.heightInMeters = inchesToCM
-                
-                //Convert date to string and save
-                user.birthdate = setBirthdate
-                
-                //Save Name
-                user.name = setName
-                
-                //Save gender
-                user.gender = genderVaule
-                
-                print("Freedom units saved correctly!")
-            } else {
-                let weight = Double(weightVaule)
-                user.weightInKilos = weight
-                
-                if let height = Double(heightValue) {
-                    user.heightInMeters = height
-                }
-                
-                user.birthdate = setBirthdate
-                
-                user.name = setName
-                
-                user.gender = genderVaule
-                
-                print("Saved metric units!")
-            }
-            let alert = UIAlertController(title: "Saved!", message: nil, preferredStyle: .alert)
-            let action = UIAlertAction(title: "Let's Go Hiking!", style: .default) { (buttonAction) in
-                let saveButtonPressedDestination = "MainTabBar"
-                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                appDelegate.window = UIWindow(frame: UIScreen.main.bounds)
-                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil) // this assumes your storyboard is titled "Main.storyboard"
-                let yourVC = mainStoryboard.instantiateViewController(withIdentifier: saveButtonPressedDestination) as! UITabBarController
-                appDelegate.window?.rootViewController = yourVC
-                appDelegate.window?.makeKeyAndVisible()
-            }
-            alert.addAction(action)
-            present(alert, animated: true, completion: nil)
-        } else {
-            print(nameSet, birthdaySet, weightSet, heightSet, genderSet)
-   
-            let alert = UIAlertController(title: "Please finish entering all your information", message: "Hike Tracker uses this information to properly track your workout", preferredStyle: .alert)
-            let action = UIAlertAction(title: "Got it", style: .default, handler: nil)
-            alert.addAction(action)
-            self.present(alert, animated: true, completion: nil)
-            //Present an alert saying which stat still needs to be set
-            
-        }
-    }
-    
-    // MARK: Name Text Field
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textFieldWillEndEditing()
-        return true
-    }
-    
-    func textFieldWillEndEditing() {
-        nameTextField.resignFirstResponder()
-        setName = nameTextField.text!
-        nameTextField.placeholder = nameTextField.text
-        nameSet = true
     }
 
+    @IBAction func saveUserInfoButtonPressed(_ sender: UIButton) {
+    }
+
+    @IBAction func weightButtonPressed(_ sender: UIButton) {
+    }
+
+    @IBAction func heightButtonPressed(_ sender: UIButton) {
+    }
+
+    @IBAction func birthdateButtonPressed(_ sender: UIButton) {
+    }
+
+    @IBOutlet weak var genderButtonPressed: UIButton!
     
-    func checkIfValuesExistAndSetLabels() {
-        let user = StoredUser()
-        
-        if let weightInKilos = user.getWeightForDisplay() {
-            weightButtonOutlet.setTitle(weightInKilos, for: .normal)
-        }
-        if let userName = user.name {
-            nameTextField.text = userName
-        }
-        
-        if let gender = user.gender {
-            sexButtonOutlet.setTitle(gender, for: .normal)
-        }
-        if let heightDisplayString = user.getHeightForDisplay() {
-            heightButtonOutlet.setTitle(heightDisplayString, for: .normal)
-        }
-        if let birthdate = user.birthdate?.displayStringWithoutTime {
-            birthdayButtonOutlet.setTitle(birthdate, for: .normal)
-        }
+    public func hidePickerVC() {
+        userPickerVCContainer.isHidden = true
     }
+
+    func showPickerVCWithOption() {
+        userPickerVCContainer.isHidden = false
+    }
+
+
+
+
     
-    func getInfoFromHealthKitAndSetValues(){
-        
-    }
-    
-    func saveSetUserInfo(){
-        
-    }
-    func checkAllUserInfoIsEntered() {
-        
-    }
 
 }
 
