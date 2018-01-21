@@ -53,9 +53,7 @@ class HikeHistoryDetailTableViewController: UITableViewController, UITextFieldDe
         nameTextField.delegate = self
         updateDisplay()
         nameTextField.text = hikeWorkout?.hikeName
-
- 
-
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {

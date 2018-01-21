@@ -107,8 +107,8 @@ class HikeFinishedTableViewController: UITableViewController, UITextFieldDelegat
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Chart View" {
-//            let destinationVC = segue.destination as! HikeChartsViewController
-//            destinationVC.hikeWorkout = hikeWorkout
+            let destinationVC = segue.destination as! HikeChartsViewController
+            destinationVC.hikeWorkout = hikeWorkout
         }
     }
     

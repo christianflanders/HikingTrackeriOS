@@ -42,7 +42,19 @@ class HikeHistoryViewController: UIViewController, UITableViewDataSource, UITabl
         super.viewDidLoad()
         hikeHistoryTableView.delegate = self
         hikeHistoryTableView.dataSource = self
+        self.tabBarController?.tabBar.isHidden = false
+        //ONLY UNCOMMENT THIS IF YOUVE CHANGED THE DATABASE STRUCTURE AND WANT TO DELETE ALL THE VALUES
+
+//        ref = Database.database().reference()
+//        ref.removeValue()
+        
         downloadWorkoutsFromFirebase()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        self.tabBarController?.tabBar.isHidden = false
+
     }
     
     // MARK: IBActions

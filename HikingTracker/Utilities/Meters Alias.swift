@@ -12,6 +12,46 @@ typealias Meters = Double
 typealias Miles = Double
 typealias Feet = Double
 
+extension Double {
+    var localizedFeetOrMeters: (value:Double,unit: DisplayUnits) {
+        let user = StoredUser()
+        let localizedPreference = user.userDisplayUnits
+        if localizedPreference == .freedomUnits {
+            let convertedToFeet = convertMetersToFeet(self)
+            return (convertedToFeet, .freedomUnits)
+        } else {
+            return (self, .metric)
+        }
+    }
+
+    var localizedKilometersOrMiles: (value: Double, unit: DisplayUnits) {
+        let user = StoredUser()
+        let localizedPreference = user.userDisplayUnits
+        if localizedPreference == .freedomUnits {
+            let convertedToMiles = convertMetersToMiles(self)
+            return (convertedToMiles,.freedomUnits)
+        } else {
+            let convertedToKilometers = self / 1000
+            return (convertedToKilometers, .metric)
+        }
+    }
+}
+
+private func convertMetersToFeet(_ meters: Double) -> Double {
+    let feetConversion = 3.2808
+    let convertedToFeet = meters * feetConversion
+    return convertedToFeet
+}
+
+private func convertMetersToMiles(_ meters: Double) -> Double {
+    let feetConversion = 3.2808
+    let feetToMilesConversion = 0.00018939
+    let convertedToFeet = meters * feetConversion
+    let miles = convertedToFeet * feetToMilesConversion
+    return miles
+}
+
+
 
 extension Meters {
     var asMiles: Miles {
@@ -70,8 +110,8 @@ extension Meters {
             if userPreference == .freedomUnits {
                 let feetToMilesConversion = 0.00018939
                 let convertedToFeet = self * feetConversion
-                    let feet = String(Int(convertedToFeet))
-                    return "\(feet) ft"
+                let feet = String(Int(convertedToFeet))
+                return "\(feet) ft"
             } else {
                 let metersInAKilometer = 1000.0
                 if self > metersInAKilometer {
