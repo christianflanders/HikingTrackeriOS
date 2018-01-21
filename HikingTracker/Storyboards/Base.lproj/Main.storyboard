@@ -2300,6 +2300,7 @@
                             <constraint firstItem="RrL-mN-9zf" firstAttribute="leading" secondItem="fe3-It-Zlh" secondAttribute="leading" id="Jb2-4K-Eay"/>
                             <constraint firstAttribute="trailing" secondItem="RrL-mN-9zf" secondAttribute="trailing" id="Y2u-Tf-E7y"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="u4g-fI-egP"/>
                     </view>
                     <connections>
                         <outlet property="elevationLineChartView" destination="RrL-mN-9zf" id="6BW-v5-0eg"/>
@@ -2329,6 +2330,7 @@
                             <constraint firstAttribute="trailing" secondItem="cb8-Bn-s7s" secondAttribute="trailing" id="XSL-bv-NJx"/>
                             <constraint firstItem="cb8-Bn-s7s" firstAttribute="top" secondItem="l8l-WN-ssu" secondAttribute="top" id="ZSg-v0-5WH"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="tXc-gt-ahH"/>
                     </view>
                     <connections>
                         <outlet property="paceLineChartView" destination="cb8-Bn-s7s" id="dO9-Vw-VTJ"/>
