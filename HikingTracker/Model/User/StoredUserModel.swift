@@ -8,6 +8,13 @@
 
 import Foundation
 
+enum StoredUserOptions {
+    case weight
+    case height
+    case birthdate
+    case gender
+}
+
 class StoredUser {
     
     private let defaults = UserDefaults.standard
@@ -127,12 +134,11 @@ class StoredUser {
 //        return stringToSave
 //    }
 //
-//}
+}
 
 enum DisplayUnits {
     case metric
     case freedomUnits
-    case noneSet
 }
 
 struct UserEntriesKeys {
@@ -154,13 +160,6 @@ struct GenderOptions {
     let male = "Male"
     let female = "Female"
     let other = "Other"
-    let allOptions = [GenderOptions().male, GenderOptions().female, GenderOptions().other]
-    var pickerViewNumberOfComponentsForGender: Int {
-        return 1
-    }
-    var pickerViewNumberOfRowsForGender: Int {
-        return allOptions.count
-    }
 }
 
 struct HeightUnitOptions {
@@ -179,29 +178,29 @@ struct WeightUnitOptions {
 }
 
 
-struct UserInfoOptions {
-    let genderOptions = GenderOptions()
-    let heightUnitOptions = HeightUnitOptions()
-    private var userDisplayUnits = DisplayUnits.noneSet
-
-    init() {
-//        let defaultLocale = Locale.current
-//        if defaultLocale.usesMetricSystem {
-//            userDisplayUnits = .metric
-//        } else {
-//            userDisplayUnits = .freedomUnits
+//struct UserInfoOptions {
+//    let genderOptions = GenderOptions()
+//    let heightUnitOptions = HeightUnitOptions()
+//    private var userDisplayUnits = DisplayUnits.noneSet
+//
+//    init() {
+////        let defaultLocale = Locale.current
+////        if defaultLocale.usesMetricSystem {
+////            userDisplayUnits = .metric
+////        } else {
+////            userDisplayUnits = .freedomUnits
+////        }
+//    }
+//
+//
+//    func numberOfComponentsInPickerViewForStat(_ stat: UserInputs ) -> Int {
+//        switch stat {
+//        case .gender:
+//            return genderOptions.pickerViewNumberOfComponentsForGender
+//
 //        }
-    }
-
-
-    func numberOfComponentsInPickerViewForStat(_ stat: UserInputs ) -> Int {
-        switch stat {
-        case .gender:
-            return genderOptions.pickerViewNumberOfComponentsForGender
-
-        }
-    }
-}
+//    }
+//}
 
 enum UserInputs {
     case name

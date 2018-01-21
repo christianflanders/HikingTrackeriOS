@@ -61,42 +61,41 @@ class ShowUserInfoViewController: UIViewController, FUIAuthDelegate {
 //    }
 //
     func updateUserStatsDisplay() {
-        nameLabel.text = user.name
-        weightLabel.text = user.getWeightForDisplay()
-        heightLabel.text = user.getHeightForDisplay()
-        sexLabel.text = user.gender
-        birthdateLabel.text = user.birthdate?.displayStringWithoutTime
+//        nameLabel.text = user.name
+//        weightLabel.text = user.getWeightForDisplay()
+//        heightLabel.text = user.getHeightForDisplay()
+//        sexLabel.text = user.gender
+//        birthdateLabel.text = user.birthdate?.displayStringWithoutTime
     }
     
     func checkUserAuthAndPresentCorrectInformation(){
-        if let currentUser = Auth.auth().currentUser {
-            currentUser.getIDTokenForcingRefresh(true, completion: { (_, error) in
-                if error != nil {
-                    print("User deleted")
-                    let authUI = FUIAuth.defaultAuthUI()
-                    let authUIView = authUI?.authViewController()
-                    authUI?.delegate = self
-                    self.present(authUIView!, animated: true, completion: nil)
-                } else {
-                    print("User found go ahead")
-                }
-            })
-        } else {
-            print("log in")
-            let authUI = FUIAuth.defaultAuthUI()
-            let authUIView = authUI?.authViewController()
-            authUI?.delegate = self
-            present(authUIView!, animated: true, completion: nil)
-        }
+//        if let currentUser = Auth.auth().currentUser {
+//            currentUser.getIDTokenForcingRefresh(true, completion: { (_, error) in
+//                if error != nil {
+//                    print("User deleted")
+//                    let authUI = FUIAuth.defaultAuthUI()
+//                    let authUIView = authUI?.authViewController()
+//                    authUI?.delegate = self
+//                    self.present(authUIView!, animated: true, completion: nil)
+//                } else {
+//                    print("User found go ahead")
+//                }
+//            })
+//        } else {
+//            print("log in")
+//            let authUI = FUIAuth.defaultAuthUI()
+//            let authUIView = authUI?.authViewController()
+//            authUI?.delegate = self
+//            present(authUIView!, animated: true, completion: nil)
+//        }
     }
 
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "Show User Info Segue" {
-            if let navCont = segue.destination as? UINavigationController {
-                let destinationVC = navCont.topViewController as! EditUserInfoViewController
-                destinationVC.comingFromShowUserScreen = true
+//        if segue.identifier == "Show User Info Segue" {
+//            if let navCont = segue.destination as? UINavigationController {
+//                let destinationVC = navCont.topViewController as! EditUserInfoViewController
+//                destinationVC.comingFromShowUserScreen = true
             }
-        }
-    }
 }
+

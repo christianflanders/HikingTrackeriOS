@@ -40,14 +40,14 @@ class SettingsViewController: UIViewController {
     
 
     @IBAction func unitsSegControlChanged(_ sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
-        case 0:
-            user.userDisplayUnits = .freedomUnits
-        case 1:
-            user.userDisplayUnits = .metric
-        default:
-            print("This segmented control should only have 2 options how did we get here??")
-        }
+//        switch sender.selectedSegmentIndex {
+//        case 0:
+//            user.userDisplayUnits = .freedomUnits
+//        case 1:
+//            user.userDisplayUnits = .metric
+//        default:
+//            print("This segmented control should only have 2 options how did we get here??")
+//        }
     }
     
 

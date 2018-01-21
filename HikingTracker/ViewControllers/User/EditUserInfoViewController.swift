@@ -22,6 +22,7 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate {
     // MARK: Outlets
     @IBOutlet weak var userPickerVCContainer: UIView!
 
+    @IBOutlet weak var buttonStackView: UIStackView!
     @IBOutlet weak var importFromHealthKitButtonOutlet: UIButton!
     @IBOutlet weak var saveUserInfoButtonOutlet: UIButton!
 
@@ -30,6 +31,7 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var heightButtonOutlet: UIButton!
     @IBOutlet weak var birthdateButtonOutlet: UIButton!
     @IBOutlet weak var genderButtonOutlet: UIButton!
+    
     // MARK: Weak Vars
 
 
@@ -43,6 +45,8 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         hidePickerVC()
+        setCosmetics()
+
 
     }
 
@@ -50,31 +54,53 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate {
     // MARK: IBActions
 
     @IBAction func importFromHealthKitButtonPressed(_ sender: UIButton) {
+
     }
 
     @IBAction func saveUserInfoButtonPressed(_ sender: UIButton) {
     }
 
     @IBAction func weightButtonPressed(_ sender: UIButton) {
+        showPickerVCWithOption(.weight)
     }
 
     @IBAction func heightButtonPressed(_ sender: UIButton) {
+        showPickerVCWithOption(.height)
     }
 
     @IBAction func birthdateButtonPressed(_ sender: UIButton) {
+        showPickerVCWithOption(.birthdate)
     }
 
-    @IBOutlet weak var genderButtonPressed: UIButton!
-    
+
+    @IBAction func genderButtonPressed(_ sender: UIButton) {
+        showPickerVCWithOption(.gender)
+    }
     public func hidePickerVC() {
         userPickerVCContainer.isHidden = true
+        showButtons()
     }
 
-    func showPickerVCWithOption() {
+    func showPickerVCWithOption(_ option: StoredUserOptions ) {
+        hideButtons()
         userPickerVCContainer.isHidden = false
+        let pickerVC = self.childViewControllers.last as! UserInfoPickerViewController
+        pickerVC.whichPickerToDisplay = option
+        pickerVC.checkWhichPickerToDisplay()
     }
 
+    func hideButtons() {
+        buttonStackView.isHidden = true
+    }
 
+    func showButtons() {
+        buttonStackView.isHidden = false
+    }
+
+    func setCosmetics() {
+        saveUserInfoButtonOutlet.layer.cornerRadius = saveUserInfoButtonOutlet.frame.height / 2
+        importFromHealthKitButtonOutlet.layer.cornerRadius = importFromHealthKitButtonOutlet.frame.height / 2
+    }
 
 
     

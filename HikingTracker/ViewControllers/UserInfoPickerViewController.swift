@@ -39,6 +39,7 @@ class UserInfoPickerViewController: UIViewController, UIPickerViewDelegate, UIPi
 
     // MARK: Public Variables
 //    var loadMetricOrImperial: DisplayUnits!
+    var whichPickerToDisplay: StoredUserOptions?
 
     // MARK: Private Variables
 
@@ -48,9 +49,23 @@ class UserInfoPickerViewController: UIViewController, UIPickerViewDelegate, UIPi
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
 
+
+
+    func checkWhichPickerToDisplay() {
+        guard let option = whichPickerToDisplay else { return }
+        switch option {
+        case .weight:
+            showWeightPicker()
+        case .birthdate:
+            showBirthDatePicker()
+        case .gender:
+            showGenderPicker()
+        case .height:
+            showHeightPicker()
+        }
+    }
 
     // MARK: IBActions
 
