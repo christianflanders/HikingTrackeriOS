@@ -25,7 +25,6 @@
 		6B31A6BD1FF6FD08002069B2 /* UnitConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B31A6BC1FF6FD08002069B2 /* UnitConversions.swift */; };
 		6B35497A1FFDA1CD00BE3AC5 /* ShortStoughRunkeeper1220.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 6B3549781FFDA1CD00BE3AC5 /* ShortStoughRunkeeper1220.gpx */; };
 		6B48E1322006BC6A00D24F44 /* Label Kerning Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B48E1312006BC6A00D24F44 /* Label Kerning Extension.swift */; };
-		6B48E1352006F60B00D24F44 /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B48E1342006F60B00D24F44 /* BalloonMarker.swift */; };
 		6B48E1392006F9EF00D24F44 /* CustomMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B48E1382006F9EF00D24F44 /* CustomMarker.swift */; };
 		6B5904E21FDC791D00BF96CD /* HikeFinishedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5904E11FDC791D00BF96CD /* HikeFinishedViewController.swift */; };
 		6B5FA3921FF58BD4008C4771 /* EditUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5FA3911FF58BD4008C4771 /* EditUserInfoViewController.swift */; };
@@ -67,7 +66,6 @@
 		6B8AA0EE1FFDDBE9009FCFB2 /* HikeInProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8AA0ED1FFDDBE9009FCFB2 /* HikeInProgress.swift */; };
 		6B8AA1161FFDF04C009FCFB2 /* HikeInProgressStatDisplay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B8AA1151FFDF04C009FCFB2 /* HikeInProgressStatDisplay.xib */; };
 		6B8AA1181FFDF0A7009FCFB2 /* HikeInProgressStatDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8AA1171FFDF0A7009FCFB2 /* HikeInProgressStatDisplay.swift */; };
-		6B8AA11A1FFDF2D8009FCFB2 /* HikeInProgressWatchExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8AA1191FFDF2D8009FCFB2 /* HikeInProgressWatchExtension.swift */; };
 		6B8D30E620004DCA005F08AC /* Altimeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDDA10D1FD7610B0069970C /* Altimeter.swift */; };
 		6B8D30E720004DCF005F08AC /* StatOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8FF3071FF30B4600536C42 /* StatOptions.swift */; };
 		6B8D311420007CE1005F08AC /* HikeFinishedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8D311320007CE1005F08AC /* HikeFinishedTableViewController.swift */; };
@@ -90,6 +88,11 @@
 		6BA6CA4B2016A3850084CB88 /* Weight Picker View Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA6CA4A2016A3850084CB88 /* Weight Picker View Data.swift */; };
 		6BA6CA4D2016AA990084CB88 /* Gender Picker Data .swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA6CA4C2016AA990084CB88 /* Gender Picker Data .swift */; };
 		6BA6CA4F2016AB030084CB88 /* GenderPickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA6CA4E2016AB030084CB88 /* GenderPickerDataSource.swift */; };
+		6BA6CA522016AD230084CB88 /* Picker View Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA6CA512016AD230084CB88 /* Picker View Helper.swift */; };
+		6BA6CA5C2016AE700084CB88 /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA6CA5B2016AE700084CB88 /* BalloonMarker.swift */; };
+		6BA6CA662016AEFE0084CB88 /* Meters Alias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B81261C1FDF7981009054A3 /* Meters Alias.swift */; };
+		6BA6CA672016AF080084CB88 /* Health Kit Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE204281FE1CBDF004F0C3E /* Health Kit Utility.swift */; };
+		6BA6CA682016AF0D0084CB88 /* Convert Date From Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFEEF162013FF0F00D4399E /* Convert Date From Archive.swift */; };
 		6BA931092002E06D001FE585 /* Hike Information Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA931082002E06D001FE585 /* Hike Information Protocol.swift */; };
 		6BA9BBD91FFF0A5700BE48B4 /* MainAppTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BBD81FFF0A5700BE48B4 /* MainAppTabBarViewController.swift */; };
 		6BAF5B9E1FDF410800480E6A /* GPXParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAF5B9D1FDF410800480E6A /* GPXParser.swift */; };
@@ -251,7 +254,6 @@
 		6B31A6BC1FF6FD08002069B2 /* UnitConversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitConversions.swift; sourceTree = "<group>"; };
 		6B3549781FFDA1CD00BE3AC5 /* ShortStoughRunkeeper1220.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ShortStoughRunkeeper1220.gpx; sourceTree = "<group>"; };
 		6B48E1312006BC6A00D24F44 /* Label Kerning Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label Kerning Extension.swift"; sourceTree = "<group>"; };
-		6B48E1342006F60B00D24F44 /* BalloonMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BalloonMarker.swift; path = HikingTracker/Views/BalloonMarker.swift; sourceTree = SOURCE_ROOT; };
 		6B48E1382006F9EF00D24F44 /* CustomMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarker.swift; sourceTree = "<group>"; };
 		6B5904E11FDC791D00BF96CD /* HikeFinishedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeFinishedViewController.swift; sourceTree = "<group>"; };
 		6B5FA3911FF58BD4008C4771 /* EditUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserInfoViewController.swift; sourceTree = "<group>"; };
@@ -280,14 +282,13 @@
 		6B7D98D41FF85F1E008C3F06 /* Solar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solar.swift; sourceTree = "<group>"; };
 		6B7D98D81FF8637E008C3F06 /* HistoryStatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryStatTableViewCell.swift; sourceTree = "<group>"; };
 		6B81261C1FDF7981009054A3 /* Meters Alias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meters Alias.swift"; sourceTree = "<group>"; };
-		6B8744D81FF493D2008A0FB5 /* Watch Connection Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Watch Connection Messages.swift"; path = "HikingTracker/Utilities/Watch Connection Messages.swift"; sourceTree = SOURCE_ROOT; };
+		6B8744D81FF493D2008A0FB5 /* Watch Connection Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Watch Connection Messages.swift"; path = "HikingTracker/Utilities/Watch/Watch Connection Messages.swift"; sourceTree = SOURCE_ROOT; };
 		6B8744DC1FF498B5008A0FB5 /* Calories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calories.swift; sourceTree = "<group>"; };
 		6B8AA0E61FFDBAB7009FCFB2 /* HikeWorkoutCalculatingStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeWorkoutCalculatingStats.swift; sourceTree = "<group>"; };
 		6B8AA0EA1FFDD7D9009FCFB2 /* HikeWorkoutFromHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeWorkoutFromHistory.swift; sourceTree = "<group>"; };
 		6B8AA0ED1FFDDBE9009FCFB2 /* HikeInProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeInProgress.swift; sourceTree = "<group>"; };
 		6B8AA1151FFDF04C009FCFB2 /* HikeInProgressStatDisplay.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HikeInProgressStatDisplay.xib; sourceTree = "<group>"; };
 		6B8AA1171FFDF0A7009FCFB2 /* HikeInProgressStatDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeInProgressStatDisplay.swift; sourceTree = "<group>"; };
-		6B8AA1191FFDF2D8009FCFB2 /* HikeInProgressWatchExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeInProgressWatchExtension.swift; sourceTree = "<group>"; };
 		6B8D311320007CE1005F08AC /* HikeFinishedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeFinishedTableViewController.swift; sourceTree = "<group>"; };
 		6B8D3115200080D5005F08AC /* HikeDisplayStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeDisplayStrings.swift; sourceTree = "<group>"; };
 		6B8FF3071FF30B4600536C42 /* StatOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatOptions.swift; sourceTree = "<group>"; };
@@ -307,6 +308,8 @@
 		6BA6CA4A2016A3850084CB88 /* Weight Picker View Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Weight Picker View Data.swift"; sourceTree = "<group>"; };
 		6BA6CA4C2016AA990084CB88 /* Gender Picker Data .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gender Picker Data .swift"; sourceTree = "<group>"; };
 		6BA6CA4E2016AB030084CB88 /* GenderPickerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderPickerDataSource.swift; sourceTree = "<group>"; };
+		6BA6CA512016AD230084CB88 /* Picker View Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Picker View Helper.swift"; sourceTree = "<group>"; };
+		6BA6CA5B2016AE700084CB88 /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
 		6BA931082002E06D001FE585 /* Hike Information Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Hike Information Protocol.swift"; sourceTree = "<group>"; };
 		6BA9BBD81FFF0A5700BE48B4 /* MainAppTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppTabBarViewController.swift; sourceTree = "<group>"; };
 		6BAF5B9D1FDF410800480E6A /* GPXParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXParser.swift; sourceTree = "<group>"; };
@@ -477,7 +480,6 @@
 			children = (
 				6BB63A441FD5EA2F00E9F4A1 /* MainHikeScreenViewController.swift */,
 				6B7801731FD5F2AE006F29BD /* HikeInProgressViewController.swift */,
-				6B8AA1191FFDF2D8009FCFB2 /* HikeInProgressWatchExtension.swift */,
 				6B6B45F02000A61900A9FB7C /* HikeHistoryStatContainerViewController.swift */,
 				6B8D311320007CE1005F08AC /* HikeFinishedTableViewController.swift */,
 			);
@@ -487,21 +489,15 @@
 		6B7801751FD6189E006F29BD /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				6BC1DE8C1FD7368D00CB20D5 /* LocationServices.swift */,
-				6B9B19161FDF133100E6A193 /* MapBox Extension.swift */,
-				6B31A6BC1FF6FD08002069B2 /* UnitConversions.swift */,
-				6B8744D81FF493D2008A0FB5 /* Watch Connection Messages.swift */,
-				6B81261C1FDF7981009054A3 /* Meters Alias.swift */,
-				6B7801761FD618BE006F29BD /* HealthKitAuthorization.swift */,
-				6BAF5B9D1FDF410800480E6A /* GPXParser.swift */,
-				6BE204281FE1CBDF004F0C3E /* Health Kit Utility.swift */,
-				6B1B12421FE9AB6300FFFDB4 /* DateConversion.swift */,
-				6B6A1D431FEF11A800C4AD3A /* DateExtension.swift */,
-				6BFEEF162013FF0F00D4399E /* Convert Date From Archive.swift */,
-				6B8744DC1FF498B5008A0FB5 /* Calories.swift */,
-				6B7D98D41FF85F1E008C3F06 /* Solar.swift */,
-				6BC9FEF0200304A50071590A /* Find Center Coordinate .swift */,
-				6B48E1312006BC6A00D24F44 /* Label Kerning Extension.swift */,
+				6BA6CA652016AEF20084CB88 /* Watch */,
+				6BA6CA642016AED50084CB88 /* Locations */,
+				6BA6CA632016AEC80084CB88 /* HealthKit */,
+				6BA6CA622016AEB80084CB88 /* Firebase */,
+				6BA6CA612016AEAE0084CB88 /* Date */,
+				6BA6CA602016AEAA0084CB88 /* Solar */,
+				6BA6CA5F2016AE9C0084CB88 /* Data */,
+				6BA6CA5E2016AE970084CB88 /* Mapbox */,
+				6BA6CA5D2016AE900084CB88 /* Appearance */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -548,6 +544,168 @@
 			path = "Height Picker";
 			sourceTree = "<group>";
 		};
+		6BA6CA502016ACEC0084CB88 /* User Info Picker View  */ = {
+			isa = PBXGroup;
+			children = (
+				6BA6CA512016AD230084CB88 /* Picker View Helper.swift */,
+				6BA6CA4320169B240084CB88 /* User Info PickerView Tags.swift */,
+				6B91BB201FF9894800CB378F /* UserInformationValues.swift */,
+			);
+			path = "User Info Picker View ";
+			sourceTree = "<group>";
+		};
+		6BA6CA532016AD490084CB88 /* Weight Picker */ = {
+			isa = PBXGroup;
+			children = (
+				6BA6CA482016A35F0084CB88 /* WeightPickerViewDataSource.swift */,
+				6BA6CA4A2016A3850084CB88 /* Weight Picker View Data.swift */,
+			);
+			path = "Weight Picker";
+			sourceTree = "<group>";
+		};
+		6BA6CA542016AD530084CB88 /* Gender Picker */ = {
+			isa = PBXGroup;
+			children = (
+				6BA6CA4C2016AA990084CB88 /* Gender Picker Data .swift */,
+				6BA6CA4E2016AB030084CB88 /* GenderPickerDataSource.swift */,
+			);
+			path = "Gender Picker";
+			sourceTree = "<group>";
+		};
+		6BA6CA552016AD6C0084CB88 /* Checklist */ = {
+			isa = PBXGroup;
+			children = (
+				6B01AC762012C50F002528D3 /* AddItemToChecklistView.swift */,
+				6B19AF1A200AB7F600BA5F68 /* ChecklistTableViewCell.swift */,
+				6B19AF18200AB74500BA5F68 /* DLRadioButton.h */,
+				6B19AF17200AB74500BA5F68 /* DLRadioButton.m */,
+			);
+			path = Checklist;
+			sourceTree = "<group>";
+		};
+		6BA6CA562016AD850084CB88 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				6BA6CA572016AD910084CB88 /* User Info Picker Data Sources */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		6BA6CA572016AD910084CB88 /* User Info Picker Data Sources */ = {
+			isa = PBXGroup;
+			children = (
+				6BA6CA542016AD530084CB88 /* Gender Picker */,
+				6BA6CA532016AD490084CB88 /* Weight Picker */,
+				6BA6CA4720169C0B0084CB88 /* Height Picker */,
+			);
+			path = "User Info Picker Data Sources";
+			sourceTree = "<group>";
+		};
+		6BA6CA582016ADBE0084CB88 /* Checklist */ = {
+			isa = PBXGroup;
+			children = (
+				6BB3CD39200D467A00E6B89D /* ChecklistItem.swift */,
+			);
+			path = Checklist;
+			sourceTree = "<group>";
+		};
+		6BA6CA592016ADCE0084CB88 /* Checklist */ = {
+			isa = PBXGroup;
+			children = (
+				6B19AF14200AB65600BA5F68 /* ChecklistTableViewController.swift */,
+			);
+			path = Checklist;
+			sourceTree = "<group>";
+		};
+		6BA6CA5A2016AE3D0084CB88 /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				6B48E1382006F9EF00D24F44 /* CustomMarker.swift */,
+				6BA6CA5B2016AE700084CB88 /* BalloonMarker.swift */,
+				6B19AF16200AB74400BA5F68 /* HikingTracker-Bridging-Header.h */,
+			);
+			path = Charts;
+			sourceTree = "<group>";
+		};
+		6BA6CA5D2016AE900084CB88 /* Appearance */ = {
+			isa = PBXGroup;
+			children = (
+				6B48E1312006BC6A00D24F44 /* Label Kerning Extension.swift */,
+				6B6A1D411FEF09CC00C4AD3A /* DefaultUI.swift */,
+			);
+			path = Appearance;
+			sourceTree = "<group>";
+		};
+		6BA6CA5E2016AE970084CB88 /* Mapbox */ = {
+			isa = PBXGroup;
+			children = (
+				6B9B19161FDF133100E6A193 /* MapBox Extension.swift */,
+			);
+			path = Mapbox;
+			sourceTree = "<group>";
+		};
+		6BA6CA5F2016AE9C0084CB88 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				6B8744DC1FF498B5008A0FB5 /* Calories.swift */,
+				6B81261C1FDF7981009054A3 /* Meters Alias.swift */,
+				6B31A6BC1FF6FD08002069B2 /* UnitConversions.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		6BA6CA602016AEAA0084CB88 /* Solar */ = {
+			isa = PBXGroup;
+			children = (
+				6B7D98D41FF85F1E008C3F06 /* Solar.swift */,
+			);
+			path = Solar;
+			sourceTree = "<group>";
+		};
+		6BA6CA612016AEAE0084CB88 /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				6B6A1D431FEF11A800C4AD3A /* DateExtension.swift */,
+				6B1B12421FE9AB6300FFFDB4 /* DateConversion.swift */,
+				6BFEEF162013FF0F00D4399E /* Convert Date From Archive.swift */,
+			);
+			path = Date;
+			sourceTree = "<group>";
+		};
+		6BA6CA622016AEB80084CB88 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		6BA6CA632016AEC80084CB88 /* HealthKit */ = {
+			isa = PBXGroup;
+			children = (
+				6B7801761FD618BE006F29BD /* HealthKitAuthorization.swift */,
+				6BE204281FE1CBDF004F0C3E /* Health Kit Utility.swift */,
+			);
+			path = HealthKit;
+			sourceTree = "<group>";
+		};
+		6BA6CA642016AED50084CB88 /* Locations */ = {
+			isa = PBXGroup;
+			children = (
+				6BC1DE8C1FD7368D00CB20D5 /* LocationServices.swift */,
+				6BAF5B9D1FDF410800480E6A /* GPXParser.swift */,
+				6BC9FEF0200304A50071590A /* Find Center Coordinate .swift */,
+			);
+			path = Locations;
+			sourceTree = "<group>";
+		};
+		6BA6CA652016AEF20084CB88 /* Watch */ = {
+			isa = PBXGroup;
+			children = (
+				6B8744D81FF493D2008A0FB5 /* Watch Connection Messages.swift */,
+			);
+			path = Watch;
+			sourceTree = "<group>";
+		};
 		6BB639FD1FD5CCE600E9F4A1 = {
 			isa = PBXGroup;
 			children = (
@@ -586,6 +744,7 @@
 				6BDFF6092014329600364AB0 /* Protocols */,
 				6BB63A3D1FD5CD5A00E9F4A1 /* Model */,
 				6BB63A3C1FD5CD4000E9F4A1 /* ViewControllers */,
+				6BA6CA562016AD850084CB88 /* DataSources */,
 				6BB63A3B1FD5CD3200E9F4A1 /* Storyboards */,
 				6BB63A3A1FD5CD2800E9F4A1 /* Views */,
 				6BB63A091FD5CCE600E9F4A1 /* AppDelegate.swift */,
@@ -616,15 +775,10 @@
 		6BB63A3A1FD5CD2800E9F4A1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6B01AC762012C50F002528D3 /* AddItemToChecklistView.swift */,
-				6B19AF1A200AB7F600BA5F68 /* ChecklistTableViewCell.swift */,
-				6B19AF18200AB74500BA5F68 /* DLRadioButton.h */,
-				6B19AF17200AB74500BA5F68 /* DLRadioButton.m */,
-				6B48E1382006F9EF00D24F44 /* CustomMarker.swift */,
-				6B48E1342006F60B00D24F44 /* BalloonMarker.swift */,
+				6BA6CA552016AD6C0084CB88 /* Checklist */,
+				6BA6CA5A2016AE3D0084CB88 /* Charts */,
 				6B8D30EC20004E51005F08AC /* Hike Related */,
 				6BA663B71FF58FFD00DAF05E /* UserStatTableViewCell.swift */,
-				6B19AF16200AB74400BA5F68 /* HikingTracker-Bridging-Header.h */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -642,13 +796,13 @@
 		6BB63A3C1FD5CD4000E9F4A1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				6B19AF14200AB65600BA5F68 /* ChecklistTableViewController.swift */,
+				6BA6CA592016ADCE0084CB88 /* Checklist */,
 				6B7801721FD5F276006F29BD /* Main Hike Workout View Controllers */,
 				6BE204271FE0C079004F0C3E /* Hike History View Controllers */,
 				6BDFF6082014328700364AB0 /* Settings */,
 				6BDFF6072014327E00364AB0 /* User */,
-				6BA9BBD81FFF0A5700BE48B4 /* MainAppTabBarViewController.swift */,
 				6BDFF6062014327000364AB0 /* Charts */,
+				6BA9BBD81FFF0A5700BE48B4 /* MainAppTabBarViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -656,8 +810,7 @@
 		6BB63A3D1FD5CD5A00E9F4A1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6BFEEF132013EB5200D4399E /* Pace Model.swift */,
-				6BB3CD39200D467A00E6B89D /* ChecklistItem.swift */,
+				6BA6CA582016ADBE0084CB88 /* Checklist */,
 				6BE245112002FF6500CBFF5C /* User */,
 				6BE245102002FF5F00CBFF5C /* Hike */,
 			);
@@ -668,7 +821,6 @@
 			isa = PBXGroup;
 			children = (
 				6B6A1D451FF2ECCE00C4AD3A /* GPX Files */,
-				6B6A1D411FEF09CC00C4AD3A /* DefaultUI.swift */,
 				6B6E19D61FEDE7B200B5605A /* Fonts */,
 				6BCD37A51FD88F7A00FE8C03 /* HikeTest.gpx */,
 				6BB63A131FD5CCE600E9F4A1 /* Assets.xcassets */,
@@ -779,6 +931,7 @@
 		6BE245102002FF5F00CBFF5C /* Hike */ = {
 			isa = PBXGroup;
 			children = (
+				6BFEEF132013EB5200D4399E /* Pace Model.swift */,
 				6B8AA0ED1FFDDBE9009FCFB2 /* HikeInProgress.swift */,
 				6BD9A5CE2009976900B1577F /* Save Hike To HealthKit.swift */,
 				6BE245092002F90300CBFF5C /* Hike Display Strings.swift */,
@@ -793,14 +946,8 @@
 		6BE245112002FF6500CBFF5C /* User */ = {
 			isa = PBXGroup;
 			children = (
-				6BA6CA4C2016AA990084CB88 /* Gender Picker Data .swift */,
-				6BA6CA4E2016AB030084CB88 /* GenderPickerDataSource.swift */,
-				6BA6CA482016A35F0084CB88 /* WeightPickerViewDataSource.swift */,
-				6BA6CA4A2016A3850084CB88 /* Weight Picker View Data.swift */,
-				6BA6CA4320169B240084CB88 /* User Info PickerView Tags.swift */,
 				6BB48A8A1FD87B0500D5A9C5 /* StoredUserModel.swift */,
-				6B91BB201FF9894800CB378F /* UserInformationValues.swift */,
-				6BA6CA4720169C0B0084CB88 /* Height Picker */,
+				6BA6CA502016ACEC0084CB88 /* User Info Picker View  */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1363,7 +1510,6 @@
 				6BC1DE8D1FD7368D00CB20D5 /* LocationServices.swift in Sources */,
 				6B19AF15200AB65600BA5F68 /* ChecklistTableViewController.swift in Sources */,
 				6BC9FEF1200304A50071590A /* Find Center Coordinate .swift in Sources */,
-				6B48E1352006F60B00D24F44 /* BalloonMarker.swift in Sources */,
 				6B6A1D441FEF11A800C4AD3A /* DateExtension.swift in Sources */,
 				6BA931092002E06D001FE585 /* Hike Information Protocol.swift in Sources */,
 				6B19AF0B200AA11E00BA5F68 /* Segues.swift in Sources */,
@@ -1375,6 +1521,7 @@
 				6BE204291FE1CBDF004F0C3E /* Health Kit Utility.swift in Sources */,
 				6BA6CA3E20154B220084CB88 /* UserInfoPickerViewController.swift in Sources */,
 				6BA6CA4D2016AA990084CB88 /* Gender Picker Data .swift in Sources */,
+				6BA6CA5C2016AE700084CB88 /* BalloonMarker.swift in Sources */,
 				6B19AF0E200AA76500BA5F68 /* SettingsTableViewController.swift in Sources */,
 				6BB3CD3A200D467A00E6B89D /* ChecklistItem.swift in Sources */,
 				6BA9BBD91FFF0A5700BE48B4 /* MainAppTabBarViewController.swift in Sources */,
@@ -1394,6 +1541,7 @@
 				6B19AF1B200AB7F600BA5F68 /* ChecklistTableViewCell.swift in Sources */,
 				6BA6CA40201550800084CB88 /* UserRequiredStats.swift in Sources */,
 				6B6B45F12000A61900A9FB7C /* HikeHistoryStatContainerViewController.swift in Sources */,
+				6BA6CA522016AD230084CB88 /* Picker View Helper.swift in Sources */,
 				6B91BB411FF9C24A00CB378F /* HikeChartsViewController.swift in Sources */,
 				6BB3CD37200D3EB000E6B89D /* ChecklistButtonProtocol.swift in Sources */,
 				6B91BB3D1FF99DB900CB378F /* HikeHistoryTableViewCell.swift in Sources */,
@@ -1425,7 +1573,6 @@
 				6BE245062002E44600CBFF5C /* HikeInProgressEnums.swift in Sources */,
 				6B7D98D91FF8637E008C3F06 /* HistoryStatTableViewCell.swift in Sources */,
 				6BB63A4D1FD5EA5E00E9F4A1 /* SettingsViewController.swift in Sources */,
-				6B8AA11A1FFDF2D8009FCFB2 /* HikeInProgressWatchExtension.swift in Sources */,
 				6BA6CA4620169BE90084CB88 /* User Height Picker View Data.swift in Sources */,
 				6BFEEF172013FF0F00D4399E /* Convert Date From Archive.swift in Sources */,
 				6BE2450A2002F90300CBFF5C /* Hike Display Strings.swift in Sources */,
@@ -1454,12 +1601,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BA6CA672016AF080084CB88 /* Health Kit Utility.swift in Sources */,
 				6B8D30E720004DCF005F08AC /* StatOptions.swift in Sources */,
 				6B7D98D61FF85F1E008C3F06 /* Solar.swift in Sources */,
 				6B8744DE1FF498B5008A0FB5 /* Calories.swift in Sources */,
 				6B051AC01FF738CC00173A20 /* UnitConversions.swift in Sources */,
 				6BC0BE611FE99A2200C2498E /* HealthKitAuthorization.swift in Sources */,
 				6B8744DA1FF493D2008A0FB5 /* Watch Connection Messages.swift in Sources */,
+				6BA6CA682016AF0D0084CB88 /* Convert Date From Archive.swift in Sources */,
 				6BC1DE7A1FD6553C00CB20D5 /* NotificationController.swift in Sources */,
 				6BC1DE7C1FD6553C00CB20D5 /* ComplicationController.swift in Sources */,
 				6BC0BE5E1FE8D44C00C2498E /* HikeWorkoutModel.swift in Sources */,
@@ -1471,6 +1620,7 @@
 				6BC1DE761FD6553C00CB20D5 /* InterfaceController.swift in Sources */,
 				6BC0BE5B1FE8881C00C2498E /* StartHikeInterfaceController.swift in Sources */,
 				6B1B12441FE9ABD900FFFDB4 /* DateConversion.swift in Sources */,
+				6BA6CA662016AEFE0084CB88 /* Meters Alias.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

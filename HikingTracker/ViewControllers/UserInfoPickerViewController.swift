@@ -68,15 +68,6 @@ class UserInfoPickerViewController: UIViewController {
         let birthdatePickerViewInitialDate = Date(timeIntervalSinceReferenceDate: 0)
         birthDatePickerView.setDate(birthdatePickerViewInitialDate, animated: true)
 
-
-
-//        genderPickerView.delegate = self
-//        weightPickerView.delegate = self
-
-        
-        //TODO: Set user defaults unit value to the locale
-        checkLocaleAndSetUnits()
-
     }
 
 
@@ -102,7 +93,6 @@ class UserInfoPickerViewController: UIViewController {
         parentVC.hidePickerVC()
     }
 
-    //TODO: Start Picker In Middle
 
     func showGenderPicker() {
         weightPickerView.isHidden = true
@@ -131,13 +121,5 @@ class UserInfoPickerViewController: UIViewController {
         birthDatePickerView.isHidden = false
         genderPickerView.isHidden = true
     }
-
-
-
-
-    func checkLocaleAndSetUnits() {
-        
-    }
-
 
 }
