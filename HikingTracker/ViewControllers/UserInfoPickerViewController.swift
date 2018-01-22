@@ -8,14 +8,9 @@
 
 import UIKit
 
-class UserInfoPickerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class UserInfoPickerViewController: UIViewController {
 
 
-    struct PickerViewTags {
-        let weightTag = 1
-        let heightTag = 2
-        let genderTag = 3
-    }
 
 
     // MARK: Enums
@@ -23,6 +18,11 @@ class UserInfoPickerViewController: UIViewController, UIPickerViewDelegate, UIPi
     // MARK: Constants
     let pickerViewTags = PickerViewTags()
     let userPickerHelpers = UserPickerHelpers()
+
+
+    let heightPickerViewDataSource = HeightPickerViewDataSource()
+    let weightPickerViewDataSource = WeightPickerViewDataSource()
+    let genderPickerViewDataSource = GenderPickerViewDataSource()
 
     // MARK: Variables
 
@@ -49,13 +49,30 @@ class UserInfoPickerViewController: UIViewController, UIPickerViewDelegate, UIPi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        genderPickerView.dataSource = self
-        weightPickerView.dataSource = self
-        heightPickerView.dataSource = self
+//        genderPickerView.dataSource = self
+//        weightPickerView.dataSource = self
+        heightPickerView.dataSource = heightPickerViewDataSource
+        heightPickerView.delegate = heightPickerViewDataSource
+        heightPickerViewDataSource.setInitialValueForPicker(pickerView: heightPickerView)
 
-        genderPickerView.delegate = self
-        weightPickerView.delegate = self
-        heightPickerView.delegate = self
+
+        weightPickerView.dataSource = weightPickerViewDataSource
+        weightPickerView.delegate = weightPickerViewDataSource
+        weightPickerViewDataSource.setInitialValueForPicker(pickerView: weightPickerView)
+
+        genderPickerView.dataSource = genderPickerViewDataSource
+        genderPickerView.delegate = genderPickerViewDataSource
+
+        birthDatePickerView.datePickerMode = .date
+        birthDatePickerView.maximumDate = Date()
+        let birthdatePickerViewInitialDate = Date(timeIntervalSinceReferenceDate: 0)
+        birthDatePickerView.setDate(birthdatePickerViewInitialDate, animated: true)
+
+
+
+//        genderPickerView.delegate = self
+//        weightPickerView.delegate = self
+
         
         //TODO: Set user defaults unit value to the locale
         checkLocaleAndSetUnits()
@@ -83,55 +100,6 @@ class UserInfoPickerViewController: UIViewController, UIPickerViewDelegate, UIPi
     @IBAction func doneButtonPressed(_ sender: UIButton) {
         let parentVC = self.parent as! EditUserInfoViewController
         parentVC.hidePickerVC()
-    }
-
-
-    // MARK: PickerView Data Source
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        switch pickerView.tag {
-        case pickerViewTags.genderTag:
-            return userPickerHelpers.numberOfComponentsForGenderTag
-        case pickerViewTags.heightTag:
-                return userPickerHelpers.heightPickerData.getHeightPickerViewNumberOfComponents()
-        case pickerViewTags.weightTag:
-            return userPickerHelpers.numberOfComponentsForWeightTag
-        default:
-            fatalError("Correct Tag missing")
-        }
-    }
-
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        switch pickerView.tag {
-        case pickerViewTags.genderTag:
-            return userPickerHelpers.pickerViewGenderOptions.count
-        case pickerViewTags.heightTag:
-            return userPickerHelpers.heightPickerData.getHeightPickerViewNumberOfRows(component: component)
-        case pickerViewTags.weightTag:
-            return userPickerHelpers.numberOfComponentsForWeightTag
-        default:
-            fatalError("Correct Tag missing")
-        }
-    }
-
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        switch pickerView.tag {
-        case pickerViewTags.genderTag:
-            return userPickerHelpers.pickerViewTitleForRowForGender(row:row, component:component)
-        case pickerViewTags.heightTag:
-            return userPickerHelpers.heightPickerData.pickerTitleForHeight(row: row, component: component)
-        default:
-            return ""
-        }
-    }
-
-
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        switch pickerView.tag {
-        case pickerViewTags.heightTag:
-            <#code#>
-        default:
-            <#code#>
-        }
     }
 
     //TODO: Start Picker In Middle
