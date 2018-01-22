@@ -71,8 +71,7 @@ class StoredUser {
     }
     
     var userDisplayUnits: DisplayUnits {
-        get {
-            let fromDefaults = defaults.object(forKey: keys.localUnits) as! String
+        if let fromDefaults = defaults.object(forKey: keys.localUnits) as? String {
             switch fromDefaults {
             case "freedomUnits":
                 return .freedomUnits
@@ -82,15 +81,25 @@ class StoredUser {
                 print("Unknown value stored in user defaults for display units")
                 return .freedomUnits
             }
+        } else {
+            return checkForUserLocaleAndSet()
         }
-//        set {
-//            switch newValue {
-//            case .freedomUnits:
-//                defaults.set("freedomUnits", forKey: keys.localUnits)
-//            case .metric:
-//                defaults.set("metric", forKey: keys.localUnits)
-//            }
-//        }
+    }
+
+    private func checkForUserLocaleAndSet() -> DisplayUnits {
+        var localUnits: DisplayUnits
+        let currentLocale = NSLocale.current.regionCode
+        print(currentLocale)
+        if currentLocale == "US" {
+            localUnits = .freedomUnits
+        } else {
+            localUnits = .metric
+        }
+        return localUnits
+    }
+
+
+
     }
 //
 //    func getWeightForDisplay() -> String? {
@@ -134,7 +143,6 @@ class StoredUser {
 //        return stringToSave
 //    }
 //
-}
 
 enum DisplayUnits {
     case metric

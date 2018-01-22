@@ -22,6 +22,7 @@ class UserInfoPickerViewController: UIViewController, UIPickerViewDelegate, UIPi
 
     // MARK: Constants
     let pickerViewTags = PickerViewTags()
+    let userPickerHelpers = UserPickerHelpers()
 
     // MARK: Variables
 
@@ -48,6 +49,16 @@ class UserInfoPickerViewController: UIViewController, UIPickerViewDelegate, UIPi
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        genderPickerView.dataSource = self
+        weightPickerView.dataSource = self
+        heightPickerView.dataSource = self
+
+        genderPickerView.delegate = self
+        weightPickerView.delegate = self
+        heightPickerView.delegate = self
+        
+        //TODO: Set user defaults unit value to the locale
+        checkLocaleAndSetUnits()
 
     }
 
@@ -77,13 +88,53 @@ class UserInfoPickerViewController: UIViewController, UIPickerViewDelegate, UIPi
 
     // MARK: PickerView Data Source
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+        switch pickerView.tag {
+        case pickerViewTags.genderTag:
+            return userPickerHelpers.numberOfComponentsForGenderTag
+        case pickerViewTags.heightTag:
+                return userPickerHelpers.heightPickerData.getHeightPickerViewNumberOfComponents()
+        case pickerViewTags.weightTag:
+            return userPickerHelpers.numberOfComponentsForWeightTag
+        default:
+            fatalError("Correct Tag missing")
+        }
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 100
+        switch pickerView.tag {
+        case pickerViewTags.genderTag:
+            return userPickerHelpers.pickerViewGenderOptions.count
+        case pickerViewTags.heightTag:
+            return userPickerHelpers.heightPickerData.getHeightPickerViewNumberOfRows(component: component)
+        case pickerViewTags.weightTag:
+            return userPickerHelpers.numberOfComponentsForWeightTag
+        default:
+            fatalError("Correct Tag missing")
+        }
     }
 
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        switch pickerView.tag {
+        case pickerViewTags.genderTag:
+            return userPickerHelpers.pickerViewTitleForRowForGender(row:row, component:component)
+        case pickerViewTags.heightTag:
+            return userPickerHelpers.heightPickerData.pickerTitleForHeight(row: row, component: component)
+        default:
+            return ""
+        }
+    }
+
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        switch pickerView.tag {
+        case pickerViewTags.heightTag:
+            <#code#>
+        default:
+            <#code#>
+        }
+    }
+
+    //TODO: Start Picker In Middle
 
     func showGenderPicker() {
         weightPickerView.isHidden = true
@@ -115,6 +166,10 @@ class UserInfoPickerViewController: UIViewController, UIPickerViewDelegate, UIPi
 
 
 
+
+    func checkLocaleAndSetUnits() {
+        
+    }
 
 
 }

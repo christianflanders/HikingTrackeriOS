@@ -31,7 +31,7 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var heightButtonOutlet: UIButton!
     @IBOutlet weak var birthdateButtonOutlet: UIButton!
     @IBOutlet weak var genderButtonOutlet: UIButton!
-    
+
     // MARK: Weak Vars
 
 
@@ -46,10 +46,7 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         hidePickerVC()
         setCosmetics()
-
-
     }
-
 
     // MARK: IBActions
 
@@ -103,7 +100,11 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate {
     }
 
 
-    
+    func checkForExistingValuesAndSetLabels() {
+        
+    }
+
+
 
 }
 
