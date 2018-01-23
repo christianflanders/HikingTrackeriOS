@@ -26,5 +26,12 @@ struct UnitConversions {
         return cm * 0.393701
     }
     
-    
+    func convertFeetAndInchesToCM(feet: Int, inches: Int) -> Double {
+        let feetToInches = feet * 12
+        let totalInches = Double(feetToInches + inches)
+        return convertInchesToCM(inches: totalInches)
+    }
 }
+
+
+

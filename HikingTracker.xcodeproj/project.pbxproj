@@ -93,6 +93,9 @@
 		6BA6CA662016AEFE0084CB88 /* Meters Alias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B81261C1FDF7981009054A3 /* Meters Alias.swift */; };
 		6BA6CA672016AF080084CB88 /* Health Kit Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE204281FE1CBDF004F0C3E /* Health Kit Utility.swift */; };
 		6BA6CA682016AF0D0084CB88 /* Convert Date From Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFEEF162013FF0F00D4399E /* Convert Date From Archive.swift */; };
+		6BA6CA6A2016B0010084CB88 /* SettingUserHeightContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA6CA692016B0010084CB88 /* SettingUserHeightContainer.swift */; };
+		6BA6CA6B2016E6630084CB88 /* UserInformationValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B91BB201FF9894800CB378F /* UserInformationValues.swift */; };
+		6BA6CA6C2016E6680084CB88 /* StoredUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB48A8A1FD87B0500D5A9C5 /* StoredUserModel.swift */; };
 		6BA931092002E06D001FE585 /* Hike Information Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA931082002E06D001FE585 /* Hike Information Protocol.swift */; };
 		6BA9BBD91FFF0A5700BE48B4 /* MainAppTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BBD81FFF0A5700BE48B4 /* MainAppTabBarViewController.swift */; };
 		6BAF5B9E1FDF410800480E6A /* GPXParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAF5B9D1FDF410800480E6A /* GPXParser.swift */; };
@@ -245,7 +248,6 @@
 		6B19AF0A200AA11E00BA5F68 /* Segues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segues.swift; sourceTree = "<group>"; };
 		6B19AF0D200AA76500BA5F68 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		6B19AF14200AB65600BA5F68 /* ChecklistTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistTableViewController.swift; sourceTree = "<group>"; };
-		6B19AF16200AB74400BA5F68 /* HikingTracker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HikingTracker-Bridging-Header.h"; sourceTree = "<group>"; };
 		6B19AF17200AB74500BA5F68 /* DLRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLRadioButton.m; sourceTree = "<group>"; };
 		6B19AF18200AB74500BA5F68 /* DLRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLRadioButton.h; sourceTree = "<group>"; };
 		6B19AF1A200AB7F600BA5F68 /* ChecklistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistTableViewCell.swift; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 		6BA6CA4E2016AB030084CB88 /* GenderPickerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderPickerDataSource.swift; sourceTree = "<group>"; };
 		6BA6CA512016AD230084CB88 /* Picker View Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Picker View Helper.swift"; sourceTree = "<group>"; };
 		6BA6CA5B2016AE700084CB88 /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
+		6BA6CA692016B0010084CB88 /* SettingUserHeightContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUserHeightContainer.swift; sourceTree = "<group>"; };
 		6BA931082002E06D001FE585 /* Hike Information Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Hike Information Protocol.swift"; sourceTree = "<group>"; };
 		6BA9BBD81FFF0A5700BE48B4 /* MainAppTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppTabBarViewController.swift; sourceTree = "<group>"; };
 		6BAF5B9D1FDF410800480E6A /* GPXParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXParser.swift; sourceTree = "<group>"; };
@@ -538,6 +541,7 @@
 		6BA6CA4720169C0B0084CB88 /* Height Picker */ = {
 			isa = PBXGroup;
 			children = (
+				6BA6CA692016B0010084CB88 /* SettingUserHeightContainer.swift */,
 				6BA6CA4120169A7E0084CB88 /* HeightPickerViewDataSource.swift */,
 				6BA6CA4520169BE90084CB88 /* User Height Picker View Data.swift */,
 			);
@@ -622,7 +626,6 @@
 			children = (
 				6B48E1382006F9EF00D24F44 /* CustomMarker.swift */,
 				6BA6CA5B2016AE700084CB88 /* BalloonMarker.swift */,
-				6B19AF16200AB74400BA5F68 /* HikingTracker-Bridging-Header.h */,
 			);
 			path = Charts;
 			sourceTree = "<group>";
@@ -1561,6 +1564,7 @@
 				6B8D311420007CE1005F08AC /* HikeFinishedTableViewController.swift in Sources */,
 				6B7D98D51FF85F1E008C3F06 /* Solar.swift in Sources */,
 				6B01AC772012C50F002528D3 /* AddItemToChecklistView.swift in Sources */,
+				6BA6CA6A2016B0010084CB88 /* SettingUserHeightContainer.swift in Sources */,
 				6BE245082002E46F00CBFF5C /* Hike Save To Firebase.swift in Sources */,
 				6B31A6BD1FF6FD08002069B2 /* UnitConversions.swift in Sources */,
 				6BE204261FE0C072004F0C3E /* HikeHistoryDetailViewController.swift in Sources */,
@@ -1601,8 +1605,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BA6CA6B2016E6630084CB88 /* UserInformationValues.swift in Sources */,
 				6BA6CA672016AF080084CB88 /* Health Kit Utility.swift in Sources */,
 				6B8D30E720004DCF005F08AC /* StatOptions.swift in Sources */,
+				6BA6CA6C2016E6680084CB88 /* StoredUserModel.swift in Sources */,
 				6B7D98D61FF85F1E008C3F06 /* Solar.swift in Sources */,
 				6B8744DE1FF498B5008A0FB5 /* Calories.swift in Sources */,
 				6B051AC01FF738CC00173A20 /* UnitConversions.swift in Sources */,

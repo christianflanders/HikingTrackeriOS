@@ -30,6 +30,9 @@ class HeightPickerViewDataSource: NSObject, UIPickerViewDataSource, UIPickerView
         return userPickerHelpers.heightPickerData.pickerTitleForHeight(row: row, component: component)
     }
 
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        <#code#>
+    }
 
     func setInitialValueForPicker(pickerView: UIPickerView) {
         pickerView.selectRow(5, inComponent: 0, animated: true)

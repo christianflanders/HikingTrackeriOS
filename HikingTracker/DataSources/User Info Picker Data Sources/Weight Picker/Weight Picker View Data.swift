@@ -21,7 +21,7 @@ struct WeightPickerViewData {
     private let valueComponent = 0
     private let tagComponent = 1
 
-    private let numberOfPoundsToDisplay = 602// setting this to 602 so we get 600 values, since we're removing 0 because thats not a real option for wewight
+    private let numberOfPoundsToDisplay = 600
 
     private let numberOfKGToDisplay = 275
     // MARK: Number Of Components
@@ -100,7 +100,7 @@ struct WeightPickerViewData {
     private func getImperialWeightTitleForRow(row: Int, component: Int) ->  String {
         var titleForRow: String
         if component == valueComponent {
-            titleForRow = String(row + 1) // Adding 1 so we don't get a value of 0 lbs
+            titleForRow = String(row) // Adding 1 so we don't get a value of 0 lbs
         } else {
             titleForRow = imperialUnitTag
         }
@@ -110,7 +110,7 @@ struct WeightPickerViewData {
     private func getMetricTitleForRow(row: Int, component: Int) ->  String {
         var titleForRow: String
         if component == valueComponent {
-            titleForRow = String(row + 1) // adding 1 so we dont get a value of 0 kg
+            titleForRow = String(row) // adding 1 so we dont get a value of 0 kg
         } else {
             titleForRow = metricUnitTag
         }
