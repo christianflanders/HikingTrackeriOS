@@ -8,7 +8,9 @@
 
 import UIKit
 
-class EditUserInfoViewController: UIViewController, UITextFieldDelegate {
+class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightPickerValueSelectedDelegate , WeightPickerValueSelectedDelegate {
+
+
 
 
     // MARK: Enums
@@ -17,7 +19,7 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate {
 
 
     // MARK: Variables
-
+    var userSettingValues = UserInformationValues()
 
     // MARK: Outlets
     @IBOutlet weak var userPickerVCContainer: UIView!
@@ -36,7 +38,7 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate {
 
 
     // MARK: Public Variables
-
+    var heightValueSetDelegate: HeightPickerValueSelectedDelegate?
 
     // MARK: Private Variables
 
@@ -46,6 +48,14 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         hidePickerVC()
         setCosmetics()
+
+        let pickerController = self.childViewControllers.first as! UserInfoPickerViewController
+        let heightDataSource = pickerController.heightPickerViewDataSource
+        heightDataSource.heightValueSetDelegate = self
+
+        let weightDataSource = pickerController.weightPickerViewDataSource
+        weightDataSource.weightValueSetDelegate = self
+
     }
 
     // MARK: IBActions
@@ -105,7 +115,33 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate {
     }
 
 
+    // MARK: Height Picker Value Set
 
+    func heightValueSet(stringValue: String, heightInCM: Double) {
+        heightButtonOutlet.setTitle(stringValue, for: .normal)
+        userSettingValues.heightInCentimeters = heightInCM
+    }
+
+    // MARK: Weight picker value set delegate
+
+    func weightValueSet(stringValue: String, weightInKG: Double) {
+        weightButtonOutlet.setTitle(stringValue, for: .normal)
+        userSettingValues.weightInKG = weightInKG
+    }
+
+
+
+
+
+    func checkAllValuesSet(for userValues: UserInformationValues) -> Bool {
+        var allValuesSet = false
+        if userValues.allValuesSet {
+            allValuesSet = true
+        } else {
+            allValuesSet = false
+        }
+        return allValuesSet
+    }
 }
 
 

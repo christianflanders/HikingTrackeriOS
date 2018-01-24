@@ -35,6 +35,7 @@
 		6B6B45F72001A4BF00A9FB7C /* DecodeFirebaseHikes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6B45F62001A4BF00A9FB7C /* DecodeFirebaseHikes.swift */; };
 		6B6E19D81FEDE7EE00B5605A /* Ailerons-Typeface.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6E19D71FEDE7ED00B5605A /* Ailerons-Typeface.otf */; };
 		6B6E19D91FEDE7EE00B5605A /* Ailerons-Typeface.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6E19D71FEDE7ED00B5605A /* Ailerons-Typeface.otf */; };
+		6B6E71E52017D22B00C1A6FE /* PickerValueSelectedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6E71E42017D22B00C1A6FE /* PickerValueSelectedDelegate.swift */; };
 		6B6ED181200570CA0094B3EB /* Cabin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6ED179200570C90094B3EB /* Cabin-Regular.ttf */; };
 		6B6ED182200570CA0094B3EB /* Cabin-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6ED17A200570C90094B3EB /* Cabin-SemiBold.ttf */; };
 		6B6ED183200570CA0094B3EB /* Cabin-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6ED17B200570CA0094B3EB /* Cabin-Italic.ttf */; };
@@ -265,6 +266,7 @@
 		6B6B45F02000A61900A9FB7C /* HikeHistoryStatContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeHistoryStatContainerViewController.swift; sourceTree = "<group>"; };
 		6B6B45F62001A4BF00A9FB7C /* DecodeFirebaseHikes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeFirebaseHikes.swift; sourceTree = "<group>"; };
 		6B6E19D71FEDE7ED00B5605A /* Ailerons-Typeface.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ailerons-Typeface.otf"; sourceTree = "<group>"; };
+		6B6E71E42017D22B00C1A6FE /* PickerValueSelectedDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerValueSelectedDelegate.swift; sourceTree = "<group>"; };
 		6B6ED171200570A90094B3EB /* Oswald-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Bold.ttf"; sourceTree = "<group>"; };
 		6B6ED173200570A90094B3EB /* Oswald-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Light.ttf"; sourceTree = "<group>"; };
 		6B6ED174200570AB0094B3EB /* Oswald-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Medium.ttf"; sourceTree = "<group>"; };
@@ -301,7 +303,7 @@
 		6B91BB421FF9C59500CB378F /* GPX 1 For Unit Testing.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "GPX 1 For Unit Testing.gpx"; sourceTree = "<group>"; };
 		6B9B19161FDF133100E6A193 /* MapBox Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapBox Extension.swift"; sourceTree = "<group>"; };
 		6BA663B71FF58FFD00DAF05E /* UserStatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatTableViewCell.swift; sourceTree = "<group>"; };
-		6BA6CA3C20154B220084CB88 /* UserInfoPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserInfoPickerViewController.swift; path = HikingTracker/ViewControllers/UserInfoPickerViewController.swift; sourceTree = SOURCE_ROOT; };
+		6BA6CA3C20154B220084CB88 /* UserInfoPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserInfoPickerViewController.swift; path = HikingTracker/ViewControllers/User/UserInfoPickerViewController.swift; sourceTree = SOURCE_ROOT; };
 		6BA6CA3F201550800084CB88 /* UserRequiredStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequiredStats.swift; sourceTree = "<group>"; };
 		6BA6CA4120169A7E0084CB88 /* HeightPickerViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeightPickerViewDataSource.swift; sourceTree = "<group>"; };
 		6BA6CA4320169B240084CB88 /* User Info PickerView Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User Info PickerView Tags.swift"; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 		6BA6CA512016AD230084CB88 /* Picker View Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Picker View Helper.swift"; sourceTree = "<group>"; };
 		6BA6CA5B2016AE700084CB88 /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
 		6BA6CA692016B0010084CB88 /* SettingUserHeightContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUserHeightContainer.swift; sourceTree = "<group>"; };
+		6BA6CA6F2016E7110084CB88 /* HikingTracker-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HikingTracker-Bridging-Header.h"; sourceTree = "<group>"; };
 		6BA931082002E06D001FE585 /* Hike Information Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Hike Information Protocol.swift"; sourceTree = "<group>"; };
 		6BA9BBD81FFF0A5700BE48B4 /* MainAppTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppTabBarViewController.swift; sourceTree = "<group>"; };
 		6BAF5B9D1FDF410800480E6A /* GPXParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXParser.swift; sourceTree = "<group>"; };
@@ -778,6 +781,7 @@
 		6BB63A3A1FD5CD2800E9F4A1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6BA6CA6F2016E7110084CB88 /* HikingTracker-Bridging-Header.h */,
 				6BA6CA552016AD6C0084CB88 /* Checklist */,
 				6BA6CA5A2016AE3D0084CB88 /* Charts */,
 				6B8D30EC20004E51005F08AC /* Hike Related */,
@@ -918,6 +922,7 @@
 				6BB3CD36200D3EB000E6B89D /* ChecklistButtonProtocol.swift */,
 				6BA931082002E06D001FE585 /* Hike Information Protocol.swift */,
 				6B8D3115200080D5005F08AC /* HikeDisplayStrings.swift */,
+				6B6E71E42017D22B00C1A6FE /* PickerValueSelectedDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1567,6 +1572,7 @@
 				6BA6CA6A2016B0010084CB88 /* SettingUserHeightContainer.swift in Sources */,
 				6BE245082002E46F00CBFF5C /* Hike Save To Firebase.swift in Sources */,
 				6B31A6BD1FF6FD08002069B2 /* UnitConversions.swift in Sources */,
+				6B6E71E52017D22B00C1A6FE /* PickerValueSelectedDelegate.swift in Sources */,
 				6BE204261FE0C072004F0C3E /* HikeHistoryDetailViewController.swift in Sources */,
 				6BFEEF142013EB5200D4399E /* Pace Model.swift in Sources */,
 				6B8744D91FF493D2008A0FB5 /* Watch Connection Messages.swift in Sources */,

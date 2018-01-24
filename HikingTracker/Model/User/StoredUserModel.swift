@@ -89,7 +89,6 @@ class StoredUser {
     private func checkForUserLocaleAndSet() -> DisplayUnits {
         var localUnits: DisplayUnits
         let currentLocale = NSLocale.current.regionCode
-        print(currentLocale)
         if currentLocale == "US" {
             localUnits = .freedomUnits
         } else {

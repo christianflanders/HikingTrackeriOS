@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserInfoPickerViewController: UIViewController {
+class UserInfoPickerViewController: UIViewController{
 
 
 
@@ -54,6 +54,7 @@ class UserInfoPickerViewController: UIViewController {
         heightPickerView.dataSource = heightPickerViewDataSource
         heightPickerView.delegate = heightPickerViewDataSource
         heightPickerViewDataSource.setInitialValueForPicker(pickerView: heightPickerView)
+        
 
 
         weightPickerView.dataSource = weightPickerViewDataSource
@@ -121,5 +122,7 @@ class UserInfoPickerViewController: UIViewController {
         birthDatePickerView.isHidden = false
         genderPickerView.isHidden = true
     }
+
+
 
 }

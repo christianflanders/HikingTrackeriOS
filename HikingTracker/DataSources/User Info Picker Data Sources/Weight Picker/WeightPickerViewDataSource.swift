@@ -14,7 +14,7 @@ class WeightPickerViewDataSource: NSObject, UIPickerViewDataSource, UIPickerView
     let pickerViewTags = PickerViewTags()
     let userPickerHelpers = UserPickerHelpers()
 
-    
+    var weightValueSetDelegate: WeightPickerValueSelectedDelegate?
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return userPickerHelpers.weightPickerData.getWeightPickerViewNumberOfComponents()
@@ -25,8 +25,12 @@ class WeightPickerViewDataSource: NSObject, UIPickerViewDataSource, UIPickerView
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-
         return userPickerHelpers.weightPickerData.getWeightTitleForRow(row: row, component: component)
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let returnTuple = userPickerHelpers.weightPickerData.pickerDidSelectRow(row: row, component: component)
+        weightValueSetDelegate?.weightValueSet(stringValue: returnTuple.stringValue, weightInKG: returnTuple.valueInKilograms)
     }
 
 

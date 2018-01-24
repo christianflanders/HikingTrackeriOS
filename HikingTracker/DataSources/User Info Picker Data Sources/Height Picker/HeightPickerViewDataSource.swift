@@ -11,10 +11,15 @@ import UIKit
 
 class HeightPickerViewDataSource: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
 
-    let pickerViewTags = PickerViewTags()
-    let userPickerHelpers = UserPickerHelpers()
+    private let pickerViewTags = PickerViewTags()
+    private let userPickerHelpers = UserPickerHelpers()
 
+    private var userHeightContainer = UserHeightContainer()
 
+    var heightValueSetDelegate: HeightPickerValueSelectedDelegate?
+
+    var stringForDisplay = ""
+    var valueInCM = 0.0
 
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -31,7 +36,10 @@ class HeightPickerViewDataSource: NSObject, UIPickerViewDataSource, UIPickerView
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        <#code#>
+        let returnTuple = userHeightContainer.pickerDidSelectRow(row: row, component: component)
+        stringForDisplay = returnTuple.stringForDisplay
+        valueInCM = returnTuple.valueInCM
+        heightValueSetDelegate?.heightValueSet(stringValue: stringForDisplay, heightInCM: valueInCM)
     }
 
     func setInitialValueForPicker(pickerView: UIPickerView) {

@@ -90,7 +90,7 @@ class HealthKitStore {
                 return
             }
             let unit = HKUnit.meter()
-            userInformationFromHealthKit.heightInMeters = height.quantity.doubleValue(for: unit)
+//            userInformationFromHealthKit.heightInMeters = height.quantity.doubleValue(for: unit)
         }
         
         healthKitStore.execute(heightQuery)

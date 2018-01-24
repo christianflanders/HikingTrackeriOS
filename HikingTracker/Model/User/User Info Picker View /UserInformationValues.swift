@@ -10,16 +10,16 @@ import Foundation
 
 struct UserInformationValues {
     
-    var heightInMeters: Double?
+    var heightInCentimeters: Double?
     var gender: String?
     var name: String?
     var weightInKG: Double?
     var birthdate: Date?
 
     var allValuesSet: Bool {
-        switch (heightInMeters, gender, name, weightInKG, birthdate) {
+        switch (heightInCentimeters, gender, name, weightInKG, birthdate) {
 
-        case let (_?, _?, _?, _?, _?) : // if they all have values, return true. Swifts syntax is confusing here
+        case  (_?, _?, _?, _?, _?) : // if they all have values, return true. Swifts syntax is confusing here
             return true
         default:
             return false

@@ -9,25 +9,22 @@
 import Foundation
 
 struct UserHeightContainer {
-
-
+    
     private var stringToDisplay = ""
 
     private let conv = UnitConversions()
-
 
     private let componentsTag = PickerViewTags()
 
     private let displayUnits = StoredUser().userDisplayUnits
 
-    func pickerDidSelectRow(row: Int, component: Int) -> (stringForDisplay: String, valueInCM: Double) {
-        var selectedValues = (stringToDisplay, 0)()
+    mutating func pickerDidSelectRow(row: Int, component: Int) -> (stringForDisplay: String, valueInCM: Double) {
         if displayUnits == .freedomUnits {
-            selectedValues = pickerDidSelectRowForImperial(row: row, component: component)
+            return pickerDidSelectRowForImperial(row: row, component: component)
         } else {
-            selectedValues = pickerDidSelectRowForMetric(row: row, component: component)
+            return pickerDidSelectRowForMetric(row: row, component: component)
         }
-        return selectedValues
+
     }
 
     private let componentFeetNumberRow = 0
@@ -40,8 +37,8 @@ struct UserHeightContainer {
     private var heightInchValue = 0 // set when a new row is selected
     private let heightInchLabel = "Inches"
 
-    private func pickerDidSelectRowForImperial(row: Int, component: Int) -> (stringForDisplay: String, valueInCM: Double) {
-        var returnTuple = ("", 0)
+    private mutating func pickerDidSelectRowForImperial(row: Int, component: Int) -> (stringForDisplay: String, valueInCM: Double) {
+        var returnTuple = ("", 0.0)
         if component == componentFeetNumberRow {
             heightFeetValue = row
         } else if component == componentInchesNumberRow {
@@ -49,16 +46,23 @@ struct UserHeightContainer {
         }
         returnTuple.0 = "\(heightFeetValue) \(heightFeetLabel), \(heightInchValue) \(heightInchLabel)"
         returnTuple.1 = conv.convertFeetAndInchesToCM(feet: heightFeetValue, inches: heightInchValue)
+        return returnTuple
     }
 
     private let componentCentimeterNumberRow = 0
     private let componentCentimeterLabelRow = 1
 
-    private func pickerDidSelectRowForMetric(row: Int, component: Int) -> (stringForDisplay: String, valueInCM: Double) {
-        var returnTuple = ("", 0)
-        if component == componentCentimeterNumberRow {
+    private var centimeterValue = 0
+    private var centimeterLabel = "cm"
 
+    private mutating func pickerDidSelectRowForMetric(row: Int, component: Int) -> (stringForDisplay: String, valueInCM: Double) {
+        var returnTuple = ("", 0.0)
+        if component == componentCentimeterNumberRow {
+            centimeterValue = row
+            returnTuple.0 = "\(centimeterValue) \(centimeterLabel)"
+            returnTuple.1 = Double(centimeterValue)
         }
+
         return returnTuple
     }
 

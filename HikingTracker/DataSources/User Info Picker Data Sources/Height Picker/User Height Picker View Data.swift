@@ -87,30 +87,13 @@ struct HeightPickerViewData {
         return titleForRowReturn
     }
 
-    //    func pickerViewDidSeletRowAt(row: Int, component: Int) -> (titleForDisplay: String, valueInMeters: Double) {
-    //        var titleForRowReturn = ""
-    //        var valueInMeters = 0
-    //        switch component {
-    //        case componentFeetNumberRow:
-    //            titleForRowReturn = String(row)
-    //        case componentFeetLabelRow:
-    //            titleForRowReturn = footRowLabel
-    //        case componentInchesNumberRow:
-    //            titleForRowReturn = String(row)
-    //        case componentInchesLabelRow:
-    //            titleForRowReturn = inchesRowLabel
-    //        default:
-    //            fatalError("Problem with height title imperial")
-    //        }
-    //        return titleForRowReturn
-    //    }
 
 
     private func pickerViewTitleForHeightForMetric(row: Int, component: Int) -> String {
         var titleForRowReturn = ""
         let componentCMNumberRow = 0
         let componentCMLabelRow = 1
-        let centimeterLabelRowLabel = "CM"
+        let centimeterLabelRowLabel = "cm"
         if component == componentCMNumberRow {
             titleForRowReturn = String(row)
         } else if component == componentCMLabelRow {
