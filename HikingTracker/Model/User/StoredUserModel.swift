@@ -29,7 +29,7 @@ class StoredUser {
         }
         
     }
-    var heightInMeters: Double? {
+    var heightInCentimeters: Double? {
         get {
             return defaults.double(forKey: keys.height)
         }
@@ -71,19 +71,31 @@ class StoredUser {
     }
     
     var userDisplayUnits: DisplayUnits {
-        if let fromDefaults = defaults.object(forKey: keys.localUnits) as? String {
-            switch fromDefaults {
-            case "freedomUnits":
-                return .freedomUnits
-            case "metric" :
-                return .metric
-            default:
-                print("Unknown value stored in user defaults for display units")
-                return .freedomUnits
+        get {
+            if let fromDefaults = defaults.object(forKey: keys.localUnits) as? String {
+                switch fromDefaults {
+                case "freedomUnits":
+                    return .freedomUnits
+                case "metric" :
+                    return .metric
+                default:
+                    print("Unknown value stored in user defaults for display units")
+                    return .freedomUnits
+                }
+            } else {
+                return checkForUserLocaleAndSet()
             }
-        } else {
-            return checkForUserLocaleAndSet()
         }
+        set {
+            var stringToSet = ""
+            if newValue == .freedomUnits {
+                stringToSet = "freedomUnits"
+            } else {
+                stringToSet = "metric"
+            }
+            defaults.set(stringToSet, forKey: keys.localUnits)
+        }
+
     }
 
     private func checkForUserLocaleAndSet() -> DisplayUnits {

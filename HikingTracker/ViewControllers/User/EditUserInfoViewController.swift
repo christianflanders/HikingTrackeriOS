@@ -8,7 +8,10 @@
 
 import UIKit
 
-class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightPickerValueSelectedDelegate , WeightPickerValueSelectedDelegate {
+class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightPickerValueSelectedDelegate , WeightPickerValueSelectedDelegate, GenderPickerValueSelectedDelegate, BirthdateSelectedDelegate {
+
+
+
 
 
 
@@ -48,6 +51,8 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
         hidePickerVC()
         setCosmetics()
 
+        userNameTextField.delegate = self
+
         let pickerController = self.childViewControllers.first as! UserInfoPickerViewController
         let heightDataSource = pickerController.heightPickerViewDataSource
         heightDataSource.heightValueSetDelegate = self
@@ -55,20 +60,25 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
         let weightDataSource = pickerController.weightPickerViewDataSource
         weightDataSource.weightValueSetDelegate = self
 
+
+        let genderDataSource = pickerController.genderPickerViewDataSource
+        genderDataSource.genderSelectedDelegate = self
+
+        pickerController.birthDateSelectedDelegate = self
+
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        checkForExistingValuesAndSetLabels()
         setCosmetics()
     }
 
     // MARK: IBActions
 
-    @IBAction func importFromHealthKitButtonPressed(_ sender: UIButton) {
-
-    }
 
     @IBAction func saveUserInfoButtonPressed(_ sender: UIButton) {
+        prepareToSave()
     }
 
     @IBAction func weightButtonPressed(_ sender: UIButton) {
@@ -109,11 +119,30 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
     func setCosmetics() {
         saveUserInfoButtonOutlet.layer.cornerRadius = saveUserInfoButtonOutlet.frame.size.height / 2
         importFromHealthKitButtonOutlet.layer.cornerRadius = importFromHealthKitButtonOutlet.frame.size.height / 2
+
+        birthdateButtonOutlet.titleLabel?.minimumScaleFactor = 0.75
     }
 
 
     func checkForExistingValuesAndSetLabels() {
-        
+        let user = StoredUser()
+        if let setBirthdate = user.birthdate {
+            userSettingValues.birthdate = setBirthdate
+        }
+        if let setHeight = user.heightInCentimeters {
+            userSettingValues.heightInCentimeters = setHeight
+        }
+        if let setWeight = user.weightInKilos {
+            userSettingValues.weightInKG = setWeight
+        }
+        if let setName = user.name {
+            userSettingValues.name = setName
+        }
+        if let setGender = user.gender {
+            userSettingValues.gender = setGender
+        }
+        setLablesBasedOnValues()
+
     }
 
 
@@ -131,6 +160,31 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
         userSettingValues.weightInKG = weightInKG
     }
 
+    // MARK: Gender pickerview value set delegate
+
+    func valueSet(gender: String) {
+        genderButtonOutlet.setTitle(gender, for: .normal)
+        userSettingValues.gender = gender
+    }
+
+    // MARK: Birthdate Value Set Delegate Method
+    func valueSet(birthdate: Date) {
+        let dateConvertedToString = birthdate.displayStringWithoutTimeShorter
+        birthdateButtonOutlet.setTitle(dateConvertedToString, for: .normal)
+        userSettingValues.birthdate = birthdate
+    }
+
+
+
+    //MARK: Name Text Field
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        if textField.text != "" || textField.text != " " {
+            userSettingValues.name = textField.text
+        }
+        return true
+    }
 
 
 
@@ -144,7 +198,158 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
         }
         return allValuesSet
     }
+
+
+    //MARK: Saving User
+
+    func prepareToSave() {
+        var storedUser = StoredUser()
+        if checkAllValuesSet(for: userSettingValues) {
+            storedUser.birthdate = userSettingValues.birthdate
+            storedUser.gender = userSettingValues.gender
+            storedUser.heightInCentimeters = userSettingValues.heightInCentimeters
+            storedUser.name = userSettingValues.name
+            storedUser.weightInKilos = userSettingValues.weightInKG
+            showLetsGoHikingAlert()
+            goToMainScreen()
+        } else {
+            showNotAllValuesSetAlert()
+        }
+    }
+
+    func showNotAllValuesSetAlert() {
+        let alert = UIAlertController(title: "Error!", message: "Not all values are entered correctly", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Please recheck the information and try again", style: .default, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
+
+    func showLetsGoHikingAlert() {
+        let alert = UIAlertController(title: "Information Saved", message: "Let's Go Hiking!", preferredStyle: .alert)
+        let action = UIAlertAction(title: "👍", style: .default, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
+
+
+    func goToMainScreen() {
+        let saveButtonPressedDestination = "MainTabBar"
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window = UIWindow(frame: UIScreen.main.bounds)
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil) // this assumes your storyboard is titled "Main.storyboard"
+        let yourVC = mainStoryboard.instantiateViewController(withIdentifier: saveButtonPressedDestination) as! UITabBarController
+        appDelegate.window?.rootViewController = yourVC
+        appDelegate.window?.makeKeyAndVisible()
+    }
+
+
+
+
+
+    // MARK: Import From Healthkit
+
+
+
+
+
+    fileprivate func setLablesBasedOnValues() {
+        let conv = UnitConversions()
+        let displayUnits = StoredUser().userDisplayUnits
+        if let name = self.userSettingValues.name {
+            self.userNameTextField.text = name
+        }
+
+
+        if displayUnits == .freedomUnits {
+            self.convertCMToFeetAndInchesAndSetTitle(conv)
+            self.convertKGToPoundsAndSetTitle(conv)
+        } else {
+            self.checkForCMAndSetTitle()
+            self.checkForKGAndSetTitle()
+        }
+        self.checkForBirthdateAndSetTitle()
+        self.checkForGenderAndSetTitle()
+    }
+
+    fileprivate func checkHealthKitAndSetFoundValues() {
+        let displayUnits = StoredUser().userDisplayUnits
+        let conv = UnitConversions()
+        let healthKitStore = HealthKitStore()
+        let dataFromHealthKit = healthKitStore.getUserDataFromHealthKit()
+        userSettingValues = dataFromHealthKit
+        DispatchQueue.main.async {
+            self.setLablesBasedOnValues()
+
+        }
+
+    }
+
+    @IBAction func importFromHealthKitButtonPressed(_ sender: UIButton) {
+        HealthKitAuthroizationSetup.authorizeHealthKit { (authorized, error) in
+            guard authorized else {
+                print("Health Kit Authorization failed!")
+                return
+            }
+            self.checkHealthKitAndSetFoundValues()
+            print("HealthKit successfully authorized")
+        }
+
+        checkHealthKitAndSetFoundValues()
+    }
+
+
+    fileprivate func checkForGenderAndSetTitle() {
+        if let gender = userSettingValues.gender {
+            genderButtonOutlet.setTitle(gender, for: .normal)
+        }
+    }
+
+    fileprivate func checkForBirthdateAndSetTitle() {
+        if let birthdate = userSettingValues.birthdate {
+            let stringVersion = birthdate.displayStringWithoutTimeShorter
+            birthdateButtonOutlet.setTitle(stringVersion, for: .normal)
+        }
+    }
+
+    fileprivate func convertCMToFeetAndInchesAndSetTitle(_ conv: UnitConversions) {
+        if let heightInCM = userSettingValues.heightInCentimeters {
+            let convertedToInches = conv.convertCMToInches(cm: heightInCM)
+            let feetToDisplay = Int(convertedToInches / 12)
+            let inchesToDisplay = Int(convertedToInches) % 12
+            let displayString = "\(feetToDisplay) ft \(inchesToDisplay) in"
+            heightButtonOutlet.setTitle(displayString, for: .normal)
+        }
+    }
+
+    fileprivate func convertKGToPoundsAndSetTitle(_ conv: UnitConversions) {
+        if let weightInKG = userSettingValues.weightInKG {
+            let weightInPounds = conv.convertKilogramsToPounds(grams: weightInKG)
+            let displayString = "\(Int(weightInPounds)) lbs"
+            weightButtonOutlet.setTitle(displayString, for: .normal)
+        }
+    }
+
+
+    fileprivate func checkForCMAndSetTitle() {
+        if let heightInCM = userSettingValues.heightInCentimeters {
+            let displayString = "\(Int(heightInCM)) cm"
+            heightButtonOutlet.setTitle(displayString, for: .normal)
+        }
+    }
+
+    fileprivate func checkForKGAndSetTitle() {
+        if let weightInKG = userSettingValues.weightInKG {
+            let displayString = "\(Int(weightInKG)) kg"
+            weightButtonOutlet.setTitle(displayString, for: .normal)
+        }
+    }
+
+
+
+
 }
+
+
 
 
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserInfoPickerViewController: UIViewController{
+class UserInfoPickerViewController: UIViewController {
 
 
 
@@ -23,6 +23,8 @@ class UserInfoPickerViewController: UIViewController{
     let heightPickerViewDataSource = HeightPickerViewDataSource()
     let weightPickerViewDataSource = WeightPickerViewDataSource()
     let genderPickerViewDataSource = GenderPickerViewDataSource()
+
+    var birthDateSelectedDelegate: BirthdateSelectedDelegate?
 
     // MARK: Variables
 
@@ -68,6 +70,7 @@ class UserInfoPickerViewController: UIViewController{
         birthDatePickerView.maximumDate = Date()
         let birthdatePickerViewInitialDate = Date(timeIntervalSinceReferenceDate: 0)
         birthDatePickerView.setDate(birthdatePickerViewInitialDate, animated: true)
+        
 
     }
 
@@ -123,6 +126,10 @@ class UserInfoPickerViewController: UIViewController{
         genderPickerView.isHidden = true
     }
 
+    @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
+        let newDate = sender.date
+        birthDateSelectedDelegate?.valueSet(birthdate: newDate)
+    }
 
 
 }

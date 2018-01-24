@@ -18,7 +18,9 @@ class HealthKitStore {
         var userInformationFromHealthKit = UserInformationValues()
         
         let healthKitStore = HKHealthStore()
-        
+
+        var weightFinished = false
+        var heightFinished = false
         // If healthkit is authorized and exists
         guard HKHealthStore.isHealthDataAvailable() else {
             //display alert saying no health kit availble on device
@@ -35,30 +37,35 @@ class HealthKitStore {
         let weightQuery = HKSampleQuery(sampleType: weightQuantityType!, predicate: nil, limit: 1, sortDescriptors: nil) { (query, results, error) in
             if error != nil {
                 print(error!)
+                weightFinished = true
                 return
             }
             
             // check for valid results
             guard let results = results else {
                 print("No results of query")
+                weightFinished = true
                 return
             }
             
             // make sure there is at least one result to output
             if results.count == 0 {
                 print("Zero samples")
+                weightFinished = true
                 return
             }
             
             // extract the one sample
             guard let bodymass = results[0] as? HKQuantitySample else {
                 print("Type problem with weight")
+                weightFinished = true
                 return
             }
             let unit = HKUnit.gram()
             let weightInGrams = bodymass.quantity.doubleValue(for: unit)
             let weightInKilograms = weightInGrams * 0.001
             userInformationFromHealthKit.weightInKG = weightInKilograms
+            weightFinished = true
         }
         
         healthKitStore.execute(weightQuery)
@@ -69,28 +76,35 @@ class HealthKitStore {
         let heightQuery = HKSampleQuery(sampleType: heightQuantityType!, predicate: nil, limit: 1, sortDescriptors: nil) { (query, results, error) in
             if error != nil {
                 print(error!)
+                heightFinished = true
                 return
             }
             
             // check for valid results
             guard let results = results else {
                 print("No results of query")
+                heightFinished = true
                 return
             }
             
             // make sure there is at least one result to output
             if results.count == 0 {
                 print("Zero samples")
+                heightFinished = true
                 return
             }
             
             // extract the one sample
             guard let height = results[0] as? HKQuantitySample else {
                 print("Type problem with height")
+                heightFinished = true
                 return
             }
             let unit = HKUnit.meter()
-//            userInformationFromHealthKit.heightInMeters = height.quantity.doubleValue(for: unit)
+            let heightInMeters = height.quantity.doubleValue(for: unit)
+            let heightInCentimeters = heightInMeters * 100
+            userInformationFromHealthKit.heightInCentimeters = heightInCentimeters
+            heightFinished = true
         }
         
         healthKitStore.execute(heightQuery)
@@ -118,7 +132,9 @@ class HealthKitStore {
         if let birthdate = try? healthKitStore.dateOfBirthComponents() {
             userInformationFromHealthKit.birthdate = birthdate.date
         }
-        
+        while weightFinished == false && heightFinished == false {
+
+        }
         return userInformationFromHealthKit
     
     }

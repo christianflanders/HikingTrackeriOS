@@ -13,7 +13,7 @@ class SettingsTableViewController: UITableViewController {
     // MARK: Enums
 
     // MARK: Constants
-
+    let user = StoredUser()
 
     // MARK: Variables
 
@@ -35,12 +35,29 @@ class SettingsTableViewController: UITableViewController {
 
 
     // MARK: View Life Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        switch user.userDisplayUnits {
+        case .freedomUnits :
+            unitsSegmentedControl.isEnabledForSegment(at: 0)
+        case .metric :
+            unitsSegmentedControl.isEnabledForSegment(at: 1)
+        }
+    }
 
 
     // MARK: IBActions
 
     @IBAction func unitsSegmentedControlPressed(_ sender: UISegmentedControl) {
-        
+                switch sender.selectedSegmentIndex {
+                case 0:
+                    user.userDisplayUnits = .freedomUnits
+                case 1:
+                    user.userDisplayUnits = .metric
+                default:
+                    print("This segmented control should only have 2 options how did we get here??")
+                }
     }
 
     @IBAction func pauseSoundSwitchValueChanged(_ sender: UISwitch) {

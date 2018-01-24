@@ -39,6 +39,16 @@ extension Date {
             return stringFormatted
         }
     }
+
+    var displayStringWithoutTimeShorter: String {
+        get {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .none
+            let stringFormatted = dateFormatter.string(from: self)
+            return stringFormatted
+        }
+    }
     var displayTimeOnly: String {
         get {
             let dateFormatter = DateFormatter()
