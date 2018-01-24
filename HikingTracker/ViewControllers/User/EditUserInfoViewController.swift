@@ -57,6 +57,11 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
 
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        setCosmetics()
+    }
+
     // MARK: IBActions
 
     @IBAction func importFromHealthKitButtonPressed(_ sender: UIButton) {
@@ -102,8 +107,8 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
     }
 
     func setCosmetics() {
-        saveUserInfoButtonOutlet.layer.cornerRadius = saveUserInfoButtonOutlet.frame.height / 2
-        importFromHealthKitButtonOutlet.layer.cornerRadius = importFromHealthKitButtonOutlet.frame.height / 2
+        saveUserInfoButtonOutlet.layer.cornerRadius = saveUserInfoButtonOutlet.frame.size.height / 2
+        importFromHealthKitButtonOutlet.layer.cornerRadius = importFromHealthKitButtonOutlet.frame.size.height / 2
     }
 
 
