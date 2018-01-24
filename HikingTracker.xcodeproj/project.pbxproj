@@ -39,6 +39,7 @@
 		6B6E71EA2018238300C1A6FE /* Settings:User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B6E71E92018238300C1A6FE /* Settings:User.storyboard */; };
 		6B6E71EC201823AF00C1A6FE /* HikeHistory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B6E71EB201823AF00C1A6FE /* HikeHistory.storyboard */; };
 		6B6E71EE201823E200C1A6FE /* MainHike.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B6E71ED201823E200C1A6FE /* MainHike.storyboard */; };
+		6B6E71F22018286A00C1A6FE /* GenderOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6E71F12018286A00C1A6FE /* GenderOptions.swift */; };
 		6B6ED181200570CA0094B3EB /* Cabin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6ED179200570C90094B3EB /* Cabin-Regular.ttf */; };
 		6B6ED182200570CA0094B3EB /* Cabin-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6ED17A200570C90094B3EB /* Cabin-SemiBold.ttf */; };
 		6B6ED183200570CA0094B3EB /* Cabin-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6ED17B200570CA0094B3EB /* Cabin-Italic.ttf */; };
@@ -273,6 +274,7 @@
 		6B6E71E92018238300C1A6FE /* Settings:User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Settings:User.storyboard"; sourceTree = "<group>"; };
 		6B6E71EB201823AF00C1A6FE /* HikeHistory.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HikeHistory.storyboard; sourceTree = "<group>"; };
 		6B6E71ED201823E200C1A6FE /* MainHike.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainHike.storyboard; sourceTree = "<group>"; };
+		6B6E71F12018286A00C1A6FE /* GenderOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderOptions.swift; sourceTree = "<group>"; };
 		6B6ED171200570A90094B3EB /* Oswald-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Bold.ttf"; sourceTree = "<group>"; };
 		6B6ED173200570A90094B3EB /* Oswald-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Light.ttf"; sourceTree = "<group>"; };
 		6B6ED174200570AB0094B3EB /* Oswald-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Medium.ttf"; sourceTree = "<group>"; };
@@ -580,6 +582,7 @@
 			isa = PBXGroup;
 			children = (
 				6BA6CA4C2016AA990084CB88 /* Gender Picker Data .swift */,
+				6B6E71F12018286A00C1A6FE /* GenderOptions.swift */,
 				6BA6CA4E2016AB030084CB88 /* GenderPickerDataSource.swift */,
 			);
 			path = "Gender Picker";
@@ -1576,6 +1579,7 @@
 				6B8AA0EB1FFDD7D9009FCFB2 /* HikeWorkoutFromHistory.swift in Sources */,
 				6BCC75E11FD621A4005F2F19 /* HikeWorkoutModel.swift in Sources */,
 				6B48E1322006BC6A00D24F44 /* Label Kerning Extension.swift in Sources */,
+				6B6E71F22018286A00C1A6FE /* GenderOptions.swift in Sources */,
 				6BE2450F2002FF4200CBFF5C /* Firebase Dictionary Keys.swift in Sources */,
 				6BD9A5CF2009976900B1577F /* Save Hike To HealthKit.swift in Sources */,
 				6B8D311420007CE1005F08AC /* HikeFinishedTableViewController.swift in Sources */,

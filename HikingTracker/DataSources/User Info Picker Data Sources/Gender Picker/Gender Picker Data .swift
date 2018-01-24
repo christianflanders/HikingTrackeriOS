@@ -11,7 +11,7 @@ import UIKit
 
 struct GenderPickerViewData {
 
-    let genderOptions = ["Male", "Female", "Other"]
+    let genderOptions = GenderOptions()
 
     // MARK: Number Of Components
     func getGenderPickerViewNumberOfComponents() -> Int {
@@ -23,14 +23,14 @@ struct GenderPickerViewData {
     // MARK: Number of rows in component
 
     func getGenderPickerNumberOfRowsInComponent(component: Int) -> Int {
-        return genderOptions.count
+        return genderOptions.allOptions.count
     }
 
 
     // MARK: Title For Row
 
     func getGenderTitleForRow(row: Int, component: Int) ->  String {
-        return genderOptions[row]
+        return genderOptions.allOptions[row]
     }
 
 

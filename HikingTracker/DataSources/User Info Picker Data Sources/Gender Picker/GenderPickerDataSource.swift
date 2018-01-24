@@ -14,6 +14,7 @@ class GenderPickerViewDataSource: NSObject, UIPickerViewDataSource, UIPickerView
     let pickerViewTags = PickerViewTags()
     let userPickerHelpers = UserPickerHelpers()
 
+    var genderSelectedDelegate: GenderPickerValueSelectedDelegate?
 
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -27,6 +28,11 @@ class GenderPickerViewDataSource: NSObject, UIPickerViewDataSource, UIPickerView
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
 
         return userPickerHelpers.genderPickerData.getGenderTitleForRow(row: row, component: component)
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let genderSelected = GenderOptions().allOptions[row]
+        genderSelectedDelegate?.valueSet(gender: genderSelected)
     }
 
 

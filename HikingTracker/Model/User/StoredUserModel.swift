@@ -167,6 +167,7 @@ struct GenderOptions {
     let male = "Male"
     let female = "Female"
     let other = "Other"
+    let allOptions = ["Male", "Female", "Other"]
 }
 
 struct HeightUnitOptions {
