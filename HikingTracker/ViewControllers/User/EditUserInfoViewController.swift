@@ -24,7 +24,6 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
     // MARK: Outlets
     @IBOutlet weak var userPickerVCContainer: UIView!
 
-    @IBOutlet weak var buttonStackView: UIStackView!
     @IBOutlet weak var importFromHealthKitButtonOutlet: UIButton!
     @IBOutlet weak var saveUserInfoButtonOutlet: UIButton!
 
@@ -97,11 +96,9 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
     }
 
     func hideButtons() {
-        buttonStackView.isHidden = true
     }
 
     func showButtons() {
-        buttonStackView.isHidden = false
     }
 
     func setCosmetics() {
