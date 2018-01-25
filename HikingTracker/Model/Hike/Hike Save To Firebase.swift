@@ -87,15 +87,9 @@ extension HikeInProgress {
     
     func convertAndUploadHikeToFirebase(name: String?) {
         let convertedDict = convertHikeIntoData(hikeWorkoutToSave: self)
-        var nameForHike = name ?? " "
         let databaseRef = Database.database().reference()
         let stringDate = convertedDict[FirebaseDict().startDateKey] as! String
-//        if name == nil {
-//            nameForHike = "Hike on \(newHike.startDate?.displayString)"
-//        } else {
-//            nameForHike = name!
-//        }
-//        databaseRef.child(FirebaseDatabase().childKey).child(stringDate).setValue(convertedDict)
+     databaseRef.child(FirebaseDatabase().childKey).child(stringDate).setValue(convertedDict)
         if let userUID = Auth.auth().currentUser?.uid {
             databaseRef.child(userUID).child(FirebaseDatabase().childKey).child(stringDate).setValue(convertedDict)
         } else {

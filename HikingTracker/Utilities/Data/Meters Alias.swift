@@ -108,7 +108,6 @@ extension Meters {
             let user = StoredUser()
             let userPreference = user.userDisplayUnits
             if userPreference == .freedomUnits {
-                let feetToMilesConversion = 0.00018939
                 let convertedToFeet = self * feetConversion
                 let feet = String(Int(convertedToFeet))
                 return "\(feet) ft"

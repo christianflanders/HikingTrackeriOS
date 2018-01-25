@@ -82,7 +82,7 @@ class HikeHistoryViewController: UIViewController, UITableViewDataSource, UITabl
             let decodedHike = DecodedHike(fromFirebaseDict: hikeDict)
             if decodedHike.totalDistanceInMeters == 0 {
                 var lastLocation = decodedHike.storedLocations.first
-                for (key, value) in decodedHike.storedLocations.enumerated() {
+                for (_, value) in decodedHike.storedLocations.enumerated() {
                     decodedHike.totalDistanceInMeters += value.distance(from: lastLocation!)
                     lastLocation = value
                 }
@@ -152,7 +152,9 @@ class HikeHistoryViewController: UIViewController, UITableViewDataSource, UITabl
         let entryToRemove = ref.child(firebaseChildKey).child(child)
         entryToRemove.removeValue { (error, removed ) in
             print(removed)
-            print(error)
+            if error != nil {
+                print(error!)
+            }
         }
     }
     

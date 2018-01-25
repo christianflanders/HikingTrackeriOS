@@ -106,7 +106,6 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="f7o-Vq-ShK" firstAttribute="centerX" secondItem="95U-eO-pTl" secondAttribute="centerX" id="8SV-Cs-ZWD"/>
                             <constraint firstItem="95U-eO-pTl" firstAttribute="trailing" secondItem="pdj-ix-fKE" secondAttribute="trailing" constant="40" id="BuB-jW-FEz"/>
                             <constraint firstItem="pdj-ix-fKE" firstAttribute="centerX" secondItem="95U-eO-pTl" secondAttribute="centerX" id="NaA-d8-13z"/>
                             <constraint firstItem="f7o-Vq-ShK" firstAttribute="leading" secondItem="95U-eO-pTl" secondAttribute="leading" constant="20" id="Zzk-Yt-FCG"/>

@@ -203,7 +203,7 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
     //MARK: Saving User
 
     func prepareToSave() {
-        var storedUser = StoredUser()
+        let storedUser = StoredUser()
         if checkAllValuesSet(for: userSettingValues) {
             storedUser.birthdate = userSettingValues.birthdate
             storedUser.gender = userSettingValues.gender
@@ -272,8 +272,6 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
     }
 
     fileprivate func checkHealthKitAndSetFoundValues() {
-        let displayUnits = StoredUser().userDisplayUnits
-        let conv = UnitConversions()
         let healthKitStore = HealthKitStore()
         let dataFromHealthKit = healthKitStore.getUserDataFromHealthKit()
         userSettingValues = dataFromHealthKit

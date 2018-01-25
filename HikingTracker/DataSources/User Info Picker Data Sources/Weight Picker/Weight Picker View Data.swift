@@ -152,7 +152,6 @@ struct WeightPickerViewData {
 
     private func pickerDidSelectRowMetric(row: Int, component: Int) -> (stringValue: String, valueInKilograms: Double) {
         var returnValues = ("", 0.0)
-        let conv = UnitConversions()
         let selectedKGValue = row
         if component == valueComponent {
             returnValues.0 = "\(selectedKGValue) \(metricUnitTag)"

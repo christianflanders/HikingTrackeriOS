@@ -107,12 +107,12 @@ class HikeDisplayStrings {
             let averagePaceInMetersPerHour = totalPacesReduced / Double(storedPaces.count)
             let averagePaceMeasurment = Measurement(value: averagePaceInMetersPerHour, unit: UnitLength.meters)
             let averagePaceMeasurementString = formatter.string(from: averagePaceMeasurment)
-            var unit = ""
-            if StoredUser().userDisplayUnits == .freedomUnits {
-                unit = "miles"
-            } else {
-                unit = "km"
-            }
+//            var unit = ""
+//            if StoredUser().userDisplayUnits == .freedomUnits {
+//                unit = "miles"
+//            } else {
+//                unit = "km"
+//            }
             let returnString = "\(averagePaceMeasurementString)/hr"
             return returnString
         } else {

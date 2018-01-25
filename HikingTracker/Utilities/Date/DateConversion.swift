@@ -24,7 +24,7 @@ class DateHelper {
         }
         let calculatedMinutes = seconds / 60
         if calculatedMinutes == 0 {
-            stringMinutes == "00"
+            stringMinutes = "00"
         }
         if calculatedMinutes < 10 {
             stringMinutes = String("0\(calculatedMinutes % 60)")

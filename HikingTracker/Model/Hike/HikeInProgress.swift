@@ -77,7 +77,7 @@ class HikeInProgress: HikeInformation {
     func calulateMetersPerHourFrom(seconds: Double, distanceInMeters: Double) -> Double{
         let secondsInOneHour = 3600.0
         let mySecondsConvertedToHour = seconds / secondsInOneHour
-        let oneHour = mySecondsConvertedToHour / mySecondsConvertedToHour
+//        let oneHour = mySecondsConvertedToHour / mySecondsConvertedToHour
         let metersTraveledInOneHour = distanceInMeters / mySecondsConvertedToHour
         return metersTraveledInOneHour
     }

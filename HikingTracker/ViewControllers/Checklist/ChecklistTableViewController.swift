@@ -57,7 +57,7 @@ class ChecklistTableViewController: UITableViewController, ChecklistButtonFlippe
             let checked = checkListDict["Checked"] as! Bool
             let date = checkListDict["Date"] as! String
             let dateFromString = self.convertStringDateToDate(string: date)
-            var newChecklistItem = ChecklistItem(name: name, checked: checked, dateAdded: dateFromString!)
+            let newChecklistItem = ChecklistItem(name: name, checked: checked, dateAdded: dateFromString!)
             self.checklistItems.append(newChecklistItem)
             self.tableView.reloadData()
         })
@@ -105,8 +105,8 @@ class ChecklistTableViewController: UITableViewController, ChecklistButtonFlippe
 
     func checklistButtonFlipped(index: Int) {
         print(index)
-        var selectedItem = checklistItems[index]
-        var checked = selectedItem.checked
+        let selectedItem = checklistItems[index]
+        let checked = selectedItem.checked
         if checked {
             selectedItem.checked = false
         } else {
@@ -136,7 +136,6 @@ class ChecklistTableViewController: UITableViewController, ChecklistButtonFlippe
         // 3. Grab the value from the text field, and print it when the user clicks OK.
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
             let textField = alert!.textFields![0]
-            print("Text field: \(textField.text)")
             guard let text = textField.text else {return}
             let newChecklistItem = ChecklistItem(name: text, checked: false, dateAdded: Date())
 //            self.checklistItems.append(newChecklistItem)
