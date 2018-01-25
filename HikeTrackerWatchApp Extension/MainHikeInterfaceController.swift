@@ -11,12 +11,14 @@ import Foundation
 import WatchConnectivity
 import HealthKit
 
-class InterfaceController: WKInterfaceController, WCSessionDelegate, HKWorkoutSessionDelegate, WKExtensionDelegate {
+class MainHikeInterfaceController: WKInterfaceController, WCSessionDelegate, HKWorkoutSessionDelegate, WKExtensionDelegate {
+
 
     private let watchMessages = WatchConnectionMessages()
+
     
-    
-    
+    //Asked to start a workout, but WKExtensionDelegate <HikeTrackerWatchApp_Extension.ExtensionDelegate: 0x7b751280> doesn't implement handleWorkoutConfiguration:
+
     private var timer: Timer?
     private var duration = ""
     private var startDateFromPhone: Date?
@@ -35,6 +37,11 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, HKWorkoutSe
     @IBOutlet var distanceLabel: WKInterfaceLabel!
     @IBOutlet var endButtonOutlet: WKInterfaceButton!
     @IBOutlet var resumeButtonOutlet: WKInterfaceButton!
+
+
+    @IBOutlet var hikeInProgressUIGroup: WKInterfaceGroup!
+    
+    @IBOutlet var needToStartHikeWorkoutGroup: WKInterfaceGroup!
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         print("WCSession activated on watch")
@@ -51,26 +58,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, HKWorkoutSe
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         authorizeHealthKit()
-        startTimer()
-        if WCSession.isSupported() {
-            watchConnection.delegate = self
-            watchConnection.activate()
-            configuration.activityType = .hiking
-            configuration.locationType = .outdoor
-            wkExtension.delegate = self
-            do {
-                session = try HKWorkoutSession(configuration: configuration)
-                if let workoutSession = session {
-                    workoutSession.delegate = self
-                    healthStore.start(workoutSession)
-                }
-
-            } catch {
-                fatalError("Problem starting workout session")
-            }
-        } else {
-            print("Phone not avaliable! Starting workout on watch")
-        }
+        startWCConnection()
 
         // Configure interface objects here.
     }
@@ -78,9 +66,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, HKWorkoutSe
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
-        pauseButtonOutlet.setHidden(false)
-        endButtonOutlet.setHidden(true)
-        resumeButtonOutlet.setHidden(true)
+        endWorkoutUI()
         
     }
     
@@ -109,7 +95,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, HKWorkoutSe
         }
         if let startHikeMessage = message[watchMessages.startHike] as? Bool {
             if startHikeMessage {
-                startHike()
+
             }
             
         }
@@ -127,13 +113,36 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, HKWorkoutSe
         if let endHikeMessage = message[watchMessages.endHike] as? Bool {
             if endHikeMessage {
                 endHike()
+                endWorkoutUI()
             }
         }
     }
     
-    func startHike(){
-        startTimer()
+    func startWCConnection(){
+        if WCSession.isSupported() {
+            watchConnection.delegate = self
+            watchConnection.activate()
+            configuration.activityType = .hiking
+            configuration.locationType = .outdoor
+            wkExtension.delegate = self
+        } else {
+            print("WatchConnection Problem")
+        }
     }
+
+        func startHKWorkout() {
+            do {
+                session = try HKWorkoutSession(configuration: configuration)
+                if let workoutSession = session {
+                    workoutSession.delegate = self
+                    healthStore.start(workoutSession)
+                }
+
+            } catch {
+                fatalError("Problem starting workout session")
+            }
+
+        }
     
     func authorizeHealthKit() {
         HealthKitAuthroizationSetup.authorizeHealthKit { (authorized, error) in
@@ -152,6 +161,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, HKWorkoutSe
     //MARK: Workout Session Delegate
     func workoutSession(_ workoutSession: HKWorkoutSession, didChangeTo toState: HKWorkoutSessionState, from fromState: HKWorkoutSessionState, date: Date) {
         print("Workout State Changed")
+
     }
     
     func workoutSession(_ workoutSession: HKWorkoutSession, didFailWithError error: Error) {
@@ -162,6 +172,9 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, HKWorkoutSe
     
     //MARK: WKSession Delegate
     func handle(_ workoutConfiguration: HKWorkoutConfiguration) {
+        startWorkoutUI()
+        startHKWorkout()
+        startTimer()
         print("Reicieved start message from iPhone!")
     }
 
@@ -218,7 +231,21 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate, HKWorkoutSe
         }
 
     }
-    
+
+
+    func watchAppLoadedCheckForWorkoutStarted() {
+
+    }
+
+    func startWorkoutUI() {
+        needToStartHikeWorkoutGroup.setHidden(true)
+        hikeInProgressUIGroup.setHidden(false)
+    }
+
+    func endWorkoutUI() {
+        needToStartHikeWorkoutGroup.setHidden(false)
+        hikeInProgressUIGroup.setHidden(true)
+    }
     
     
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13771" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5S5-8i-ih6">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13771" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fSW-65-zjl">
     <device id="watch42" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -17,69 +17,88 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Interface Controller-->
+        <!--MainHikeController-->
         <scene sceneID="vTI-qf-ezg">
             <objects>
-                <controller id="fSW-65-zjl" customClass="InterfaceController" customModule="HikeTrackerWatchApp_Extension">
+                <controller identifier="MainHikeController" id="fSW-65-zjl" customClass="MainHikeInterfaceController" customModule="HikeTrackerWatchApp_Extension">
                     <items>
-                        <group width="1" alignment="center" id="cIN-of-oKW">
+                        <group width="1" alignment="left" hidden="YES" layout="vertical" id="WUJ-Nw-8Bo">
                             <items>
-                                <label alignment="left" text="Duration" id="bMz-ga-C44">
-                                    <fontDescription key="font" name="Avenir-Heavy" family="Avenir" pointSize="9"/>
-                                </label>
-                                <label alignment="right" text="Label" id="CoG-gB-aec"/>
+                                <group width="1" alignment="left" layout="vertical" spacing="8" id="IGO-oN-vRz">
+                                    <items>
+                                        <group width="1" alignment="center" id="cIN-of-oKW">
+                                            <items>
+                                                <label alignment="left" text="Duration" id="bMz-ga-C44">
+                                                    <fontDescription key="font" name="Avenir-Heavy" family="Avenir" pointSize="10"/>
+                                                </label>
+                                                <label alignment="right" text="Label" id="CoG-gB-aec"/>
+                                            </items>
+                                        </group>
+                                        <group width="1" alignment="center" id="fD9-8t-ghY">
+                                            <items>
+                                                <label alignment="left" text="Calories Burned" id="3Wq-0W-dsI">
+                                                    <fontDescription key="font" name="Avenir-Heavy" family="Avenir" pointSize="10"/>
+                                                </label>
+                                                <label alignment="right" text="Label" id="dOb-sB-uB0">
+                                                    <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                                                </label>
+                                            </items>
+                                        </group>
+                                        <group width="1" alignment="center" id="xk1-CZ-2Tl">
+                                            <items>
+                                                <label alignment="left" text="Distance" id="M0y-Cg-fAI">
+                                                    <fontDescription key="font" name="Avenir-Heavy" family="Avenir" pointSize="10"/>
+                                                </label>
+                                                <label alignment="right" text="Label" id="uDz-5q-aV3">
+                                                    <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                                                </label>
+                                            </items>
+                                        </group>
+                                        <group width="1" height="19" alignment="center" id="Cmt-Hm-Bj5">
+                                            <items>
+                                                <label alignment="left" text="Heart Rate" id="cml-2E-trQ">
+                                                    <fontDescription key="font" name="Avenir-Heavy" family="Avenir" pointSize="10"/>
+                                                </label>
+                                                <label alignment="right" text="Label" id="vMG-0C-TlL"/>
+                                            </items>
+                                        </group>
+                                    </items>
+                                </group>
+                                <group width="1" alignment="left" verticalAlignment="bottom" id="ReJ-0x-Ofh">
+                                    <items>
+                                        <button width="0.5" alignment="right" title="Resume" id="DoK-c5-Kzb">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" red="0.97777169939999997" green="0.94418644910000005" blue="0.73899042609999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <fontDescription key="font" type="system" pointSize="14"/>
+                                            <connections>
+                                                <action selector="resumeButtonPressed" destination="fSW-65-zjl" id="CLR-dG-d1I"/>
+                                            </connections>
+                                        </button>
+                                        <button width="136" height="40" alignment="center" verticalAlignment="bottom" hidden="YES" title="Pause" id="ThK-Tr-vKS">
+                                            <color key="backgroundColor" red="0.4403552711" green="0.56544411179999998" blue="0.1598808467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="pauseButtonPressed" destination="fSW-65-zjl" id="gZ2-el-wGc"/>
+                                            </connections>
+                                        </button>
+                                        <button width="0.5" alignment="left" title="End" id="gAa-DY-byC">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" red="0.83699810500000005" green="0.01030125283" blue="0.1089753732" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <fontDescription key="font" type="system" pointSize="14"/>
+                                            <connections>
+                                                <action selector="endButtonPressed" destination="fSW-65-zjl" id="t1A-3B-BDk"/>
+                                            </connections>
+                                        </button>
+                                    </items>
+                                </group>
                             </items>
                         </group>
-                        <group width="1" alignment="center" id="fD9-8t-ghY">
+                        <group width="1" alignment="left" layout="vertical" id="fbe-Fp-sXV">
                             <items>
-                                <label alignment="left" text="Calories Burned" id="3Wq-0W-dsI">
-                                    <fontDescription key="font" name="Avenir-Heavy" family="Avenir" pointSize="8"/>
+                                <imageView height="88" alignment="left" image="Watch Light Mountain" contentMode="scaleAspectFit" id="SMi-VT-H8L"/>
+                                <label alignment="center" text="Start a new workout from your iPhone" textAlignment="center" numberOfLines="3" id="VQb-hG-XTl">
+                                    <fontDescription key="font" name="ArialHebrew-Light" family="Arial Hebrew" pointSize="14"/>
                                 </label>
-                                <label alignment="right" text="Label" id="dOb-sB-uB0">
-                                    <fontDescription key="font" style="UICTFontTextStyleBody"/>
-                                </label>
-                            </items>
-                        </group>
-                        <group width="1" alignment="center" id="xk1-CZ-2Tl">
-                            <items>
-                                <label alignment="left" text="Distance" id="M0y-Cg-fAI">
-                                    <fontDescription key="font" name="Avenir-Heavy" family="Avenir" pointSize="8"/>
-                                </label>
-                                <label alignment="right" text="Label" id="uDz-5q-aV3">
-                                    <fontDescription key="font" style="UICTFontTextStyleBody"/>
-                                </label>
-                            </items>
-                        </group>
-                        <group width="1" alignment="center" id="Cmt-Hm-Bj5">
-                            <items>
-                                <label alignment="left" text="Heart Rate" id="cml-2E-trQ">
-                                    <fontDescription key="font" name="Avenir-Heavy" family="Avenir" pointSize="8"/>
-                                </label>
-                                <label alignment="right" text="Label" id="vMG-0C-TlL"/>
-                            </items>
-                        </group>
-                        <group width="1" alignment="left" verticalAlignment="bottom" id="ReJ-0x-Ofh">
-                            <items>
-                                <button width="0.5" alignment="right" title="Resume" id="DoK-c5-Kzb">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="backgroundColor" red="0.97777169939999997" green="0.94418644910000005" blue="0.73899042609999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <connections>
-                                        <action selector="resumeButtonPressed" destination="fSW-65-zjl" id="CLR-dG-d1I"/>
-                                    </connections>
-                                </button>
-                                <button width="136" height="40" alignment="center" verticalAlignment="bottom" hidden="YES" title="Pause" id="ThK-Tr-vKS">
-                                    <color key="backgroundColor" red="0.4403552711" green="0.56544411179999998" blue="0.1598808467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <connections>
-                                        <action selector="pauseButtonPressed" destination="fSW-65-zjl" id="gZ2-el-wGc"/>
-                                    </connections>
-                                </button>
-                                <button width="0.5" alignment="left" title="End" id="gAa-DY-byC">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="backgroundColor" red="0.83699810500000005" green="0.01030125283" blue="0.1089753732" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <connections>
-                                        <action selector="endButtonPressed" destination="fSW-65-zjl" id="t1A-3B-BDk"/>
-                                    </connections>
-                                </button>
+                                <label alignment="center" text="HikeTracker" id="Njt-97-FcK"/>
                             </items>
                         </group>
                     </items>
@@ -89,29 +108,14 @@
                         <outlet property="durationLabel" destination="CoG-gB-aec" id="B1S-lQ-NRL"/>
                         <outlet property="endButtonOutlet" destination="gAa-DY-byC" id="kiG-kd-LX5"/>
                         <outlet property="heartRateLabel" destination="vMG-0C-TlL" id="ENc-RZ-ks5"/>
+                        <outlet property="hikeInProgressUIGroup" destination="WUJ-Nw-8Bo" id="IIy-3V-sde"/>
+                        <outlet property="needToStartHikeWorkoutGroup" destination="fbe-Fp-sXV" id="Kgc-hw-5T0"/>
                         <outlet property="pauseButtonOutlet" destination="ThK-Tr-vKS" id="yQr-bi-EIh"/>
                         <outlet property="resumeButtonOutlet" destination="DoK-c5-Kzb" id="OO9-7I-8oB"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="870" y="326"/>
-        </scene>
-        <!--Interface Controller-->
-        <scene sceneID="LJ0-IL-cFe">
-            <objects>
-                <controller id="5S5-8i-ih6">
-                    <items>
-                        <label alignment="center" text="HikeTracker" id="Njt-97-FcK"/>
-                        <label alignment="center" text="Start a new workout from your iPhone" textAlignment="center" numberOfLines="3" id="VQb-hG-XTl">
-                            <fontDescription key="font" name="ArialHebrew-Light" family="Arial Hebrew" pointSize="14"/>
-                        </label>
-                    </items>
-                    <connections>
-                        <segue destination="fSW-65-zjl" kind="relationship" relationship="nextPage" id="TNv-kv-Bqq"/>
-                    </connections>
-                </controller>
-            </objects>
-            <point key="canvasLocation" x="633" y="326"/>
+            <point key="canvasLocation" x="610" y="311"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
