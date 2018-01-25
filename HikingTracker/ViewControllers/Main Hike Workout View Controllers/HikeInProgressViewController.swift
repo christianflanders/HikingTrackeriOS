@@ -335,7 +335,7 @@ extension HikeInProgressViewController: WCSessionDelegate {
     private func convertDateAndSendToWatch() {
         let dateHelper = DateHelper()
         let currentDuration = hikeWorkout.durationInSeconds
-        let adjustDurationToDealWithWatchStartupTime = currentDuration + 2
+        let adjustDurationToDealWithWatchStartupTime = currentDuration
         let stringDuration = dateHelper.convertDurationToStringDate(adjustDurationToDealWithWatchStartupTime)
         watchConnection.sendMessage([watchMessages.startDate: stringDuration], replyHandler: nil) { error in
             print(error)
