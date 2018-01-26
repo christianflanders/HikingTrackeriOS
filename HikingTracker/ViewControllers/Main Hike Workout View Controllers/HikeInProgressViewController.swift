@@ -116,9 +116,9 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     @IBAction func pauseHikeButtonPressed(_ sender: UIButton) {
         sendPauseMessageToWatch()
         pauseHike()
-        let shouldSound = UserSavedSettings().pauseButtonSound
+        let shouldSound = UserStoredSettings().pauseButtonSound
         print(shouldSound)
-        if shouldSound {
+        if shouldSound! {
             playSound()
         }
     }

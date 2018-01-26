@@ -10,12 +10,12 @@ import UIKit
 import Mapbox
 
 class HikeFinishedTableViewController: UITableViewController, UITextFieldDelegate {
+
     // MARK: Enums
     
     // MARK: Constants
-//    let statsToDisplay: [Stats] = [.duration, .distance, . elevationGain, .calories, .avgPace, .avgHeartRate, .minAltitude, .maxAltitude, .timeUphill, .timeDownhill]
-    
-    
+    let pref = UserStoredSettings()
+
     // MARK: Variables
     var mapBoxView: MGLMapView!
     
@@ -57,12 +57,21 @@ class HikeFinishedTableViewController: UITableViewController, UITextFieldDelegat
         saveButton.layer.cornerRadius = saveButton.frame.height / 2
         discardButton.layer.cornerRadius = discardButton.frame.height / 2
 
+        checkIfWantsToClearCheckListAndPerform()
+
 
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
 
+    }
+
+    func checkIfWantsToClearCheckListAndPerform() {
+        if pref.resetChecklistSetting! {
+            let checkListRef = FirebaseCheckListService()
+            checkListRef.clearAllCheckedValues()
+        }
     }
     // MARK: IBActions
     

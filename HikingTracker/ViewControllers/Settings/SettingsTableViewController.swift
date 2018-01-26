@@ -88,6 +88,7 @@ class SettingsTableViewController: UITableViewController {
     @IBAction func resetChecklistSwitchValueChanged(_ sender: UISwitch) {
         guard var resetChecklistSetting = userSettings.resetChecklistSetting else { return }
         userSettings.resetChecklistSetting = !resetChecklistSetting
+        print(userSettings.resetChecklistSetting)
     }
 
 

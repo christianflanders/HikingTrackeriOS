@@ -12,20 +12,29 @@ import Firebase
 struct FirebaseCheckListService {
 
 
-
     private let checkListKey = "Checklist"
     private let ref: DatabaseReference!
 
-    init() {
+     init() {
         guard let userUID = Auth.auth().currentUser?.uid else {fatalError("We somehow got this far without a user logged in")}
         print(Auth.auth().currentUser?.email)
         ref = Database.database().reference().child(userUID).child(checkListKey)
-//        ref.removeValue()
+
     }
 
 
 
 
+    func clearAllCheckedValues() {
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+            if snapshot.exists() {
+                for item in snapshot.children {
+                    let newCheckListItem = ChecklistItem(snapshot: item as! DataSnapshot)
+                    self.changeFirebaseCheckedValueForItem(newCheckListItem, checked: false)
+                }
+            }
+        }
+    }
 
     func manageChecklistItemsFromFirebase(completion: @escaping ([ChecklistItem]) -> Void) {
         var handle: DatabaseHandle!

@@ -169,11 +169,6 @@ struct UserEntriesKeys {
     let localUnits = "localUnits"
 }
 
-struct UserSavedSettings {
-    var pauseButtonSound = false
-    var resetChecklistSwitch = true
-    var openWatchAppAutomaticallySwith = true
-}
 
 struct GenderOptions {
     let male = "Male"
