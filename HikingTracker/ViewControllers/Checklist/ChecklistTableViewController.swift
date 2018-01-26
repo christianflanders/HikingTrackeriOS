@@ -45,8 +45,10 @@ class ChecklistTableViewController: UITableViewController, ChecklistButtonFlippe
 
         tableView.allowsSelection = false
 
+
         ref = Database.database().reference()
         let userUID = Auth.auth().currentUser?.uid
+//        ref.child(userUID!).child("Checklist").removeValue()
         handle = ref.child(userUID!).child("Checklist").observe(.childAdded, with: { (snapshot) in
             let checkListDict = snapshot.value as? [String:Any] ?? [:]
             let name = checkListDict["Name"] as! String
@@ -93,7 +95,12 @@ class ChecklistTableViewController: UITableViewController, ChecklistButtonFlippe
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            let selectedListName = checklistItems[indexPath.row].name
+            ref = Database.database().reference()
+            let userUID = Auth.auth().currentUser?.uid
+            ref.child(userUID!).child("Checklist").child(selectedListName).removeValue()
+            checklistItems.remove(at: indexPath.row)
+            tableView.reloadData()
         }
     }
 
