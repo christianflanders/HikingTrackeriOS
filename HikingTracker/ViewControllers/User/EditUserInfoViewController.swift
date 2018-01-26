@@ -110,6 +110,7 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
     }
 
     func showPickerVCWithOption(_ option: StoredUserOptions ) {
+        textFieldShouldReturn(userNameTextField)
         hideButtons()
         userPickerVCContainer.isHidden = false
         let pickerVC = self.childViewControllers.last as! UserInfoPickerViewController
@@ -187,7 +188,9 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        if textField.text != "" || textField.text != " " {
+        guard let enteredText = textField.text else { return true }
+        print(enteredText.count)
+        if enteredText != "" && enteredText != " " && enteredText.count != 0 {
             userSettingValues.name = textField.text
         }
         return true
@@ -317,7 +320,9 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
     }
 
     fileprivate func convertCMToFeetAndInchesAndSetTitle(_ conv: UnitConversions) {
+
         if let heightInCM = userSettingValues.heightInCentimeters {
+            if heightInCM == 0 { return }
             let convertedToInches = conv.convertCMToInches(cm: heightInCM)
             let feetToDisplay = Int(convertedToInches / 12)
             let inchesToDisplay = Int(convertedToInches) % 12
@@ -328,6 +333,7 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
 
     fileprivate func convertKGToPoundsAndSetTitle(_ conv: UnitConversions) {
         if let weightInKG = userSettingValues.weightInKG {
+            if weightInKG == 0 { return }
             let weightInPounds = conv.convertKilogramsToPounds(grams: weightInKG)
             let displayString = "\(Int(weightInPounds)) lbs"
             weightButtonOutlet.setTitle(displayString, for: .normal)
@@ -337,6 +343,7 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
 
     fileprivate func checkForCMAndSetTitle() {
         if let heightInCM = userSettingValues.heightInCentimeters {
+            if heightInCM == 0 { return }
             let displayString = "\(Int(heightInCM)) cm"
             heightButtonOutlet.setTitle(displayString, for: .normal)
         }
@@ -344,6 +351,7 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
 
     fileprivate func checkForKGAndSetTitle() {
         if let weightInKG = userSettingValues.weightInKG {
+            if weightInKG == 0 { return }
             let displayString = "\(Int(weightInKG)) kg"
             weightButtonOutlet.setTitle(displayString, for: .normal)
         }

@@ -58,7 +58,6 @@ class UserInfoPickerViewController: UIViewController {
         heightPickerViewDataSource.setInitialValueForPicker(pickerView: heightPickerView)
         
 
-
         weightPickerView.dataSource = weightPickerViewDataSource
         weightPickerView.delegate = weightPickerViewDataSource
         weightPickerViewDataSource.setInitialValueForPicker(pickerView: weightPickerView)
