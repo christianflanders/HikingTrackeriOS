@@ -26,8 +26,6 @@
 	<string>Allow HikeTracker To Write To Your Health Data</string>
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>Allow HikeTracker To View Your Health Data</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Allow HikeTracker to use your location</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Allow HikeTracker To Use Your Location</string>
 	<key>NSMotionUsageDescription</key>
