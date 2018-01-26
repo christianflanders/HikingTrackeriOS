@@ -23,11 +23,11 @@
 	<key>MGLMapboxAccessToken</key>
 	<string>pk.eyJ1Ijoic2hyZWRmbGFuZGVycyIsImEiOiJjamF1M3M5YjU1OGl6MzJvaXlnbnQzdnp3In0.vmvVgNxQMGAhA679uwhGbw</string>
 	<key>NSHealthShareUsageDescription</key>
-	<string>Allow HikeTracker To Write To Your Health Data</string>
+	<string>Allow Hike Tracker to view your health data. </string>
 	<key>NSHealthUpdateUsageDescription</key>
-	<string>Allow HikeTracker To View Your Health Data</string>
+	<string>Allow Hike Tracker to write to your health data and record your workouts.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Allow HikeTracker To Use Your Location</string>
+	<string>Hike Tracker needs to access your location to track your workout properly.</string>
 	<key>NSMotionUsageDescription</key>
 	<string>Allow hike tracker to access your motion data to track your workouts</string>
 	<key>UIBackgroundModes</key>
