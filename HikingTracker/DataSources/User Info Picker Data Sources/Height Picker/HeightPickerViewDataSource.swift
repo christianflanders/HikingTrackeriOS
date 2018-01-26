@@ -46,4 +46,16 @@ class HeightPickerViewDataSource: NSObject, UIPickerViewDataSource, UIPickerView
         pickerView.selectRow(5, inComponent: 0, animated: true)
     }
 
+
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var pickerLabel: UILabel? = (view as? UILabel)
+        if pickerLabel == nil {
+            pickerLabel = UILabel()
+            pickerLabel?.font = UIFont(name: "Cabin", size: 26.0)
+            pickerLabel?.textAlignment = .center
+        }
+        pickerLabel?.text = userPickerHelpers.heightPickerData.pickerTitleForHeight(row: row, component: component)
+
+        return pickerLabel!
+    }
 }

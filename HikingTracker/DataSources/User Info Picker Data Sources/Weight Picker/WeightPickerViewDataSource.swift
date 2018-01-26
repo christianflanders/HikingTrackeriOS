@@ -33,6 +33,17 @@ class WeightPickerViewDataSource: NSObject, UIPickerViewDataSource, UIPickerView
         weightValueSetDelegate?.weightValueSet(stringValue: returnTuple.stringValue, weightInKG: returnTuple.valueInKilograms)
     }
 
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var pickerLabel: UILabel? = (view as? UILabel)
+        if pickerLabel == nil {
+            pickerLabel = UILabel()
+            pickerLabel?.font = UIFont(name: "Cabin", size: 26.0)
+            pickerLabel?.textAlignment = .center
+        }
+        pickerLabel?.text = userPickerHelpers.weightPickerData.getWeightTitleForRow(row: row, component: component)
+
+        return pickerLabel!
+    }
 
     func setInitialValueForPicker(pickerView: UIPickerView) {
         pickerView.selectRow(100, inComponent: 0, animated: true)
