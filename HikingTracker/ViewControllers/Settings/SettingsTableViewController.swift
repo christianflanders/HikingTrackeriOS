@@ -46,6 +46,13 @@ class SettingsTableViewController: UITableViewController {
         }
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        self.tabBarController?.tabBar.isHidden = false //Set this becuase it gets hidden if we go to the user info screen
+
+
+    }
+
 
     // MARK: IBActions
 
@@ -68,6 +75,13 @@ class SettingsTableViewController: UITableViewController {
     }
 
     @IBAction func openWatchAppAutomaticallySwitchValueChanged(_ sender: UISwitch) {
+    }
+
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let backItem = UIBarButtonItem()
+        backItem.title = "Cancel"
+        navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
     }
 
 

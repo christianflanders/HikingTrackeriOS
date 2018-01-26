@@ -66,12 +66,19 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
 
         pickerController.birthDateSelectedDelegate = self
 
+        self.tabBarController?.tabBar.isHidden = true
+
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         checkForExistingValuesAndSetLabels()
         setCosmetics()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        self.tabBarController?.tabBar.isHidden = false
     }
 
     // MARK: IBActions
