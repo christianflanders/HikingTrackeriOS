@@ -11,7 +11,7 @@ import M13Checkbox
 
 class ChecklistTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var checklistItemNameTextField: UITextField!
+    @IBOutlet weak var checkListItemLabel: UILabel!
 
     var delegate: ChecklistButtonFlippedDelegate?
     var index: Int?
@@ -58,7 +58,7 @@ class ChecklistTableViewCell: UITableViewCell {
 
     func setUpCell(){
         guard let checklistItem = checklistItemToDisplay else {return}
-        checklistItemNameTextField.text = checklistItem.name
+        checkListItemLabel.text = checklistItem.name
         let checklistItemStatus = checklistItem.checked
         let checkListItemChecked = checklistItemStatus 
         if checkListItemChecked {

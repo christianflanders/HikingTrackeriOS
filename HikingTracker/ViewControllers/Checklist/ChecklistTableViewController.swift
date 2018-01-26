@@ -16,9 +16,7 @@ class ChecklistTableViewController: UITableViewController, ChecklistButtonFlippe
     // MARK: Enums
 
     // MARK: Constants
-    var checklistItemOne = ChecklistItem(name: "Backpack", checked: false, dateAdded: Date())
-    var checklistItemTwo = ChecklistItem(name: "Leash", checked: true, dateAdded: Date())
-    var checklistItemThree = ChecklistItem(name: "Water", checked: false, dateAdded: Date())
+
 
 
     var checklistItems = [ChecklistItem]()
@@ -44,9 +42,7 @@ class ChecklistTableViewController: UITableViewController, ChecklistButtonFlippe
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        checklistItems.append(checklistItemOne)
-        checklistItems.append(checklistItemTwo)
-        checklistItems.append(checklistItemThree)
+
         tableView.allowsSelection = false
 
         ref = Database.database().reference()
