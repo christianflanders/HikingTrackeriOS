@@ -9,4 +9,19 @@
 import Foundation
 
 
-
+extension String {
+    func removePossibleLastName() -> String {
+        var stringToTruncate = self
+        var stringToReturn = self
+        if stringToTruncate.first == " " {
+            stringToTruncate.removeFirst()
+        }
+        if stringToTruncate.contains(" ") {
+            let cutString = stringToTruncate.prefix(while: { (character) -> Bool in
+                return character != " "
+            })
+            stringToReturn = String(cutString)
+        }
+        return stringToReturn
+    }
+}

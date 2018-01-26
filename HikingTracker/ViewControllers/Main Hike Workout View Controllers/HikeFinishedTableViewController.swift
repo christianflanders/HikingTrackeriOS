@@ -154,12 +154,17 @@ class HikeFinishedTableViewController: UITableViewController, UITextFieldDelegat
     @IBAction func saveHikeButtonPressed(_ sender: UIButton) {
         hikeWorkout.convertAndUploadHikeToFirebase(name: "No name")
         hikeWorkout.storeHikeToHealthKit(name: hikeWorkout.hikeName)
+        var nameToUse = ""
+        if let splitName = StoredUser().name?.removePossibleLastName() {
+            nameToUse = splitName
+        }
+
         print("Uploaded!")
-        let alert = UIAlertController(title: "Workout saved!", message: "Great job. Or something.", preferredStyle: .alert)
-        let thanksBroAction = UIAlertAction(title: "Thanks bro", style: .default) { (_) in
+        let alert = UIAlertController(title: "Workout saved!", message: "Great job \(nameToUse)", preferredStyle: .alert)
+        let goHomeAction = UIAlertAction(title: "Go Home", style: .default) { (_) in
             self.dismissToMainScreen()
         }
-        alert.addAction(thanksBroAction)
+        alert.addAction(goHomeAction)
         present(alert, animated: true, completion: nil)
     }
     
