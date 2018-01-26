@@ -17,28 +17,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TgL-aa-ts7">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iPhone 8 Plus" translatesAutoresizingMaskIntoConstraints="NO" id="wNJ-2k-gNH">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Loading Screen" translatesAutoresizingMaskIntoConstraints="NO" id="Beq-FB-fXV">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="TgL-aa-ts7" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Gdi-VL-8xL"/>
-                            <constraint firstItem="wNJ-2k-gNH" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="L9C-e1-3Q0"/>
-                            <constraint firstItem="wNJ-2k-gNH" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Mmj-39-l1k"/>
-                            <constraint firstItem="wNJ-2k-gNH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Qhf-Ho-frZ"/>
-                            <constraint firstItem="wNJ-2k-gNH" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="RjA-cv-1nX"/>
-                            <constraint firstItem="TgL-aa-ts7" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="RuE-pt-v7q"/>
-                            <constraint firstItem="wNJ-2k-gNH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="UDb-13-aOe"/>
-                            <constraint firstItem="wNJ-2k-gNH" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="X1S-GV-lET"/>
-                            <constraint firstItem="TgL-aa-ts7" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ZVb-LD-n3S"/>
-                            <constraint firstItem="wNJ-2k-gNH" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="a3Z-fb-bQN"/>
-                            <constraint firstItem="wNJ-2k-gNH" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="bkI-ap-3b6"/>
-                            <constraint firstItem="TgL-aa-ts7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tNa-5W-2yS"/>
+                            <constraint firstItem="Beq-FB-fXV" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="JSR-jM-adY"/>
+                            <constraint firstItem="Beq-FB-fXV" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Ub0-x9-0xR"/>
+                            <constraint firstItem="Beq-FB-fXV" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="eoj-Ww-ude"/>
+                            <constraint firstItem="Beq-FB-fXV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zbC-8O-HY8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -49,6 +37,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="iPhone 8 Plus" width="414" height="736"/>
+        <image name="Loading Screen" width="414" height="736"/>
     </resources>
 </document>
