@@ -88,7 +88,7 @@
                                         </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D5r-gp-K1N">
-                                        <rect key="frame" x="0.0" y="0.0" width="151.5" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="151" height="60"/>
                                         <color key="backgroundColor" red="0.83699810500000005" green="0.01030125283" blue="0.1089753732" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Oswald-Bold" family="Oswald" pointSize="24"/>
                                         <state key="normal" title="End">
@@ -104,7 +104,7 @@
                                         </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eM3-xd-gxy">
-                                        <rect key="frame" x="184.5" y="0.0" width="150.5" height="60"/>
+                                        <rect key="frame" x="184" y="0.0" width="151" height="60"/>
                                         <color key="backgroundColor" red="0.4403552711" green="0.56544411179999998" blue="0.1598808467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Oswald-Bold" family="Oswald" pointSize="24"/>
                                         <state key="normal" title="Resume">

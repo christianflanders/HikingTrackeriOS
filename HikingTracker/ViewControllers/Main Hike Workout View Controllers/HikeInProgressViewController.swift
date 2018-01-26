@@ -13,12 +13,16 @@ import CoreLocation
 import Mapbox
 import WatchKit
 import WatchConnectivity
+import AVFoundation
 
 class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate, MGLMapViewDelegate{
     
     // MARK: Enums
     
     // MARK: Constants
+
+
+
     
     private let locationManager = LocationManager.shared
     
@@ -27,6 +31,8 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     fileprivate let watchMessages = WatchConnectionMessages()
     
     // MARK: Variables
+
+    private var player: AVAudioPlayer?
     
     // MARK: Outlets
 
@@ -110,6 +116,11 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     @IBAction func pauseHikeButtonPressed(_ sender: UIButton) {
         sendPauseMessageToWatch()
         pauseHike()
+        let shouldSound = UserSavedSettings().pauseButtonSound
+        print(shouldSound)
+        if shouldSound {
+            playSound()
+        }
     }
     
     @IBAction func holdToEndButtonPressed(_ sender: UIButton) {
@@ -236,6 +247,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         holdToEndButtonOutlet.isHidden = false
     }
 
+
     // MARK: Segue Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -264,6 +276,30 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     }
     
     // MARK: Solar
+
+
+    // MARK: Sound
+    func playSound() {
+        guard let url = Bundle.main.url(forResource: "PauseNoise", withExtension: "wav") else { return }
+
+        do {
+
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try AVAudioSession.sharedInstance().setActive(true)
+
+
+
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+
+
+            guard let player = player else { return }
+
+            player.play()
+
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
     
 }
 
@@ -338,7 +374,7 @@ extension HikeInProgressViewController: WCSessionDelegate {
         let adjustDurationToDealWithWatchStartupTime = currentDuration
         let stringDuration = dateHelper.convertDurationToStringDate(adjustDurationToDealWithWatchStartupTime)
         watchConnection.sendMessage([watchMessages.startDate: stringDuration], replyHandler: nil) { error in
-            print(error)
+//            print(error)
         }
     }
     
@@ -346,7 +382,7 @@ extension HikeInProgressViewController: WCSessionDelegate {
         let distance = hikeWorkout.totalDistanceInMeters
         let stringDistance = distance.getDisplayString
         watchConnection.sendMessage([watchMessages.distance: stringDistance], replyHandler: nil) { error in
-            print(error)
+//            print(error)
         }
     }
     
@@ -354,7 +390,7 @@ extension HikeInProgressViewController: WCSessionDelegate {
         let caloriesBurned = Int(hikeWorkout.caloriesBurned)
         let stringCalories = String("\(caloriesBurned) kcl")
         watchConnection.sendMessage([watchMessages.calories: stringCalories], replyHandler: nil) { error in
-            print(error)
+//            print(error)
         }
     }
     
@@ -363,27 +399,27 @@ extension HikeInProgressViewController: WCSessionDelegate {
     fileprivate func sendStartMessageToWatch() {
         let startMessage = watchMessages.startHike
         watchConnection.sendMessage([startMessage: true], replyHandler: nil) { (error) in
-            print(error)
+//            print(error)
         }
     }
     fileprivate func sendPauseMessageToWatch(){
         let pauseMessage = watchMessages.pauseHike
         watchConnection.sendMessage([pauseMessage: true], replyHandler: nil) { (error) in
-            print(error)
+//            print(error)
         }
     }
     
     fileprivate func sendResumeMessageToWatch(){
         let resumeMessage = watchMessages.resumeHike
         watchConnection.sendMessage([resumeMessage: true], replyHandler: nil) { (error) in
-            print(error)
+//            print(error)
         }
     }
     
     fileprivate func sendEndMessageToWatch() {
         let endMessage = watchMessages.endHike
         watchConnection.sendMessage([endMessage: true], replyHandler: nil) { (error) in
-            print(error)
+//            print(error)
         }
     }
 }
