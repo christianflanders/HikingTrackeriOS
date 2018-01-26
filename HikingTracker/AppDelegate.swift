@@ -14,6 +14,13 @@ import FirebaseAuthUI
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+
+    override init() {
+        super.init()
+        FirebaseApp.configure()
+        let databaseRef = Database.database()
+        databaseRef.isPersistenceEnabled = true
+    }
     var window: UIWindow?
     
     let navigationBarDefaultFont = UIFont(name: "Cabin", size: 24)
@@ -22,10 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
-        FirebaseApp.configure()
-        let databaseRef = Database.database()
-        databaseRef.isPersistenceEnabled = true
+
+
         
         setNavigationBarTitleAttributes()
         

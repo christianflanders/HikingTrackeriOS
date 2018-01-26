@@ -16,7 +16,7 @@ class ChecklistTableViewController: UITableViewController, ChecklistButtonFlippe
     // MARK: Enums
 
     // MARK: Constants
-
+    let checklistService = FirebaseCheckListService()
 
 
     var checklistItems = [ChecklistItem]()
@@ -46,19 +46,14 @@ class ChecklistTableViewController: UITableViewController, ChecklistButtonFlippe
         tableView.allowsSelection = false
 
 
-        ref = Database.database().reference()
-        let userUID = Auth.auth().currentUser?.uid
-//        ref.child(userUID!).child("Checklist").removeValue()
-        handle = ref.child(userUID!).child("Checklist").observe(.childAdded, with: { (snapshot) in
-            let checkListDict = snapshot.value as? [String:Any] ?? [:]
-            let name = checkListDict["Name"] as! String
-            let checked = checkListDict["Checked"] as! Bool
-            let date = checkListDict["Date"] as! String
-            let dateFromString = self.convertStringDateToDate(string: date)
-            let newChecklistItem = ChecklistItem(name: name, checked: checked, dateAdded: dateFromString!)
-            self.checklistItems.append(newChecklistItem)
+        checklistService.manageChecklistItemsFromFirebase() { (downloadedCheckListItems) in
+            self.checklistItems = downloadedCheckListItems
             self.tableView.reloadData()
-        })
+        }
+
+
+
+
 
 
     }
@@ -94,19 +89,14 @@ class ChecklistTableViewController: UITableViewController, ChecklistButtonFlippe
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
-            let selectedListName = checklistItems[indexPath.row].name
-            ref = Database.database().reference()
-            let userUID = Auth.auth().currentUser?.uid
-            ref.child(userUID!).child("Checklist").child(selectedListName).removeValue()
-            checklistItems.remove(at: indexPath.row)
-            tableView.reloadData()
+            let selectedList = checklistItems[indexPath.row]
+            checklistService.deleteChecklistItem(selectedList)
         }
     }
 
     // MARK: ChecklistButtonFlipped Delegate
 
-    func checklistButtonFlipped(index: Int) {
+    func checklistButtonFlipped(index: Int) { // Called by the containing Table View Cell
         print(index)
         let selectedItem = checklistItems[index]
         let checked = selectedItem.checked
@@ -115,69 +105,35 @@ class ChecklistTableViewController: UITableViewController, ChecklistButtonFlippe
         } else {
             selectedItem.checked = true
         }
-        changeFirebaseCheckedValueForItem(selectedItem,checked: selectedItem.checked)
-        print(selectedItem.name)
-        print(selectedItem.checked)
+        checklistService.changeFirebaseCheckedValueForItem(selectedItem,checked: selectedItem.checked)
     }
 
-    func changeFirebaseCheckedValueForItem(_ item: ChecklistItem, checked: Bool) {
-        let databaseRef = Database.database().reference()
-        if let userUID = Auth.auth().currentUser?.uid {
-            databaseRef.child(userUID).child("Checklist").child(item.name).child("Checked").setValue(checked)
-        } else {
-            print("Problem getting userUID")
-        }
-    }
+
 
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-        let alert = UIAlertController(title: "Add", message: "Add a checklist item", preferredStyle: .alert)
+
+        let alert = UIAlertController(title: "Add New Checklist Entry", message: "", preferredStyle: .alert)
 
         alert.addTextField { (textField) in
-            textField.text = "Add Item"
+            textField.placeholder = "Enter Entry Name"
+
         }
 
-        // 3. Grab the value from the text field, and print it when the user clicks OK.
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
             let textField = alert!.textFields![0]
             guard let text = textField.text else {return}
             let newChecklistItem = ChecklistItem(name: text, checked: false, dateAdded: Date())
-//            self.checklistItems.append(newChecklistItem)
-            self.uploadChecklistItemToFirebase(newChecklistItem)
+            self.checklistService.uploadChecklistItemToFirebase(newChecklistItem)
             self.tableView.reloadData()
         }))
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(cancelAction)
 
-        // 4. Present the alert.
         self.present(alert, animated: true, completion: nil)
     }
 
 
-    private func convertStringDateToDate(string: String) -> Date? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .long
-        dateFormatter.timeStyle = .short
-        let dateFromString = dateFormatter.date(from: string)
-        return dateFromString
-    }
-
-    private func uploadChecklistItemToFirebase(_ item: ChecklistItem) {
-        var fireBaseDict = [String: Any]()
-         let stringDate = item.dateAdded.displayString
-            fireBaseDict["Date"] = stringDate
-
-         let name = item.name
-            fireBaseDict["Name"] = name
-
-         let checked = item.checked
-            fireBaseDict["Checked"] = checked
 
 
-        let databaseRef = Database.database().reference()
-        if let userUID = Auth.auth().currentUser?.uid {
-            databaseRef.child(userUID).child("Checklist").child(name).setValue(fireBaseDict)
-        } else {
-            print("Problem getting userUID")
-        }
-    }
+
 }
