@@ -23,6 +23,7 @@
 		6B1B12441FE9ABD900FFFDB4 /* DateConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1B12421FE9AB6300FFFDB4 /* DateConversion.swift */; };
 		6B31A6BD1FF6FD08002069B2 /* UnitConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B31A6BC1FF6FD08002069B2 /* UnitConversions.swift */; };
 		6B35497A1FFDA1CD00BE3AC5 /* ShortStoughRunkeeper1220.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 6B3549781FFDA1CD00BE3AC5 /* ShortStoughRunkeeper1220.gpx */; };
+		6B4173F0201AF93100E311EB /* UserStoredSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4173EF201AF93100E311EB /* UserStoredSettings.swift */; };
 		6B48E1322006BC6A00D24F44 /* Label Kerning Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B48E1312006BC6A00D24F44 /* Label Kerning Extension.swift */; };
 		6B48E1392006F9EF00D24F44 /* CustomMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B48E1382006F9EF00D24F44 /* CustomMarker.swift */; };
 		6B4D230D201A6ABB009B8009 /* WatchControllerNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4D230C201A6ABB009B8009 /* WatchControllerNames.swift */; };
@@ -258,6 +259,7 @@
 		6B249CA91FEA20370092B518 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B31A6BC1FF6FD08002069B2 /* UnitConversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitConversions.swift; sourceTree = "<group>"; };
 		6B3549781FFDA1CD00BE3AC5 /* ShortStoughRunkeeper1220.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ShortStoughRunkeeper1220.gpx; sourceTree = "<group>"; };
+		6B4173EF201AF93100E311EB /* UserStoredSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStoredSettings.swift; sourceTree = "<group>"; };
 		6B48E1312006BC6A00D24F44 /* Label Kerning Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label Kerning Extension.swift"; sourceTree = "<group>"; };
 		6B48E1382006F9EF00D24F44 /* CustomMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarker.swift; sourceTree = "<group>"; };
 		6B4D230C201A6ABB009B8009 /* WatchControllerNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchControllerNames.swift; sourceTree = "<group>"; };
@@ -920,6 +922,7 @@
 			isa = PBXGroup;
 			children = (
 				6B19AF0D200AA76500BA5F68 /* SettingsTableViewController.swift */,
+				6B4173EF201AF93100E311EB /* UserStoredSettings.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1561,6 +1564,7 @@
 				6BA6CA40201550800084CB88 /* UserRequiredStats.swift in Sources */,
 				6B6B45F12000A61900A9FB7C /* HikeHistoryStatContainerViewController.swift in Sources */,
 				6BA6CA522016AD230084CB88 /* Picker View Helper.swift in Sources */,
+				6B4173F0201AF93100E311EB /* UserStoredSettings.swift in Sources */,
 				6B91BB411FF9C24A00CB378F /* HikeChartsViewController.swift in Sources */,
 				6BB3CD37200D3EB000E6B89D /* ChecklistButtonProtocol.swift in Sources */,
 				6B91BB3D1FF99DB900CB378F /* HikeHistoryTableViewCell.swift in Sources */,

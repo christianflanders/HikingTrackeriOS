@@ -16,14 +16,13 @@ class SettingsTableViewController: UITableViewController {
     let user = StoredUser()
 
     // MARK: Variables
-
+    var userSettings = UserStoredSettings()
 
     // MARK: Outlets
     @IBOutlet weak var unitsSegmentedControl: UISegmentedControl!
 
     @IBOutlet weak var pauseSoundSwitchOutlet: UISwitch!
     @IBOutlet weak var resetChecklistSwitch: UISwitch!
-    @IBOutlet weak var openWatchAppAutomaticallySwitch: UISwitch!
 
     // MARK: Weak Vars
 
@@ -37,13 +36,27 @@ class SettingsTableViewController: UITableViewController {
     // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+//        checkForExistingSettingsValuesAndSetDefaults()
         switch user.userDisplayUnits {
         case .freedomUnits :
             unitsSegmentedControl.isEnabledForSegment(at: 0)
         case .metric :
             unitsSegmentedControl.isEnabledForSegment(at: 1)
         }
+        guard let pauseButtonSetting = userSettings.pauseButtonSound else { return }
+        if pauseButtonSetting {
+            pauseSoundSwitchOutlet.isOn = true
+        } else {
+            pauseSoundSwitchOutlet.isOn = false
+        }
+        guard let resetChecklistSetting = userSettings.resetChecklistSetting else { return }
+        if resetChecklistSetting {
+            resetChecklistSwitch.isOn = true
+        } else {
+            resetChecklistSwitch.isOn = false
+        }
+
+
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -68,14 +81,16 @@ class SettingsTableViewController: UITableViewController {
     }
 
     @IBAction func pauseSoundSwitchValueChanged(_ sender: UISwitch) {
-
+        guard let pauseButtonSetting = userSettings.pauseButtonSound else { return }
+        userSettings.pauseButtonSound = !pauseButtonSetting
+        print(userSettings.pauseButtonSound)
     }
     @IBAction func resetChecklistSwitchValueChanged(_ sender: UISwitch) {
-
+        guard var resetChecklistSetting = userSettings.resetChecklistSetting else { return }
+        userSettings.resetChecklistSetting = !resetChecklistSetting
     }
 
-    @IBAction func openWatchAppAutomaticallySwitchValueChanged(_ sender: UISwitch) {
-    }
+
 
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -85,6 +100,15 @@ class SettingsTableViewController: UITableViewController {
     }
 
 
+
+    func checkForExistingSettingsValuesAndSetDefaults() {
+        if userSettings.pauseButtonSound == nil {
+            userSettings.pauseButtonSound = true
+        }
+        if userSettings.resetChecklistSetting == nil {
+            userSettings.resetChecklistSetting = false
+        }
+    }
 }
 
 
