@@ -13,19 +13,17 @@ struct FirebaseCheckListService {
 
 
     private let checkListKey = "Checklist"
-    private let ref: DatabaseReference!
 
-     init() {
-        guard let userUID = Auth.auth().currentUser?.uid else {fatalError("We somehow got this far without a user logged in")}
-        print(Auth.auth().currentUser?.email)
-        ref = Database.database().reference().child(userUID).child(checkListKey)
-
-    }
+     init() {}
 
 
 
 
     func clearAllCheckedValues() {
+        let ref: DatabaseReference!
+        let userUID = Auth.auth().currentUser?.uid
+        ref = Database.database().reference().child(userUID!).child(checkListKey)
+
         ref.observeSingleEvent(of: .value) { (snapshot) in
             if snapshot.exists() {
                 for item in snapshot.children {
@@ -37,7 +35,10 @@ struct FirebaseCheckListService {
     }
 
     func manageChecklistItemsFromFirebase(completion: @escaping ([ChecklistItem]) -> Void) {
-        var handle: DatabaseHandle!
+        let ref: DatabaseReference!
+        let userUID = Auth.auth().currentUser?.uid
+        ref = Database.database().reference().child(userUID!).child(checkListKey)
+
         ref.observe(.value) { (snapshot) in
             if snapshot.exists() {
                 var checkListItems = [ChecklistItem]()
@@ -62,10 +63,18 @@ struct FirebaseCheckListService {
     }
 
     func deleteChecklistItem(_ item: ChecklistItem) {
+        let ref: DatabaseReference!
+        let userUID = Auth.auth().currentUser?.uid
+        ref = Database.database().reference().child(userUID!).child(checkListKey)
+
         ref.child(item.name).removeValue()
     }
 
     func changeFirebaseCheckedValueForItem(_ item: ChecklistItem, checked: Bool) {
+        let ref: DatabaseReference!
+        let userUID = Auth.auth().currentUser?.uid
+        ref = Database.database().reference().child(userUID!).child(checkListKey)
+
         let databaseRef = Database.database().reference()
         if let userUID = Auth.auth().currentUser?.uid {
             databaseRef.child(userUID).child("Checklist").child(item.name).child("Checked").setValue(checked)

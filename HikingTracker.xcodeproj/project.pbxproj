@@ -85,6 +85,7 @@
 		6B91BB3D1FF99DB900CB378F /* HikeHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B91BB3C1FF99DB900CB378F /* HikeHistoryTableViewCell.swift */; };
 		6B91BB411FF9C24A00CB378F /* HikeChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B91BB401FF9C24A00CB378F /* HikeChartsViewController.swift */; };
 		6B91BB431FF9C59500CB378F /* GPX 1 For Unit Testing.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 6B91BB421FF9C59500CB378F /* GPX 1 For Unit Testing.gpx */; };
+		6B967BBF201C0E0900D96131 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B967BBE201C0E0900D96131 /* Onboarding.storyboard */; };
 		6B9B19171FDF133100E6A193 /* MapBox Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9B19161FDF133100E6A193 /* MapBox Extension.swift */; };
 		6BA663B81FF58FFD00DAF05E /* UserStatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA663B71FF58FFD00DAF05E /* UserStatTableViewCell.swift */; };
 		6BA6CA3E20154B220084CB88 /* UserInfoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA6CA3C20154B220084CB88 /* UserInfoPickerViewController.swift */; };
@@ -314,6 +315,7 @@
 		6B91BB3C1FF99DB900CB378F /* HikeHistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HikeHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		6B91BB401FF9C24A00CB378F /* HikeChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeChartsViewController.swift; sourceTree = "<group>"; };
 		6B91BB421FF9C59500CB378F /* GPX 1 For Unit Testing.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "GPX 1 For Unit Testing.gpx"; sourceTree = "<group>"; };
+		6B967BBE201C0E0900D96131 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		6B9B19161FDF133100E6A193 /* MapBox Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapBox Extension.swift"; sourceTree = "<group>"; };
 		6BA663B71FF58FFD00DAF05E /* UserStatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatTableViewCell.swift; sourceTree = "<group>"; };
 		6BA6CA3C20154B220084CB88 /* UserInfoPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserInfoPickerViewController.swift; path = HikingTracker/ViewControllers/User/UserInfoPickerViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -811,6 +813,7 @@
 				6B6E71ED201823E200C1A6FE /* MainHike.storyboard */,
 				6B6E71EB201823AF00C1A6FE /* HikeHistory.storyboard */,
 				6B6E71E92018238300C1A6FE /* Settings:User.storyboard */,
+				6B967BBE201C0E0900D96131 /* Onboarding.storyboard */,
 				6BB63A0D1FD5CCE600E9F4A1 /* Main.storyboard */,
 				6B19AF0A200AA11E00BA5F68 /* Segues.swift */,
 				6BB63A151FD5CCE600E9F4A1 /* LaunchScreen.storyboard */,
@@ -1210,6 +1213,7 @@
 				6BBF0F221FFC998900591C50 /* PauseNoise.wav in Resources */,
 				6BB63A171FD5CCE600E9F4A1 /* LaunchScreen.storyboard in Resources */,
 				6B6E71EE201823E200C1A6FE /* MainHike.storyboard in Resources */,
+				6B967BBF201C0E0900D96131 /* Onboarding.storyboard in Resources */,
 				6B6E19D81FEDE7EE00B5605A /* Ailerons-Typeface.otf in Resources */,
 				6B6ED184200570CA0094B3EB /* Cabin-Bold.ttf in Resources */,
 				6B6A1D4F1FF2EF3800C4AD3A /* RK_gpx _2017-12-20_1333-xc.gpx in Resources */,
@@ -1278,7 +1282,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HikingTracker/Pods-HikingTracker-resources.sh",
-				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseAuthUI.bundle,
+				"$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseAuthUI.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
