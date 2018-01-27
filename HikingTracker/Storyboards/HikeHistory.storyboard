@@ -57,13 +57,13 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="UIc-5l-Ft5">
-                                                    <rect key="frame" x="62" y="0.0" width="248" height="58.5"/>
+                                                    <rect key="frame" x="62" y="0.0" width="303" height="58.5"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TSz-Q9-nVC">
-                                                            <rect key="frame" x="0.0" y="0.0" width="248" height="43.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="303" height="43.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="December 14, 2017" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ghg-5i-AKA">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="248" height="43.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="303" height="43.5"/>
                                                                     <fontDescription key="fontDescription" name="Oswald-SemiBold" family="Oswald" pointSize="22"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -71,22 +71,22 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tR3-9r-8ye">
-                                                            <rect key="frame" x="0.0" y="43.5" width="248" height="15"/>
+                                                            <rect key="frame" x="0.0" y="43.5" width="303" height="15"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8 Miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0F-yd-CHe">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="82.5" height="15"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="101" height="15"/>
                                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="12"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stough Canyon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cqq-nP-Ic2">
-                                                                    <rect key="frame" x="82.5" y="0.0" width="83" height="15"/>
+                                                                    <rect key="frame" x="101" y="0.0" width="101" height="15"/>
                                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="12"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Sn-9S-52A">
-                                                                    <rect key="frame" x="165.5" y="0.0" width="82.5" height="15"/>
+                                                                    <rect key="frame" x="202" y="0.0" width="101" height="15"/>
                                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="12"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -345,6 +345,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Topo map" translatesAutoresizingMaskIntoConstraints="NO" id="N9f-Oc-Qz7">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Zc9-m4-dJ0">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
@@ -382,6 +385,7 @@
                                             </view>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sv5-1v-FIw">
                                                 <rect key="frame" x="0.0" y="50" width="375" height="273.5"/>
+                                                <color key="backgroundColor" red="0.97777169939999997" green="0.94418644910000005" blue="0.73899042609999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <segue destination="Was-eC-Z2j" kind="embed" identifier="Elevation" id="IPS-wd-A6l"/>
                                                 </connections>
@@ -398,19 +402,19 @@
                                         <rect key="frame" x="0.0" y="323.5" width="375" height="323.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ksI-zx-hb9">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="323.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eMf-by-8Nc">
-                                                        <rect key="frame" x="10" y="10" width="355" height="30"/>
+                                                        <rect key="frame" x="10" y="10" width="355" height="303.5"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Pace" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbX-Jo-y70">
-                                                                <rect key="frame" x="0.0" y="0.0" width="290.5" height="30"/>
+                                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pace" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbX-Jo-y70">
+                                                                <rect key="frame" x="-10" y="-353.5" width="0.0" height="25.5"/>
                                                                 <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Avg Pace" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ie-Bq-4mc">
-                                                                <rect key="frame" x="290.5" y="0.0" width="64.5" height="30"/>
+                                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avg Pace" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ie-Bq-4mc">
+                                                                <rect key="frame" x="-10" y="-353.5" width="0.0" height="25.5"/>
                                                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -418,7 +422,6 @@
                                                         </subviews>
                                                     </stackView>
                                                 </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="eMf-by-8Nc" secondAttribute="trailing" constant="10" id="MaI-ex-Rmx"/>
                                                     <constraint firstItem="eMf-by-8Nc" firstAttribute="leading" secondItem="ksI-zx-hb9" secondAttribute="leading" constant="10" id="UB8-TI-uyH"/>
@@ -426,8 +429,8 @@
                                                     <constraint firstItem="eMf-by-8Nc" firstAttribute="top" secondItem="ksI-zx-hb9" secondAttribute="top" constant="10" id="uDQ-1K-BU8"/>
                                                 </constraints>
                                             </view>
-                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pSv-ub-gql">
-                                                <rect key="frame" x="0.0" y="50" width="375" height="273.5"/>
+                                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pSv-ub-gql">
+                                                <rect key="frame" x="0.0" y="323.5" width="375" height="0.0"/>
                                                 <connections>
                                                     <segue destination="Yeq-pd-kTK" kind="embed" identifier="Pace" id="OXp-Rs-ZKy"/>
                                                 </connections>
@@ -447,9 +450,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Zc9-m4-dJ0" firstAttribute="top" secondItem="zI9-FO-X65" secondAttribute="top" id="7Y5-M0-KdD"/>
+                            <constraint firstItem="N9f-Oc-Qz7" firstAttribute="top" secondItem="zI9-FO-X65" secondAttribute="top" id="CDN-nG-7Em"/>
+                            <constraint firstItem="N9f-Oc-Qz7" firstAttribute="leading" secondItem="zI9-FO-X65" secondAttribute="leading" id="FU5-vV-vIc"/>
                             <constraint firstItem="Zc9-m4-dJ0" firstAttribute="trailing" secondItem="zI9-FO-X65" secondAttribute="trailing" id="FW6-pM-K5b"/>
+                            <constraint firstItem="zI9-FO-X65" firstAttribute="trailing" secondItem="N9f-Oc-Qz7" secondAttribute="trailing" id="ciP-kg-piV"/>
                             <constraint firstItem="Zc9-m4-dJ0" firstAttribute="leading" secondItem="zI9-FO-X65" secondAttribute="leading" id="p4m-T5-IvG"/>
                             <constraint firstItem="zI9-FO-X65" firstAttribute="bottom" secondItem="Zc9-m4-dJ0" secondAttribute="bottom" id="shu-fT-I40"/>
+                            <constraint firstItem="zI9-FO-X65" firstAttribute="bottom" secondItem="N9f-Oc-Qz7" secondAttribute="bottom" id="uwk-s0-tOB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zI9-FO-X65"/>
                     </view>
@@ -497,11 +504,11 @@
             <objects>
                 <viewController id="Yeq-pd-kTK" customClass="PaceChartViewController" customModule="HikingTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="l8l-WN-ssu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="273.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cb8-Bn-s7s" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="273.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -534,6 +541,7 @@
     <resources>
         <image name="Chart" width="28" height="28"/>
         <image name="Mountain Logo" width="42" height="42"/>
+        <image name="Topo map" width="375" height="667"/>
         <image name="imageView:ZnN-vR-HRq:image" width="26" height="26">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGVVZYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QEgcI

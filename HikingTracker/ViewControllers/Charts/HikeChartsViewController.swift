@@ -44,10 +44,10 @@ class HikeChartsViewController: UIViewController{
             let destinationVC = segue.destination as!  ElevationChartViewController
             destinationVC.hikeWorkout = hikeWorkout
         }
-        if segue.identifier == "Pace" {
-            let destinationVC = segue.destination as! PaceChartViewController
-            destinationVC.hikeWorkout = hikeWorkout
-        }
+//        if segue.identifier == "Pace" {
+//            let destinationVC = segue.destination as! PaceChartViewController
+//            destinationVC.hikeWorkout = hikeWorkout
+//        }
     }
 
 
