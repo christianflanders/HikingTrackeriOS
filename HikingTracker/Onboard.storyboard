@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qSp-ax-sEY">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Cabin-Regular.ttf">
+            <string>Cabin-Regular</string>
+        </array>
+        <array key="Cabin-SemiBold.ttf">
+            <string>Cabin-SemiBold</string>
+        </array>
+        <array key="Oswald-Bold.ttf">
+            <string>Oswald-Bold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Onboarding First View Controller-->
+        <scene sceneID="8Ri-aI-C95">
+            <objects>
+                <viewController id="qSp-ax-sEY" customClass="OnboardingFirstViewController" customModule="Hike_Tracker_Onboard_Screen" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Cc0-X4-WDy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="v0H-y3-Sw3">
+                                <rect key="frame" x="30" y="56" width="354" height="59.333333333333343"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Welcome To ">
+                                        <attributes>
+                                            <font key="NSFont" size="40" name="Oswald-SemiBold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Peaks">
+                                        <attributes>
+                                            <color key="NSColor" red="0.4403552711" green="0.56544411179999998" blue="0.1598808467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="40" name="Oswald-SemiBold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <color key="highlightedColor" red="0.4403552711" green="0.56544411179999998" blue="0.1598808467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="SYc-Cy-lFq">
+                                <rect key="frame" x="69" y="123" width="276" height="510"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Dark Green Logo Smaller" translatesAutoresizingMaskIntoConstraints="NO" id="eWx-SQ-STE">
+                                        <rect key="frame" x="0.0" y="0.0" width="276" height="250"/>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="pWN-zr-WGx">
+                                        <rect key="frame" x="0.0" y="260" width="276" height="250"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Db4-Bv-a21">
+                                                <rect key="frame" x="0.0" y="0.0" width="276" height="121"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Peaks is an hiking specific workout tracker. Explore the outdoors and discover nature" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="uTm-CR-zUA" userLabel="Peaks is an easy to use,  hiking specific  workout tracker">
+                                                        <rect key="frame" x="0.0" y="0.0" width="276" height="121"/>
+                                                        <fontDescription key="fontDescription" name="Cabin-SemiBold" family="Cabin" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="uTm-CR-zUA" secondAttribute="bottom" id="He5-be-hFq"/>
+                                                    <constraint firstAttribute="trailing" secondItem="uTm-CR-zUA" secondAttribute="trailing" id="JCt-8l-mX7"/>
+                                                    <constraint firstItem="uTm-CR-zUA" firstAttribute="top" secondItem="Db4-Bv-a21" secondAttribute="top" id="WWc-e4-kMT"/>
+                                                    <constraint firstItem="uTm-CR-zUA" firstAttribute="leading" secondItem="Db4-Bv-a21" secondAttribute="leading" id="lmo-rq-RAO"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yKp-Av-TLK">
+                                                <rect key="frame" x="0.0" y="129" width="276" height="121"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First, we need some of your information to properly track your hike" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oc6-S1-kxR" userLabel="Peaks is an easy to use,  hiking specific  workout tracker">
+                                                        <rect key="frame" x="0.0" y="0.0" width="276" height="121"/>
+                                                        <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="oc6-S1-kxR" firstAttribute="top" secondItem="yKp-Av-TLK" secondAttribute="top" id="ag3-Vl-c0e"/>
+                                                    <constraint firstItem="oc6-S1-kxR" firstAttribute="leading" secondItem="yKp-Av-TLK" secondAttribute="leading" id="gRf-Eg-0LP"/>
+                                                    <constraint firstAttribute="bottom" secondItem="oc6-S1-kxR" secondAttribute="bottom" id="rgS-1a-8U7"/>
+                                                    <constraint firstAttribute="trailing" secondItem="oc6-S1-kxR" secondAttribute="trailing" id="up0-hM-D3i"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MLG-79-MI4">
+                                <rect key="frame" x="30" y="658" width="354" height="39"/>
+                                <color key="backgroundColor" red="0.4403552711" green="0.56544411179999998" blue="0.1598808467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="22"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <state key="selected" title=" "/>
+                                <connections>
+                                    <action selector="nextButtonPressed:" destination="qSp-ax-sEY" eventType="touchUpInside" id="EVi-5e-sA9"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="MLG-79-MI4" firstAttribute="top" secondItem="SYc-Cy-lFq" secondAttribute="bottom" constant="25" id="8K8-7E-JjX"/>
+                            <constraint firstItem="cYr-ca-yP3" firstAttribute="bottom" secondItem="MLG-79-MI4" secondAttribute="bottom" constant="39" id="Hdy-GS-mAn"/>
+                            <constraint firstItem="cYr-ca-yP3" firstAttribute="trailing" secondItem="v0H-y3-Sw3" secondAttribute="trailing" constant="30" id="Msr-Lg-5Te"/>
+                            <constraint firstItem="SYc-Cy-lFq" firstAttribute="top" secondItem="v0H-y3-Sw3" secondAttribute="bottom" constant="7.5" id="NO4-IG-tr1"/>
+                            <constraint firstItem="SYc-Cy-lFq" firstAttribute="leading" secondItem="Cc0-X4-WDy" secondAttribute="leading" constant="69" id="d7r-SC-VOx"/>
+                            <constraint firstItem="v0H-y3-Sw3" firstAttribute="top" secondItem="cYr-ca-yP3" secondAttribute="top" constant="36" id="gn2-HA-KqG"/>
+                            <constraint firstItem="MLG-79-MI4" firstAttribute="trailing" secondItem="v0H-y3-Sw3" secondAttribute="trailing" id="rel-7p-Qdh"/>
+                            <constraint firstItem="MLG-79-MI4" firstAttribute="leading" secondItem="v0H-y3-Sw3" secondAttribute="leading" id="sT2-WM-0qj"/>
+                            <constraint firstItem="v0H-y3-Sw3" firstAttribute="leading" secondItem="cYr-ca-yP3" secondAttribute="leading" constant="30" id="x9V-Ui-7L8"/>
+                            <constraint firstItem="cYr-ca-yP3" firstAttribute="trailing" secondItem="SYc-Cy-lFq" secondAttribute="trailing" constant="69" id="yFF-CS-2E3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cYr-ca-yP3"/>
+                    </view>
+                    <connections>
+                        <outlet property="mountainImage" destination="eWx-SQ-STE" id="NZ7-GV-Ifb"/>
+                        <outlet property="nextButtonOutlet" destination="MLG-79-MI4" id="pgP-2K-oZL"/>
+                        <segue destination="TKM-Et-Lsp" kind="showDetail" identifier="Next" animates="NO" id="RuC-sY-4Je"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X59-IZ-hRr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2398.5507246376815" y="240.48913043478262"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Su5-Hs-dph">
+            <objects>
+                <viewController id="TKM-Et-Lsp" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MNT-xy-vdj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First, we need some information about you. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="snz-sG-cSs">
+                                <rect key="frame" x="20" y="332.33333333333331" width="374" height="71.333333333333314"/>
+                                <fontDescription key="fontDescription" name="Oswald-Bold" family="Oswald" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This information is private and will not be shared" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="67w-2e-wIN">
+                                <rect key="frame" x="76.333333333333314" y="418.66666666666669" width="262" height="58.333333333333314"/>
+                                <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.4403552711" green="0.56544411179999998" blue="0.1598808467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="67w-2e-wIN" firstAttribute="centerX" secondItem="MNT-xy-vdj" secondAttribute="centerX" id="A1C-ZA-Lh1"/>
+                            <constraint firstItem="snz-sG-cSs" firstAttribute="centerX" secondItem="MNT-xy-vdj" secondAttribute="centerX" id="Awu-jW-2nV"/>
+                            <constraint firstItem="67w-2e-wIN" firstAttribute="width" secondItem="snz-sG-cSs" secondAttribute="width" multiplier="0.7" id="BGB-g5-1pd"/>
+                            <constraint firstItem="67w-2e-wIN" firstAttribute="top" secondItem="snz-sG-cSs" secondAttribute="bottom" constant="15" id="Maf-n3-jbX"/>
+                            <constraint firstItem="snz-sG-cSs" firstAttribute="centerY" secondItem="MNT-xy-vdj" secondAttribute="centerY" id="Wgo-0n-HFL"/>
+                            <constraint firstItem="P7Q-o8-jYT" firstAttribute="trailing" secondItem="snz-sG-cSs" secondAttribute="trailing" constant="20" id="ZSi-Uq-kF5"/>
+                            <constraint firstItem="snz-sG-cSs" firstAttribute="leading" secondItem="P7Q-o8-jYT" secondAttribute="leading" constant="20" id="sTF-Mi-AD5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="P7Q-o8-jYT"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2wA-MQ-t0R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3150.7246376811595" y="244.56521739130437"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Dark Green Logo Smaller" width="276" height="276"/>
+    </resources>
+</document>

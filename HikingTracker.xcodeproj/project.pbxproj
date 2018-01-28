@@ -59,6 +59,9 @@
 		6B6ED18E200570D00094B3EB /* Oswald-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6ED176200570AB0094B3EB /* Oswald-SemiBold.ttf */; };
 		6B7801741FD5F2AE006F29BD /* HikeInProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7801731FD5F2AE006F29BD /* HikeInProgressViewController.swift */; };
 		6B7801771FD618BE006F29BD /* HealthKitAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7801761FD618BE006F29BD /* HealthKitAuthorization.swift */; };
+		6B7D5DB6201D64B30023B9C0 /* OnboardingFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7D5DB2201D64B10023B9C0 /* OnboardingFirstViewController.swift */; };
+		6B7D5DB7201D64B30023B9C0 /* Onboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B7D5DB4201D64B20023B9C0 /* Onboard.storyboard */; };
+		6B7D5DB8201D64B30023B9C0 /* SecondOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7D5DB5201D64B20023B9C0 /* SecondOnboardingViewController.swift */; };
 		6B7D98D51FF85F1E008C3F06 /* Solar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7D98D41FF85F1E008C3F06 /* Solar.swift */; };
 		6B7D98D61FF85F1E008C3F06 /* Solar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7D98D41FF85F1E008C3F06 /* Solar.swift */; };
 		6B7D98D91FF8637E008C3F06 /* HistoryStatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7D98D81FF8637E008C3F06 /* HistoryStatTableViewCell.swift */; };
@@ -297,6 +300,9 @@
 		6B6ED180200570CA0094B3EB /* Cabin-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-BoldItalic.ttf"; sourceTree = "<group>"; };
 		6B7801731FD5F2AE006F29BD /* HikeInProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeInProgressViewController.swift; sourceTree = "<group>"; };
 		6B7801761FD618BE006F29BD /* HealthKitAuthorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitAuthorization.swift; sourceTree = "<group>"; };
+		6B7D5DB2201D64B10023B9C0 /* OnboardingFirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFirstViewController.swift; sourceTree = "<group>"; };
+		6B7D5DB4201D64B20023B9C0 /* Onboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboard.storyboard; sourceTree = "<group>"; };
+		6B7D5DB5201D64B20023B9C0 /* SecondOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondOnboardingViewController.swift; sourceTree = "<group>"; };
 		6B7D98D41FF85F1E008C3F06 /* Solar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solar.swift; sourceTree = "<group>"; };
 		6B7D98D81FF8637E008C3F06 /* HistoryStatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryStatTableViewCell.swift; sourceTree = "<group>"; };
 		6B81261C1FDF7981009054A3 /* Meters Alias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meters Alias.swift"; sourceTree = "<group>"; };
@@ -773,6 +779,9 @@
 				6BB63A091FD5CCE600E9F4A1 /* AppDelegate.swift */,
 				6BB63A181FD5CCE600E9F4A1 /* Info.plist */,
 				6BD14B931FFED7DB004B3FD7 /* GoogleService-Info.plist */,
+				6B7D5DB4201D64B20023B9C0 /* Onboard.storyboard */,
+				6B7D5DB2201D64B10023B9C0 /* OnboardingFirstViewController.swift */,
+				6B7D5DB5201D64B20023B9C0 /* SecondOnboardingViewController.swift */,
 			);
 			path = HikingTracker;
 			sourceTree = "<group>";
@@ -1236,6 +1245,7 @@
 				6B91BB431FF9C59500CB378F /* GPX 1 For Unit Testing.gpx in Resources */,
 				6B6ED18B200570D00094B3EB /* Oswald-Light.ttf in Resources */,
 				6B077CA01FFAF7B400A87E2C /* FastRunStough.gpx in Resources */,
+				6B7D5DB7201D64B30023B9C0 /* Onboard.storyboard in Resources */,
 				6BB63A0F1FD5CCE600E9F4A1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1282,7 +1292,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HikingTracker/Pods-HikingTracker-resources.sh",
-				"$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseAuthUI.bundle",
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseAuthUI.bundle,
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -1543,6 +1553,7 @@
 				6BC1DE8D1FD7368D00CB20D5 /* LocationServices.swift in Sources */,
 				6B19AF15200AB65600BA5F68 /* ChecklistTableViewController.swift in Sources */,
 				6BC9FEF1200304A50071590A /* Find Center Coordinate .swift in Sources */,
+				6B7D5DB8201D64B30023B9C0 /* SecondOnboardingViewController.swift in Sources */,
 				6B6A1D441FEF11A800C4AD3A /* DateExtension.swift in Sources */,
 				6BA931092002E06D001FE585 /* Hike Information Protocol.swift in Sources */,
 				6B19AF0B200AA11E00BA5F68 /* Segues.swift in Sources */,
@@ -1576,6 +1587,7 @@
 				6BA6CA522016AD230084CB88 /* Picker View Helper.swift in Sources */,
 				6B4173F0201AF93100E311EB /* UserStoredSettings.swift in Sources */,
 				6B91BB411FF9C24A00CB378F /* HikeChartsViewController.swift in Sources */,
+				6B7D5DB6201D64B30023B9C0 /* OnboardingFirstViewController.swift in Sources */,
 				6BB3CD37200D3EB000E6B89D /* ChecklistButtonProtocol.swift in Sources */,
 				6B91BB3D1FF99DB900CB378F /* HikeHistoryTableViewCell.swift in Sources */,
 				6B6A1D421FEF09CC00C4AD3A /* DefaultUI.swift in Sources */,
