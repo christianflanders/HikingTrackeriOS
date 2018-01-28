@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         setNavigationBarTitleAttributes()
         
-        checkForUserInfoAndPresentCorrectScreen()
+//        checkForUserInfoAndPresentCorrectScreen()
         
         let navigationBarAppearace = UINavigationBar.appearance()
         navigationBarAppearace.barTintColor = DefaultUI().navBarBackgroundColor

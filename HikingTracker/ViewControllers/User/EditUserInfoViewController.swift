@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol UserSettingsSaved {
+    func userSettingsSaved()
+}
+
 class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightPickerValueSelectedDelegate , WeightPickerValueSelectedDelegate, GenderPickerValueSelectedDelegate, BirthdateSelectedDelegate {
 
 
@@ -21,7 +25,11 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
     // MARK: Constants
 
 
+
     // MARK: Variables
+    var userSettingsSavedDelegate: UserSettingsSaved!
+
+
     var userSettingValues = UserInformationValues()
 
     // MARK: Outlets
@@ -220,8 +228,9 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
             storedUser.heightInCentimeters = userSettingValues.heightInCentimeters
             storedUser.name = userSettingValues.name
             storedUser.weightInKilos = userSettingValues.weightInKG
-            showLetsGoHikingAlert()
-            goToMainScreen()
+//            showLetsGoHikingAlert()
+            userSettingsSavedDelegate.userSettingsSaved()
+//            goToMainScreen()
         } else {
             showNotAllValuesSetAlert()
         }
