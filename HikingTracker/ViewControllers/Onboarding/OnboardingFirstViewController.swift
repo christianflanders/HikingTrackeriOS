@@ -21,16 +21,14 @@ class OnboardingFirstViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        nextButtonOutlet.layer.cornerRadius = nextButtonOutlet.bounds.height / 2
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        nextButtonOutlet.layer.cornerRadius = nextButtonOutlet.bounds.height / 2
-        firstTextContainerView.alpha = 0.0
-        secondTextContainerView.alpha = 0.0
-        animateTextIn()
+
+//        firstTextContainerView.alpha = 0.0
+//        secondTextContainerView.alpha = 0.0
     }
     
 

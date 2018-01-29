@@ -24,12 +24,13 @@ class SecondOnboardingViewController: UIViewController {
         super.viewDidLoad()
         secondLabelCenter.constant -= view.bounds.width
         firstLabelCenter.constant -= view.bounds.width
+        gotItButton.layer.cornerRadius = gotItButton.frame.height / 2
 
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        gotItButton.layer.cornerRadius = gotItButton.frame.height / 2
+
         animateInLabels()
     }
     

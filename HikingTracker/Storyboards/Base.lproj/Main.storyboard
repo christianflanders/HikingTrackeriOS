@@ -580,23 +580,23 @@
                                     <action selector="loginButtonPressed:" destination="cpk-g8-wtL" eventType="touchUpInside" id="OhH-Fu-HZf"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="rZT-uK-kzs">
+                            <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="rZT-uK-kzs">
                                 <rect key="frame" x="32" y="199" width="256" height="170"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Great!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BhH-g8-bfA">
-                                        <rect key="frame" x="0.0" y="0.0" width="256" height="53.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Great!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BhH-g8-bfA">
+                                        <rect key="frame" x="0.0" y="0.0" width="256" height="93"/>
                                         <fontDescription key="fontDescription" name="Oswald-Bold" family="Oswald" pointSize="36"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Now we need to create an account to save your workouts" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.45000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="Ima-zC-AbN">
-                                        <rect key="frame" x="0.0" y="54.5" width="256" height="0.0"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Now we need to create an account to save your workouts" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.45000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="Ima-zC-AbN">
+                                        <rect key="frame" x="0.0" y="93" width="256" height="46.5"/>
                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="We won't send you any unsolicited emails or share your email in any way" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gZZ-t5-do6">
-                                        <rect key="frame" x="0.0" y="55.5" width="256" height="114.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We won't send you any unsolicited emails or share your email in any way" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gZZ-t5-do6">
+                                        <rect key="frame" x="0.0" y="139.5" width="256" height="30.5"/>
                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -642,6 +642,7 @@
                         <outlet property="compassImageView" destination="gFk-Po-x1v" id="sNw-EX-33a"/>
                         <outlet property="firebaseLoginContainerView" destination="b1g-WC-hRc" id="M1H-XF-dPB"/>
                         <outlet property="logInButtonOutlet" destination="98q-ub-Js2" id="cXO-21-kVa"/>
+                        <outlet property="loginButtonWidthConstraint" destination="NIU-oU-azd" id="tpI-cZ-ale"/>
                         <outlet property="signUpButtonOutlet" destination="kCF-fc-h6F" id="Xbz-U7-yA8"/>
                         <outletCollection property="openingLabels" destination="BhH-g8-bfA" collectionClass="NSMutableArray" id="q7v-5u-prD"/>
                         <outletCollection property="openingLabels" destination="BhH-g8-bfA" collectionClass="NSMutableArray" id="8RW-h7-sgO"/>
@@ -756,7 +757,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3rB-cc-WK3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-277" y="1379"/>
+            <point key="canvasLocation" x="-116" y="1379"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="1Rd-nS-CGd">

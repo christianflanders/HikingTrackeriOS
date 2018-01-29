@@ -20,6 +20,7 @@ class SignUpLogInOnboardViewController: UIViewController{
 //    @IBOutlet weak var signUpButtonLeftConst: NSLayoutConstraint!
 //    @IBOutlet weak var signUpButtonRightConst: NSLayoutConstraint!
 
+    @IBOutlet weak var loginButtonWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var firebaseLoginContainerView: UIView!
 
     @IBOutlet weak var compassImageView: UIImageView!
@@ -39,6 +40,10 @@ class SignUpLogInOnboardViewController: UIViewController{
 //        setLoginConstraints(to: constZeroValue)
 //        setSignUpConstraints(to: constZeroValue)
         setContainerViewAppearance()
+        signUpButtonOutlet.layer.cornerRadius = self.signUpButtonOutlet.frame.height / 2
+        logInButtonOutlet.layer.cornerRadius = self.logInButtonOutlet.frame.height / 2
+        setupLoginButtonTextToFit()
+
 
         // Do any additional setup after loading the view.
     }
@@ -47,7 +52,6 @@ class SignUpLogInOnboardViewController: UIViewController{
         super.viewDidAppear(true)
 //        animateButtons()
         animateCompass()
-        setupLoginButtonTextToFit()
         setContainerViewAppearance()
     }
 
