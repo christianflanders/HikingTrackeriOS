@@ -354,19 +354,19 @@
                                 <color key="highlightedColor" red="0.4403552711" green="0.56544411179999998" blue="0.1598808467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="XoJ-gM-bjo">
-                                <rect key="frame" x="69" y="123" width="276" height="499"/>
+                                <rect key="frame" x="69" y="123" width="276" height="491"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Dark Green Logo Smaller" translatesAutoresizingMaskIntoConstraints="NO" id="CLa-qT-J2s">
-                                        <rect key="frame" x="0.0" y="0.0" width="276" height="244.66666666666666"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="276" height="240.66666666666666"/>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xgP-FR-Dgt">
-                                        <rect key="frame" x="0.0" y="254.66666666666669" width="276" height="244.33333333333331"/>
+                                        <rect key="frame" x="0.0" y="250.66666666666669" width="276" height="240.33333333333331"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JBM-8U-gih">
-                                                <rect key="frame" x="0.0" y="0.0" width="276" height="118"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="276" height="116"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Peaks is an hiking specific workout tracker. Explore the outdoors and discover nature" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="qV7-Hv-YYW" userLabel="Peaks is an easy to use,  hiking specific  workout tracker">
-                                                        <rect key="frame" x="0.0" y="0.0" width="276" height="118"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="276" height="116"/>
                                                         <fontDescription key="fontDescription" name="Cabin-SemiBold" family="Cabin" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -381,10 +381,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Uw-Om-aMx">
-                                                <rect key="frame" x="0.0" y="126" width="276" height="118.33333333333331"/>
+                                                <rect key="frame" x="0.0" y="124" width="276" height="116.33333333333331"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First, we need some of your information to properly track your hike" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="yUC-ns-wfA" userLabel="Peaks is an easy to use,  hiking specific  workout tracker">
-                                                        <rect key="frame" x="0.0" y="0.0" width="276" height="118.33333333333333"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="276" height="116.33333333333333"/>
                                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -403,12 +403,12 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJn-YJ-aCF">
-                                <rect key="frame" x="30" y="647" width="354" height="50"/>
+                                <rect key="frame" x="30" y="639" width="354" height="57"/>
                                 <color key="backgroundColor" red="0.4403552711" green="0.56544411179999998" blue="0.1598808467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Bq2-HU-AYG"/>
+                                    <constraint firstAttribute="height" constant="57" id="Bq2-HU-AYG"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="22"/>
+                                <fontDescription key="fontDescription" name="Cabin-Bold" family="Cabin" pointSize="21"/>
                                 <state key="normal" title="Next">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -420,7 +420,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="14m-c7-Zug" firstAttribute="bottom" secondItem="SJn-YJ-aCF" secondAttribute="bottom" constant="39" id="9AQ-HE-zvj"/>
+                            <constraint firstItem="14m-c7-Zug" firstAttribute="bottom" secondItem="SJn-YJ-aCF" secondAttribute="bottom" constant="40" id="9AQ-HE-zvj"/>
                             <constraint firstItem="XoJ-gM-bjo" firstAttribute="top" secondItem="YuP-CS-qgV" secondAttribute="bottom" constant="7.5" id="DZ0-yj-wFI"/>
                             <constraint firstItem="YuP-CS-qgV" firstAttribute="leading" secondItem="14m-c7-Zug" secondAttribute="leading" constant="30" id="MNa-gV-KYN"/>
                             <constraint firstItem="14m-c7-Zug" firstAttribute="trailing" secondItem="XoJ-gM-bjo" secondAttribute="trailing" constant="69" id="N4W-FB-ey7"/>
@@ -466,12 +466,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqG-6K-sqJ">
-                                <rect key="frame" x="30" y="649" width="354" height="50"/>
+                                <rect key="frame" x="30" y="642" width="354" height="57"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="rdm-GQ-P57"/>
+                                    <constraint firstAttribute="height" constant="57" id="rdm-GQ-P57"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="22"/>
+                                <fontDescription key="fontDescription" name="Cabin-Bold" family="Cabin" pointSize="21"/>
                                 <state key="normal" title="Got It">
                                     <color key="titleColor" red="0.4403552711" green="0.56544411179999998" blue="0.1598808467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
