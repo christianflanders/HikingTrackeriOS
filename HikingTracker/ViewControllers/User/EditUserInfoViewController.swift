@@ -81,7 +81,7 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         checkForExistingValuesAndSetLabels()
-        setCosmetics()
+//        setCosmetics()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -133,8 +133,8 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
     }
 
     func setCosmetics() {
-        saveUserInfoButtonOutlet.layer.cornerRadius = saveUserInfoButtonOutlet.frame.size.height / 2
-        importFromHealthKitButtonOutlet.layer.cornerRadius = importFromHealthKitButtonOutlet.frame.size.height / 2
+        saveUserInfoButtonOutlet.layer.cornerRadius = saveUserInfoButtonOutlet.frame.height / 2
+        importFromHealthKitButtonOutlet.layer.cornerRadius = importFromHealthKitButtonOutlet.frame.height / 2
 
         birthdateButtonOutlet.titleLabel?.minimumScaleFactor = 0.75
     }
