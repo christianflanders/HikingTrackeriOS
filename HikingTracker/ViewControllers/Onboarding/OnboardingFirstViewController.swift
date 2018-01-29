@@ -35,17 +35,17 @@ class OnboardingFirstViewController: UIViewController {
     
 
     func animateTextIn()  {
-        UIView.animate(withDuration: 2.0) { [weak self] in
+        UIView.animate(withDuration: 1.0) { [weak self] in
             self?.firstTextContainerView.alpha = 1
         }
-        UIView.animate(withDuration: 3.0, animations: {
+        UIView.animate(withDuration: 2.0, animations: {
             self.secondTextContainerView.alpha = 1
         })
     }
 
     @IBAction func nextButtonPressed(_ sender: UIButton) {
            sender.titleLabel?.alpha = 0
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: 0.3, animations: {
             sender.frame = self.view.frame
             sender.layer.cornerRadius = 0
             sender.titleLabel?.removeFromSuperview()
