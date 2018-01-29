@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pz0-VB-ngm">
-    <device id="retina4_0" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -54,7 +54,7 @@
                     <tabBarItem key="tabBarItem" title="History" image="text-list-7" selectedImage="text-list-7" id="gkF-MR-6Jn"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7vj-Tb-k2U">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -71,11 +71,11 @@
             <objects>
                 <viewController title="Main Hike Screen" id="BXa-9A-QHW" customClass="MainHikeScreenViewController" customModule="HikingTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NIB-GA-rgx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7o-Vq-ShK">
-                                <rect key="frame" x="20" y="429" width="280" height="60"/>
+                                <rect key="frame" x="20" y="597" width="374" height="60"/>
                                 <color key="backgroundColor" red="0.4403552711" green="0.56544411179999998" blue="0.1598808467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="XxM-3D-vVH"/>
@@ -89,10 +89,10 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pdj-ix-fKE">
-                                <rect key="frame" x="40" y="37" width="240" height="36"/>
+                                <rect key="frame" x="40" y="37" width="334" height="36"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calculating..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrq-nT-XeR">
-                                        <rect key="frame" x="8" y="8" width="224" height="20"/>
+                                        <rect key="frame" x="8" y="8" width="318" height="20"/>
                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -146,7 +146,7 @@
                     <tabBarItem key="tabBarItem" title="Checklist" image="note-write-7" selectedImage="note-write-7" id="TGP-JB-HRu"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ab0-KD-oTT">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -163,15 +163,15 @@
             <objects>
                 <tableViewController id="2ne-QK-yf7" customClass="ChecklistTableViewController" customModule="HikingTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="T8j-pA-eOz">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChecklistCell" id="Fhp-rG-4x1" customClass="ChecklistTableViewCell" customModule="HikingTracker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Fhp-rG-4x1" id="cWP-sd-IdY">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xec-LV-YEX" customClass="M13Checkbox" customModule="M13Checkbox">
@@ -202,7 +202,7 @@
                                             </connections>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ca-dj-JfP">
-                                            <rect key="frame" x="16" y="11" width="42" height="22"/>
+                                            <rect key="frame" x="20" y="11" width="42" height="22"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -253,7 +253,7 @@
                     <tabBarItem key="tabBarItem" title="Settings" image="gear-7" id="aCM-4U-CRT"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2PX-ni-ymG">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -330,11 +330,11 @@
             <objects>
                 <viewController id="pz0-VB-ngm" customClass="OnboardingFirstViewController" customModule="HikingTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w5b-77-TlK">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YuP-CS-qgV">
-                                <rect key="frame" x="30" y="56" width="260" height="59.5"/>
+                                <rect key="frame" x="30" y="56" width="354" height="59.333333333333343"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Welcome To ">
                                         <attributes>
@@ -353,19 +353,19 @@
                                 <color key="highlightedColor" red="0.4403552711" green="0.56544411179999998" blue="0.1598808467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="XoJ-gM-bjo">
-                                <rect key="frame" x="69" y="123" width="182" height="323"/>
+                                <rect key="frame" x="69" y="123" width="276" height="491"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Dark Green Logo Smaller" translatesAutoresizingMaskIntoConstraints="NO" id="CLa-qT-J2s">
-                                        <rect key="frame" x="0.0" y="0.0" width="182" height="156.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="276" height="240.66666666666666"/>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xgP-FR-Dgt">
-                                        <rect key="frame" x="0.0" y="166.5" width="182" height="156.5"/>
+                                        <rect key="frame" x="0.0" y="250.66666666666669" width="276" height="240.33333333333331"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JBM-8U-gih">
-                                                <rect key="frame" x="0.0" y="0.0" width="182" height="74.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="276" height="116"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Peaks is an hiking specific workout tracker. Explore the outdoors and discover nature" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="qV7-Hv-YYW" userLabel="Peaks is an easy to use,  hiking specific  workout tracker">
-                                                        <rect key="frame" x="0.0" y="0.0" width="182" height="74.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="276" height="116"/>
                                                         <fontDescription key="fontDescription" name="Cabin-SemiBold" family="Cabin" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -380,10 +380,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Uw-Om-aMx">
-                                                <rect key="frame" x="0.0" y="82.5" width="182" height="74"/>
+                                                <rect key="frame" x="0.0" y="124" width="276" height="116.33333333333331"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First, we need some of your information to properly track your hike" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="yUC-ns-wfA" userLabel="Peaks is an easy to use,  hiking specific  workout tracker">
-                                                        <rect key="frame" x="0.0" y="0.0" width="182" height="74"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="276" height="116.33333333333333"/>
                                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -402,7 +402,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJn-YJ-aCF">
-                                <rect key="frame" x="32" y="471" width="256" height="57"/>
+                                <rect key="frame" x="41.333333333333343" y="639" width="331.33333333333326" height="57"/>
                                 <color key="backgroundColor" red="0.4403552711" green="0.56544411179999998" blue="0.1598808467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="57" id="Bq2-HU-AYG"/>
@@ -451,11 +451,11 @@
             <objects>
                 <viewController id="vAy-PK-XHG" customClass="SecondOnboardingViewController" customModule="HikingTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w35-ha-kdx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First, we need some information about you. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RFF-xe-Sxz">
-                                <rect key="frame" x="3.5" y="234" width="313" height="100"/>
+                                <rect key="frame" x="50.666666666666657" y="318" width="313" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="1sf-zu-Lhy"/>
                                     <constraint firstAttribute="width" constant="313" id="401-2i-xXQ"/>
@@ -465,7 +465,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqG-6K-sqJ">
-                                <rect key="frame" x="32" y="474" width="256" height="57"/>
+                                <rect key="frame" x="41.333333333333343" y="642" width="331.33333333333326" height="57"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="57" id="rdm-GQ-P57"/>
@@ -480,7 +480,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This information is private and will not be shared" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJE-vG-wn5">
-                                <rect key="frame" x="66" y="348.5" width="188" height="100"/>
+                                <rect key="frame" x="113" y="432.66666666666669" width="188" height="100.00000000000006"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="xlN-7r-lRL"/>
                                 </constraints>
@@ -517,11 +517,11 @@
             <objects>
                 <viewController id="Kia-OQ-ZfV" customClass="UserSettingsOnboardingContainerViewController" customModule="HikingTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9ir-vc-pyB">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mOI-3S-QBI">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <connections>
                                     <segue destination="VyA-0t-TGX" kind="embed" id="88B-YW-LF7"/>
                                 </connections>
@@ -549,25 +549,11 @@
             <objects>
                 <viewController id="cpk-g8-wtL" customClass="SignUpLogInOnboardViewController" customModule="HikingTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cma-FW-eNT">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Now we need to create an account to save your workouts" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ima-zC-AbN">
-                                <rect key="frame" x="38" y="259" width="250" height="86"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="22"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="We won't send you any unsolicited emails or share your email in any way" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZZ-t5-do6">
-                                <rect key="frame" x="38" y="343" width="250" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCF-fc-h6F">
-                                <rect key="frame" x="32" y="391" width="256" height="57"/>
+                                <rect key="frame" x="41.333333333333343" y="559" width="331.33333333333326" height="57"/>
                                 <color key="backgroundColor" red="0.45085787770000002" green="0.98829740290000001" blue="0.83763033149999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="57" id="g0H-HR-XgG"/>
@@ -581,7 +567,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="98q-ub-Js2">
-                                <rect key="frame" x="32" y="471" width="256" height="57"/>
+                                <rect key="frame" x="41.333333333333343" y="639" width="331.33333333333326" height="57"/>
                                 <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="57" id="I4G-6D-0K5"/>
@@ -594,20 +580,34 @@
                                     <action selector="loginButtonPressed:" destination="cpk-g8-wtL" eventType="touchUpInside" id="OhH-Fu-HZf"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Great!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BhH-g8-bfA">
-                                <rect key="frame" x="65" y="208" width="190" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Oswald-Bold" family="Oswald" pointSize="36"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="MovingCompassv.1_00" translatesAutoresizingMaskIntoConstraints="NO" id="gFk-Po-x1v">
-                                <rect key="frame" x="60" y="20" width="200" height="180"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" axis="vertical" distribution="fillProportionally" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rZT-uK-kzs">
+                                <rect key="frame" x="41.333333333333343" y="177" width="331.33333333333326" height="382"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Great!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BhH-g8-bfA">
+                                        <rect key="frame" x="0.0" y="0.0" width="331.33333333333331" height="209.33333333333334"/>
+                                        <fontDescription key="fontDescription" name="Oswald-Bold" family="Oswald" pointSize="36"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Now we need to create an account to save your workouts" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ima-zC-AbN">
+                                        <rect key="frame" x="0.0" y="177.33333333333331" width="331.33333333333331" height="105"/>
+                                        <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="22"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We won't send you any unsolicited emails or share your email in any way" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gZZ-t5-do6">
+                                        <rect key="frame" x="0.0" y="263" width="331.33333333333331" height="119"/>
+                                        <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" image="MovingCompassv.1_00" translatesAutoresizingMaskIntoConstraints="NO" id="gFk-Po-x1v">
+                                <rect key="frame" x="10" y="20" width="394" height="137"/>
                             </imageView>
                             <containerView hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b1g-WC-hRc">
-                                <rect key="frame" x="20" y="265" width="374" height="206"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <rect key="frame" x="20.666666666666657" y="257.66666666666669" width="372.66666666666674" height="220.66666666666669"/>
                                 <connections>
                                     <segue destination="9gl-aj-qg7" kind="embed" id="EwR-Yp-0Vb"/>
                                 </connections>
@@ -616,10 +616,23 @@
                         <color key="backgroundColor" red="0.4403552711" green="0.56544411179999998" blue="0.1598808467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="98q-ub-Js2" firstAttribute="top" secondItem="kCF-fc-h6F" secondAttribute="bottom" constant="23" id="28L-ng-5J1"/>
+                            <constraint firstItem="rZT-uK-kzs" firstAttribute="width" secondItem="Cma-FW-eNT" secondAttribute="width" multiplier="0.8" id="2RH-jo-eT4"/>
+                            <constraint firstItem="R0v-zP-gZZ" firstAttribute="trailing" secondItem="gFk-Po-x1v" secondAttribute="trailing" constant="10" id="5GK-3y-23Y"/>
                             <constraint firstItem="kCF-fc-h6F" firstAttribute="centerX" secondItem="R0v-zP-gZZ" secondAttribute="centerX" id="7Cy-jI-ICh"/>
+                            <constraint firstItem="b1g-WC-hRc" firstAttribute="centerX" secondItem="Cma-FW-eNT" secondAttribute="centerX" id="F6J-l4-TIG"/>
+                            <constraint firstItem="R0v-zP-gZZ" firstAttribute="leading" secondItem="gFk-Po-x1v" secondAttribute="leading" constant="-10" id="Kh8-Ik-A4K"/>
+                            <constraint firstItem="gFk-Po-x1v" firstAttribute="centerX" secondItem="Cma-FW-eNT" secondAttribute="centerX" id="MWv-Gm-gEh"/>
                             <constraint firstItem="98q-ub-Js2" firstAttribute="width" secondItem="Cma-FW-eNT" secondAttribute="width" multiplier="0.8" id="NIU-oU-azd"/>
+                            <constraint firstItem="kCF-fc-h6F" firstAttribute="top" secondItem="rZT-uK-kzs" secondAttribute="bottom" id="S7O-83-OW0"/>
+                            <constraint firstItem="rZT-uK-kzs" firstAttribute="centerX" secondItem="Cma-FW-eNT" secondAttribute="centerX" id="UBz-Hj-Dxp"/>
+                            <constraint firstItem="rZT-uK-kzs" firstAttribute="top" secondItem="gFk-Po-x1v" secondAttribute="bottom" constant="20" id="WmZ-g5-34k"/>
                             <constraint firstItem="R0v-zP-gZZ" firstAttribute="bottom" secondItem="98q-ub-Js2" secondAttribute="bottom" constant="40" id="adg-KL-5Cc"/>
+                            <constraint firstItem="b1g-WC-hRc" firstAttribute="centerY" secondItem="Cma-FW-eNT" secondAttribute="centerY" id="gc1-aX-blz"/>
+                            <constraint firstItem="rZT-uK-kzs" firstAttribute="centerY" secondItem="Cma-FW-eNT" secondAttribute="centerY" id="iXD-8O-NP0"/>
                             <constraint firstItem="kCF-fc-h6F" firstAttribute="width" secondItem="98q-ub-Js2" secondAttribute="width" id="ibP-bC-7kL"/>
+                            <constraint firstItem="gFk-Po-x1v" firstAttribute="top" secondItem="R0v-zP-gZZ" secondAttribute="top" id="pQc-iG-pDq"/>
+                            <constraint firstItem="b1g-WC-hRc" firstAttribute="width" secondItem="Cma-FW-eNT" secondAttribute="width" multiplier="0.9" id="t4X-5d-SCQ"/>
+                            <constraint firstItem="b1g-WC-hRc" firstAttribute="height" secondItem="Cma-FW-eNT" secondAttribute="height" multiplier="0.3" id="vbl-x9-1j4"/>
                             <constraint firstItem="98q-ub-Js2" firstAttribute="centerX" secondItem="R0v-zP-gZZ" secondAttribute="centerX" id="wZY-TJ-ROu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="R0v-zP-gZZ"/>
@@ -635,14 +648,14 @@
                         <outlet property="logInButtonOutlet" destination="98q-ub-Js2" id="cXO-21-kVa"/>
                         <outlet property="signUpButtonOutlet" destination="kCF-fc-h6F" id="Xbz-U7-yA8"/>
                         <outletCollection property="openingLabels" destination="BhH-g8-bfA" collectionClass="NSMutableArray" id="q7v-5u-prD"/>
+                        <outletCollection property="openingLabels" destination="BhH-g8-bfA" collectionClass="NSMutableArray" id="8RW-h7-sgO"/>
                         <outletCollection property="openingLabels" destination="Ima-zC-AbN" collectionClass="NSMutableArray" id="9hD-EB-d1V"/>
                         <outletCollection property="openingLabels" destination="gZZ-t5-do6" collectionClass="NSMutableArray" id="3Xm-aE-7hY"/>
-                        <outletCollection property="openingLabels" destination="BhH-g8-bfA" collectionClass="NSMutableArray" id="8RW-h7-sgO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="shl-uA-tcR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1036.875" y="1392.2535211267607"/>
+            <point key="canvasLocation" x="-1037.68115942029" y="1390.7608695652175"/>
         </scene>
         <!--User Info-->
         <scene sceneID="xAf-qN-fhZ">
@@ -657,17 +670,17 @@
             <objects>
                 <viewController id="9gl-aj-qg7" customClass="FirebaseSignUpViewController" customModule="HikingTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A77-uX-f26">
-                        <rect key="frame" x="0.0" y="0.0" width="374" height="206"/>
+                        <rect key="frame" x="0.0" y="0.0" width="372.66666666666674" height="220.66666666666669"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dY2-EU-eLP">
-                                <rect key="frame" x="39" y="72" width="296" height="62"/>
+                                <rect key="frame" x="37.666666666666657" y="79.333333333333329" width="297.33333333333337" height="61.999999999999986"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="HWl-Xl-nsL" userLabel="Email Stack">
-                                        <rect key="frame" x="0.0" y="0.0" width="296" height="31"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="297.33333333333331" height="31"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="RNM-nk-AUQ">
-                                                <rect key="frame" x="0.0" y="0.0" width="296" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="297.33333333333331" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Email:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUR-y7-Xmt">
                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="30"/>
@@ -679,7 +692,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q5d-ck-fqz">
-                                                        <rect key="frame" x="50" y="0.0" width="246" height="30"/>
+                                                        <rect key="frame" x="50.000000000000014" y="0.0" width="247.33333333333337" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -688,7 +701,7 @@
                                                 <viewLayoutGuide key="safeArea" id="NGN-sL-gLe"/>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bTr-h8-7Wh">
-                                                <rect key="frame" x="0.0" y="30" width="296" height="1"/>
+                                                <rect key="frame" x="0.0" y="30" width="297.33333333333331" height="1"/>
                                                 <color key="backgroundColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="Bwb-eg-Iat"/>
@@ -698,10 +711,10 @@
                                         <viewLayoutGuide key="safeArea" id="7qW-xz-xYf"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AG9-12-mFY" userLabel="Password Stack">
-                                        <rect key="frame" x="0.0" y="31" width="296" height="31"/>
+                                        <rect key="frame" x="0.0" y="31" width="297.33333333333331" height="31"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="d77-1M-w0Z">
-                                                <rect key="frame" x="0.0" y="0.0" width="296" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="297.33333333333331" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Password:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="otz-Xj-nnr">
                                                         <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
@@ -713,7 +726,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cg1-yJ-ZoD">
-                                                        <rect key="frame" x="100" y="0.0" width="196" height="30"/>
+                                                        <rect key="frame" x="100.00000000000001" y="0.0" width="197.33333333333337" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -722,7 +735,7 @@
                                                 <viewLayoutGuide key="safeArea" id="N9l-O0-Bgt"/>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xaq-m3-vAf">
-                                                <rect key="frame" x="0.0" y="30" width="296" height="1"/>
+                                                <rect key="frame" x="0.0" y="30.000000000000014" width="297.33333333333331" height="1"/>
                                                 <color key="backgroundColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="HJ6-Qg-cif"/>
@@ -747,14 +760,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3rB-cc-WK3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-201" y="1422"/>
+            <point key="canvasLocation" x="-277" y="1379"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="1Rd-nS-CGd">
             <objects>
                 <viewController id="toT-BJ-WUm" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pFC-1n-rzq">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="W2A-eG-0TY"/>
@@ -767,7 +780,7 @@
     </scenes>
     <resources>
         <image name="Dark Green Logo Smaller" width="276" height="276"/>
-        <image name="MovingCompassv.1_00" width="184" height="222"/>
+        <image name="MovingCompassv.1_00" width="122" height="148"/>
         <image name="gear-7" width="30" height="30"/>
         <image name="note-write-7" width="30" height="30"/>
         <image name="pin-map-7" width="30" height="30"/>
