@@ -144,6 +144,7 @@
 		6BC1DE7E1FD6553C00CB20D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BC1DE7D1FD6553C00CB20D5 /* Assets.xcassets */; };
 		6BC1DE831FD6553C00CB20D5 /* HikeTrackerWatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 6BC1DE641FD6553B00CB20D5 /* HikeTrackerWatchApp.app */; };
 		6BC1DE8D1FD7368D00CB20D5 /* LocationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1DE8C1FD7368D00CB20D5 /* LocationServices.swift */; };
+		6BC4C325201FDB1F00F29168 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC4C324201FDB1F00F29168 /* PasswordTextField.swift */; };
 		6BC9FEF1200304A50071590A /* Find Center Coordinate .swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC9FEF0200304A50071590A /* Find Center Coordinate .swift */; };
 		6BCC75E11FD621A4005F2F19 /* HikeWorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCC75E01FD621A4005F2F19 /* HikeWorkoutModel.swift */; };
 		6BD14B941FFED7DB004B3FD7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BD14B931FFED7DB004B3FD7 /* GoogleService-Info.plist */; };
@@ -385,6 +386,7 @@
 		6BC1DE7F1FD6553C00CB20D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6BC1DE801FD6553C00CB20D5 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		6BC1DE8C1FD7368D00CB20D5 /* LocationServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServices.swift; sourceTree = "<group>"; };
+		6BC4C324201FDB1F00F29168 /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		6BC9FEF0200304A50071590A /* Find Center Coordinate .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Find Center Coordinate .swift"; sourceTree = "<group>"; };
 		6BCC75E01FD621A4005F2F19 /* HikeWorkoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeWorkoutModel.swift; sourceTree = "<group>"; };
 		6BCD37A51FD88F7A00FE8C03 /* HikeTest.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = HikeTest.gpx; path = HikingTracker/Resources/HikeTest.gpx; sourceTree = SOURCE_ROOT; };
@@ -466,6 +468,7 @@
 				6B021AE2201E7B0600FBDDCC /* SignUpLogInOnboardViewController.swift */,
 				6B9D5858201EF44E000735E6 /* MovingCompass.swift */,
 				6BB55D03201D7C41002178F6 /* FirebaseSignUpViewController.swift */,
+				6BC4C324201FDB1F00F29168 /* PasswordTextField.swift */,
 				6B021ADF201E6A8900FBDDCC /* EmailTextFieldDelegate.swift */,
 				6B7D5DB2201D64B10023B9C0 /* OnboardingFirstViewController.swift */,
 				6B7D5DB5201D64B20023B9C0 /* SecondOnboardingViewController.swift */,
@@ -1607,6 +1610,7 @@
 				6BA6CA522016AD230084CB88 /* Picker View Helper.swift in Sources */,
 				6B4173F0201AF93100E311EB /* UserStoredSettings.swift in Sources */,
 				6B91BB411FF9C24A00CB378F /* HikeChartsViewController.swift in Sources */,
+				6BC4C325201FDB1F00F29168 /* PasswordTextField.swift in Sources */,
 				6B7D5DB6201D64B30023B9C0 /* OnboardingFirstViewController.swift in Sources */,
 				6BB3CD37200D3EB000E6B89D /* ChecklistButtonProtocol.swift in Sources */,
 				6B91BB3D1FF99DB900CB378F /* HikeHistoryTableViewCell.swift in Sources */,

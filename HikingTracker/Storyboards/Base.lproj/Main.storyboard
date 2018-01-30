@@ -69,7 +69,7 @@
         <!--Main Hike Screen-->
         <scene sceneID="CaY-xN-bI0">
             <objects>
-                <viewController title="Main Hike Screen" id="BXa-9A-QHW" customClass="MainHikeScreenViewController" customModule="HikingTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Main Hike Screen" title="Main Hike Screen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BXa-9A-QHW" customClass="MainHikeScreenViewController" customModule="HikingTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NIB-GA-rgx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -604,7 +604,7 @@
                                 </subviews>
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" image="MovingCompassv.1_00" translatesAutoresizingMaskIntoConstraints="NO" id="gFk-Po-x1v">
-                                <rect key="frame" x="10" y="20" width="300" height="170.5"/>
+                                <rect key="frame" x="10" y="20" width="300" height="136"/>
                             </imageView>
                             <containerView hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b1g-WC-hRc">
                                 <rect key="frame" x="16" y="199" width="288" height="170"/>
@@ -619,7 +619,7 @@
                             <constraint firstItem="rZT-uK-kzs" firstAttribute="width" secondItem="Cma-FW-eNT" secondAttribute="width" multiplier="0.8" id="2RH-jo-eT4"/>
                             <constraint firstItem="R0v-zP-gZZ" firstAttribute="trailing" secondItem="gFk-Po-x1v" secondAttribute="trailing" constant="10" id="5GK-3y-23Y"/>
                             <constraint firstItem="rZT-uK-kzs" firstAttribute="height" secondItem="Cma-FW-eNT" secondAttribute="height" multiplier="0.3" id="5Ni-eD-JmC"/>
-                            <constraint firstItem="gFk-Po-x1v" firstAttribute="height" secondItem="rZT-uK-kzs" secondAttribute="height" id="5bq-9E-apS"/>
+                            <constraint firstItem="gFk-Po-x1v" firstAttribute="height" secondItem="rZT-uK-kzs" secondAttribute="height" multiplier="0.8" id="5bq-9E-apS"/>
                             <constraint firstItem="kCF-fc-h6F" firstAttribute="centerX" secondItem="R0v-zP-gZZ" secondAttribute="centerX" id="7Cy-jI-ICh"/>
                             <constraint firstItem="b1g-WC-hRc" firstAttribute="centerX" secondItem="Cma-FW-eNT" secondAttribute="centerX" id="F6J-l4-TIG"/>
                             <constraint firstItem="R0v-zP-gZZ" firstAttribute="leading" secondItem="gFk-Po-x1v" secondAttribute="leading" constant="-10" id="Kh8-Ik-A4K"/>
@@ -671,13 +671,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dY2-EU-eLP">
-                                <rect key="frame" x="-4" y="54" width="296" height="62"/>
+                                <rect key="frame" x="14.5" y="54" width="259" height="62"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="HWl-Xl-nsL" userLabel="Email Stack">
-                                        <rect key="frame" x="0.0" y="0.0" width="296" height="31"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="259" height="31"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="RNM-nk-AUQ">
-                                                <rect key="frame" x="0.0" y="0.0" width="296" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="259" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Email:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUR-y7-Xmt">
                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="30"/>
@@ -689,16 +689,16 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q5d-ck-fqz">
-                                                        <rect key="frame" x="50" y="0.0" width="246" height="30"/>
+                                                        <rect key="frame" x="50" y="0.0" width="209" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="17"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="email"/>
                                                     </textField>
                                                 </subviews>
                                                 <viewLayoutGuide key="safeArea" id="NGN-sL-gLe"/>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bTr-h8-7Wh">
-                                                <rect key="frame" x="0.0" y="30" width="296" height="1"/>
+                                                <rect key="frame" x="0.0" y="30" width="259" height="1"/>
                                                 <color key="backgroundColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="Bwb-eg-Iat"/>
@@ -708,10 +708,10 @@
                                         <viewLayoutGuide key="safeArea" id="7qW-xz-xYf"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AG9-12-mFY" userLabel="Password Stack">
-                                        <rect key="frame" x="0.0" y="31" width="296" height="31"/>
+                                        <rect key="frame" x="0.0" y="31" width="259" height="31"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="d77-1M-w0Z">
-                                                <rect key="frame" x="0.0" y="0.0" width="296" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="259" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Password:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="otz-Xj-nnr">
                                                         <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
@@ -722,17 +722,17 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cg1-yJ-ZoD">
-                                                        <rect key="frame" x="100" y="0.0" width="196" height="30"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Create a password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cg1-yJ-ZoD">
+                                                        <rect key="frame" x="100" y="0.0" width="159" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="17"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="password"/>
                                                     </textField>
                                                 </subviews>
                                                 <viewLayoutGuide key="safeArea" id="N9l-O0-Bgt"/>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xaq-m3-vAf">
-                                                <rect key="frame" x="0.0" y="30" width="296" height="1"/>
+                                                <rect key="frame" x="0.0" y="30" width="259" height="1"/>
                                                 <color key="backgroundColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="HJ6-Qg-cif"/>
@@ -746,6 +746,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="dY2-EU-eLP" firstAttribute="centerX" secondItem="A77-uX-f26" secondAttribute="centerX" id="MFb-Vc-MCt"/>
+                            <constraint firstItem="dY2-EU-eLP" firstAttribute="width" secondItem="A77-uX-f26" secondAttribute="width" multiplier="0.9" id="R91-oz-i9b"/>
                             <constraint firstItem="dY2-EU-eLP" firstAttribute="centerY" secondItem="A77-uX-f26" secondAttribute="centerY" id="Wo7-C8-eOR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5fZ-4o-YRt"/>
@@ -753,6 +754,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="q5d-ck-fqz" id="9Ey-OV-5Cl"/>
                         <outlet property="passwordStack" destination="AG9-12-mFY" id="2JY-cp-MKs"/>
+                        <outlet property="passwordTextField" destination="cg1-yJ-ZoD" id="PzV-EW-UIL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3rB-cc-WK3" userLabel="First Responder" sceneMemberID="firstResponder"/>
