@@ -16,10 +16,13 @@ struct FirebaseCheckListService {
     private let ref: DatabaseReference!
 
      init() {
-        guard let userUID = Auth.auth().currentUser?.uid else {fatalError("We somehow got this far without a user logged in")}
-        print(Auth.auth().currentUser?.email)
-        ref = Database.database().reference().child(userUID).child(checkListKey)
-
+        if let userUID = Auth.auth().currentUser?.uid  {
+            print(Auth.auth().currentUser?.email)
+            ref = Database.database().reference().child(userUID).child(checkListKey)
+        }
+        else {
+            ref = nil
+        }
     }
 
 
