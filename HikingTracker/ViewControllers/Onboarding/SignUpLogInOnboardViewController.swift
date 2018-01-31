@@ -69,6 +69,8 @@ class SignUpLogInOnboardViewController: UIViewController{
     }
     
     @IBAction func signUpButtonPressed(_ sender: UIButton) {
+        let firController = self.childViewControllers.first as! FirebaseSignUpViewController
+        firController.shouldLogin = false
         firebaseLoginContainerView.isHidden = false
         signUpButtonOutlet.isHidden = true
 
@@ -81,6 +83,8 @@ class SignUpLogInOnboardViewController: UIViewController{
     }
 
     @IBAction func loginButtonPressed(_ sender: UIButton) {
+        let firController = self.childViewControllers.first as! FirebaseSignUpViewController
+        firController.shouldLogin = true
         firebaseLoginContainerView.isHidden = false
         signUpButtonOutlet.isHidden = true
         logInButtonOutlet.isHidden = true

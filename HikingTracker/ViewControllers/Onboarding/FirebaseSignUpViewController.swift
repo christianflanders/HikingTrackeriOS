@@ -19,6 +19,8 @@ protocol PasswordTextFieldEntered {
 
 class FirebaseSignUpViewController: UIViewController , EmailTextFieldEntered, PasswordTextFieldEntered {
 
+
+
     @IBOutlet weak var passwordStack: UIStackView!
 
     @IBOutlet weak var emailTextField: UITextField!
@@ -28,13 +30,23 @@ class FirebaseSignUpViewController: UIViewController , EmailTextFieldEntered, Pa
     var storedEmail = ""
 //    var storedPassword = " "
 
+    let firCreateUser = FirebaseCreateUser()
+
     let emailTextFieldDelegate = EmailTextFieldDelegate()
     let passwordTextFieldDelegate = PasswordTextField()
 
 
     var accountFound = false
 
-    var shouldLogin = false
+    var shouldLogin = false {
+        willSet {
+            if newValue {
+                setUpForLogin()
+            } else {
+                setUpForSignUp()
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,138 +57,155 @@ class FirebaseSignUpViewController: UIViewController , EmailTextFieldEntered, Pa
         passwordTextFieldDelegate.passwordEnteredDelegate = self
 
         passwordTextField.isSecureTextEntry = true
+    }
 
+    func setUpForLogin() {
+        showPasswordField()
+    }
 
-
+    func setUpForSignUp() {
+        
     }
 
 
-
-    // MARK: Sign Up Methods
-
-
-    func emailTextFieldEntered() {
-        guard let email = emailTextField.text else {
-            invalidEmailAlert()
-            return
-        }
-        let passwordThatWillThrowTheCorrectError = " "
-        checkEmailWithFirebaseForExistingAccount(email, password: passwordThatWillThrowTheCorrectError) { (option) in
-            switch option {
-            case .tryAgain:
-                self.clearField()
-            case .createPassword:
-                self.storeEmailAndPresentPassword(email: email)
-            case .foundLogin:
-                self.logInInstead()
-            case .userNotFound:
-                self.storeEmailAndPresentPassword(email: email)
-            }
-        }
-    }
-
-    func passswordTextFieldEntered() {
-        guard let storedPassword = passwordTextField.text else { return }
-        if shouldLogin {
-            tryToLoginUser(email: storedEmail, password: storedPassword, completion: { (option) in
-                switch option {
-                default:
-                    print("Problem")
-                }
-            })
-        } else {
-            Auth.auth().createUser(withEmail: storedEmail, password: storedPassword) { (user, error) in
-                if let firError = error as NSError? {
-                    guard let errorCode = AuthErrorCode(rawValue: firError.code) else { return }
-                    switch errorCode {
-                    case .weakPassword:
-                        self.weakPasswordAlert()
-                    default:
-                        print(errorCode.rawValue)
-                    }
-                } else {
-                    self.successLetsGoAlert()
-
-                }
-        }
-
-    }
-    }
-
-    func weakPasswordAlert() {
-        let alert = UIAlertController(title: "Weak Password", message: "Your password must be 6 characters or more", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Try again", style: .default, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true) {
-            self.passwordTextField.text = nil
-
-        }
-    }
-
-    func showPasswordField() {
-        UIView.animate(withDuration: 1.0) {
+    private func showPasswordField() {
+        UIView.animate(withDuration: 0.2) {
             self.passwordStack.alpha = 1
         }
     }
 
-    func logInInstead() {
-        showPasswordField()
-
-
-    }
-    func storeEmailAndPresentPassword(email: String) {
-        storedEmail = email
-        showPasswordField()
+    private func clearPasswordField() {
+        passwordTextField.text = nil
     }
 
-    func clearField() {
+    private func clearEmailField() {
         emailTextField.text = nil
-        emailTextField.placeholder = "Enter Email"
     }
 
+    private let firAuthCreateUser = FirebaseCreateUser()
+    private let alerts = FirebaseAuthAlerts()
+    private let firAuthSignInUser = FirebaseLoginUser()
 
 
-    func displayLoginAlert() {
-        let alert = UIAlertController(title: "Account with that email found", message: "Please login with your password", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Okay", style: .default, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
+
+
+    func emailFieldReturned() {
+        firAuthCreateUser.checkEmailExistsAndIsValid(email: emailTextField.text!) { (success, errorCode) in
+            
+            if errorCode == nil {
+                self.showPasswordField()
+            } else {
+                self.checkErrorCodeAndDisplayAlert(errorCode!)
+            }
+        }
+
     }
 
-    func checkEmailWithFirebaseForExistingAccount(_ email: String, password: String, completion: @escaping (EmailEnteredOptions) -> Void) {
-        if email != "" {
-            Auth.auth().signIn(withEmail: email, password: password, completion: { (user, firError) in
-                if let firError = firError as NSError? {
-                    guard let errorCode = AuthErrorCode(rawValue: firError.code) else { return }
-                    switch errorCode {
-                    case .userNotFound:
-                        completion(.userNotFound)
-                        print("user not found")
-                    case .wrongPassword:
-                        self.presentUserFoundAlert()
-                        completion(.foundLogin)
-                    case .emailAlreadyInUse:
-                        self.presentUserFoundAlert()
-                        completion(.foundLogin)
-                        print("ExistingAccoutFoudn")
-                    case .invalidEmail:
-                        self.invalidEmailAlert()
-                        completion(.tryAgain)
-                        print("emial is invalid")
-                    case .networkError:
-                        self.networkError()
-                        completion(.tryAgain)
-                        print("networkProblem")
-                    default:
-                        print(errorCode.rawValue)
-                    }
-                } else { // No error and we can continue on safely
-                    completion(.createPassword)
+    func passwordFieldReturned() {
+        guard let email = emailTextField.text else { return }
+        guard let passwordText = passwordTextField.text else { return }
+        if shouldLogin {
+            firAuthSignInUser.loginUser(email: email, password: passwordText, results: { (success, errorCode) in
+                if errorCode != nil {
+                    self.checkErrorCodeAndDisplayAlert(errorCode!)
+                }
+                if success {
+                    self.successLetsGoAlert()
+                }
+            })
+        } else {
+            firAuthCreateUser.createUser(email: email, password: passwordText, results: { (success, errorCode) in
+                if errorCode != nil {
+                    self.checkErrorCodeAndDisplayAlert(errorCode!)
+                }
+                if success {
+                    self.successLetsGoAlert()
                 }
             })
         }
+
     }
 
+    private func checkErrorCodeAndDisplayAlert(_ errorCode: AuthErrorCode) {
+        switch errorCode {
+        case .emailAlreadyInUse:
+            emailInUseAlert()
+        case .weakPassword:
+            weakPasswordAlert()
+        case .invalidEmail:
+            invalidEmailAlert()
+        case .networkError:
+            networkErrorAlert()
+        case .wrongPassword:
+            wrongPasswordAlert()
+        case .userNotFound:
+            userNotFoundAlert()
+        default:
+            print(errorCode.rawValue)
+        }
+    }
+
+    private func userNotFoundAlert() {
+        if shouldLogin {
+            let alert = alerts.invalidEmailAlert()
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            showPasswordField()
+        }
+    }
+
+    private func wrongPasswordAlert() {
+        let alert = alerts.wrongPasswordAlert(tryAgainAction: { (_) -> (Void) in
+            self.clearPasswordField()
+        }) { (resetPassword) in
+            self.sendResetEmail()
+            self.clearPasswordField()
+        }
+        self.present(alert, animated: true, completion: nil)
+    }
+
+    private func sendResetEmail() {
+
+    }
+
+    private func networkErrorAlert() {
+        let alert = alerts.networkError()
+        self.present(alert, animated: true, completion: nil)
+    }
+
+    private func emailInUseAlert() {
+        let alert = alerts.emailInUseAlert()
+        self.present(alert, animated: true) {
+            self.showPasswordField()
+        }
+
+}
+
+    private func weakPasswordAlert() {
+        if shouldLogin {
+            let alert = alerts.weakPasswordAlert()
+            self.present(alert, animated: true) {
+                self.clearPasswordField()
+            }
+        } else {
+            self.showPasswordField()
+        }
+
+    }
+
+
+    func emailTextFieldEntered() {
+        emailFieldReturned()
+
+    }
+
+    func passswordTextFieldEntered() {
+        passwordFieldReturned()
+    }
+    // MARK: Sign Up Methods
+
+
+    
 
     func presentUserFoundAlert() {
         let alert = UIAlertController(title: "Existing user found", message: "It looks like there is an existing user for that email address. Log in with your password instead", preferredStyle: .alert)
@@ -186,10 +215,11 @@ class FirebaseSignUpViewController: UIViewController , EmailTextFieldEntered, Pa
     }
 
     func invalidEmailAlert() {
-        let alert = UIAlertController(title: "Problem with the email", message: "It looks like the email address you entered is invalid. Please try again", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Try Again", style: .default, handler: nil)
-        alert.addAction(action)
-        self.present(alert, animated: true, completion: nil)
+        let alert = alerts.invalidEmailAlert()
+        self.present(alert, animated: true) {
+            self.clearPasswordField()
+            self.clearEmailField()
+        }
     }
 
     func networkError() {
