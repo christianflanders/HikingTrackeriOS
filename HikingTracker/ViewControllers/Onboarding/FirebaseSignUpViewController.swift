@@ -75,40 +75,6 @@ class FirebaseSignUpViewController: UIViewController , EmailTextFieldEntered, Pa
         }
     }
 
-    func createUser() {
-
-    }
-
-    func tryToLoginUser(email: String, password: String, completion: @escaping (EmailEnteredOptions) -> Void) {
-        Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
-            if let firError = error as? NSError {
-                guard let errorCode = AuthErrorCode(rawValue: firError.code) else { return }
-                switch errorCode {
-                case .userNotFound:
-                    completion(.userNotFound)
-                    print("user not found")
-                case .wrongPassword:
-                    self.presentUserFoundAlert()
-                    completion(.foundLogin)
-                case .emailAlreadyInUse:
-                    self.presentUserFoundAlert()
-                    completion(.foundLogin)
-                    print("ExistingAccoutFoudn")
-                case .invalidEmail:
-                    self.invalidEmailAlert()
-                    completion(.tryAgain)
-                    print("emial is invalid")
-                case .networkError:
-                    self.networkError()
-                    completion(.tryAgain)
-                    print("networkProblem")
-                default:
-                    print(errorCode.rawValue)
-                }
-            }
-        })
-    }
-
     func passswordTextFieldEntered() {
         guard let storedPassword = passwordTextField.text else { return }
         if shouldLogin {
@@ -168,13 +134,7 @@ class FirebaseSignUpViewController: UIViewController , EmailTextFieldEntered, Pa
         emailTextField.placeholder = "Enter Email"
     }
 
-    enum EmailEnteredOptions {
-        case tryAgain
-        case foundLogin
-        case createPassword
-        case userNotFound
 
-    }
 
     func displayLoginAlert() {
         let alert = UIAlertController(title: "Account with that email found", message: "Please login with your password", preferredStyle: .alert)
