@@ -24,6 +24,9 @@
 		6B19AF1B200AB7F600BA5F68 /* ChecklistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B19AF1A200AB7F600BA5F68 /* ChecklistTableViewCell.swift */; };
 		6B1B12431FE9AB6300FFFDB4 /* DateConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1B12421FE9AB6300FFFDB4 /* DateConversion.swift */; };
 		6B1B12441FE9ABD900FFFDB4 /* DateConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1B12421FE9AB6300FFFDB4 /* DateConversion.swift */; };
+		6B2EB48320226D0D00A228B7 /* FirebaseSignUpUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2EB48220226D0D00A228B7 /* FirebaseSignUpUser.swift */; };
+		6B2EB48620226D1A00A228B7 /* FirebaseAuthAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2EB48520226D1A00A228B7 /* FirebaseAuthAlerts.swift */; };
+		6B2EB48820226D2400A228B7 /* FirebaseLoginUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2EB48720226D2400A228B7 /* FirebaseLoginUser.swift */; };
 		6B31A6BD1FF6FD08002069B2 /* UnitConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B31A6BC1FF6FD08002069B2 /* UnitConversions.swift */; };
 		6B35497A1FFDA1CD00BE3AC5 /* ShortStoughRunkeeper1220.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 6B3549781FFDA1CD00BE3AC5 /* ShortStoughRunkeeper1220.gpx */; };
 		6B4173F0201AF93100E311EB /* UserStoredSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4173EF201AF93100E311EB /* UserStoredSettings.swift */; };
@@ -271,6 +274,9 @@
 		6B19AF1A200AB7F600BA5F68 /* ChecklistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistTableViewCell.swift; sourceTree = "<group>"; };
 		6B1B12421FE9AB6300FFFDB4 /* DateConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConversion.swift; sourceTree = "<group>"; };
 		6B249CA91FEA20370092B518 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B2EB48220226D0D00A228B7 /* FirebaseSignUpUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseSignUpUser.swift; sourceTree = "<group>"; };
+		6B2EB48520226D1A00A228B7 /* FirebaseAuthAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthAlerts.swift; sourceTree = "<group>"; };
+		6B2EB48720226D2400A228B7 /* FirebaseLoginUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseLoginUser.swift; sourceTree = "<group>"; };
 		6B31A6BC1FF6FD08002069B2 /* UnitConversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitConversions.swift; sourceTree = "<group>"; };
 		6B3549781FFDA1CD00BE3AC5 /* ShortStoughRunkeeper1220.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ShortStoughRunkeeper1220.gpx; sourceTree = "<group>"; };
 		6B4173EF201AF93100E311EB /* UserStoredSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStoredSettings.swift; sourceTree = "<group>"; };
@@ -466,6 +472,9 @@
 			isa = PBXGroup;
 			children = (
 				6B021AE2201E7B0600FBDDCC /* SignUpLogInOnboardViewController.swift */,
+				6B2EB48220226D0D00A228B7 /* FirebaseSignUpUser.swift */,
+				6B2EB48520226D1A00A228B7 /* FirebaseAuthAlerts.swift */,
+				6B2EB48720226D2400A228B7 /* FirebaseLoginUser.swift */,
 				6B9D5858201EF44E000735E6 /* MovingCompass.swift */,
 				6BB55D03201D7C41002178F6 /* FirebaseSignUpViewController.swift */,
 				6BC4C324201FDB1F00F29168 /* PasswordTextField.swift */,
@@ -1581,6 +1590,7 @@
 				6B19AF0B200AA11E00BA5F68 /* Segues.swift in Sources */,
 				6B81261D1FDF7981009054A3 /* Meters Alias.swift in Sources */,
 				6BA6CA4220169A7E0084CB88 /* HeightPickerViewDataSource.swift in Sources */,
+				6B2EB48820226D2400A228B7 /* FirebaseLoginUser.swift in Sources */,
 				6BA663B81FF58FFD00DAF05E /* UserStatTableViewCell.swift in Sources */,
 				6BA6CA4B2016A3850084CB88 /* Weight Picker View Data.swift in Sources */,
 				6B8AA0E71FFDBAB7009FCFB2 /* HikeWorkoutCalculatingStats.swift in Sources */,
@@ -1601,6 +1611,7 @@
 				6BB48A8B1FD87B0500D5A9C5 /* StoredUserModel.swift in Sources */,
 				6B8AA0EE1FFDDBE9009FCFB2 /* HikeInProgress.swift in Sources */,
 				6B8D3116200080D5005F08AC /* HikeDisplayStrings.swift in Sources */,
+				6B2EB48320226D0D00A228B7 /* FirebaseSignUpUser.swift in Sources */,
 				6B8FF3081FF30B4600536C42 /* StatOptions.swift in Sources */,
 				6B48E1392006F9EF00D24F44 /* CustomMarker.swift in Sources */,
 				6BDDA10E1FD7610B0069970C /* Altimeter.swift in Sources */,
@@ -1655,6 +1666,7 @@
 				6BE2450A2002F90300CBFF5C /* Hike Display Strings.swift in Sources */,
 				6BA6CA4F2016AB030084CB88 /* GenderPickerDataSource.swift in Sources */,
 				6B8AA1181FFDF0A7009FCFB2 /* HikeInProgressStatDisplay.swift in Sources */,
+				6B2EB48620226D1A00A228B7 /* FirebaseAuthAlerts.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

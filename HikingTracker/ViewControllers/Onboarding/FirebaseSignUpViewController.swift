@@ -31,6 +31,7 @@ class FirebaseSignUpViewController: UIViewController , EmailTextFieldEntered, Pa
     let emailTextFieldDelegate = EmailTextFieldDelegate()
     let passwordTextFieldDelegate = PasswordTextField()
 
+
     var accountFound = false
 
     var shouldLogin = false
@@ -44,6 +45,9 @@ class FirebaseSignUpViewController: UIViewController , EmailTextFieldEntered, Pa
         passwordTextFieldDelegate.passwordEnteredDelegate = self
 
         passwordTextField.isSecureTextEntry = true
+
+
+
     }
 
 
@@ -237,18 +241,19 @@ class FirebaseSignUpViewController: UIViewController , EmailTextFieldEntered, Pa
 
     func successLetsGoAlert() {
         let alert = UIAlertController(title: "Success!", message: "You're good to go. Let's go hiking!", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Let's Go", style: .default, handler: nil)
+        let action = UIAlertAction(title: "Let's Go", style: .default) { (action) in
+//            let fireBaseView = self.childViewControllers.first
+//            fireBaseView?.dismiss(animated: true, completion: nil)
+            let mainView = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBar") as! UITabBarController
+            self.present(mainView, animated: true, completion: nil)
+        }
         alert.addAction(action)
         self.present(alert, animated: true)
-        goToMainScreen()
-    }
-
-
-    func goToMainScreen() {
-        let mainView = self.storyboard?.instantiateViewController(withIdentifier: "Main Hike Screen") as! MainHikeScreenViewController
-        self.present(mainView, animated: true, completion: nil)
 
     }
+
+
+
 
 
 

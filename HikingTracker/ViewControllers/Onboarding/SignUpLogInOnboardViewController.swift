@@ -36,21 +36,17 @@ class SignUpLogInOnboardViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         let constZeroValue = self.view.frame.width / 2
-//        constraintGoalValue = loginRightConst.constant
-//        setLoginConstraints(to: constZeroValue)
-//        setSignUpConstraints(to: constZeroValue)
+
         setContainerViewAppearance()
         signUpButtonOutlet.layer.cornerRadius = self.signUpButtonOutlet.frame.height / 2
         logInButtonOutlet.layer.cornerRadius = self.logInButtonOutlet.frame.height / 2
         setupLoginButtonTextToFit()
 
 
-        // Do any additional setup after loading the view.
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-//        animateButtons()
         animateCompass()
         setContainerViewAppearance()
     }
@@ -104,34 +100,7 @@ class SignUpLogInOnboardViewController: UIViewController{
         logInButtonOutlet.sizeToFit()
     }
 
-//    func animateButtons() {
-//        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseInOut, animations: {
-//            self.signUpButtonLeftConst.constant = self.constraintGoalValue
-//            self.signUpButtonRightConst.constant = self.constraintGoalValue
-//            self.signUpButtonOutlet.layer.cornerRadius = self.signUpButtonOutlet.frame.height / 2
-//            self.view.layoutIfNeeded()
-//        }, completion: nil)
-//        UIView.animate(withDuration: 0.2, delay: 0.3, options: .curveEaseInOut, animations: {
-//            self.loginRightConst.constant = self.constraintGoalValue
-//            self.loginButtonLeftConst.constant = self.constraintGoalValue
-//            self.logInButtonOutlet.layer.cornerRadius = self.logInButtonOutlet.frame.height / 2
-//            self.view.layoutIfNeeded()
-//
-//
-//        }, completion: nil)
-//    }
 
-//    func setLoginConstraints(to num: CGFloat) {
-//        loginRightConst.constant = num
-//        loginButtonLeftConst.constant = num
-//        self.view.layoutIfNeeded()
-//    }
-//
-//    func setSignUpConstraints(to num: CGFloat) {
-//        signUpButtonLeftConst.constant = num
-//        signUpButtonRightConst.constant = num
-//        self.view.layoutIfNeeded()
-//    }
 
     func animateCompass() {
         var compassImageArray = [UIImage]()
@@ -143,7 +112,6 @@ class SignUpLogInOnboardViewController: UIViewController{
                 }
 
                 let stringName = "MovingCompassv.1_\(stringNum)"
-                print(stringName)
                 let newImage = UIImage(named: stringName)
                 compassImageArray.append(newImage! )
             }
