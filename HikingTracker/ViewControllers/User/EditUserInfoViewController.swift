@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol UserSettingsSaved {
+    func userSettingsSaved()
+}
+
 class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightPickerValueSelectedDelegate , WeightPickerValueSelectedDelegate, GenderPickerValueSelectedDelegate, BirthdateSelectedDelegate {
 
 
@@ -21,7 +25,11 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
     // MARK: Constants
 
 
+
     // MARK: Variables
+    var userSettingsSavedDelegate: UserSettingsSaved!
+
+
     var userSettingValues = UserInformationValues()
 
     // MARK: Outlets
@@ -73,7 +81,7 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         checkForExistingValuesAndSetLabels()
-        setCosmetics()
+//        setCosmetics()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -125,8 +133,8 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
     }
 
     func setCosmetics() {
-        saveUserInfoButtonOutlet.layer.cornerRadius = saveUserInfoButtonOutlet.frame.size.height / 2
-        importFromHealthKitButtonOutlet.layer.cornerRadius = importFromHealthKitButtonOutlet.frame.size.height / 2
+        saveUserInfoButtonOutlet.layer.cornerRadius = saveUserInfoButtonOutlet.frame.height / 2
+        importFromHealthKitButtonOutlet.layer.cornerRadius = importFromHealthKitButtonOutlet.frame.height / 2
 
         birthdateButtonOutlet.titleLabel?.minimumScaleFactor = 0.75
     }
@@ -220,8 +228,14 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
             storedUser.heightInCentimeters = userSettingValues.heightInCentimeters
             storedUser.name = userSettingValues.name
             storedUser.weightInKilos = userSettingValues.weightInKG
-            showLetsGoHikingAlert()
-            goToMainScreen()
+//            showLetsGoHikingAlert()
+            if userSettingsSavedDelegate != nil {
+                userSettingsSavedDelegate.userSettingsSaved()
+            } else {
+                self.dismiss(animated: true, completion: nil)
+            }
+
+//            goToMainScreen()
         } else {
             showNotAllValuesSetAlert()
         }

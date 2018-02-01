@@ -34,16 +34,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         setNavigationBarTitleAttributes()
         
-        checkForUserInfoAndPresentCorrectScreen()
-        
+
+
         let navigationBarAppearace = UINavigationBar.appearance()
         navigationBarAppearace.barTintColor = DefaultUI().navBarBackgroundColor
         navigationBarAppearace.tintColor = UIColor.white
         
 //        UIApplication.shared.statusBarStyle = .lightContent
 
-        
+
         setTabBarAppearanceAttributes()
+
+        checkForUserInfoAndPresentCorrectScreen()
+
         return true
     }
 
@@ -71,15 +74,58 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func checkForUserInfoAndPresentCorrectScreen() {
-        let myUser = StoredUser()
-        let userWeight = myUser.weightInKilos
-        if userWeight == nil  || userWeight == 0 {
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.window = UIWindow(frame: UIScreen.main.bounds)
-            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil) // this assumes your storyboard is titled "Main.storyboard"
-            let yourVC = mainStoryboard.instantiateViewController(withIdentifier: "User Info") as! EditUserInfoViewController
-            appDelegate.window?.rootViewController = yourVC
-            appDelegate.window?.makeKeyAndVisible()
+        if !userSettingsSet || !loggedIn {
+            displayOnboardingScreen()
+            return
+        } else {
+            displayMainHikeScreen()
+        }
+    }
+
+    func displayOnboardingScreen() {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let userVC = storyBoard.instantiateViewController(withIdentifier: "OnboardInitialVC") as! OnboardingFirstViewController
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = userVC
+        self.window?.makeKeyAndVisible()
+    }
+
+    func displayUserSettingsScreenOnly() {
+
+        let storyBoard = UIStoryboard(name: "Settings:User", bundle: nil)
+        let userVC = storyBoard.instantiateViewController(withIdentifier: "UserSettings") as! EditUserInfoViewController
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = userVC
+        self.window?.makeKeyAndVisible()
+
+    }
+
+    func displayLogInScreenOnly() {
+
+    }
+
+    func displayMainHikeScreen() {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let userVC = storyBoard.instantiateViewController(withIdentifier: "MainTabBar") as! UITabBarController
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = userVC
+        self.window?.makeKeyAndVisible()
+    }
+
+    
+    var userSettingsSet: Bool {
+        if let weight = StoredUser().weightInKilos {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    var loggedIn: Bool {
+        if let currentUser = Auth.auth().currentUser {
+            return true
+        } else {
+            return false
         }
     }
     

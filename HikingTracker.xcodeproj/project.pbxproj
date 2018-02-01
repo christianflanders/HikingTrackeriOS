@@ -12,6 +12,9 @@
 		2C86ABD516B26EF86A2CFEAF /* Pods_HikingTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B18794E2405C1C0D7DD3BA55 /* Pods_HikingTrackerTests.framework */; };
 		3CF02C4715ECB45732E170F5 /* Pods_HikingTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C74058E951B1FDD231DA296F /* Pods_HikingTrackerUITests.framework */; };
 		6B01AC772012C50F002528D3 /* AddItemToChecklistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B01AC762012C50F002528D3 /* AddItemToChecklistView.swift */; };
+		6B021ADD201E676800FBDDCC /* UserSettingsOnboardingContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B021ADC201E676800FBDDCC /* UserSettingsOnboardingContainerViewController.swift */; };
+		6B021AE0201E6A8900FBDDCC /* EmailTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B021ADF201E6A8900FBDDCC /* EmailTextFieldDelegate.swift */; };
+		6B021AE3201E7B0600FBDDCC /* SignUpLogInOnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B021AE2201E7B0600FBDDCC /* SignUpLogInOnboardViewController.swift */; };
 		6B051AC01FF738CC00173A20 /* UnitConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B31A6BC1FF6FD08002069B2 /* UnitConversions.swift */; };
 		6B077CA01FFAF7B400A87E2C /* FastRunStough.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 6B077C9F1FFAF7B400A87E2C /* FastRunStough.gpx */; };
 		6B19AF0B200AA11E00BA5F68 /* Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B19AF0A200AA11E00BA5F68 /* Segues.swift */; };
@@ -21,6 +24,8 @@
 		6B19AF1B200AB7F600BA5F68 /* ChecklistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B19AF1A200AB7F600BA5F68 /* ChecklistTableViewCell.swift */; };
 		6B1B12431FE9AB6300FFFDB4 /* DateConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1B12421FE9AB6300FFFDB4 /* DateConversion.swift */; };
 		6B1B12441FE9ABD900FFFDB4 /* DateConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1B12421FE9AB6300FFFDB4 /* DateConversion.swift */; };
+		6B2EB48320226D0D00A228B7 /* FirebaseAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2EB48220226D0D00A228B7 /* FirebaseAlerts.swift */; };
+		6B2EB48620226D1A00A228B7 /* FirebaseAuthModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2EB48520226D1A00A228B7 /* FirebaseAuthModels.swift */; };
 		6B31A6BD1FF6FD08002069B2 /* UnitConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B31A6BC1FF6FD08002069B2 /* UnitConversions.swift */; };
 		6B35497A1FFDA1CD00BE3AC5 /* ShortStoughRunkeeper1220.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 6B3549781FFDA1CD00BE3AC5 /* ShortStoughRunkeeper1220.gpx */; };
 		6B4173F0201AF93100E311EB /* UserStoredSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4173EF201AF93100E311EB /* UserStoredSettings.swift */; };
@@ -59,6 +64,9 @@
 		6B6ED18E200570D00094B3EB /* Oswald-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B6ED176200570AB0094B3EB /* Oswald-SemiBold.ttf */; };
 		6B7801741FD5F2AE006F29BD /* HikeInProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7801731FD5F2AE006F29BD /* HikeInProgressViewController.swift */; };
 		6B7801771FD618BE006F29BD /* HealthKitAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7801761FD618BE006F29BD /* HealthKitAuthorization.swift */; };
+		6B7D5DB6201D64B30023B9C0 /* OnboardingFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7D5DB2201D64B10023B9C0 /* OnboardingFirstViewController.swift */; };
+		6B7D5DB7201D64B30023B9C0 /* Onboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B7D5DB4201D64B20023B9C0 /* Onboard.storyboard */; };
+		6B7D5DB8201D64B30023B9C0 /* SecondOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7D5DB5201D64B20023B9C0 /* SecondOnboardingViewController.swift */; };
 		6B7D98D51FF85F1E008C3F06 /* Solar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7D98D41FF85F1E008C3F06 /* Solar.swift */; };
 		6B7D98D61FF85F1E008C3F06 /* Solar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7D98D41FF85F1E008C3F06 /* Solar.swift */; };
 		6B7D98D91FF8637E008C3F06 /* HistoryStatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7D98D81FF8637E008C3F06 /* HistoryStatTableViewCell.swift */; };
@@ -110,6 +118,7 @@
 		6BB3CD37200D3EB000E6B89D /* ChecklistButtonProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB3CD36200D3EB000E6B89D /* ChecklistButtonProtocol.swift */; };
 		6BB3CD3A200D467A00E6B89D /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB3CD39200D467A00E6B89D /* ChecklistItem.swift */; };
 		6BB48A8B1FD87B0500D5A9C5 /* StoredUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB48A8A1FD87B0500D5A9C5 /* StoredUserModel.swift */; };
+		6BB55D04201D7C41002178F6 /* FirebaseSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB55D03201D7C41002178F6 /* FirebaseSignUpViewController.swift */; };
 		6BB63A0A1FD5CCE600E9F4A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB63A091FD5CCE600E9F4A1 /* AppDelegate.swift */; };
 		6BB63A0F1FD5CCE600E9F4A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BB63A0D1FD5CCE600E9F4A1 /* Main.storyboard */; };
 		6BB63A141FD5CCE600E9F4A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BB63A131FD5CCE600E9F4A1 /* Assets.xcassets */; };
@@ -136,6 +145,7 @@
 		6BC1DE7E1FD6553C00CB20D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BC1DE7D1FD6553C00CB20D5 /* Assets.xcassets */; };
 		6BC1DE831FD6553C00CB20D5 /* HikeTrackerWatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 6BC1DE641FD6553B00CB20D5 /* HikeTrackerWatchApp.app */; };
 		6BC1DE8D1FD7368D00CB20D5 /* LocationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC1DE8C1FD7368D00CB20D5 /* LocationServices.swift */; };
+		6BC4C325201FDB1F00F29168 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC4C324201FDB1F00F29168 /* PasswordTextField.swift */; };
 		6BC9FEF1200304A50071590A /* Find Center Coordinate .swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC9FEF0200304A50071590A /* Find Center Coordinate .swift */; };
 		6BCC75E11FD621A4005F2F19 /* HikeWorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCC75E01FD621A4005F2F19 /* HikeWorkoutModel.swift */; };
 		6BD14B941FFED7DB004B3FD7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BD14B931FFED7DB004B3FD7 /* GoogleService-Info.plist */; };
@@ -249,6 +259,9 @@
 		570756063862EB89E516FE97 /* Pods-HikingTrackerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HikingTrackerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HikingTrackerUITests/Pods-HikingTrackerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		60DF5A0650837DDD0E9B8F6C /* Pods-HikingTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HikingTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HikingTracker/Pods-HikingTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		6B01AC762012C50F002528D3 /* AddItemToChecklistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemToChecklistView.swift; sourceTree = "<group>"; };
+		6B021ADC201E676800FBDDCC /* UserSettingsOnboardingContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsOnboardingContainerViewController.swift; sourceTree = "<group>"; };
+		6B021ADF201E6A8900FBDDCC /* EmailTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailTextFieldDelegate.swift; sourceTree = "<group>"; };
+		6B021AE2201E7B0600FBDDCC /* SignUpLogInOnboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpLogInOnboardViewController.swift; sourceTree = "<group>"; };
 		6B077C9F1FFAF7B400A87E2C /* FastRunStough.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = FastRunStough.gpx; sourceTree = "<group>"; };
 		6B1589501FEA3D6300AFB8C2 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B19AF0A200AA11E00BA5F68 /* Segues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segues.swift; sourceTree = "<group>"; };
@@ -259,6 +272,8 @@
 		6B19AF1A200AB7F600BA5F68 /* ChecklistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistTableViewCell.swift; sourceTree = "<group>"; };
 		6B1B12421FE9AB6300FFFDB4 /* DateConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConversion.swift; sourceTree = "<group>"; };
 		6B249CA91FEA20370092B518 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B2EB48220226D0D00A228B7 /* FirebaseAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAlerts.swift; sourceTree = "<group>"; };
+		6B2EB48520226D1A00A228B7 /* FirebaseAuthModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthModels.swift; sourceTree = "<group>"; };
 		6B31A6BC1FF6FD08002069B2 /* UnitConversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitConversions.swift; sourceTree = "<group>"; };
 		6B3549781FFDA1CD00BE3AC5 /* ShortStoughRunkeeper1220.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ShortStoughRunkeeper1220.gpx; sourceTree = "<group>"; };
 		6B4173EF201AF93100E311EB /* UserStoredSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStoredSettings.swift; sourceTree = "<group>"; };
@@ -296,6 +311,9 @@
 		6B6ED180200570CA0094B3EB /* Cabin-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-BoldItalic.ttf"; sourceTree = "<group>"; };
 		6B7801731FD5F2AE006F29BD /* HikeInProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeInProgressViewController.swift; sourceTree = "<group>"; };
 		6B7801761FD618BE006F29BD /* HealthKitAuthorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitAuthorization.swift; sourceTree = "<group>"; };
+		6B7D5DB2201D64B10023B9C0 /* OnboardingFirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFirstViewController.swift; sourceTree = "<group>"; };
+		6B7D5DB4201D64B20023B9C0 /* Onboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboard.storyboard; sourceTree = "<group>"; };
+		6B7D5DB5201D64B20023B9C0 /* SecondOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondOnboardingViewController.swift; sourceTree = "<group>"; };
 		6B7D98D41FF85F1E008C3F06 /* Solar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solar.swift; sourceTree = "<group>"; };
 		6B7D98D81FF8637E008C3F06 /* HistoryStatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryStatTableViewCell.swift; sourceTree = "<group>"; };
 		6B81261C1FDF7981009054A3 /* Meters Alias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meters Alias.swift"; sourceTree = "<group>"; };
@@ -335,6 +353,7 @@
 		6BB3CD36200D3EB000E6B89D /* ChecklistButtonProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistButtonProtocol.swift; sourceTree = "<group>"; };
 		6BB3CD39200D467A00E6B89D /* ChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
 		6BB48A8A1FD87B0500D5A9C5 /* StoredUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredUserModel.swift; sourceTree = "<group>"; };
+		6BB55D03201D7C41002178F6 /* FirebaseSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseSignUpViewController.swift; sourceTree = "<group>"; };
 		6BB63A061FD5CCE600E9F4A1 /* HikingTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HikingTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BB63A091FD5CCE600E9F4A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6BB63A0E1FD5CCE600E9F4A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -369,6 +388,7 @@
 		6BC1DE7F1FD6553C00CB20D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6BC1DE801FD6553C00CB20D5 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		6BC1DE8C1FD7368D00CB20D5 /* LocationServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServices.swift; sourceTree = "<group>"; };
+		6BC4C324201FDB1F00F29168 /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		6BC9FEF0200304A50071590A /* Find Center Coordinate .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Find Center Coordinate .swift"; sourceTree = "<group>"; };
 		6BCC75E01FD621A4005F2F19 /* HikeWorkoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeWorkoutModel.swift; sourceTree = "<group>"; };
 		6BCD37A51FD88F7A00FE8C03 /* HikeTest.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = HikeTest.gpx; path = HikingTracker/Resources/HikeTest.gpx; sourceTree = SOURCE_ROOT; };
@@ -444,6 +464,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6B021AE1201E754B00FBDDCC /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				6B021AE2201E7B0600FBDDCC /* SignUpLogInOnboardViewController.swift */,
+				6B2EB48220226D0D00A228B7 /* FirebaseAlerts.swift */,
+				6B2EB48520226D1A00A228B7 /* FirebaseAuthModels.swift */,
+				6BB55D03201D7C41002178F6 /* FirebaseSignUpViewController.swift */,
+				6BC4C324201FDB1F00F29168 /* PasswordTextField.swift */,
+				6B021ADF201E6A8900FBDDCC /* EmailTextFieldDelegate.swift */,
+				6B7D5DB2201D64B10023B9C0 /* OnboardingFirstViewController.swift */,
+				6B7D5DB5201D64B20023B9C0 /* SecondOnboardingViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		6B6A1D451FF2ECCE00C4AD3A /* GPX Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -771,6 +806,7 @@
 				6BB63A091FD5CCE600E9F4A1 /* AppDelegate.swift */,
 				6BB63A181FD5CCE600E9F4A1 /* Info.plist */,
 				6BD14B931FFED7DB004B3FD7 /* GoogleService-Info.plist */,
+				6B7D5DB4201D64B20023B9C0 /* Onboard.storyboard */,
 			);
 			path = HikingTracker;
 			sourceTree = "<group>";
@@ -821,6 +857,7 @@
 		6BB63A3C1FD5CD4000E9F4A1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				6B021AE1201E754B00FBDDCC /* Onboarding */,
 				6BA6CA592016ADCE0084CB88 /* Checklist */,
 				6B7801721FD5F276006F29BD /* Main Hike Workout View Controllers */,
 				6BE204271FE0C079004F0C3E /* Hike History View Controllers */,
@@ -920,6 +957,7 @@
 			children = (
 				6BA6CA3C20154B220084CB88 /* UserInfoPickerViewController.swift */,
 				6B5FA3911FF58BD4008C4771 /* EditUserInfoViewController.swift */,
+				6B021ADC201E676800FBDDCC /* UserSettingsOnboardingContainerViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1126,7 +1164,7 @@
 								enabled = 1;
 							};
 							com.apple.Push = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -1232,6 +1270,7 @@
 				6B91BB431FF9C59500CB378F /* GPX 1 For Unit Testing.gpx in Resources */,
 				6B6ED18B200570D00094B3EB /* Oswald-Light.ttf in Resources */,
 				6B077CA01FFAF7B400A87E2C /* FastRunStough.gpx in Resources */,
+				6B7D5DB7201D64B30023B9C0 /* Onboard.storyboard in Resources */,
 				6BB63A0F1FD5CCE600E9F4A1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1539,6 +1578,7 @@
 				6BC1DE8D1FD7368D00CB20D5 /* LocationServices.swift in Sources */,
 				6B19AF15200AB65600BA5F68 /* ChecklistTableViewController.swift in Sources */,
 				6BC9FEF1200304A50071590A /* Find Center Coordinate .swift in Sources */,
+				6B7D5DB8201D64B30023B9C0 /* SecondOnboardingViewController.swift in Sources */,
 				6B6A1D441FEF11A800C4AD3A /* DateExtension.swift in Sources */,
 				6BA931092002E06D001FE585 /* Hike Information Protocol.swift in Sources */,
 				6B19AF0B200AA11E00BA5F68 /* Segues.swift in Sources */,
@@ -1548,6 +1588,7 @@
 				6BA6CA4B2016A3850084CB88 /* Weight Picker View Data.swift in Sources */,
 				6B8AA0E71FFDBAB7009FCFB2 /* HikeWorkoutCalculatingStats.swift in Sources */,
 				6BE204291FE1CBDF004F0C3E /* Health Kit Utility.swift in Sources */,
+				6BB55D04201D7C41002178F6 /* FirebaseSignUpViewController.swift in Sources */,
 				6BA6CA3E20154B220084CB88 /* UserInfoPickerViewController.swift in Sources */,
 				6BA6CA4D2016AA990084CB88 /* Gender Picker Data .swift in Sources */,
 				6BA6CA5C2016AE700084CB88 /* BalloonMarker.swift in Sources */,
@@ -1563,6 +1604,7 @@
 				6BB48A8B1FD87B0500D5A9C5 /* StoredUserModel.swift in Sources */,
 				6B8AA0EE1FFDDBE9009FCFB2 /* HikeInProgress.swift in Sources */,
 				6B8D3116200080D5005F08AC /* HikeDisplayStrings.swift in Sources */,
+				6B2EB48320226D0D00A228B7 /* FirebaseAlerts.swift in Sources */,
 				6B8FF3081FF30B4600536C42 /* StatOptions.swift in Sources */,
 				6B48E1392006F9EF00D24F44 /* CustomMarker.swift in Sources */,
 				6BDDA10E1FD7610B0069970C /* Altimeter.swift in Sources */,
@@ -1572,6 +1614,8 @@
 				6BA6CA522016AD230084CB88 /* Picker View Helper.swift in Sources */,
 				6B4173F0201AF93100E311EB /* UserStoredSettings.swift in Sources */,
 				6B91BB411FF9C24A00CB378F /* HikeChartsViewController.swift in Sources */,
+				6BC4C325201FDB1F00F29168 /* PasswordTextField.swift in Sources */,
+				6B7D5DB6201D64B30023B9C0 /* OnboardingFirstViewController.swift in Sources */,
 				6BB3CD37200D3EB000E6B89D /* ChecklistButtonProtocol.swift in Sources */,
 				6B91BB3D1FF99DB900CB378F /* HikeHistoryTableViewCell.swift in Sources */,
 				6B6A1D421FEF09CC00C4AD3A /* DefaultUI.swift in Sources */,
@@ -1585,12 +1629,14 @@
 				6B8AA0EB1FFDD7D9009FCFB2 /* HikeWorkoutFromHistory.swift in Sources */,
 				6BCC75E11FD621A4005F2F19 /* HikeWorkoutModel.swift in Sources */,
 				6B48E1322006BC6A00D24F44 /* Label Kerning Extension.swift in Sources */,
+				6B021ADD201E676800FBDDCC /* UserSettingsOnboardingContainerViewController.swift in Sources */,
 				6B6E71F22018286A00C1A6FE /* GenderOptions.swift in Sources */,
 				6BE2450F2002FF4200CBFF5C /* Firebase Dictionary Keys.swift in Sources */,
 				6BD9A5CF2009976900B1577F /* Save Hike To HealthKit.swift in Sources */,
 				6B8D311420007CE1005F08AC /* HikeFinishedTableViewController.swift in Sources */,
 				6B7D98D51FF85F1E008C3F06 /* Solar.swift in Sources */,
 				6B01AC772012C50F002528D3 /* AddItemToChecklistView.swift in Sources */,
+				6B021AE0201E6A8900FBDDCC /* EmailTextFieldDelegate.swift in Sources */,
 				6BA6CA6A2016B0010084CB88 /* SettingUserHeightContainer.swift in Sources */,
 				6BE245082002E46F00CBFF5C /* Hike Save To Firebase.swift in Sources */,
 				6B31A6BD1FF6FD08002069B2 /* UnitConversions.swift in Sources */,
@@ -1598,6 +1644,7 @@
 				6BE204261FE0C072004F0C3E /* HikeHistoryDetailViewController.swift in Sources */,
 				6BFEEF142013EB5200D4399E /* Pace Model.swift in Sources */,
 				6B8744D91FF493D2008A0FB5 /* Watch Connection Messages.swift in Sources */,
+				6B021AE3201E7B0600FBDDCC /* SignUpLogInOnboardViewController.swift in Sources */,
 				6BAF5B9E1FDF410800480E6A /* GPXParser.swift in Sources */,
 				6B7801741FD5F2AE006F29BD /* HikeInProgressViewController.swift in Sources */,
 				6B4173F4201BCD8900E311EB /* String Date Extension.swift in Sources */,
@@ -1611,6 +1658,7 @@
 				6BE2450A2002F90300CBFF5C /* Hike Display Strings.swift in Sources */,
 				6BA6CA4F2016AB030084CB88 /* GenderPickerDataSource.swift in Sources */,
 				6B8AA1181FFDF0A7009FCFB2 /* HikeInProgressStatDisplay.swift in Sources */,
+				6B2EB48620226D1A00A228B7 /* FirebaseAuthModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
