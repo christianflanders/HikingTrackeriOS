@@ -72,7 +72,7 @@ class MainHikeScreenViewController: UIViewController, FUIAuthDelegate {
         super.viewDidAppear(true)
         startTimer()
         if let currentUser = Auth.auth().currentUser {
-            currentUser.getIDTokenForcingRefresh(true, completion: { (_, error) in
+            currentUser.getIDTokenForcingRefresh(false, completion: { (_, error) in
                 if error != nil {
                     print("User deleted")
                     let authUI = FUIAuth.defaultAuthUI()

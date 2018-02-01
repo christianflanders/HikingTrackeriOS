@@ -249,7 +249,7 @@
         <!--User Info-->
         <scene sceneID="jzF-Xg-rez">
             <objects>
-                <viewController storyboardIdentifier="User Info" title="User Info" id="cmh-ua-QLR" customClass="EditUserInfoViewController" customModule="HikingTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="User Info" title="User Info" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cmh-ua-QLR" customClass="EditUserInfoViewController" customModule="HikingTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="K3z-Qj-sdq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -257,7 +257,7 @@
                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Topo map" translatesAutoresizingMaskIntoConstraints="NO" id="rxF-Re-Tog">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Cj7-7h-fN6">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cj7-7h-fN6">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="m6s-8P-GHt">
@@ -456,7 +456,7 @@
                                                         <rect key="frame" x="38" y="30" width="300" height="131"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MpF-BP-Db3">
-                                                                <rect key="frame" x="0.5" y="0.0" width="300" height="57"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="300" height="57"/>
                                                                 <color key="backgroundColor" red="0.83699810500000005" green="0.01030125283" blue="0.1089753732" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="57" id="LrP-ho-6y5"/>
@@ -470,7 +470,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9nl-Oe-wUf">
-                                                                <rect key="frame" x="0.5" y="74" width="300" height="57"/>
+                                                                <rect key="frame" x="0.0" y="74" width="300" height="57"/>
                                                                 <color key="backgroundColor" red="0.7166367173" green="0.91973358390000004" blue="0.5048458576" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="57" id="Z5j-cp-P8w"/>

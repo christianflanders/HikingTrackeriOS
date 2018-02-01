@@ -66,7 +66,7 @@ class FirebaseSignUpViewController: UIViewController , EmailTextFieldEntered, Pa
     }
 
     func setUpForSignUp() {
-        titleLabel.text = "Sign In"
+        titleLabel.text = "Sign Up"
     }
 
 
@@ -92,13 +92,18 @@ class FirebaseSignUpViewController: UIViewController , EmailTextFieldEntered, Pa
 
 
     func emailFieldReturned() {
-        firAuthCreateUser.checkEmailExistsAndIsValid(email: emailTextField.text!) { (success, errorCode) in
-            
-            if errorCode == nil {
-                self.showPasswordField()
-            } else {
-                self.checkErrorCodeAndDisplayAlert(errorCode!)
+        if shouldLogin {
+
+        } else {
+            firAuthCreateUser.checkEmailExistsAndIsValid(email: emailTextField.text!) { (success, errorCode) in
+
+                if errorCode == nil {
+                    self.showPasswordField()
+                } else {
+                    self.checkErrorCodeAndDisplayAlert(errorCode!)
+                }
             }
+
         }
 
     }
@@ -167,13 +172,18 @@ class FirebaseSignUpViewController: UIViewController , EmailTextFieldEntered, Pa
     }
 
     private func wrongPasswordAlert() {
-        let alert = alerts.wrongPasswordAlert(tryAgainAction: { (_) -> (Void) in
-            self.clearPasswordField()
-        }) { (resetPassword) in
-            self.sendResetEmail()
-            self.clearPasswordField()
+        if shouldLogin {
+            let alert = alerts.wrongPasswordAlert(tryAgainAction: { (_) -> (Void) in
+                self.clearPasswordField()
+            }) { (resetPassword) in
+                self.sendResetEmail()
+                self.clearPasswordField()
+            }
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            emailInUseAlert()
         }
-        self.present(alert, animated: true, completion: nil)
+
     }
 
     private func sendResetEmail() {
@@ -188,6 +198,7 @@ class FirebaseSignUpViewController: UIViewController , EmailTextFieldEntered, Pa
     private func emailInUseAlert() {
         let alert = alerts.emailInUseAlert()
         self.present(alert, animated: true) {
+            self.shouldLogin = true
             self.showPasswordField()
         }
 

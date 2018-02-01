@@ -229,7 +229,12 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
             storedUser.name = userSettingValues.name
             storedUser.weightInKilos = userSettingValues.weightInKG
 //            showLetsGoHikingAlert()
-            userSettingsSavedDelegate.userSettingsSaved()
+            if userSettingsSavedDelegate != nil {
+                userSettingsSavedDelegate.userSettingsSaved()
+            } else {
+                self.dismiss(animated: true, completion: nil)
+            }
+
 //            goToMainScreen()
         } else {
             showNotAllValuesSetAlert()
