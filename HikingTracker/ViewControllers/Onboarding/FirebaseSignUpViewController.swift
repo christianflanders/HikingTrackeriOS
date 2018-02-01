@@ -20,6 +20,7 @@ protocol PasswordTextFieldEntered {
 class FirebaseSignUpViewController: UIViewController , EmailTextFieldEntered, PasswordTextFieldEntered {
 
 
+    @IBOutlet weak var titleLabel: UILabel!
 
     @IBOutlet weak var passwordStack: UIStackView!
 
@@ -61,10 +62,11 @@ class FirebaseSignUpViewController: UIViewController , EmailTextFieldEntered, Pa
 
     func setUpForLogin() {
         showPasswordField()
+        titleLabel.text = "Log In"
     }
 
     func setUpForSignUp() {
-        
+        titleLabel.text = "Sign In"
     }
 
 
@@ -147,7 +149,17 @@ class FirebaseSignUpViewController: UIViewController , EmailTextFieldEntered, Pa
 
     private func userNotFoundAlert() {
         if shouldLogin {
-            let alert = alerts.invalidEmailAlert()
+            let alert = UIAlertController(title: "No Account Found", message: "No account was found for that email. Either re-enter your email, or create a new account", preferredStyle: .alert)
+            let tryAgainAction = UIAlertAction(title: "Try Again", style: .default, handler: { (action) in
+                self.clearPasswordField()
+                self.clearEmailField()
+            })
+            let newAccountOption = UIAlertAction(title: "Create Account", style: .default, handler: { (action) in
+                self.shouldLogin = false
+                self.emailFieldReturned()
+            })
+            alert.addAction(tryAgainAction)
+            alert.addAction(newAccountOption)
             self.present(alert, animated: true, completion: nil)
         } else {
             showPasswordField()
@@ -215,6 +227,20 @@ class FirebaseSignUpViewController: UIViewController , EmailTextFieldEntered, Pa
     }
 
     func invalidEmailAlert() {
+        if shouldLogin {
+            let alert = UIAlertController(title: "No Account Found", message: "No account was found for that email. Either re-enter your email, or create a new account", preferredStyle: .alert)
+            let tryAgainAction = UIAlertAction(title: "Try Again", style: .default, handler: { (action) in
+                self.clearPasswordField()
+                self.clearEmailField()
+            })
+            let newAccountOption = UIAlertAction(title: "Create Account", style: .default, handler: { (action) in
+                self.shouldLogin = false
+                self.emailFieldReturned()
+            })
+            alert.addAction(tryAgainAction)
+            alert.addAction(newAccountOption)
+            self.present(alert, animated: true, completion: nil)
+        }
         let alert = alerts.invalidEmailAlert()
         self.present(alert, animated: true) {
             self.clearPasswordField()

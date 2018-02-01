@@ -40,7 +40,7 @@ struct FirebaseAuthAlerts {
     }
 
     func invalidEmailAlert() -> UIAlertController {
-        let alert = UIAlertController(title: "Problem with the email", message: "It looks like the email address you entered is invalid. Please try again", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Problem with the email", message: "It looks like the email address you entered is invalid.", preferredStyle: .alert)
         let action = UIAlertAction(title: "Try Again", style: .default, handler: nil)
         alert.addAction(action)
         return alert

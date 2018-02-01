@@ -34,15 +34,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         setNavigationBarTitleAttributes()
         
-//        checkForUserInfoAndPresentCorrectScreen()
-        
+        checkForUserInfoAndPresentCorrectScreen()
+
         let navigationBarAppearace = UINavigationBar.appearance()
         navigationBarAppearace.barTintColor = DefaultUI().navBarBackgroundColor
         navigationBarAppearace.tintColor = UIColor.white
         
 //        UIApplication.shared.statusBarStyle = .lightContent
 
-        
+
         setTabBarAppearanceAttributes()
         return true
     }
@@ -74,14 +74,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let myUser = StoredUser()
         let userWeight = myUser.weightInKilos
         if userWeight == nil  || userWeight == 0 {
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.window = UIWindow(frame: UIScreen.main.bounds)
-            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil) // this assumes your storyboard is titled "Main.storyboard"
-            let yourVC = mainStoryboard.instantiateViewController(withIdentifier: "User Info") as! EditUserInfoViewController
-            appDelegate.window?.rootViewController = yourVC
-            appDelegate.window?.makeKeyAndVisible()
+
         }
     }
+
     
     //Appearance Functions
     fileprivate func setNavigationBarTitleAttributes() {
