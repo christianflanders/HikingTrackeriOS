@@ -67,7 +67,17 @@ class SignUpLogInOnboardViewController: UIViewController{
         shadowView.isHidden = true
         view.bringSubview(toFront: firebaseLoginContainerView)
     }
-    
+
+
+    func childDismissed() {
+        firebaseLoginContainerView.isHidden = true
+        signUpButtonOutlet.isHidden = false
+        logInButtonOutlet.isHidden = false
+        for label in openingLabels {
+            label.isHidden = false
+        }
+
+    }
     @IBAction func signUpButtonPressed(_ sender: UIButton) {
         let firController = self.childViewControllers.first as! FirebaseSignUpViewController
         firController.shouldLogin = false

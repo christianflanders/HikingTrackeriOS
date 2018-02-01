@@ -59,6 +59,10 @@ class FirebaseSignUpViewController: UIViewController , EmailTextFieldEntered, Pa
 
         passwordTextField.isSecureTextEntry = true
     }
+    @IBAction func cancelButtonPressed(_ sender: UIButton) {
+        let parentVC = self.parent as! SignUpLogInOnboardViewController
+        parentVC.childDismissed()
+    }
 
     func setUpForLogin() {
         showPasswordField()

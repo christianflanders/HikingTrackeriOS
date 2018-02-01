@@ -254,12 +254,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OyY-HZ-76W">
-                                <rect key="frame" x="-1" y="458" width="376" height="199"/>
-                                <connections>
-                                    <segue destination="pxJ-tZ-Wdl" kind="embed" id="67B-Dp-iyM"/>
-                                </connections>
-                            </containerView>
                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Topo map" translatesAutoresizingMaskIntoConstraints="NO" id="rxF-Re-Tog">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
@@ -474,6 +468,12 @@
                                     <constraint firstItem="IV6-ed-LGJ" firstAttribute="leading" secondItem="ehV-Y0-SaY" secondAttribute="leading" constant="10" id="yAK-si-CmT"/>
                                 </constraints>
                             </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OyY-HZ-76W">
+                                <rect key="frame" x="-1" y="458" width="376" height="199"/>
+                                <connections>
+                                    <segue destination="pxJ-tZ-Wdl" kind="embed" id="67B-Dp-iyM"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
