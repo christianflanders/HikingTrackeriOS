@@ -191,7 +191,11 @@ class FirebaseSignUpViewController: UIViewController , EmailTextFieldEntered, Pa
     }
 
     private func sendResetEmail() {
-
+        Auth.auth().sendPasswordReset(withEmail: emailTextField.text!, completion: nil)
+        let alert = UIAlertController(title: "Password reset email sent", message: "Please check your email", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
 
     private func networkErrorAlert() {
