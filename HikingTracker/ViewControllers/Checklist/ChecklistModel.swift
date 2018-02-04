@@ -14,19 +14,15 @@ struct FirebaseCheckListService {
 
     private let checkListKey = "Checklist"
 
-<<<<<<< HEAD
-     init() {
-        if let userUID = Auth.auth().currentUser?.uid  {
-            print(Auth.auth().currentUser?.email)
-            ref = Database.database().reference().child(userUID).child(checkListKey)
-        }
-        else {
-            ref = nil
-        }
+    init() {
+//        if let userUID = Auth.auth().currentUser?.uid  {
+//            print(Auth.auth().currentUser?.email)
+//            ref = Database.database().reference().child(userUID).child(checkListKey)
+//        }
+//        else {
+//            ref = nil
+//        }
     }
-=======
-     init() {}
->>>>>>> Clean-Up-Firebase-Login
 
 
 

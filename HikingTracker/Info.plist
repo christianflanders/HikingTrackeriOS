@@ -2,11 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-<<<<<<< HEAD
-=======
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Peaks needs to access your location to track your workout properly.</string>
->>>>>>> Clean-Up-Firebase-Login
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -24,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>4</string>
+	<string>5</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MGLMapboxAccessToken</key>
@@ -32,15 +27,11 @@
 	<key>NSHealthShareUsageDescription</key>
 	<string>Allow Peaks to view your health data. </string>
 	<key>NSHealthUpdateUsageDescription</key>
-<<<<<<< HEAD
-	<string>Allow Hike Tracker to write to your health data and record your workouts.</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Hike Tracker needs to access your location to track your workout properly.</string>
-=======
 	<string>Allow Peaks to write to your health data and record your workouts.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Peaks needs to access your location to track your workout properly.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Peaks needs to access your location to track your workout properly.</string>
->>>>>>> Clean-Up-Firebase-Login
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Peaks needs to access your location to track your workout properly.</string>
 	<key>NSMotionUsageDescription</key>
