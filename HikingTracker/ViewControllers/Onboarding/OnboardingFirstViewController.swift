@@ -32,14 +32,14 @@ class OnboardingFirstViewController: UIViewController {
     }
     
 
-    func animateTextIn()  {
-        UIView.animate(withDuration: 1.0) { [weak self] in
-            self?.firstTextContainerView.alpha = 1
-        }
-        UIView.animate(withDuration: 2.0, animations: {
-            self.secondTextContainerView.alpha = 1
-        })
-    }
+//    func animateTextIn()  {
+//        UIView.animate(withDuration: 1.0) { [weak self] in
+//            self?.firstTextContainerView.alpha = 1
+//        }
+//        UIView.animate(withDuration: 2.0, animations: {
+//            self.secondTextContainerView.alpha = 1
+//        })
+//    }
 
     @IBAction func nextButtonPressed(_ sender: UIButton) {
            sender.titleLabel?.alpha = 0
