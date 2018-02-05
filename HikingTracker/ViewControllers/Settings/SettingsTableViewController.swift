@@ -36,34 +36,13 @@ class SettingsTableViewController: UITableViewController {
     // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-//        checkForExistingSettingsValuesAndSetDefaults()
-        switch user.userDisplayUnits {
-        case .freedomUnits :
-            unitsSegmentedControl.isEnabledForSegment(at: 0)
-        case .metric :
-            unitsSegmentedControl.isEnabledForSegment(at: 1)
-        }
-        guard let pauseButtonSetting = userSettings.pauseButtonSound else { return }
-        if pauseButtonSetting {
-            pauseSoundSwitchOutlet.isOn = true
-        } else {
-            pauseSoundSwitchOutlet.isOn = false
-        }
-        guard let resetChecklistSetting = userSettings.resetChecklistSetting else { return }
-        if resetChecklistSetting {
-            resetChecklistSwitch.isOn = true
-        } else {
-            resetChecklistSwitch.isOn = false
-        }
-
+        setButtonValuesToStoredSettings()
 
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         self.tabBarController?.tabBar.isHidden = false //Set this becuase it gets hidden if we go to the user info screen
-
-
     }
 
 
@@ -83,14 +62,12 @@ class SettingsTableViewController: UITableViewController {
     @IBAction func pauseSoundSwitchValueChanged(_ sender: UISwitch) {
         guard let pauseButtonSetting = userSettings.pauseButtonSound else { return }
         userSettings.pauseButtonSound = !pauseButtonSetting
-        print(userSettings.pauseButtonSound)
-    }
-    @IBAction func resetChecklistSwitchValueChanged(_ sender: UISwitch) {
-        guard var resetChecklistSetting = userSettings.resetChecklistSetting else { return }
-        userSettings.resetChecklistSetting = !resetChecklistSetting
-        print(userSettings.resetChecklistSetting)
     }
 
+    @IBAction func resetChecklistSwitchValueChanged(_ sender: UISwitch) {
+        guard let resetChecklistSetting = userSettings.resetChecklistSetting else { return }
+        userSettings.resetChecklistSetting = !resetChecklistSetting
+    }
 
 
 
@@ -100,6 +77,27 @@ class SettingsTableViewController: UITableViewController {
         navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
     }
 
+
+    private func setButtonValuesToStoredSettings() {
+        switch user.userDisplayUnits {
+        case .freedomUnits :
+            unitsSegmentedControl.isEnabledForSegment(at: 0)
+        case .metric :
+            unitsSegmentedControl.isEnabledForSegment(at: 1)
+        }
+        guard let pauseButtonSetting = userSettings.pauseButtonSound else { return }
+        if pauseButtonSetting {
+            pauseSoundSwitchOutlet.isOn = true
+        } else {
+            pauseSoundSwitchOutlet.isOn = false
+        }
+        guard let resetChecklistSetting = userSettings.resetChecklistSetting else { return }
+        if resetChecklistSetting {
+            resetChecklistSwitch.isOn = true
+        } else {
+            resetChecklistSwitch.isOn = false
+        }
+    }
 
 
     func checkForExistingSettingsValuesAndSetDefaults() {
