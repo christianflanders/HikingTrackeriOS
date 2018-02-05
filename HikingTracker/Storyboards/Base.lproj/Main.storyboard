@@ -306,8 +306,8 @@
         <!--Hike History-->
         <scene sceneID="dum-rS-nJy">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="Hike History" storyboardName="HikeHistory" referencedIdentifier="Hike History" id="TWk-AW-D3c" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dzi-1B-Sad" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardIdentifier="Hike History" storyboardName="HikeHistory" referencedIdentifier="Hike History" id="TWk-AW-D3c" sceneMemberID="viewController"/>
             </objects>
             <point key="canvasLocation" x="1510.144927536232" y="-8.9673913043478262"/>
         </scene>
@@ -322,8 +322,8 @@
         <!--UIViewController-fXo-Ke-yPI-->
         <scene sceneID="218-EN-S2j">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="UIViewController-fXo-Ke-yPI" storyboardName="MainHike" referencedIdentifier="UIViewController-fXo-Ke-yPI" id="O0y-bP-IrW" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GXV-jk-Lmp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardIdentifier="UIViewController-fXo-Ke-yPI" storyboardName="MainHike" referencedIdentifier="UIViewController-fXo-Ke-yPI" id="O0y-bP-IrW" sceneMemberID="viewController"/>
             </objects>
             <point key="canvasLocation" x="3708" y="-644.07796101949032"/>
         </scene>
@@ -795,21 +795,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3rB-cc-WK3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-116.25" y="1378.5211267605634"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="1Rd-nS-CGd">
-            <objects>
-                <viewController id="toT-BJ-WUm" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="pFC-1n-rzq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="W2A-eG-0TY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tjx-F7-Dk3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-126" y="1982"/>
         </scene>
     </scenes>
     <resources>
