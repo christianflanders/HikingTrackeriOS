@@ -111,6 +111,8 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
 
     @IBAction func genderButtonPressed(_ sender: UIButton) {
         showPickerVCWithOption(.gender)
+        genderValueSet(gender: "Male")
+
     }
     public func hidePickerVC() {
         userPickerVCContainer.isHidden = true
@@ -178,7 +180,7 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
 
     // MARK: Gender pickerview value set delegate
 
-    func valueSet(gender: String) {
+    func genderValueSet(gender: String) {
         genderButtonOutlet.setTitle(gender, for: .normal)
         userSettingValues.gender = gender
     }

@@ -18,7 +18,7 @@ protocol WeightPickerValueSelectedDelegate {
 }
 
 protocol GenderPickerValueSelectedDelegate {
-    func valueSet(gender: String)
+    func genderValueSet(gender: String)
 }
 
 protocol BirthdateSelectedDelegate {

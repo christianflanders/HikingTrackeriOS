@@ -32,7 +32,7 @@ class GenderPickerViewDataSource: NSObject, UIPickerViewDataSource, UIPickerView
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let genderSelected = GenderOptions().allOptions[row]
-        genderSelectedDelegate?.valueSet(gender: genderSelected)
+        genderSelectedDelegate?.genderValueSet(gender: genderSelected)
     }
 
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {

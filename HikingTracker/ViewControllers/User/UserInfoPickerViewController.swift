@@ -109,6 +109,7 @@ class UserInfoPickerViewController: UIViewController {
         heightPickerView.isHidden = true
         birthDatePickerView.isHidden = true
         genderPickerView.isHidden = true
+        
     }
 
     func showHeightPicker() {
