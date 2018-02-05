@@ -78,6 +78,9 @@ class ElevationChartViewController: UIViewController, IAxisValueFormatter {
         let yAxis = elevationLineChartView.leftAxis
         yAxis.valueFormatter = axisFormatDelegate
 
+        let yAxisRight = elevationLineChartView.rightAxis
+        yAxisRight.drawLabelsEnabled = false
+
         elevationLineChartView.animate(xAxisDuration: 0, yAxisDuration: 2.0)
 
         elevationLineChartView.drawMarkers = true
