@@ -659,6 +659,7 @@
 		6BA6CA582016ADBE0084CB88 /* Checklist */ = {
 			isa = PBXGroup;
 			children = (
+				6B4173F1201BBB1900E311EB /* ChecklistModel.swift */,
 				6BB3CD39200D467A00E6B89D /* ChecklistItem.swift */,
 				6B4173F3201BCD8900E311EB /* String Date Extension.swift */,
 			);
@@ -669,7 +670,6 @@
 			isa = PBXGroup;
 			children = (
 				6B19AF14200AB65600BA5F68 /* ChecklistTableViewController.swift */,
-				6B4173F1201BBB1900E311EB /* ChecklistModel.swift */,
 			);
 			path = Checklist;
 			sourceTree = "<group>";

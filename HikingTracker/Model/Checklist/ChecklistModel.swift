@@ -46,7 +46,6 @@ struct FirebaseCheckListService {
         let ref: DatabaseReference!
         let userUID = Auth.auth().currentUser?.uid
         ref = Database.database().reference().child(userUID!).child(checkListKey)
-
         ref.observe(.value) { (snapshot) in
             if snapshot.exists() {
                 var checkListItems = [ChecklistItem]()
@@ -76,6 +75,7 @@ struct FirebaseCheckListService {
         ref = Database.database().reference().child(userUID!).child(checkListKey)
 
         ref.child(item.name).removeValue()
+        
     }
 
     func changeFirebaseCheckedValueForItem(_ item: ChecklistItem, checked: Bool) {

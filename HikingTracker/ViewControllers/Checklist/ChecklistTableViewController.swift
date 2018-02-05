@@ -88,9 +88,14 @@ class ChecklistTableViewController: UITableViewController, ChecklistButtonFlippe
     // MARK: Table View Editing
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        let row = indexPath.row
         if editingStyle == .delete {
-            let selectedList = checklistItems[indexPath.row]
+            let selectedList = checklistItems[row]
+            checklistItems.remove(at: row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
             checklistService.deleteChecklistItem(selectedList)
+            tableView.reloadData()
+
         }
     }
 
