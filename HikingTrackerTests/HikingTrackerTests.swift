@@ -179,11 +179,11 @@ class HikingTrackerTests: XCTestCase {
     func testTimeTraveledEquality() {
 //        // Since the time travled up or down hill durations are only added too when the workout isnt paused,
 //        // Adding them together should equal the total time, which figures out the total time of the workout subtracting paused seconds
-//        let hikeToTest = createFakeHikeWorkout()
-//        let addedTogetherTime = hikeToTest.timeTraveldUpHill + hikeToTest.timeTraveledDownHill
-//        let totalTime = hikeToTest.totalTime
-//        XCTAssertEqual(addedTogetherTime, totalTime)
-        
+        let hikeToTest = createFakeHikeWorkout()
+        let addTogetherTime = hikeToTest.timeUphillInSeconds + hikeToTest.timeDownhillInSeconds
+        let totalTime = hikeToTest.durationInSeconds
+        XCTAssertEqual(addTogetherTime, totalTime)
+
     }
     
     func testHikeUploadToFirebase() {

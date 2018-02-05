@@ -98,7 +98,7 @@
                                 <label alignment="center" text="Start a new workout from your iPhone" textAlignment="center" numberOfLines="3" id="VQb-hG-XTl">
                                     <fontDescription key="font" name="ArialHebrew-Light" family="Arial Hebrew" pointSize="14"/>
                                 </label>
-                                <label alignment="center" text="HikeTracker" id="Njt-97-FcK"/>
+                                <label alignment="center" text="Peaks" id="Njt-97-FcK"/>
                             </items>
                         </group>
                     </items>
