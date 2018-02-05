@@ -1,6 +1,4 @@
 PODS:
-  - Firebase (4.8.0):
-    - Firebase/Core (= 4.8.0)
   - Firebase/Auth (4.8.0):
     - Firebase/Core
     - FirebaseAuth (= 4.4.1)
@@ -50,7 +48,6 @@ PODS:
   - nanopb/encode (0.3.8)
 
 DEPENDENCIES:
-  - Firebase
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -73,6 +70,6 @@ SPEC CHECKSUMS:
   Mapbox-iOS-SDK: 5304bd9605babe6da9050ea4cb23c1671420b737
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
 
-PODFILE CHECKSUM: 25500bae713f4ac3ff500dede1e14508f4c2792d
+PODFILE CHECKSUM: 876a26f9cede997e62d01d50da228ab060e03ac2
 
 COCOAPODS: 1.3.1
