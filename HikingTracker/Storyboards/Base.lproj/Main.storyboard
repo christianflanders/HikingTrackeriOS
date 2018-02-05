@@ -6,7 +6,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -171,25 +170,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChecklistCell" id="Fhp-rG-4x1" customClass="ChecklistTableViewCell" customModule="HikingTracker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChecklistCell" rowHeight="50" id="Fhp-rG-4x1" customClass="ChecklistTableViewCell" customModule="HikingTracker" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Fhp-rG-4x1" id="cWP-sd-IdY">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="49.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ca-dj-JfP">
-                                            <rect key="frame" x="20" y="11" width="42" height="22"/>
+                                            <rect key="frame" x="20" y="12.333333333333336" width="42" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="25" id="YIP-ZO-g4R"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xec-LV-YEX" customClass="M13Checkbox" customModule="M13Checkbox">
-                                            <rect key="frame" x="368" y="6" width="30" height="30"/>
+                                            <rect key="frame" x="368" y="10" width="30" height="30"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="tintColor" red="0.7166367173" green="0.91973358390000004" blue="0.5048458576" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="xec-LV-YEX" secondAttribute="height" multiplier="1:1" id="XBF-SN-v2b"/>
+                                                <constraint firstAttribute="height" constant="30" id="ow4-ug-wg3"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -215,13 +218,11 @@
                                         </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="xec-LV-YEX" firstAttribute="top" secondItem="cWP-sd-IdY" secondAttribute="top" constant="6" id="21R-My-yqr"/>
-                                        <constraint firstItem="7Ca-dj-JfP" firstAttribute="leading" secondItem="cWP-sd-IdY" secondAttribute="leadingMargin" id="3yr-ut-fdE"/>
-                                        <constraint firstItem="7Ca-dj-JfP" firstAttribute="top" secondItem="cWP-sd-IdY" secondAttribute="topMargin" id="5iT-mt-oVt"/>
                                         <constraint firstItem="xec-LV-YEX" firstAttribute="centerY" secondItem="cWP-sd-IdY" secondAttribute="centerY" id="VdR-6s-E0O"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="7Ca-dj-JfP" secondAttribute="bottom" id="eOU-ve-oP5"/>
-                                        <constraint firstAttribute="bottom" secondItem="xec-LV-YEX" secondAttribute="bottom" constant="7.5" id="qvp-Bq-NcG"/>
+                                        <constraint firstItem="xec-LV-YEX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7Ca-dj-JfP" secondAttribute="trailing" constant="15" id="WhM-yL-nFu"/>
+                                        <constraint firstItem="7Ca-dj-JfP" firstAttribute="centerY" secondItem="cWP-sd-IdY" secondAttribute="centerY" id="eKE-Sl-uao"/>
                                         <constraint firstAttribute="trailing" secondItem="xec-LV-YEX" secondAttribute="trailing" constant="16" id="vBd-Gz-rRd"/>
+                                        <constraint firstItem="7Ca-dj-JfP" firstAttribute="leading" secondItem="cWP-sd-IdY" secondAttribute="leading" constant="20" id="zWQ-uv-HNj"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
