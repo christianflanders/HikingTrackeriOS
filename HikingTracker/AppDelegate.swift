@@ -74,7 +74,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func checkForUserInfoAndPresentCorrectScreen() {
-        if !userSettingsSet || !loggedIn {
+        if !userSettingsSet {
+            if loggedIn {
+                do {
+                    try Auth.auth().signOut()
+                } catch {
+                    print("problems signing user out")
+                }
+            }
             displayOnboardingScreen()
             return
         } else {
@@ -114,10 +121,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     
     var userSettingsSet: Bool {
-        if let weight = StoredUser().weightInKilos {
-            return true
-        } else {
+        print(StoredUser().name)
+        if StoredUser().name == nil {
             return false
+        } else {
+            return true
         }
     }
 
