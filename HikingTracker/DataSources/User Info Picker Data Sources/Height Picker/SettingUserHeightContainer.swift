@@ -33,9 +33,9 @@ struct UserHeightContainer {
     private let componentInchesLabelRow = 3
 
     private var heightFeetValue = 0 // Set when a new row is selected
-    private let heightFeetLabel = "Feet"
+    private let heightFeetLabel = "Ft"
     private var heightInchValue = 0 // set when a new row is selected
-    private let heightInchLabel = "Inches"
+    private let heightInchLabel = "In"
 
     private mutating func pickerDidSelectRowForImperial(row: Int, component: Int) -> (stringForDisplay: String, valueInCM: Double) {
         var returnTuple = ("", 0.0)

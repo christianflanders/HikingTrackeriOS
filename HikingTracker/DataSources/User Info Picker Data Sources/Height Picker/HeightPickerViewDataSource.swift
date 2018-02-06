@@ -22,6 +22,7 @@ class HeightPickerViewDataSource: NSObject, UIPickerViewDataSource, UIPickerView
     var valueInCM = 0.0
 
 
+
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return userPickerHelpers.heightPickerData.getHeightPickerViewNumberOfComponents()
     }
@@ -43,7 +44,30 @@ class HeightPickerViewDataSource: NSObject, UIPickerViewDataSource, UIPickerView
     }
 
     func setInitialValueForPicker(pickerView: UIPickerView) {
-        pickerView.selectRow(5, inComponent: 0, animated: true)
+        if let storedHeightInCM = StoredUser().heightInCentimeters {
+            if storedHeightInCM == 0 {
+                pickerView.selectRow(5, inComponent: 0, animated: true)
+                pickerView.delegate?.pickerView!(pickerView, didSelectRow: 5, inComponent: 0)
+
+            } else {
+                if StoredUser().userDisplayUnits == .metric {
+                    pickerView.selectRow(Int(storedHeightInCM), inComponent: 0, animated: true)
+                    pickerView.delegate?.pickerView!(pickerView, didSelectRow: Int(storedHeightInCM), inComponent: 0)
+                } else {
+                    let conv = UnitConversions()
+                    let totalInches = Int(conv.convertCMToInches(cm:storedHeightInCM))
+                    let inchesToDisplay = Int(totalInches) % 12
+                    let totalFeet = totalInches / 12
+                    pickerView.selectRow(totalFeet, inComponent: 0, animated: true)
+                    pickerView.selectRow(inchesToDisplay, inComponent: 2, animated: true)
+                    pickerView.delegate?.pickerView!(pickerView, didSelectRow: totalFeet, inComponent: 0)
+                    pickerView.delegate?.pickerView!(pickerView, didSelectRow: inchesToDisplay, inComponent: 2)
+                }
+            }
+        } else {
+            pickerView.selectRow(5, inComponent: 0, animated: true)
+            pickerView.delegate?.pickerView!(pickerView, didSelectRow: 5, inComponent: 0)
+        }
     }
 
 

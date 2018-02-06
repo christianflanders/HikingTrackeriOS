@@ -112,6 +112,7 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
 
     @IBAction func birthdateButtonPressed(_ sender: UIButton) {
         showPickerVCWithOption(.birthdate)
+        
     }
 
 

@@ -45,7 +45,10 @@ class UserInfoPickerViewController: UIViewController {
     var whichPickerToDisplay: StoredUserOptions?
 
     // MARK: Private Variables
-
+    private var weightShown = false
+    private var heightShown  = false
+    private var genderShown = false
+    private var dateShown = false
 
     // MARK: View Life Cycle
 
@@ -55,20 +58,20 @@ class UserInfoPickerViewController: UIViewController {
 //        weightPickerView.dataSource = self
         heightPickerView.dataSource = heightPickerViewDataSource
         heightPickerView.delegate = heightPickerViewDataSource
-        heightPickerViewDataSource.setInitialValueForPicker(pickerView: heightPickerView)
+
         
 
         weightPickerView.dataSource = weightPickerViewDataSource
         weightPickerView.delegate = weightPickerViewDataSource
-        weightPickerViewDataSource.setInitialValueForPicker(pickerView: weightPickerView)
+
 
         genderPickerView.dataSource = genderPickerViewDataSource
         genderPickerView.delegate = genderPickerViewDataSource
 
         birthDatePickerView.datePickerMode = .date
         birthDatePickerView.maximumDate = Date()
-        let birthdatePickerViewInitialDate = Date(timeIntervalSinceReferenceDate: 0)
-        birthDatePickerView.setDate(birthdatePickerViewInitialDate, animated: true)
+
+
         
 
     }
@@ -105,6 +108,10 @@ class UserInfoPickerViewController: UIViewController {
     }
 
     func showWeightPicker() {
+        if !weightShown {
+            weightPickerViewDataSource.setInitialValueForPicker(pickerView: weightPickerView)
+            weightShown = true
+        }
         weightPickerView.isHidden = false
         heightPickerView.isHidden = true
         birthDatePickerView.isHidden = true
@@ -113,6 +120,10 @@ class UserInfoPickerViewController: UIViewController {
     }
 
     func showHeightPicker() {
+        if !heightShown {
+            heightPickerViewDataSource.setInitialValueForPicker(pickerView: heightPickerView)
+            heightShown = true
+        }
         weightPickerView.isHidden = true
         heightPickerView.isHidden = false
         birthDatePickerView.isHidden = true
@@ -120,6 +131,10 @@ class UserInfoPickerViewController: UIViewController {
     }
 
     func showBirthDatePicker() {
+        if !dateShown {
+            getBirthdayPickerValue()
+            dateShown = true
+        }
         weightPickerView.isHidden = true
         heightPickerView.isHidden = true
         birthDatePickerView.isHidden = false
@@ -131,5 +146,15 @@ class UserInfoPickerViewController: UIViewController {
         birthDateSelectedDelegate?.valueSet(birthdate: newDate)
     }
 
+    func getBirthdayPickerValue() {
+        if let birthday = StoredUser().birthdate {
+            birthDatePickerView.setDate(birthday, animated: true)
+            birthDateSelectedDelegate?.valueSet(birthdate: birthday)
+        } else {
+            let birthdatePickerViewInitialDate = Date(timeIntervalSinceReferenceDate: 0)
+            birthDatePickerView.setDate(birthdatePickerViewInitialDate, animated: true)
+            birthDateSelectedDelegate?.valueSet(birthdate: birthdatePickerViewInitialDate)
+        }
+    }
 
 }

@@ -46,7 +46,27 @@ class WeightPickerViewDataSource: NSObject, UIPickerViewDataSource, UIPickerView
     }
 
     func setInitialValueForPicker(pickerView: UIPickerView) {
-        pickerView.selectRow(100, inComponent: 0, animated: true)
+        if let weightInKG = StoredUser().weightInKilos {
+            if weightInKG == 0 {
+                pickerView.selectRow(100, inComponent: 0, animated: true)
+                pickerView.delegate?.pickerView!(pickerView, didSelectRow: 100, inComponent: 0)
+            } else {
+                if StoredUser().userDisplayUnits == .metric {
+                    let asInt = Int(weightInKG)
+                    pickerView.selectRow(asInt, inComponent: 0, animated: true)
+                    pickerView.delegate?.pickerView!(pickerView, didSelectRow: asInt, inComponent: 0)
+                } else {
+                    let conv = UnitConversions()
+                    let weightInPounds = conv.convertKilogramsToPounds(grams: weightInKG)
+                    let asInt = Int(weightInPounds)
+                    pickerView.selectRow(asInt, inComponent: 0, animated: true)
+                    pickerView.delegate?.pickerView!(pickerView, didSelectRow: asInt, inComponent: 0)
+                }
+            }
+        } else {
+            pickerView.selectRow(100, inComponent: 0, animated: true)
+            pickerView.delegate?.pickerView!(pickerView, didSelectRow: 100, inComponent: 0)
+        }
     }
 
 }
