@@ -279,13 +279,16 @@ class FirebaseSignUpViewController: UIViewController , EmailTextFieldEntered, Pa
         let action = UIAlertAction(title: "Let's Go", style: .default) { (action) in
 //            let fireBaseView = self.childViewControllers.first
 //            fireBaseView?.dismiss(animated: true, completion: nil)
-            let mainView = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBar") as! UITabBarController
-            self.present(mainView, animated: true, completion: nil)
+//            let mainView = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBar") as! UITabBarController
+//            self.present(mainView, animated: true, completion: nil)
+            self.performSegue(withIdentifier: "GoToMain", sender: self)
         }
         alert.addAction(action)
         self.present(alert, animated: true)
 
     }
+
+
 
 
 

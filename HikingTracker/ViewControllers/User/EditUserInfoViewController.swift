@@ -15,11 +15,6 @@ protocol UserSettingsSaved {
 class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightPickerValueSelectedDelegate , WeightPickerValueSelectedDelegate, GenderPickerValueSelectedDelegate, BirthdateSelectedDelegate {
 
 
-
-
-
-
-
     // MARK: Enums
 
     // MARK: Constants
@@ -85,8 +80,19 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewDidAppear(true)
+        super.viewWillDisappear(true)
+        setAllDelegatesToNilOnDisappear()
+
         self.tabBarController?.tabBar.isHidden = false
+
+    }
+
+    private func setAllDelegatesToNilOnDisappear() {
+        userSettingsSavedDelegate = nil
+    }
+
+    deinit {
+        print("bye user settings")
     }
 
     // MARK: IBActions
@@ -116,25 +122,19 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
     }
     public func hidePickerVC() {
         userPickerVCContainer.isHidden = true
-        showButtons()
     }
 
     func showPickerVCWithOption(_ option: StoredUserOptions ) {
         textFieldShouldReturn(userNameTextField)
-        hideButtons()
         userPickerVCContainer.isHidden = false
         let pickerVC = self.childViewControllers.last as! UserInfoPickerViewController
         pickerVC.whichPickerToDisplay = option
         pickerVC.checkWhichPickerToDisplay()
     }
 
-    func hideButtons() {
-    }
 
-    func showButtons() {
-    }
 
-    func setCosmetics() {
+    private func setCosmetics() {
         saveUserInfoButtonOutlet.layer.cornerRadius = saveUserInfoButtonOutlet.frame.height / 2
         importFromHealthKitButtonOutlet.layer.cornerRadius = importFromHealthKitButtonOutlet.frame.height / 2
 
@@ -142,7 +142,7 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
     }
 
 
-    func checkForExistingValuesAndSetLabels() {
+    private func checkForExistingValuesAndSetLabels() {
         let user = StoredUser()
         if let setBirthdate = user.birthdate {
             userSettingValues.birthdate = setBirthdate
@@ -209,7 +209,7 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
 
 
 
-    func checkAllValuesSet(for userValues: UserInformationValues) -> Bool {
+    private func checkAllValuesSet(for userValues: UserInformationValues) -> Bool {
         var allValuesSet = false
         if userValues.allValuesSet {
             allValuesSet = true
@@ -222,7 +222,7 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
 
     //MARK: Saving User
 
-    func prepareToSave() {
+    private func prepareToSave() {
         let storedUser = StoredUser()
         if checkAllValuesSet(for: userSettingValues) {
             storedUser.birthdate = userSettingValues.birthdate
@@ -230,27 +230,24 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
             storedUser.heightInCentimeters = userSettingValues.heightInCentimeters
             storedUser.name = userSettingValues.name
             storedUser.weightInKilos = userSettingValues.weightInKG
-//            showLetsGoHikingAlert()
-            if userSettingsSavedDelegate != nil {
+            if userSettingsSavedDelegate != nil { //This should only be set when we are coming from the onboarding screen
                 userSettingsSavedDelegate.userSettingsSaved()
-            } else {
-                self.dismiss(animated: true, completion: nil)
+            } else { //Otherwise, we are coming from the edit user settings tab bar screen
+                navigationController?.popViewController(animated: true)
             }
-
-//            goToMainScreen()
         } else {
             showNotAllValuesSetAlert()
         }
     }
 
-    func showNotAllValuesSetAlert() {
+    private func showNotAllValuesSetAlert() {
         let alert = UIAlertController(title: "Error!", message: "Not all values are entered correctly", preferredStyle: .alert)
         let action = UIAlertAction(title: "Please recheck the information and try again", style: .default, handler: nil)
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
     }
 
-    func showLetsGoHikingAlert() {
+    private func showLetsGoHikingAlert() {
         let alert = UIAlertController(title: "Information Saved", message: "Let's Go Hiking!", preferredStyle: .alert)
         let action = UIAlertAction(title: "👍", style: .default, handler: nil)
         alert.addAction(action)
@@ -258,7 +255,7 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
     }
 
 
-    func goToMainScreen() {
+    private func goToMainScreen() {
         let saveButtonPressedDestination = "MainTabBar"
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.window = UIWindow(frame: UIScreen.main.bounds)

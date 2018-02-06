@@ -37,18 +37,21 @@ class SignUpLogInOnboardViewController: UIViewController{
         super.viewDidLoad()
         let constZeroValue = self.view.frame.width / 2
 
-        setContainerViewAppearance()
+
         signUpButtonOutlet.layer.cornerRadius = self.signUpButtonOutlet.frame.height / 2
         logInButtonOutlet.layer.cornerRadius = self.logInButtonOutlet.frame.height / 2
         setupLoginButtonTextToFit()
-
+        setContainerViewAppearance()
 
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         animateCompass()
-        setContainerViewAppearance()
+    }
+
+    deinit {
+        print("sign up controller deiniting")
     }
 
     func setContainerViewAppearance() {

@@ -24,10 +24,18 @@ class UserSettingsOnboardingContainerViewController: UIViewController, UserSetti
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
 
+    }
 
     func userSettingsSaved() {
+//        let childUserVC = self.childViewControllers.first as! EditUserInfoViewController
+//        childUserVC.dismiss(animated: true, completion: nil)
+
         performSegue(withIdentifier: "OnboardingSettingsSaved", sender: self)
+//        let childUserVC = self.childViewControllers.first as! EditUserInfoViewController
+//        childUserVC.userSettingsSavedDelegate = nil
     }
 
 
