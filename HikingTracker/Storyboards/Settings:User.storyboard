@@ -63,7 +63,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="cmh-ua-QLR" kind="show" identifier="Edit Profile Segue" id="lEe-nc-rXQ"/>
+                                            <segue destination="q3c-rx-xzH" kind="show" identifier="Edit Profile Segue" id="bjk-C9-fbA"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -191,6 +191,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fwS-Cp-ZMj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1562" y="1531"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="1j0-lD-GKO">
+            <objects>
+                <viewController id="q3c-rx-xzH" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="h9g-vS-jR3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aLA-tK-FBJ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <connections>
+                                    <segue destination="cmh-ua-QLR" kind="embed" id="jCM-jq-7wd"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="aLA-tK-FBJ" secondAttribute="trailing" id="7Is-ii-9SX"/>
+                            <constraint firstItem="aLA-tK-FBJ" firstAttribute="leading" secondItem="h9g-vS-jR3" secondAttribute="leading" id="ABC-5g-iVA"/>
+                            <constraint firstItem="aLA-tK-FBJ" firstAttribute="bottom" secondItem="QLE-Q5-KVl" secondAttribute="bottom" id="FiE-3q-tSv"/>
+                            <constraint firstItem="aLA-tK-FBJ" firstAttribute="top" secondItem="h9g-vS-jR3" secondAttribute="top" id="S5u-1Y-xvx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="QLE-Q5-KVl"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G61-Jc-nWz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2383" y="1518"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="6Ih-cX-tZ7">
@@ -505,9 +534,11 @@
                         <outlet property="userNameTextField" destination="YZ2-wC-2cr" id="fsB-Yk-rQ8"/>
                         <outlet property="userPickerVCContainer" destination="OyY-HZ-76W" id="Mi7-xS-qQl"/>
                         <outlet property="weightButtonOutlet" destination="pf6-Ia-A7O" id="WT4-15-ydQ"/>
+                        <segue destination="mPv-7b-v7k" kind="unwind" identifier="UnwindToSettings" unwindAction="unwindToMeWithSegue:" id="csy-66-GY9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O7z-UY-fZ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="mPv-7b-v7k" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3261.5999999999999" y="1517.9910044977512"/>
         </scene>

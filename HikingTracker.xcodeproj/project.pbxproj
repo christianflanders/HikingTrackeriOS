@@ -467,6 +467,7 @@
 		6B021AE1201E754B00FBDDCC /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				6B021ADC201E676800FBDDCC /* UserSettingsOnboardingContainerViewController.swift */,
 				6B021AE2201E7B0600FBDDCC /* SignUpLogInOnboardViewController.swift */,
 				6B2EB48220226D0D00A228B7 /* FirebaseAlerts.swift */,
 				6B2EB48520226D1A00A228B7 /* FirebaseAuthModels.swift */,
@@ -957,7 +958,6 @@
 			children = (
 				6BA6CA3C20154B220084CB88 /* UserInfoPickerViewController.swift */,
 				6B5FA3911FF58BD4008C4771 /* EditUserInfoViewController.swift */,
-				6B021ADC201E676800FBDDCC /* UserSettingsOnboardingContainerViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
