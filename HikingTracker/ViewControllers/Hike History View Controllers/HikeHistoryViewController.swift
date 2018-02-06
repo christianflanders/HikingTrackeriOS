@@ -47,13 +47,24 @@ class HikeHistoryViewController: UIViewController, UITableViewDataSource, UITabl
 
 //        ref = Database.database().reference()
 //        ref.removeValue()
+
         
+        UIApplication.shared.statusBarStyle = .lightContent
+
         downloadWorkoutsFromFirebase()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        UIApplication.shared.statusBarStyle = .lightContent
+
         self.tabBarController?.tabBar.isHidden = false
+
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
 
     }
     
