@@ -306,8 +306,8 @@
         <!--Hike History-->
         <scene sceneID="dum-rS-nJy">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Dzi-1B-Sad" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardIdentifier="Hike History" storyboardName="HikeHistory" referencedIdentifier="Hike History" id="TWk-AW-D3c" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dzi-1B-Sad" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1510.144927536232" y="-8.9673913043478262"/>
         </scene>
@@ -322,8 +322,8 @@
         <!--UIViewController-fXo-Ke-yPI-->
         <scene sceneID="218-EN-S2j">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GXV-jk-Lmp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardIdentifier="UIViewController-fXo-Ke-yPI" storyboardName="MainHike" referencedIdentifier="UIViewController-fXo-Ke-yPI" id="O0y-bP-IrW" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GXV-jk-Lmp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3708" y="-644.07796101949032"/>
         </scene>
@@ -366,7 +366,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JBM-8U-gih">
                                                 <rect key="frame" x="0.0" y="0.0" width="276" height="116"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Peaks is an hiking specific workout tracker. Explore the outdoors and discover nature" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="qV7-Hv-YYW" userLabel="Peaks is an easy to use,  hiking specific  workout tracker">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Peaks is an hiking-specific workout tracker. Explore the outdoors and discover nature" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="qV7-Hv-YYW" userLabel="Peaks is an easy to use,  hiking specific  workout tracker">
                                                         <rect key="frame" x="0.0" y="0.0" width="276" height="116"/>
                                                         <fontDescription key="fontDescription" name="Cabin-SemiBold" family="Cabin" pointSize="20"/>
                                                         <nil key="textColor"/>
@@ -384,7 +384,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Uw-Om-aMx">
                                                 <rect key="frame" x="0.0" y="124" width="276" height="116.33333333333331"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First, we need some of your information to properly track your hike" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="yUC-ns-wfA" userLabel="Peaks is an easy to use,  hiking specific  workout tracker">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First, we need some information to properly track your hike" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="yUC-ns-wfA" userLabel="Peaks is an easy to use,  hiking specific  workout tracker">
                                                         <rect key="frame" x="0.0" y="0.0" width="276" height="116.33333333333333"/>
                                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
                                                         <nil key="textColor"/>
@@ -586,19 +586,19 @@
                                 <rect key="frame" x="41.333333333333343" y="257.66666666666669" width="331.33333333333326" height="220.66666666666669"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Great!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BhH-g8-bfA">
-                                        <rect key="frame" x="0.0" y="0.0" width="331.33333333333331" height="121"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="331.33333333333331" height="83.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Oswald-Bold" family="Oswald" pointSize="36"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Now we need to create an account to save your workouts" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.45000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="Ima-zC-AbN">
-                                        <rect key="frame" x="0.0" y="121.00000000000001" width="331.33333333333331" height="60.666666666666671"/>
+                                        <rect key="frame" x="0.0" y="83.666666666666629" width="331.33333333333331" height="83.666666666666686"/>
                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We won't send you any unsolicited emails or share your email in any way" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gZZ-t5-do6">
-                                        <rect key="frame" x="0.0" y="181.66666666666663" width="331.33333333333331" height="39"/>
+                                        <rect key="frame" x="0.0" y="167.33333333333331" width="331.33333333333331" height="53.333333333333343"/>
                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
