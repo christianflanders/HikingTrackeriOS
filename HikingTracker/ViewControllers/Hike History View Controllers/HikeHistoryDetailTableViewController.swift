@@ -54,6 +54,14 @@ class HikeHistoryDetailTableViewController: UITableViewController, UITextFieldDe
         updateDisplay()
         nameTextField.text = hikeWorkout?.hikeName
         self.tabBarController?.tabBar.isHidden = true
+        let navigationBarFont = UIFont(name: "Cabin", size: 18)
+
+        self.title = hikeWorkout?.startDate?.displayString
+        let navigationTitleAttributes = [
+            NSAttributedStringKey.foregroundColor: UIColor.white,
+            NSAttributedStringKey.font: navigationBarFont!
+        ]
+        self.navigationController?.navigationBar.titleTextAttributes = navigationTitleAttributes
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -61,9 +69,14 @@ class HikeHistoryDetailTableViewController: UITableViewController, UITextFieldDe
         setUpMapBoxView()
         mapBoxDrawHistoryLine()
         updateDisplay()
-        
 
 
+        UIApplication.shared.statusBarStyle = .lightContent
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        UIApplication.shared.statusBarStyle = .default
     }
     // MARK: IBActions
 
