@@ -132,7 +132,7 @@ class DecodedHike: HikeInformation {
                 let timeStampString = dict[paceKeys.timestamp] as! String
                 let converter = ConvertDate()
                 let convertedToDate = converter.fromArchiveString(timeStampString)
-                let newPace = Pace(metersTraveledPerHour: metersPerHour, timeStamp: convertedToDate)
+                let newPace = Pace(minutesPerMeter: metersPerHour, timeStamp: convertedToDate)
                 convertedPaces.append(newPace)
             }
         }

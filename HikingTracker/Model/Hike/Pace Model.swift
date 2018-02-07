@@ -10,6 +10,6 @@ import Foundation
 
 
 struct Pace {
-    var metersTraveledPerHour: Double
+    var minutesPerMeter: Double
     var timeStamp: Date
 }

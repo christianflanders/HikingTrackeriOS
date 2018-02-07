@@ -57,6 +57,9 @@ class HikeInProgress: HikeInformation {
 
     // MARK: Pace
 
+    //MIn/ mile
+    //Min/ Meter
+
     var storedPaces = [Pace]()
     var currentPaceInMetersPerHour = 0.0
 
@@ -66,20 +69,17 @@ class HikeInProgress: HikeInformation {
         let timeBetweenInSeconds = pointTwoDate.timeIntervalSince(pointOneDate)
 
         let distanceBetweenPointsInMeters = pointTwo.distance(from: pointOne)
-
-        let currentPaceInMetersPerHour = calulateMetersPerHourFrom(seconds: timeBetweenInSeconds, distanceInMeters: distanceBetweenPointsInMeters)
-        let newPace = Pace(metersTraveledPerHour: currentPaceInMetersPerHour, timeStamp: pointTwoDate)
+        let currentPaceInMinutesPerMeter = calulateMetersPerHourFrom(seconds: timeBetweenInSeconds, distanceInMeters: distanceBetweenPointsInMeters)
+        let newPace = Pace(minutesPerMeter: currentPaceInMinutesPerMeter, timeStamp: pointTwoDate)
         return newPace
-
-        
     }
 
     func calulateMetersPerHourFrom(seconds: Double, distanceInMeters: Double) -> Double{
-        let secondsInOneHour = 3600.0
-        let mySecondsConvertedToHour = seconds / secondsInOneHour
-//        let oneHour = mySecondsConvertedToHour / mySecondsConvertedToHour
-        let metersTraveledInOneHour = distanceInMeters / mySecondsConvertedToHour
-        return metersTraveledInOneHour
+
+        let secondsPerMeter = seconds / distanceInMeters
+        let minutesperMeter = secondsPerMeter / 60.0
+
+        return minutesperMeter
     }
     // MARK: Altitude Information
     private var currentAltitudeDirection: CurrentAltitudeDirection?

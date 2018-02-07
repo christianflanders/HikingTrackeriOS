@@ -75,7 +75,7 @@ extension HikeInProgress {
         let paceKeys = PaceKeys()
         for paces in storedPaces {
             var newPace = [String: Any]()
-            newPace[paceKeys.metersPerHour] = paces.metersTraveledPerHour
+            newPace[paceKeys.metersPerHour] = paces.minutesPerMeter
             let archiveStringDate = paces.timeStamp.longStringVersionForArchive
             newPace[paceKeys.timestamp] = archiveStringDate
             paceDict.append(newPace)

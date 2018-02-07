@@ -47,7 +47,7 @@ class PaceChartViewController: UIViewController, IAxisValueFormatter {
         guard let paces = hikeWorkout?.storedPaces else { return }
 
         for paceObject in paces {
-            let meterPerHour = paceObject.metersTraveledPerHour
+            let meterPerHour = paceObject.minutesPerMeter
             let localizedUnitPerHour = meterPerHour.localizedKilometersOrMiles
             let dateStamp = paceObject.timeStamp
             let secondsFromHikeStart = dateStamp.timeIntervalSince(hike.startDate!)

@@ -31,6 +31,12 @@ struct UnitConversions {
         let totalInches = Double(feetToInches + inches)
         return convertInchesToCM(inches: totalInches)
     }
+
+     func convertKiloMetersToMiles(_ meters: Double) -> Double {
+        let milestoKilometer = 0.6213712
+        let miles = meters / milestoKilometer
+        return miles
+    }
 }
 
 

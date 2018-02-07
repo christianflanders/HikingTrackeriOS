@@ -103,7 +103,7 @@ class HikeDisplayStrings {
         let formatter = MeasurementFormatter()
         if !hike.storedPaces.isEmpty {
             let storedPaces = hike.storedPaces
-            let totalPacesReduced = storedPaces.reduce(0.0,{ $0 + $1.metersTraveledPerHour} )
+            let totalPacesReduced = storedPaces.reduce(0.0,{ $0 + $1.minutesPerMeter} )
             let averagePaceInMetersPerHour = totalPacesReduced / Double(storedPaces.count)
             let averagePaceMeasurment = Measurement(value: averagePaceInMetersPerHour, unit: UnitLength.meters)
             let averagePaceMeasurementString = formatter.string(from: averagePaceMeasurment)
@@ -121,14 +121,22 @@ class HikeDisplayStrings {
     }
     
     private func getPaceDisplayString(from hike: HikeInformation) -> String {
-        let formatter = MeasurementFormatter()
         if !hike.storedPaces.isEmpty {
             let lastPace = hike.storedPaces.last
-            let speedInMetersPerSecond = lastPace?.metersTraveledPerHour
-            let speedMeasurement = Measurement(value: (speedInMetersPerSecond?.rounded())!, unit: UnitLength.meters)
-            let speedMeasurementString = formatter.string(from: speedMeasurement)
-            let speedMeasurementWithIdentifier = "\(speedMeasurementString)/hr"
-            return speedMeasurementWithIdentifier
+            let speedInMinutesPerMeter = lastPace?.minutesPerMeter
+            let speedInMinutesPerKM = speedInMinutesPerMeter! * 1000.0
+            if StoredUser().userDisplayUnits == .metric {
+                let speedString = String(format: "%.2f", speedInMinutesPerKM)
+                let returnString = "\(speedString) min/km"
+                return returnString
+            } else {
+                let conv = UnitConversions()
+                let minutesPerMile = conv.convertKiloMetersToMiles(speedInMinutesPerKM)
+                let minutesPerMileString = String(format: "%.2f", minutesPerMile)
+                let returnString = "\(minutesPerMileString) min/mile"
+                return returnString
+            }
+
         } else {
             return "_"
         }
