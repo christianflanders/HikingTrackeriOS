@@ -76,6 +76,7 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, HeightP
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         checkForExistingValuesAndSetLabels()
+
 //        setCosmetics()
     }
 

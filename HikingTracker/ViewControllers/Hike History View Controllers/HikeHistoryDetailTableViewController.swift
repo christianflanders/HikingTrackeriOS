@@ -62,6 +62,7 @@ class HikeHistoryDetailTableViewController: UITableViewController, UITextFieldDe
             NSAttributedStringKey.font: navigationBarFont!
         ]
         self.navigationController?.navigationBar.titleTextAttributes = navigationTitleAttributes
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -71,12 +72,13 @@ class HikeHistoryDetailTableViewController: UITableViewController, UITextFieldDe
         updateDisplay()
 
 
-        UIApplication.shared.statusBarStyle = .lightContent
+
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(true)
-        UIApplication.shared.statusBarStyle = .default
+        self.tabBarController?.tabBar.isHidden = false
+
     }
     // MARK: IBActions
 
