@@ -139,7 +139,7 @@ class HikeHistoryViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let selectedWorkout = pastWorkouts[indexPath.row]
-            guard let startDate = selectedWorkout.startDate else { return }
+            guard let startDate = selectedWorkout.startDate else { fatalError("workout snuck in without a start date") }
             let startDateKey = startDate.displayString
             ref = Database.database().reference()
             
@@ -149,7 +149,7 @@ class HikeHistoryViewController: UIViewController, UITableViewDataSource, UITabl
                 self.pastWorkouts.remove(at: indexPath.row)
                 self.hikeHistoryTableView.reloadData()
             })
-            let noAction = UIAlertAction(title: "Nevermind", style: .default, handler: nil)
+            let noAction = UIAlertAction(title: "Never mind", style: .default, handler: nil)
             alert.addAction(yesAction)
             alert.addAction(noAction)
             present(alert, animated: true, completion: nil)
@@ -157,8 +157,9 @@ class HikeHistoryViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func remove(child: String) {
+        let userUID = Auth.auth().currentUser?.uid
         ref = Database.database().reference()
-        let entryToRemove = ref.child(firebaseChildKey).child(child)
+        let entryToRemove = ref.child(userUID!).child(firebaseChildKey).child(child)
         entryToRemove.removeValue { (error, removed ) in
             print(removed)
             if error != nil {
