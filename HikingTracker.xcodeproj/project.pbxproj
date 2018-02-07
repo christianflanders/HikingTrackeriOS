@@ -36,6 +36,7 @@
 		6B4D230D201A6ABB009B8009 /* WatchControllerNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4D230C201A6ABB009B8009 /* WatchControllerNames.swift */; };
 		6B5904E21FDC791D00BF96CD /* HikeFinishedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5904E11FDC791D00BF96CD /* HikeFinishedViewController.swift */; };
 		6B5FA3921FF58BD4008C4771 /* EditUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5FA3911FF58BD4008C4771 /* EditUserInfoViewController.swift */; };
+		6B65F075202A64A1008B6314 /* UserSettingsContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B65F074202A64A1008B6314 /* UserSettingsContainerViewController.swift */; };
 		6B6A1D421FEF09CC00C4AD3A /* DefaultUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6A1D411FEF09CC00C4AD3A /* DefaultUI.swift */; };
 		6B6A1D441FEF11A800C4AD3A /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6A1D431FEF11A800C4AD3A /* DateExtension.swift */; };
 		6B6A1D4F1FF2EF3800C4AD3A /* RK_gpx _2017-12-20_1333-xc.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 6B6A1D4E1FF2EF3800C4AD3A /* RK_gpx _2017-12-20_1333-xc.gpx */; };
@@ -284,6 +285,7 @@
 		6B4D230C201A6ABB009B8009 /* WatchControllerNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchControllerNames.swift; sourceTree = "<group>"; };
 		6B5904E11FDC791D00BF96CD /* HikeFinishedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeFinishedViewController.swift; sourceTree = "<group>"; };
 		6B5FA3911FF58BD4008C4771 /* EditUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserInfoViewController.swift; sourceTree = "<group>"; };
+		6B65F074202A64A1008B6314 /* UserSettingsContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsContainerViewController.swift; sourceTree = "<group>"; };
 		6B6A1D411FEF09CC00C4AD3A /* DefaultUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUI.swift; sourceTree = "<group>"; };
 		6B6A1D431FEF11A800C4AD3A /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		6B6A1D4E1FF2EF3800C4AD3A /* RK_gpx _2017-12-20_1333-xc.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "RK_gpx _2017-12-20_1333-xc.gpx"; path = "../../../../Gpx Files/RK_gpx _2017-12-20_1333-xc.gpx"; sourceTree = "<group>"; };
@@ -958,6 +960,7 @@
 			children = (
 				6BA6CA3C20154B220084CB88 /* UserInfoPickerViewController.swift */,
 				6B5FA3911FF58BD4008C4771 /* EditUserInfoViewController.swift */,
+				6B65F074202A64A1008B6314 /* UserSettingsContainerViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1658,6 +1661,7 @@
 				6BE245062002E44600CBFF5C /* HikeInProgressEnums.swift in Sources */,
 				6B7D98D91FF8637E008C3F06 /* HistoryStatTableViewCell.swift in Sources */,
 				6B4173F2201BBB1900E311EB /* ChecklistModel.swift in Sources */,
+				6B65F075202A64A1008B6314 /* UserSettingsContainerViewController.swift in Sources */,
 				6BA6CA4620169BE90084CB88 /* User Height Picker View Data.swift in Sources */,
 				6BFEEF172013FF0F00D4399E /* Convert Date From Archive.swift in Sources */,
 				6BE2450A2002F90300CBFF5C /* Hike Display Strings.swift in Sources */,
