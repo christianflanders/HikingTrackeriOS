@@ -19,6 +19,7 @@ protocol PasswordTextFieldEntered {
 
 class FirebaseSignUpViewController: UIViewController , EmailTextFieldEntered, PasswordTextFieldEntered {
 
+    @IBOutlet weak var activitySpinner: UIActivityIndicatorView!
 
     @IBOutlet weak var titleLabel: UILabel!
 
@@ -58,6 +59,8 @@ class FirebaseSignUpViewController: UIViewController , EmailTextFieldEntered, Pa
         passwordTextFieldDelegate.passwordEnteredDelegate = self
 
         passwordTextField.isSecureTextEntry = true
+        activitySpinner.isHidden = true
+        activitySpinner.activityIndicatorViewStyle = .whiteLarge
     }
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
         let parentVC = self.parent as! SignUpLogInOnboardViewController
@@ -125,11 +128,14 @@ class FirebaseSignUpViewController: UIViewController , EmailTextFieldEntered, Pa
                 }
             })
         } else {
+            activitySpinner.isHidden = false
+            activitySpinner.startAnimating()
             firAuthCreateUser.createUser(email: email, password: passwordText, results: { (success, errorCode) in
                 if errorCode != nil {
                     self.checkErrorCodeAndDisplayAlert(errorCode!)
                 }
                 if success {
+                    self.activitySpinner.isHidden = true
                     self.successLetsGoAlert()
                 }
             })

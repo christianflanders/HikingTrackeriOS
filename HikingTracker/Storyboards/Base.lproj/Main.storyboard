@@ -770,6 +770,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="vEn-RZ-8wx">
+                                <rect key="frame" x="176.33333333333334" y="100.33333333333333" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -780,12 +783,15 @@
                             <constraint firstItem="dY2-EU-eLP" firstAttribute="centerX" secondItem="A77-uX-f26" secondAttribute="centerX" id="MFb-Vc-MCt"/>
                             <constraint firstItem="dY2-EU-eLP" firstAttribute="width" secondItem="A77-uX-f26" secondAttribute="width" multiplier="0.9" id="R91-oz-i9b"/>
                             <constraint firstItem="dY2-EU-eLP" firstAttribute="centerY" secondItem="A77-uX-f26" secondAttribute="centerY" id="Wo7-C8-eOR"/>
+                            <constraint firstItem="vEn-RZ-8wx" firstAttribute="centerY" secondItem="A77-uX-f26" secondAttribute="centerY" id="a3I-ai-t5D"/>
                             <constraint firstItem="CmL-pv-Upa" firstAttribute="leading" secondItem="5fZ-4o-YRt" secondAttribute="leading" constant="16" id="gxl-Bv-yYk"/>
                             <constraint firstItem="aHk-fc-bHL" firstAttribute="centerX" secondItem="A77-uX-f26" secondAttribute="centerX" id="onJ-ld-DFA"/>
+                            <constraint firstItem="vEn-RZ-8wx" firstAttribute="centerX" secondItem="A77-uX-f26" secondAttribute="centerX" id="vrD-i8-hK6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5fZ-4o-YRt"/>
                     </view>
                     <connections>
+                        <outlet property="activitySpinner" destination="vEn-RZ-8wx" id="UpX-Sc-5GQ"/>
                         <outlet property="emailTextField" destination="q5d-ck-fqz" id="9Ey-OV-5Cl"/>
                         <outlet property="passwordStack" destination="AG9-12-mFY" id="2JY-cp-MKs"/>
                         <outlet property="passwordTextField" destination="cg1-yJ-ZoD" id="PzV-EW-UIL"/>
