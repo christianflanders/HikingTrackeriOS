@@ -54,12 +54,10 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
     // MARK: Private Variables
     private var seconds = 0
     private var timer: Timer?
-    private var pedometerData:  CMPedometerData?
     private var coordinatesForLine = [CLLocationCoordinate2D]()
     private var mapView: MGLMapView!
-    private  var hikeWorkout = HikeInProgress()
-    private var currentSpeedInMetersPerSecond = 0.0
-    
+    private var hikeWorkout = HikeInProgress()
+
     private var statsHidden = false
     
     private var paused = false
@@ -161,36 +159,32 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         checkForWatchConnection()
         startHikeUISettings()
         sendStartMessageToWatch()
-
-
-//        startPedometerAndUpdatePace()
-
     }
     
      fileprivate func resumeHike() {
         startHikeUISettings()
         paused = false
-        hikeWorkout.paused = false
-        let resumeTime = Date()
-        hikeWorkout.resumeHike(time: resumeTime)
+        hikeWorkout.resumeHike()
     }
     
     fileprivate func pauseHike() {
         pauseOrStopHikeUISettings()
         paused = true
-        hikeWorkout.paused = true
-        let pauseTime = Date()
-        hikeWorkout.pauseHike(time: pauseTime)
+        hikeWorkout.pauseHike()
 
     }
     
 
     
     fileprivate func endHike() {
+//        hikeWorkout.calculateDownOrUpDuration()
         timer?.invalidate()
         locationManager.stopUpdatingLocation()
-        hikeWorkout.endDate = Date()
+        if hikeWorkout.endDate == nil {
+            hikeWorkout.endDate = Date()
+        }
         openHikeFinishedVC()
+        
     }
     
     
@@ -231,9 +225,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
         }
 
     }
-    private func calculateSunsetTime() {
-        
-    }
+
     
     fileprivate func startHikeUISettings() {
         pauseHikeButtonOutlet.isHidden = false

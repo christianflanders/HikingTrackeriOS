@@ -14,44 +14,51 @@ import HealthKit
 
 
 class HikeInProgress: HikeInformation {
-    
+
     var hikeName = ""
 
     // MARK: Location information
 
-    
-    
     //All the locations we have added to the hike
     var storedLocations = [CLLocation]()
     
     //Call this from the parent view controller when corelocation gets a new location
     func addNewLocation(_ newLocation: CLLocation) {
-        currentAltitudeInMeters = newLocation.altitude
-        if storedLocations.isEmpty {
-            storedLocations.append(newLocation)
-            return
-        }
-        guard let lastLocation = storedLocations.last else {return}
-        checkElevationDirectionAndSetUpOrDownDuration(lastLocation: lastLocation, newLocation: newLocation)
+        setNewAltitude(newLocation)
+        locationComparisons(newLocation)
+        addToStoredLocations(newLocation)
+    }
+
+    private func locationComparisons(_ newLocation: CLLocation) {
+        guard let lastLocation = storedLocations.last else { return }
         let newPace = calculatePaceBetweenTwoPoints(pointOne: lastLocation, pointTwo: newLocation)
         storedPaces.append(newPace)
-        totalDistanceInMeters += lastLocation.distance(from: newLocation)
-        storedLocations.append(newLocation)
+        addToDistance(newLocation: newLocation, lastLocation: lastLocation)
     }
-    
+
+    private func addToDistance(newLocation: CLLocation, lastLocation:CLLocation) {
+        totalDistanceInMeters += lastLocation.distance(from: newLocation)
+    }
+
+    private func setNewAltitude(_ location: CLLocation) {
+        currentAltitudeInMeters = location.altitude
+    }
+
+    private func addToStoredLocations(_ location: CLLocation) {
+        storedLocations.append(location)
+    }
+
     private func checkElevationDirectionAndSetUpOrDownDuration(lastLocation: CLLocation, newLocation: CLLocation) {
         if !paused {
             let timeDifference = newLocation.timestamp.timeIntervalSince(lastLocation.timestamp)
             if lastLocation.altitude < newLocation.altitude {
                 timeUphillInSeconds += timeDifference
-                currentAltitudeDirection = CurrentAltitudeDirection.uphill
             } else if lastLocation.altitude > newLocation.altitude || lastLocation.altitude == newLocation.altitude {
                 timeDownhillInSeconds += timeDifference
-                currentAltitudeDirection = CurrentAltitudeDirection.downhill
             }
         }
     }
-    
+
     var coordinates: [CLLocationCoordinate2D] {
         return storedLocations.map { return $0.coordinate }
     }
@@ -83,9 +90,9 @@ class HikeInProgress: HikeInformation {
 
         return minutesperMeter
     }
+
     // MARK: Altitude Information
-    private var currentAltitudeDirection: CurrentAltitudeDirection?
-    
+
     var currentAltitudeInMeters = 0.0
     
     var totalElevationDifferenceInMeters: Double {
@@ -148,12 +155,15 @@ class HikeInProgress: HikeInformation {
     var paused = false
     var totalPausedTime = 0.0
     
-    func pauseHike(time: Date) {
-        pausedNotificationTime = time
+    func pauseHike() {
+        let timePaused = Date()
+        pausedNotificationTime = timePaused
+        self.paused = true
     }
     
-    func resumeHike(time: Date) {
-        let resumedTime = time
+    func resumeHike() {
+        let resumedTime = Date()
+        self.paused = false
         guard let previousPausedNotification = pausedNotificationTime else { return }
         let pausedDuration = resumedTime.timeIntervalSince(previousPausedNotification)
         totalPausedTime += pausedDuration
