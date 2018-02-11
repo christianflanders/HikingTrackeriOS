@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+class HikeHistory {
+
+    init(fromInProgress: HikeInProgress) {
+
+    }
+}

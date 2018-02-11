@@ -115,6 +115,7 @@
 		6BA6CA6C2016E6680084CB88 /* StoredUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB48A8A1FD87B0500D5A9C5 /* StoredUserModel.swift */; };
 		6BA931092002E06D001FE585 /* Hike Information Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA931082002E06D001FE585 /* Hike Information Protocol.swift */; };
 		6BA9BBD91FFF0A5700BE48B4 /* MainAppTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BBD81FFF0A5700BE48B4 /* MainAppTabBarViewController.swift */; };
+		6BAC249F2030E5BD007168BA /* HikeHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAC249E2030E5BD007168BA /* HikeHistory.swift */; };
 		6BAF5B9E1FDF410800480E6A /* GPXParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAF5B9D1FDF410800480E6A /* GPXParser.swift */; };
 		6BB3CD37200D3EB000E6B89D /* ChecklistButtonProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB3CD36200D3EB000E6B89D /* ChecklistButtonProtocol.swift */; };
 		6BB3CD3A200D467A00E6B89D /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB3CD39200D467A00E6B89D /* ChecklistItem.swift */; };
@@ -351,6 +352,7 @@
 		6BA6CA6F2016E7110084CB88 /* HikingTracker-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HikingTracker-Bridging-Header.h"; sourceTree = "<group>"; };
 		6BA931082002E06D001FE585 /* Hike Information Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Hike Information Protocol.swift"; sourceTree = "<group>"; };
 		6BA9BBD81FFF0A5700BE48B4 /* MainAppTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppTabBarViewController.swift; sourceTree = "<group>"; };
+		6BAC249E2030E5BD007168BA /* HikeHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeHistory.swift; sourceTree = "<group>"; };
 		6BAF5B9D1FDF410800480E6A /* GPXParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXParser.swift; sourceTree = "<group>"; };
 		6BB3CD36200D3EB000E6B89D /* ChecklistButtonProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistButtonProtocol.swift; sourceTree = "<group>"; };
 		6BB3CD39200D467A00E6B89D /* ChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
@@ -998,6 +1000,7 @@
 		6BE245102002FF5F00CBFF5C /* Hike */ = {
 			isa = PBXGroup;
 			children = (
+				6BAC249E2030E5BD007168BA /* HikeHistory.swift */,
 				6BFEEF132013EB5200D4399E /* Pace Model.swift */,
 				6B8AA0ED1FFDDBE9009FCFB2 /* HikeInProgress.swift */,
 				6BD9A5CE2009976900B1577F /* Save Hike To HealthKit.swift */,
@@ -1644,6 +1647,7 @@
 				6B8D311420007CE1005F08AC /* HikeFinishedTableViewController.swift in Sources */,
 				6B7D98D51FF85F1E008C3F06 /* Solar.swift in Sources */,
 				6B01AC772012C50F002528D3 /* AddItemToChecklistView.swift in Sources */,
+				6BAC249F2030E5BD007168BA /* HikeHistory.swift in Sources */,
 				6B021AE0201E6A8900FBDDCC /* EmailTextFieldDelegate.swift in Sources */,
 				6BA6CA6A2016B0010084CB88 /* SettingUserHeightContainer.swift in Sources */,
 				6BE245082002E46F00CBFF5C /* Hike Save To Firebase.swift in Sources */,
