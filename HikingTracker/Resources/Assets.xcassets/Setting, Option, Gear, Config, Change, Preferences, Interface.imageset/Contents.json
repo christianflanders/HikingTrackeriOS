@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "pin-map-7.png",
+      "filename" : "Setting, Option, Gear, Config, Change, Preferences, Interface.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Setting, Option, Gear, Config, Change, Preferences, Interface@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Setting, Option, Gear, Config, Change, Preferences, Interface@3x.png",
       "scale" : "3x"
     }
   ],

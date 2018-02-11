@@ -54,7 +54,7 @@
         <scene sceneID="fSp-i2-7Xo">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4F7-l9-SHH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="History" image="text-list-7" selectedImage="text-list-7" id="gkF-MR-6Jn"/>
+                    <tabBarItem key="tabBarItem" title="History" image="List" selectedImage="List" id="gkF-MR-6Jn"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7vj-Tb-k2U">
                         <rect key="frame" x="0.0" y="0.0" width="372.66666666666674" height="44"/>
@@ -128,7 +128,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="95U-eO-pTl"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Hike" image="pin-map-7" selectedImage="pin-map-7" id="qiE-9J-ljb"/>
+                    <tabBarItem key="tabBarItem" title="Hike" image="Pin" selectedImage="Pin" id="qiE-9J-ljb"/>
                     <navigationItem key="navigationItem" id="OPl-Gf-2ur"/>
                     <connections>
                         <outlet property="latLongLabel" destination="jrq-nT-XeR" id="QsM-54-0Sl"/>
@@ -146,7 +146,7 @@
         <scene sceneID="wRK-Jr-2xc">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7n1-rc-JWY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Checklist" image="note-write-7" selectedImage="note-write-7" id="TGP-JB-HRu"/>
+                    <tabBarItem key="tabBarItem" title="Checklist" image="Notes" selectedImage="Notes" id="TGP-JB-HRu"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ab0-KD-oTT">
                         <rect key="frame" x="0.0" y="0.0" width="372.66666666666674" height="44"/>
@@ -252,7 +252,7 @@
         <scene sceneID="kCh-W0-oDI">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="btp-m1-pu7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="gear-7" id="aCM-4U-CRT"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="Setting, Option, Gear, Config, Change, Preferences, Interface" selectedImage="Setting, Option, Gear, Config, Change, Preferences, Interface" id="aCM-4U-CRT"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2PX-ni-ymG">
                         <rect key="frame" x="0.0" y="0.0" width="372.66666666666674" height="44"/>
@@ -806,10 +806,10 @@
     </scenes>
     <resources>
         <image name="Dark Green Logo Smaller" width="276" height="276"/>
+        <image name="List" width="25" height="18"/>
         <image name="MovingCompassv.1_00" width="122" height="148"/>
-        <image name="gear-7" width="30" height="30"/>
-        <image name="note-write-7" width="30" height="30"/>
-        <image name="pin-map-7" width="30" height="30"/>
-        <image name="text-list-7" width="30" height="30"/>
+        <image name="Notes" width="18" height="25"/>
+        <image name="Pin" width="18" height="25"/>
+        <image name="Setting, Option, Gear, Config, Change, Preferences, Interface" width="25" height="25"/>
     </resources>
 </document>

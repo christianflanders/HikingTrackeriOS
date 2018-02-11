@@ -18,6 +18,8 @@ class HikeInProgress: HikeInformation {
     var hikeName = ""
 
     // MARK: Location information
+
+    
     
     //All the locations we have added to the hike
     var storedLocations = [CLLocation]()
