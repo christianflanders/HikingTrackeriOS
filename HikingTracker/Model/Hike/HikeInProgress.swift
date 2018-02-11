@@ -24,13 +24,16 @@ class HikeInProgress: HikeInformation {
     
     //Call this from the parent view controller when corelocation gets a new location
     func addNewLocation(_ newLocation: CLLocation) {
-        setNewAltitude(newLocation)
-        locationComparisons(newLocation)
-        addToStoredLocations(newLocation)
+        if !paused {
+            setNewAltitude(newLocation)
+            locationComparisons(newLocation)
+            addToStoredLocations(newLocation)
+        }
     }
 
     private func locationComparisons(_ newLocation: CLLocation) {
         guard let lastLocation = storedLocations.last else { return }
+        checkElevationDirectionAndSetUpOrDownDuration(lastLocation: lastLocation, newLocation: newLocation)
         let newPace = calculatePaceBetweenTwoPoints(pointOne: lastLocation, pointTwo: newLocation)
         storedPaces.append(newPace)
         addToDistance(newLocation: newLocation, lastLocation: lastLocation)
@@ -170,7 +173,28 @@ class HikeInProgress: HikeInformation {
         print("That pause was \(pausedDuration)")
         print("Total time paused is \(totalPausedTime)")
     }
-    
+
+    func endHike() {
+//        resumeHike()
+        var endTime = Date()
+        if let pausedNotification = pausedNotificationTime {
+            totalPausedTime += endTime.timeIntervalSince(pausedNotification)
+        }
+        self.endDate = endTime
+        calculateUphillVSDownhill()
+    }
+
+    func converToHistory() -> HikeHistory {
+        var hikeHistoryObject = HikeHistory(fromInProgress: self)
+        return hikeHistoryObject
+    }
+
+    func calculateUphillVSDownhill() {
+        if (timeUphillInSeconds + timeDownhillInSeconds) != durationInSeconds {
+            let difference = durationInSeconds - (timeUphillInSeconds + timeDownhillInSeconds)
+            timeDownhillInSeconds += difference
+        }
+    }
     // MARK: Calories
     
     private let hikeUphillMETValue = 6.00
