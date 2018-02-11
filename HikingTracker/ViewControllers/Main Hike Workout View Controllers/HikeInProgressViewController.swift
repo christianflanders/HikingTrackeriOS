@@ -180,9 +180,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
 //        hikeWorkout.calculateDownOrUpDuration()
         timer?.invalidate()
         locationManager.stopUpdatingLocation()
-        if hikeWorkout.endDate == nil {
-            hikeWorkout.endDate = Date()
-        }
+        hikeWorkout.endHike()
         openHikeFinishedVC()
         
     }
