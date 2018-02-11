@@ -31,67 +31,7 @@ class HikingTrackerUITests: XCTestCase {
     func testExample() {
         // Use recording to get started writing UI tests.
 
-        let app = app2
-        app.buttons["Next"].tap()
-        app.buttons["Got It"].tap()
-
-        let element = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 0).children(matching: .other).element
-        let textField = element.children(matching: .other).element(boundBy: 0).children(matching: .other).element(boundBy: 0).children(matching: .textField).element
-        textField.tap()
-        textField.typeText("Christian")
-        element.children(matching: .other).element(boundBy: 1).buttons["Not Set"].tap()
-        
-        let app2 = app
-        app2/*@START_MENU_TOKEN@*/.pickerWheels["103"]/*[[".pickers.pickerWheels[\"103\"]",".pickerWheels[\"103\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeUp()
-        app2/*@START_MENU_TOKEN@*/.pickerWheels["139"]/*[[".pickers.pickerWheels[\"139\"]",".pickerWheels[\"139\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeUp()
-        app2/*@START_MENU_TOKEN@*/.pickerWheels["169"]/*[[".pickers.pickerWheels[\"169\"]",".pickerWheels[\"169\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeUp()
-        app2/*@START_MENU_TOKEN@*/.pickerWheels["179"]/*[[".pickers.pickerWheels[\"179\"]",".pickerWheels[\"179\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeUp()
-
-        let saveButton = app.buttons["Save"]
-        saveButton.swipeUp()
-        app.buttons["193 lbs"].tap()
-        app2/*@START_MENU_TOKEN@*/.pickerWheels["193"]/*[[".pickers.pickerWheels[\"193\"]",".pickerWheels[\"193\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeUp()
-        app.buttons["195 lbs"].tap()
-        app2/*@START_MENU_TOKEN@*/.pickerWheels["195"]/*[[".pickers.pickerWheels[\"195\"]",".pickerWheels[\"195\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeUp()
-        app2/*@START_MENU_TOKEN@*/.pickerWheels["232"]/*[[".pickers.pickerWheels[\"232\"]",".pickerWheels[\"232\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeUp()
-        app.buttons["241 lbs"].tap()
-        app2/*@START_MENU_TOKEN@*/.pickerWheels["241"]/*[[".pickers.pickerWheels[\"241\"]",".pickerWheels[\"241\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeUp()
-        app2/*@START_MENU_TOKEN@*/.pickerWheels["255"]/*[[".pickers.pickerWheels[\"255\"]",".pickerWheels[\"255\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeUp()
-        app2/*@START_MENU_TOKEN@*/.pickerWheels["259"]/*[[".pickers.pickerWheels[\"259\"]",".pickerWheels[\"259\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeUp()
-
-        let doneButton = app.buttons["Done"]
-        doneButton.tap()
-        element.children(matching: .other).element(boundBy: 2).buttons["Not Set"].tap()
-        app2/*@START_MENU_TOKEN@*/.pickerWheels["5"].press(forDuration: 0.8);/*[[".pickers.pickerWheels[\"5\"]",".tap()",".press(forDuration: 0.8);",".pickerWheels[\"5\"]"],[[[-1,3,1],[-1,0,1]],[[-1,2],[-1,1]]],[0,0]]@END_MENU_TOKEN@*/
-        app2/*@START_MENU_TOKEN@*/.pickerWheels["0"].press(forDuration: 0.5);/*[[".pickers.pickerWheels[\"0\"]",".tap()",".press(forDuration: 0.5);",".pickerWheels[\"0\"]"],[[[-1,3,1],[-1,0,1]],[[-1,2],[-1,1]]],[0,0]]@END_MENU_TOKEN@*/
-        doneButton.tap()
-        element.children(matching: .other).element(boundBy: 3).buttons["Not Set"].tap()
-
-        let datePickersQuery = app.datePickers
-        datePickersQuery.pickerWheels["December"]/*@START_MENU_TOKEN@*/.press(forDuration: 0.6);/*[[".tap()",".press(forDuration: 0.6);"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        datePickersQuery.pickerWheels["31"]/*@START_MENU_TOKEN@*/.press(forDuration: 0.6);/*[[".tap()",".press(forDuration: 0.6);"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        datePickersQuery.pickerWheels["2000"].swipeDown()
-        doneButton.tap()
-        app.buttons["Not Set"].tap()
-        app2/*@START_MENU_TOKEN@*/.pickerWheels["Male"]/*[[".pickers.pickerWheels[\"Male\"]",".pickerWheels[\"Male\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeUp()
-        doneButton.tap()
-        saveButton.tap()
-        app.buttons["Sign Up"].tap()
-
-        let enterYourEmailTextField = app.textFields["Enter your email"]
-        enterYourEmailTextField.tap()
-        enterYourEmailTextField.typeText("christian@christianflanders.com\r")
-        enterYourEmailTextField.tap()
-        
-        let createAPasswordSecureTextField = app.secureTextFields["Create a password"]
-        createAPasswordSecureTextField.tap()
-        createAPasswordSecureTextField.typeText("totlamad\r")
-        app.alerts["Success!"].buttons["Let's Go"].tap()
-        app.alerts["Allow “Peaks” to access your location?"].buttons["Only While Using the App"].tap()
-        app2.tables/*@START_MENU_TOKEN@*/.staticTexts["Turn All Categories On"]/*[[".cells.staticTexts[\"Turn All Categories On\"]",".staticTexts[\"Turn All Categories On\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app.navigationBars["Health Access"].buttons["Allow"].tap()
-        app.tabBars.buttons["Settings"].tap()
-
+     
 
 
         // Use XCTAssert and related functions to verify your tests produce the correct results.
