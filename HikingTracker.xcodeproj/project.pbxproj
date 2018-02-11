@@ -116,6 +116,7 @@
 		6BA931092002E06D001FE585 /* Hike Information Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA931082002E06D001FE585 /* Hike Information Protocol.swift */; };
 		6BA9BBD91FFF0A5700BE48B4 /* MainAppTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9BBD81FFF0A5700BE48B4 /* MainAppTabBarViewController.swift */; };
 		6BAC249F2030E5BD007168BA /* HikeHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAC249E2030E5BD007168BA /* HikeHistory.swift */; };
+		6BAC24A42030F17C007168BA /* TRIPLEFELT_P_B4.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6BAC24A22030F17C007168BA /* TRIPLEFELT_P_B4.wav */; };
 		6BAF5B9E1FDF410800480E6A /* GPXParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAF5B9D1FDF410800480E6A /* GPXParser.swift */; };
 		6BB3CD37200D3EB000E6B89D /* ChecklistButtonProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB3CD36200D3EB000E6B89D /* ChecklistButtonProtocol.swift */; };
 		6BB3CD3A200D467A00E6B89D /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB3CD39200D467A00E6B89D /* ChecklistItem.swift */; };
@@ -353,6 +354,7 @@
 		6BA931082002E06D001FE585 /* Hike Information Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Hike Information Protocol.swift"; sourceTree = "<group>"; };
 		6BA9BBD81FFF0A5700BE48B4 /* MainAppTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppTabBarViewController.swift; sourceTree = "<group>"; };
 		6BAC249E2030E5BD007168BA /* HikeHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikeHistory.swift; sourceTree = "<group>"; };
+		6BAC24A22030F17C007168BA /* TRIPLEFELT_P_B4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = TRIPLEFELT_P_B4.wav; sourceTree = "<group>"; };
 		6BAF5B9D1FDF410800480E6A /* GPXParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXParser.swift; sourceTree = "<group>"; };
 		6BB3CD36200D3EB000E6B89D /* ChecklistButtonProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistButtonProtocol.swift; sourceTree = "<group>"; };
 		6BB3CD39200D467A00E6B89D /* ChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
@@ -891,6 +893,7 @@
 				6B6E19D61FEDE7B200B5605A /* Fonts */,
 				6BCD37A51FD88F7A00FE8C03 /* HikeTest.gpx */,
 				6BB63A131FD5CCE600E9F4A1 /* Assets.xcassets */,
+				6BAC24A22030F17C007168BA /* TRIPLEFELT_P_B4.wav */,
 				6BBF0F201FFC998900591C50 /* PauseNoise.wav */,
 			);
 			path = Resources;
@@ -1259,6 +1262,7 @@
 				6B6A1D4F1FF2EF3800C4AD3A /* RK_gpx _2017-12-20_1333-xc.gpx in Resources */,
 				6B6ED181200570CA0094B3EB /* Cabin-Regular.ttf in Resources */,
 				6B6ED18D200570D00094B3EB /* Oswald-Regular.ttf in Resources */,
+				6BAC24A42030F17C007168BA /* TRIPLEFELT_P_B4.wav in Resources */,
 				6B6ED185200570CA0094B3EB /* Cabin-Medium.ttf in Resources */,
 				6B6ED183200570CA0094B3EB /* Cabin-Italic.ttf in Resources */,
 				6B6ED186200570CA0094B3EB /* Cabin-MediumItalic.ttf in Resources */,

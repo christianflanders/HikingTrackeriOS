@@ -270,7 +270,7 @@ class HikeInProgressViewController: UIViewController, CLLocationManagerDelegate,
 
     // MARK: Sound
     func playSound() {
-        guard let url = Bundle.main.url(forResource: "PauseNoise", withExtension: "wav") else { return }
+        guard let url = Bundle.main.url(forResource: "TRIPLEFELT_P_B4", withExtension: "wav") else { return }
 
         do {
 
