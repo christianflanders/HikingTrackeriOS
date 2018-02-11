@@ -37,14 +37,13 @@ class SettingsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setButtonValuesToStoredSettings()
-
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        setButtonValuesToStoredSettings()
         self.tabBarController?.tabBar.isHidden = false //Set this becuase it gets hidden if we go to the user info screen
     }
-
 
     // MARK: IBActions
 
@@ -69,8 +68,6 @@ class SettingsTableViewController: UITableViewController {
         userSettings.resetChecklistSetting = !resetChecklistSetting
     }
 
-
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let backItem = UIBarButtonItem()
         backItem.title = "Cancel"
@@ -81,9 +78,9 @@ class SettingsTableViewController: UITableViewController {
     private func setButtonValuesToStoredSettings() {
         switch user.userDisplayUnits {
         case .freedomUnits :
-            unitsSegmentedControl.isEnabledForSegment(at: 0)
+            unitsSegmentedControl.selectedSegmentIndex = 0
         case .metric :
-            unitsSegmentedControl.isEnabledForSegment(at: 1)
+            unitsSegmentedControl.selectedSegmentIndex = 1
         }
 
         guard let pauseButtonSetting = userSettings.pauseButtonSound else { return }
@@ -100,7 +97,6 @@ class SettingsTableViewController: UITableViewController {
             resetChecklistSwitch.isOn = false
         }
     }
-
 
     func checkForExistingSettingsValuesAndSetDefaults() {
         if userSettings.pauseButtonSound == nil {
