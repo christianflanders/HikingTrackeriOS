@@ -85,12 +85,14 @@ class SettingsTableViewController: UITableViewController {
         case .metric :
             unitsSegmentedControl.isEnabledForSegment(at: 1)
         }
+
         guard let pauseButtonSetting = userSettings.pauseButtonSound else { return }
         if pauseButtonSetting {
             pauseSoundSwitchOutlet.isOn = true
         } else {
             pauseSoundSwitchOutlet.isOn = false
         }
+
         guard let resetChecklistSetting = userSettings.resetChecklistSetting else { return }
         if resetChecklistSetting {
             resetChecklistSwitch.isOn = true
