@@ -56,7 +56,13 @@ class ElevationChartViewController: UIViewController, IAxisValueFormatter {
             }
         }
 
-        let chartDataSet = LineChartDataSet(values: dataEntries, label: "Elevation in Meters")
+        var currentUnit = String()
+        if StoredUser().userDisplayUnits == .freedomUnits {
+            currentUnit = "Feet"
+        } else {
+            currentUnit = "Meters"
+        }
+        let chartDataSet = LineChartDataSet(values: dataEntries, label: "Elevation in \(currentUnit)")
 
         chartDataSet.drawCirclesEnabled = false
         chartDataSet.mode = .horizontalBezier
